@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0009D3071BC6F0D200F12711 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0009D3061BC6F0D200F12711 /* Level1Scene.sks */; settings = {ASSET_TAGS = (); }; };
+		000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000D09D81BBEF31100631559 /* TBPlayerNode.swift */; settings = {ASSET_TAGS = (); }; };
+		009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */; settings = {ASSET_TAGS = (); }; };
+		00CDBE8C1BB9B39000BC0517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */; };
+		00CDBE901BB9B39000BC0517 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE8F1BB9B39000BC0517 /* GameScene.swift */; };
+		00CDBE921BB9B39000BC0517 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE911BB9B39000BC0517 /* GameViewController.swift */; };
+		00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00CDBE931BB9B39000BC0517 /* Main.storyboard */; };
+		00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CDBE961BB9B39000BC0517 /* Assets.xcassets */; };
+		00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00CDBE981BB9B39000BC0517 /* LaunchScreen.storyboard */; };
+		00CDBEA51BB9B39100BC0517 /* TheBugggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEA41BB9B39100BC0517 /* TheBugggerTests.swift */; };
+		00CDBEB01BB9B39100BC0517 /* TheBugggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */; };
+		00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */; settings = {ASSET_TAGS = (); }; };
+		52C376F61BC441190012BC96 /* TBShotGroundBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */; settings = {ASSET_TAGS = (); }; };
+		52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */; settings = {ASSET_TAGS = (); }; };
+		52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */; settings = {ASSET_TAGS = (); }; };
+		52C376FC1BC44E7E0012BC96 /* TBFlying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376FB1BC44E7E0012BC96 /* TBFlying.swift */; settings = {ASSET_TAGS = (); }; };
+		52E7AEAF1BBEF86C008FE672 /* GameSceneTestEnemy.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52E7AEAE1BBEF86C008FE672 /* GameSceneTestEnemy.sks */; settings = {ASSET_TAGS = (); }; };
+		52E7AEB11BBEFA52008FE672 /* GameSceneTestEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */; settings = {ASSET_TAGS = (); }; };
+		52E7AEB31BBEFEF6008FE672 /* TBPlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB21BBEFEF6008FE672 /* TBPlayerEntity.swift */; settings = {ASSET_TAGS = (); }; };
+		52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */; settings = {ASSET_TAGS = (); }; };
+		52E7AEB71BBF0286008FE672 /* TBGroundBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */; settings = {ASSET_TAGS = (); }; };
+		52E7AEB91BBF06D2008FE672 /* TBGroundBotAtack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */; settings = {ASSET_TAGS = (); }; };
+		AFEF5C431BC44E3B003273FF /* PlayerAtack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C3D1BC44E3B003273FF /* PlayerAtack.atlas */; settings = {ASSET_TAGS = (); }; };
+		AFEF5C441BC44E3B003273FF /* PlayerDash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C3E1BC44E3B003273FF /* PlayerDash.atlas */; settings = {ASSET_TAGS = (); }; };
+		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; settings = {ASSET_TAGS = (); }; };
+		AFEF5C471BC44E3B003273FF /* PlayerJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C411BC44E3B003273FF /* PlayerJump.atlas */; settings = {ASSET_TAGS = (); }; };
+		AFEF5C4A1BC45AD2003273FF /* PlayerDefence.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C491BC45AD2003273FF /* PlayerDefence.atlas */; settings = {ASSET_TAGS = (); }; };
+		AFEF5C4E1BC5ABAD003273FF /* PlayerWalk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C4D1BC5ABAD003273FF /* PlayerWalk.atlas */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00CDBEA11BB9B39100BC0517 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00CDBE801BB9B39000BC0517 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00CDBE871BB9B39000BC0517;
+			remoteInfo = TheBuggger;
+		};
+		00CDBEAC1BB9B39100BC0517 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00CDBE801BB9B39000BC0517 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00CDBE871BB9B39000BC0517;
+			remoteInfo = TheBuggger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0009D3061BC6F0D200F12711 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		000D09D81BBEF31100631559 /* TBPlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPlayerNode.swift; sourceTree = "<group>"; };
+		009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPowerUpsStates.swift; sourceTree = "<group>"; };
+		00CDBE881BB9B39000BC0517 /* TheBuggger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBuggger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		00CDBE8F1BB9B39000BC0517 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		00CDBE911BB9B39000BC0517 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		00CDBE941BB9B39000BC0517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		00CDBE961BB9B39000BC0517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00CDBE991BB9B39000BC0517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		00CDBE9B1BB9B39000BC0517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00CDBEA01BB9B39100BC0517 /* TheBugggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheBugggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00CDBEA41BB9B39100BC0517 /* TheBugggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBugggerTests.swift; sourceTree = "<group>"; };
+		00CDBEA61BB9B39100BC0517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00CDBEAB1BB9B39100BC0517 /* TheBugggerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheBugggerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBugggerUITests.swift; sourceTree = "<group>"; };
+		00CDBEB11BB9B39100BC0517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGestureReconizer.swift; sourceTree = "<group>"; };
+		52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotGroundBotNode.swift; sourceTree = "<group>"; };
+		52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotNode.swift; sourceTree = "<group>"; };
+		52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotEntity.swift; sourceTree = "<group>"; };
+		52C376FB1BC44E7E0012BC96 /* TBFlying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlying.swift; sourceTree = "<group>"; };
+		52E7AEAE1BBEF86C008FE672 /* GameSceneTestEnemy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameSceneTestEnemy.sks; sourceTree = "<group>"; };
+		52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneTestEnemy.swift; sourceTree = "<group>"; };
+		52E7AEB21BBEFEF6008FE672 /* TBPlayerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPlayerEntity.swift; sourceTree = "<group>"; };
+		52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotNode.swift; sourceTree = "<group>"; };
+		52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotEntity.swift; sourceTree = "<group>"; };
+		52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotAtack.swift; sourceTree = "<group>"; };
+		AFEF5C3D1BC44E3B003273FF /* PlayerAtack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAtack.atlas; sourceTree = "<group>"; };
+		AFEF5C3E1BC44E3B003273FF /* PlayerDash.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDash.atlas; sourceTree = "<group>"; };
+		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
+		AFEF5C411BC44E3B003273FF /* PlayerJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerJump.atlas; sourceTree = "<group>"; };
+		AFEF5C491BC45AD2003273FF /* PlayerDefence.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDefence.atlas; sourceTree = "<group>"; };
+		AFEF5C4D1BC5ABAD003273FF /* PlayerWalk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerWalk.atlas; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00CDBE851BB9B39000BC0517 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00CDBE9D1BB9B39100BC0517 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00CDBEA81BB9B39100BC0517 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00CDBE7F1BB9B39000BC0517 = {
+			isa = PBXGroup;
+			children = (
+				00CDBE8A1BB9B39000BC0517 /* TheBuggger */,
+				00CDBEA31BB9B39100BC0517 /* TheBugggerTests */,
+				00CDBEAE1BB9B39100BC0517 /* TheBugggerUITests */,
+				00CDBE891BB9B39000BC0517 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		00CDBE891BB9B39000BC0517 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00CDBE881BB9B39000BC0517 /* TheBuggger.app */,
+				00CDBEA01BB9B39100BC0517 /* TheBugggerTests.xctest */,
+				00CDBEAB1BB9B39100BC0517 /* TheBugggerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00CDBE8A1BB9B39000BC0517 /* TheBuggger */ = {
+			isa = PBXGroup;
+			children = (
+				00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */,
+				00CDBE981BB9B39000BC0517 /* LaunchScreen.storyboard */,
+				00CDBE931BB9B39000BC0517 /* Main.storyboard */,
+				00CDBE9B1BB9B39000BC0517 /* Info.plist */,
+				00CDBEC91BBD9F8800BC0517 /* Controllers */,
+				00CDBEC11BB9FE3700BC0517 /* Scenes */,
+				00CDBEC21BBD9E9F00BC0517 /* Entities */,
+				00CDBEC31BBD9EBB00BC0517 /* Components */,
+				00CDBEC61BBD9EE600BC0517 /* Nodes */,
+				00CDBEC51BBD9ED200BC0517 /* Behaviors */,
+				00CDBEC41BBD9ECA00BC0517 /* Rules */,
+				00CDBEC81BBD9F4900BC0517 /* Utils */,
+				00CDBEC71BBD9EEC00BC0517 /* Assets */,
+			);
+			path = TheBuggger;
+			sourceTree = "<group>";
+		};
+		00CDBEA31BB9B39100BC0517 /* TheBugggerTests */ = {
+			isa = PBXGroup;
+			children = (
+				00CDBEA41BB9B39100BC0517 /* TheBugggerTests.swift */,
+				00CDBEA61BB9B39100BC0517 /* Info.plist */,
+			);
+			path = TheBugggerTests;
+			sourceTree = "<group>";
+		};
+		00CDBEAE1BB9B39100BC0517 /* TheBugggerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */,
+				00CDBEB11BB9B39100BC0517 /* Info.plist */,
+			);
+			path = TheBugggerUITests;
+			sourceTree = "<group>";
+		};
+		00CDBEC11BB9FE3700BC0517 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				00CDBE8F1BB9B39000BC0517 /* GameScene.swift */,
+				00CDBECA1BBD9FD100BC0517 /* Level 1 */,
+				52E7AEAD1BBEF81D008FE672 /* Level 2 */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		00CDBEC21BBD9E9F00BC0517 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				52E7AEB21BBEFEF6008FE672 /* TBPlayerEntity.swift */,
+				52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */,
+				52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		00CDBEC31BBD9EBB00BC0517 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */,
+				52C376FB1BC44E7E0012BC96 /* TBFlying.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		00CDBEC41BBD9ECA00BC0517 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Rules;
+			sourceTree = "<group>";
+		};
+		00CDBEC51BBD9ED200BC0517 /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Behaviors;
+			sourceTree = "<group>";
+		};
+		00CDBEC61BBD9EE600BC0517 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				000D09D81BBEF31100631559 /* TBPlayerNode.swift */,
+				52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */,
+				52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */,
+				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AFEF5C4D1BC5ABAD003273FF /* PlayerWalk.atlas */,
+				AFEF5C3D1BC44E3B003273FF /* PlayerAtack.atlas */,
+				AFEF5C3E1BC44E3B003273FF /* PlayerDash.atlas */,
+				AFEF5C491BC45AD2003273FF /* PlayerDefence.atlas */,
+				AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */,
+				AFEF5C411BC44E3B003273FF /* PlayerJump.atlas */,
+				00CDBE961BB9B39000BC0517 /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		00CDBEC81BBD9F4900BC0517 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */,
+				009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		00CDBEC91BBD9F8800BC0517 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				00CDBE911BB9B39000BC0517 /* GameViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		00CDBECA1BBD9FD100BC0517 /* Level 1 */ = {
+			isa = PBXGroup;
+			children = (
+				0009D3061BC6F0D200F12711 /* Level1Scene.sks */,
+			);
+			name = "Level 1";
+			sourceTree = "<group>";
+		};
+		52E7AEAD1BBEF81D008FE672 /* Level 2 */ = {
+			isa = PBXGroup;
+			children = (
+				52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */,
+				52E7AEAE1BBEF86C008FE672 /* GameSceneTestEnemy.sks */,
+			);
+			name = "Level 2";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00CDBE871BB9B39000BC0517 /* TheBuggger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00CDBEB41BB9B39100BC0517 /* Build configuration list for PBXNativeTarget "TheBuggger" */;
+			buildPhases = (
+				00CDBE841BB9B39000BC0517 /* Sources */,
+				00CDBE851BB9B39000BC0517 /* Frameworks */,
+				00CDBE861BB9B39000BC0517 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TheBuggger;
+			productName = TheBuggger;
+			productReference = 00CDBE881BB9B39000BC0517 /* TheBuggger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		00CDBE9F1BB9B39100BC0517 /* TheBugggerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00CDBEB71BB9B39100BC0517 /* Build configuration list for PBXNativeTarget "TheBugggerTests" */;
+			buildPhases = (
+				00CDBE9C1BB9B39100BC0517 /* Sources */,
+				00CDBE9D1BB9B39100BC0517 /* Frameworks */,
+				00CDBE9E1BB9B39100BC0517 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00CDBEA21BB9B39100BC0517 /* PBXTargetDependency */,
+			);
+			name = TheBugggerTests;
+			productName = TheBugggerTests;
+			productReference = 00CDBEA01BB9B39100BC0517 /* TheBugggerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		00CDBEAA1BB9B39100BC0517 /* TheBugggerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00CDBEBA1BB9B39100BC0517 /* Build configuration list for PBXNativeTarget "TheBugggerUITests" */;
+			buildPhases = (
+				00CDBEA71BB9B39100BC0517 /* Sources */,
+				00CDBEA81BB9B39100BC0517 /* Frameworks */,
+				00CDBEA91BB9B39100BC0517 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00CDBEAD1BB9B39100BC0517 /* PBXTargetDependency */,
+			);
+			name = TheBugggerUITests;
+			productName = TheBugggerUITests;
+			productReference = 00CDBEAB1BB9B39100BC0517 /* TheBugggerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00CDBE801BB9B39000BC0517 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = rfccg;
+				TargetAttributes = {
+					00CDBE871BB9B39000BC0517 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					00CDBE9F1BB9B39100BC0517 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 00CDBE871BB9B39000BC0517;
+					};
+					00CDBEAA1BB9B39100BC0517 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 00CDBE871BB9B39000BC0517;
+					};
+				};
+			};
+			buildConfigurationList = 00CDBE831BB9B39000BC0517 /* Build configuration list for PBXProject "TheBuggger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 00CDBE7F1BB9B39000BC0517;
+			productRefGroup = 00CDBE891BB9B39000BC0517 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00CDBE871BB9B39000BC0517 /* TheBuggger */,
+				00CDBE9F1BB9B39100BC0517 /* TheBugggerTests */,
+				00CDBEAA1BB9B39100BC0517 /* TheBugggerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00CDBE861BB9B39000BC0517 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFEF5C471BC44E3B003273FF /* PlayerJump.atlas in Resources */,
+				AFEF5C4A1BC45AD2003273FF /* PlayerDefence.atlas in Resources */,
+				AFEF5C441BC44E3B003273FF /* PlayerDash.atlas in Resources */,
+				52E7AEAF1BBEF86C008FE672 /* GameSceneTestEnemy.sks in Resources */,
+				00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */,
+				0009D3071BC6F0D200F12711 /* Level1Scene.sks in Resources */,
+				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
+				AFEF5C431BC44E3B003273FF /* PlayerAtack.atlas in Resources */,
+				AFEF5C4E1BC5ABAD003273FF /* PlayerWalk.atlas in Resources */,
+				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
+				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00CDBE9E1BB9B39100BC0517 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00CDBEA91BB9B39100BC0517 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00CDBE841BB9B39000BC0517 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */,
+				52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */,
+				52E7AEB31BBEFEF6008FE672 /* TBPlayerEntity.swift in Sources */,
+				000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */,
+				009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */,
+				52E7AEB11BBEFA52008FE672 /* GameSceneTestEnemy.swift in Sources */,
+				00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */,
+				00CDBE901BB9B39000BC0517 /* GameScene.swift in Sources */,
+				52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */,
+				52C376FC1BC44E7E0012BC96 /* TBFlying.swift in Sources */,
+				00CDBE921BB9B39000BC0517 /* GameViewController.swift in Sources */,
+				00CDBE8C1BB9B39000BC0517 /* AppDelegate.swift in Sources */,
+				52E7AEB91BBF06D2008FE672 /* TBGroundBotAtack.swift in Sources */,
+				52E7AEB71BBF0286008FE672 /* TBGroundBotEntity.swift in Sources */,
+				52C376F61BC441190012BC96 /* TBShotGroundBotNode.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00CDBE9C1BB9B39100BC0517 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00CDBEA51BB9B39100BC0517 /* TheBugggerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00CDBEA71BB9B39100BC0517 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00CDBEB01BB9B39100BC0517 /* TheBugggerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00CDBEA21BB9B39100BC0517 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00CDBE871BB9B39000BC0517 /* TheBuggger */;
+			targetProxy = 00CDBEA11BB9B39100BC0517 /* PBXContainerItemProxy */;
+		};
+		00CDBEAD1BB9B39100BC0517 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00CDBE871BB9B39000BC0517 /* TheBuggger */;
+			targetProxy = 00CDBEAC1BB9B39100BC0517 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		00CDBE931BB9B39000BC0517 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00CDBE941BB9B39000BC0517 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		00CDBE981BB9B39000BC0517 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00CDBE991BB9B39000BC0517 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		00CDBEB21BB9B39100BC0517 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		00CDBEB31BB9B39100BC0517 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		00CDBEB51BB9B39100BC0517 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TheBuggger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin..TheBuggger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		00CDBEB61BB9B39100BC0517 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TheBuggger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin..TheBuggger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		00CDBEB81BB9B39100BC0517 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = TheBugggerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin..TheBugggerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheBuggger.app/TheBuggger";
+			};
+			name = Debug;
+		};
+		00CDBEB91BB9B39100BC0517 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TheBugggerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin..TheBugggerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheBuggger.app/TheBuggger";
+			};
+			name = Release;
+		};
+		00CDBEBB1BB9B39100BC0517 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = TheBugggerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin..TheBugggerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TheBuggger;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		00CDBEBC1BB9B39100BC0517 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TheBugggerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin..TheBugggerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TheBuggger;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00CDBE831BB9B39000BC0517 /* Build configuration list for PBXProject "TheBuggger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00CDBEB21BB9B39100BC0517 /* Debug */,
+				00CDBEB31BB9B39100BC0517 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00CDBEB41BB9B39100BC0517 /* Build configuration list for PBXNativeTarget "TheBuggger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00CDBEB51BB9B39100BC0517 /* Debug */,
+				00CDBEB61BB9B39100BC0517 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00CDBEB71BB9B39100BC0517 /* Build configuration list for PBXNativeTarget "TheBugggerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00CDBEB81BB9B39100BC0517 /* Debug */,
+				00CDBEB91BB9B39100BC0517 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00CDBEBA1BB9B39100BC0517 /* Build configuration list for PBXNativeTarget "TheBugggerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00CDBEBB1BB9B39100BC0517 /* Debug */,
+				00CDBEBC1BB9B39100BC0517 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00CDBE801BB9B39000BC0517 /* Project object */;
+}
