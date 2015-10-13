@@ -79,8 +79,9 @@ class TBPlayerNode: SKSpriteNode {
         addAttackJoint()
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
-        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE
-        self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE
+        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.TOCO_NODE
+        
+        self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE
 
         
     }
@@ -98,6 +99,8 @@ class TBPlayerNode: SKSpriteNode {
         atackJointSquare.physicsBody?.allowsRotation = false
         atackJointSquare.physicsBody?.mass = 0.1
         atackJointSquare.physicsBody?.collisionBitMask = 0b0
+        atackJointSquare.physicsBody?.categoryBitMask = GameScene.JOINT_ATTACK_NODE
+        atackJointSquare.physicsBody?.contactTestBitMask = GameScene.MONSTER_NODE
         atackJointSquare.position = CGPointMake(30 , 0)
         self.addChild(atackJointSquare)
         

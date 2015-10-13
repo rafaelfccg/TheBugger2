@@ -82,6 +82,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         let spanw = self.childNodeWithName("SpawnHero")
         self.hero.position = (spanw?.position)!
        
+        self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
+            
+            let groundBoti = TBGroundBotNode()
+            groundBoti.position = node.position
+            groundBoti.name = "Monster"
+            groundBoti.physicsBody?.allowsRotation = false
+            groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
+            groundBoti.physicsBody?.collisionBitMask = GameScene.CHAO_NODE | GameScene.PLAYER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.OTHER_NODE
+            groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
+            self.addChild(groundBoti)
+            
+        })
         
         //do something with the each child type
         self.enumerateChildNodesWithName("chao", usingBlock: {
@@ -109,7 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.enumerateChildNodesWithName("parede", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
-            node.physicsBody?.categoryBitMask = GameScene.OTHER_NODE
+            node.physicsBody?.categoryBitMask = GameScene.TOCO_NODE
             self.setObstacleTypeHit(node)
             
         })
@@ -191,14 +203,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             bodyA = aux
         }
         
-        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE)){
+        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
+            print("oohhh damange")
         
-        
-        }else if(bodyA.categoryBitMask == GameScene.CHAO_NODE  && bodyB.categoryBitMask == GameScene.PLAYER_NODE ){
+        }else if(bodyA.categoryBitMask == GameScene.CHAO_NODE  && bodyB.categoryBitMask == GameScene.PLAYER_NODE ) || (bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == (GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE | GameScene.TOCO_NODE)){
             //print("\(contact.contactNormal.dy) \n")
             if(contact.contactNormal.dy>0){
                 self.hero.jumpState = JumpState.CanJump
+            }
+            
+        }else if(bodyA.categoryBitMask == GameScene.MONSTER_NODE  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
+            if(hero.attackState == AttackState.Attacking){
+                //hit monster
+                bodyA.node?.removeFromParent()
+                print("kill monster")
+            }else{
+                //hero took damange
+               
             }
             
         }

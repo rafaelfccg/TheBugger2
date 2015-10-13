@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class TBGroundBotNode: SKSpriteNode {
-    static let name = "SpawnGroundBot"
+    static let name = "SpawnMonsterType1"
     
     var jaAtacou = false // Variavel auxiliar para o bot atacar apenas uma vez
     
