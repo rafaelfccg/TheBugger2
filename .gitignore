@@ -1,0 +1,8 @@
+*.xccheckout
+*.moved-aside
+*.xcuserstate
++*.xcscmblueprint
+*.sks
+
+## Obj-C/Swift specific
+*.hmap
