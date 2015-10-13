@@ -24,6 +24,7 @@ class TBPlayerNode: SKSpriteNode {
     let defaultSpeed = 250
     let highSpeed = 350
     let slowSpeed = 150
+    var speedBost:Bool
     
     
     var lives = 1
@@ -40,6 +41,7 @@ class TBPlayerNode: SKSpriteNode {
         self.realSpeed = defaultSpeed
         jumpState = JumpState.CanJump
         attackState = AttackState.Idle
+        speedBost = false
         super.init(coder: aDecoder)
        
     }
@@ -51,6 +53,7 @@ class TBPlayerNode: SKSpriteNode {
         self.realSpeed = defaultSpeed
         powerUP = TBPowerUpsStates.Normal
         attackState = AttackState.Idle
+        speedBost = false
         super.init(texture:SKTexture(), color: UIColor(), size: CGSizeMake(0, 0) )
     }
     
@@ -70,6 +73,7 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.linearDamping = 0;
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.dynamic = true
+        self.physicsBody?.restitution = 0
         self.physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), 0);
         self.position = CGPointMake(216, 375)
         
@@ -124,7 +128,8 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func updateVelocity(){
-        if(physicsBody?.velocity.dx != CGFloat(realSpeed)){
+        print(realSpeed)
+        if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
             physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
         }
     

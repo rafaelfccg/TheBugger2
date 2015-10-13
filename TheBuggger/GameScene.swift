@@ -104,6 +104,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         })
         
+        self.enumerateChildNodesWithName("chao_quick", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            self.setObstacleTypeHit(node)
+            node.physicsBody!.categoryBitMask = GameScene.CHAO_QUICK_NODE
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        })
+        
         self.enumerateChildNodesWithName("plataforma", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody?.categoryBitMask = GameScene.CHAO_NODE
@@ -203,15 +211,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             bodyA = aux
         }
         
-        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.TIRO_NODE)){
+        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
+          (bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||
+          (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
+          (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
             print("oohhh damange")
         
-        }else if(bodyA.categoryBitMask == GameScene.CHAO_NODE  && bodyB.categoryBitMask == GameScene.PLAYER_NODE ) || (bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == (GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE | GameScene.TOCO_NODE)){
-            //print("\(contact.contactNormal.dy) \n")
+        }else if(bodyA.categoryBitMask == GameScene.CHAO_NODE  &&
+                 bodyB.categoryBitMask == GameScene.PLAYER_NODE ) ||
+                (bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
+                (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
+                 bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
+                 bodyB.categoryBitMask ==  GameScene.TOCO_NODE)){
+            
             if(contact.contactNormal.dy>0){
                 self.hero.jumpState = JumpState.CanJump
             }
+            if bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE {
+                //hero.realSpeed += 100
+                hero.speedBost = true
+                let accSpeed = SKAction.repeatAction( SKAction.sequence(
+                    [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                        self.hero.realSpeed += 20}
+                        )]), count: 10)
+                
+                
+                let actSlow = SKAction.repeatAction( SKAction.sequence(
+                    [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                        self.hero.realSpeed -= 1}
+                        )]), count: 200)
+                hero.runAction(SKAction.sequence([accSpeed, actSlow]))
+            }
+            
             
         }else if(bodyA.categoryBitMask == GameScene.MONSTER_NODE  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
             if(hero.attackState == AttackState.Attacking){

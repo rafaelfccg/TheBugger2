@@ -11,6 +11,7 @@
 		009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */; settings = {ASSET_TAGS = (); }; };
 		009018BD1BCD76BE002AABC7 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009018BB1BCD76BE002AABC7 /* Level1Scene.sks */; settings = {ASSET_TAGS = (); }; };
 		009018BE1BCD76BE002AABC7 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009018BC1BCD76BE002AABC7 /* Level2Scene.sks */; settings = {ASSET_TAGS = (); }; };
+		009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */; settings = {ASSET_TAGS = (); }; };
 		00CDBE8C1BB9B39000BC0517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */; };
 		00CDBE901BB9B39000BC0517 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE8F1BB9B39000BC0517 /* GameScene.swift */; };
 		00CDBE921BB9B39000BC0517 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE911BB9B39000BC0517 /* GameViewController.swift */; };
@@ -60,6 +61,7 @@
 		009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPowerUpsStates.swift; sourceTree = "<group>"; };
 		009018BB1BCD76BE002AABC7 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		009018BC1BCD76BE002AABC7 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
+		009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBChangeSpeedGround.swift; sourceTree = "<group>"; };
 		00CDBE881BB9B39000BC0517 /* TheBuggger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBuggger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00CDBE8F1BB9B39000BC0517 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */,
 				52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */,
 				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
+				009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */,
 				52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */,
 				52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */,
 				52E7AEB31BBEFEF6008FE672 /* TBPlayerEntity.swift in Sources */,
