@@ -19,18 +19,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     
     
-    static let CHAO_NODE:UInt32             = 0b000000000001
-    static let PLAYER_NODE:UInt32           = 0b000000000010
-    static let MONSTER_NODE:UInt32          = 0b000000000100
-    static let POWERUP_NODE:UInt32          = 0b000000001000
-    static let ESPINHOS_NODE:UInt32         = 0b000000010000
-    static let TIRO_NODE:UInt32             = 0b000000100000
-    static let JOINT_ATTACK_NODE:UInt32     = 0b000001000000
-    static let CHAO_QUICK_NODE:UInt32       = 0b000010000000
-    static let CHAO_SLOW_NODE:UInt32        = 0b000100000000
-    static let TOCO_NODE:UInt32             = 0b001000000000
-    static let OTHER_NODE:UInt32            = 0b010000000000
-    static let END_LEVEL_NODE:UInt32        = 0b100000000000
+    static let CHAO_NODE:UInt32             = 0b0000000000001
+    static let PLAYER_NODE:UInt32           = 0b0000000000010
+    static let MONSTER_NODE:UInt32          = 0b0000000000100
+    static let POWERUP_NODE:UInt32          = 0b0000000001000
+    static let ESPINHOS_NODE:UInt32         = 0b0000000010000
+    static let TIRO_NODE:UInt32             = 0b0000000100000
+    static let JOINT_ATTACK_NODE:UInt32     = 0b0000001000000
+    static let CHAO_QUICK_NODE:UInt32       = 0b0000010000000
+    static let CHAO_SLOW_NODE:UInt32        = 0b0000100000000
+    static let TOCO_NODE:UInt32             = 0b0001000000000
+    static let OTHER_NODE:UInt32            = 0b0010000000000
+    static let END_LEVEL_NODE:UInt32        = 0b0100000000000
+    static let TRAMPOLIM:UInt32             = 0b1000000000000
     
     
     override func didMoveToView(view: SKView) {
@@ -72,6 +73,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         node.physicsBody?.pinned = true
         //node.physicsBody?.contactTestBitMask =
 
+    }
+    
+    func setTrampolimTypeHit(node: SKNode){
+        //node.physicsBody?.affectedByGravity = false
+        node.physicsBody?.allowsRotation = false
+        //node.physicsBody?.dynamic = true
+        node.physicsBody?.pinned = true
+        //node.physicsBody?.contactTestBitMask =
+        
     }
     
     
@@ -120,6 +130,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.setObstacleTypeHit(node)
             
         })
+        self.enumerateChildNodesWithName("trampolim", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            self.setTrampolimTypeHit(node)
+            node.physicsBody!.categoryBitMask = GameScene.TRAMPOLIM
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        })
     
     }
     
@@ -131,6 +148,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.hero.state = States.Initial
             self.lastTouch = touch
         }
+        
+        self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
+        self.hero.actionCall()
     }
     func addJointBody(bodyJoint: SKSpriteNode) {
         self.addChild(bodyJoint)
@@ -163,8 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
-        self.hero.actionCall()
+        
         
     }
     
@@ -175,6 +194,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.camera!.runAction(action)
         self.hero.updateVelocity()
         //hero.physicsBody?.velocity = CGVectorMake(100, 0)
+        
+       
         
         
     }
@@ -196,11 +217,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         
         }else if(bodyA.categoryBitMask == GameScene.CHAO_NODE  && bodyB.categoryBitMask == GameScene.PLAYER_NODE ){
-            //print("\(contact.contactNormal.dy) \n")
+            print("chao \n")
             if(contact.contactNormal.dy>0){
                 self.hero.jumpState = JumpState.CanJump
             }
             
+        } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == GameScene.TRAMPOLIM ){
+            print("Trampolim touched\n")
+            self.hero.jumpState = JumpState.trampJump
         }
         
     }

@@ -136,6 +136,16 @@ class TBPlayerNode: SKSpriteNode {
 
     }
     
+    func anotherJump(){
+        let jumpArray = self.getSprites("PlayerJump", nomeImagens: "jump")
+        self.physicsBody?.applyForce(CGVectorMake(0, 9.8*(self.physicsBody?.mass)!), atPoint: self.position)
+        self.physicsBody?.applyImpulse(CGVectorMake(0, (self.physicsBody?.mass)! * 1000))
+        let action = SKAction.animateWithTextures(jumpArray, timePerFrame: 0.2);
+        runAction(action)
+        
+        
+    }
+    
     func actionCall(){
         switch state{
 
@@ -203,6 +213,9 @@ class TBPlayerNode: SKSpriteNode {
                 case JumpState.SecondJump:
                     
                 break
+                case .trampJump:
+                    self.anotherJump()
+                break
             }
 
         break;
@@ -225,6 +238,7 @@ enum JumpState{
     case CanJump
     case FirstJump
     case SecondJump
+    case trampJump
     
 }
 
