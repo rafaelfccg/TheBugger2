@@ -22,7 +22,7 @@ class TBPlayerNode: SKSpriteNode {
     var delegate :TBPlayerNodeJointsDelegate?
     
     let defaultSpeed = 250
-    let highSpeed = 350
+    let highSpeed = 450
     let slowSpeed = 150
     var speedBost:Bool
     

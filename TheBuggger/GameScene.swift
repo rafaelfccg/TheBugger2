@@ -231,15 +231,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             if bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE {
                 //hero.realSpeed += 100
                 hero.speedBost = true
+                
                 let accSpeed = SKAction.repeatAction( SKAction.sequence(
                     [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                        self.hero.realSpeed += 20}
+                        self.hero.realSpeed = min(self.hero.highSpeed, self.hero.realSpeed+20)
+                        }
                         )]), count: 10)
                 
                 
                 let actSlow = SKAction.repeatAction( SKAction.sequence(
                     [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                        self.hero.realSpeed -= 1}
+                        self.hero.realSpeed = max(self.hero.defaultSpeed, self.hero.realSpeed-1)}
+                        )]), count: 200)
+                hero.runAction(SKAction.sequence([accSpeed, actSlow]))
+                
+            }else if bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE{
+                let accSpeed = SKAction.repeatAction( SKAction.sequence(
+                    [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                        self.hero.realSpeed = max(self.hero.slowSpeed, self.hero.realSpeed-20)
+                        }
+                        )]), count: 10)
+                
+                
+                let actSlow = SKAction.repeatAction( SKAction.sequence(
+                    [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                        self.hero.realSpeed = min(self.hero.defaultSpeed, self.hero.realSpeed+1)}
                         )]), count: 200)
                 hero.runAction(SKAction.sequence([accSpeed, actSlow]))
             }
