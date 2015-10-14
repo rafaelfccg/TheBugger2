@@ -112,6 +112,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         })
         
+        self.enumerateChildNodesWithName("chao_slow", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            self.setObstacleTypeHit(node)
+            node.physicsBody!.categoryBitMask = GameScene.CHAO_SLOW_NODE
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        })
+        
         self.enumerateChildNodesWithName("plataforma", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody?.categoryBitMask = GameScene.CHAO_NODE
@@ -161,7 +169,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             let location = touch.locationInView(self.view)
             let locationPrevious = touch.previousLocationInView(self.view)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+           
             //Calculate movement
             let dx = Double(location.x - locationPrevious.x)
             let dy = -Double(location.y - locationPrevious.y)
@@ -172,12 +180,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 self.hero.state = nextStatefor(self.hero.state, andInput: direc)
                 print(self.hero.state)
                 // gambiarra pra ver movimento
-                sprite.xScale = 0.1
-                sprite.yScale = 0.1
-                sprite.position = location
-                let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-                sprite.runAction(SKAction.sequence([action,SKAction.removeFromParent()]))
-                self.addChild(sprite)
             }
         }
     }
@@ -230,25 +232,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             }
             if bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE {
                 //hero.realSpeed += 100
-                hero.speedBost = true
-                
+                hero.realSpeed = max(hero.realSpeed, hero.defaultSpeed)
                 let accSpeed = SKAction.repeatAction( SKAction.sequence(
                     [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                        self.hero.realSpeed = min(self.hero.highSpeed, self.hero.realSpeed+20)
+                        self.hero.realSpeed = min(self.hero.highSpeed, self.hero.realSpeed + 20)
                         }
-                        )]), count: 10)
+                        )]), count: 12)
                 
                 
                 let actSlow = SKAction.repeatAction( SKAction.sequence(
                     [SKAction.waitForDuration(0.02), SKAction.runBlock({
                         self.hero.realSpeed = max(self.hero.defaultSpeed, self.hero.realSpeed-1)}
-                        )]), count: 200)
+                        )]), count: 240)
                 hero.runAction(SKAction.sequence([accSpeed, actSlow]))
                 
             }else if bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE{
+                
+                hero.realSpeed = min(hero.realSpeed, hero.defaultSpeed)
                 let accSpeed = SKAction.repeatAction( SKAction.sequence(
                     [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                        self.hero.realSpeed = max(self.hero.slowSpeed, self.hero.realSpeed-20)
+                        self.hero.realSpeed = max(self.hero.slowSpeed, self.hero.realSpeed - 20)
                         }
                         )]), count: 10)
                 
