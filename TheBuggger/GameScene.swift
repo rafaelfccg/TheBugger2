@@ -20,6 +20,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var lastTouch: UITouch = UITouch()
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
+    let limitTimeAction:Double = 0.1
+    var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
     
     
