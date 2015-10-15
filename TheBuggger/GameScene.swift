@@ -176,9 +176,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.hero.state = States.Initial
             self.lastTouch = touch
         }
-        
-        self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
-        self.hero.actionCall()
     }
     func addJointBody(bodyJoint: SKSpriteNode) {
         self.addChild(bodyJoint)
@@ -205,8 +202,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
         
+       
         
+        self.hero.actionCall()
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -235,9 +235,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         }
         
         if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
-          (bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||
+          ((bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||
           (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
-          (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
+          (bodyB.categoryBitMask == GameScene.TIRO_NODE))){
             //MORRE ou PERDE VIDA
             print("oohhh damange")
         
@@ -288,7 +288,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 print("kill monster")
             }else{
                 //hero took damange
-               
             }
             
         } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == GameScene.TRAMPOLIM ){

@@ -26,6 +26,7 @@ class TBPlayerNode: SKSpriteNode {
     let slowSpeed = 100
     var speedBost:Bool
     
+    var attackJoint:SKSpriteNode?
     
     var lives = 1
     var realSpeed:Int
@@ -105,6 +106,8 @@ class TBPlayerNode: SKSpriteNode {
         atackJointSquare.physicsBody?.categoryBitMask = GameScene.JOINT_ATTACK_NODE
         atackJointSquare.physicsBody?.contactTestBitMask = GameScene.MONSTER_NODE
         atackJointSquare.position = CGPointMake(30 , 0)
+        
+        self.attackJoint = atackJointSquare
         self.addChild(atackJointSquare)
         
     }
@@ -200,7 +203,20 @@ class TBPlayerNode: SKSpriteNode {
             runAction(action)
             
             self.attackState = AttackState.Attacking
+            
+            
+            let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
+            
+            for body : AnyObject in bodies! {
+                if body.categoryBitMask == GameScene.MONSTER_NODE {
+                    body.node?!.removeFromParent()
+                    
+                }
+            }
+            
             self.runAction(SKAction.sequence ([SKAction.waitForDuration(0.36), SKAction.runBlock({ self.attackState = AttackState.Idle})]))
+            
+            //checkEnemy()
             
             break;
         case States.Tap:
