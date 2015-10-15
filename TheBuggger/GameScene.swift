@@ -16,6 +16,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var lastTouch: UITouch = UITouch()
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
+    let limitTimeAction:Double = 0.1
+    var touchStartedAt:Double?
     
     
     
@@ -54,10 +56,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         setUpLevel()
         
         self.physicsWorld.contactDelegate = self
-        
-
-        //self.addChild(hero)
-       // self.physicsWorld.addJoint(hero.addMyJoint())
         
     }
     
@@ -153,7 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
-        
+        self.touchStartedAt  = CACurrentMediaTime()
         for touch in touches {
             //let location = touch.locationInNode(self)
             self.hero.state = States.Initial
@@ -164,7 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.addChild(bodyJoint)
     }
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
+        self.touchStartedAt  = CACurrentMediaTime()
         for touch in touches {
             let location = touch.locationInView(self.view)
             let locationPrevious = touch.previousLocationInView(self.view)
@@ -187,6 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
         self.hero.actionCall()
+        self.touchStartedAt = nil
         
     }
     
@@ -196,6 +195,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         let action = SKAction.moveTo(position, duration: 0)
         self.camera!.runAction(action)
         self.hero.updateVelocity()
+        let current =  CACurrentMediaTime()
+        if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < current){
+            self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
+            self.hero.actionCall()
+            self.touchStartedAt = current
+            self.hero.state = States.Initial
+        }
+        
         //hero.physicsBody?.velocity = CGVectorMake(100, 0)
         
         

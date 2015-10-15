@@ -127,7 +127,7 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func updateVelocity(){
-        print(realSpeed)
+        //print(realSpeed)
         if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
             physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
         }
