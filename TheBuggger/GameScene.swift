@@ -144,6 +144,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         self.enumerateChildNodesWithName("plataforma", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.CHAO_NODE
             node.physicsBody!.contactTestBitMask = GameScene.PLAYER_NODE
             self.setObstacleTypeHit(node)
@@ -175,7 +177,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
-        
+        self.touchStartedAt  = CACurrentMediaTime()
         for touch in touches {
             //let location = touch.locationInNode(self)
             let location = touch.locationInNode(self)
@@ -196,7 +198,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.addChild(bodyJoint)
     }
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
+        self.touchStartedAt  = CACurrentMediaTime()
         for touch in touches {
             let location = touch.locationInView(self.view)
             let locationPrevious = touch.previousLocationInView(self.view)
@@ -219,6 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
         self.hero.actionCall()
+        self.touchStartedAt = nil
         
     }
     
@@ -228,6 +231,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         let action = SKAction.moveTo(position, duration: 0)
         self.camera!.runAction(action)
         self.hero.updateVelocity()
+        let current =  CACurrentMediaTime()
+        if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < current){
+            self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
+            self.hero.actionCall()
+            self.touchStartedAt = current
+            self.hero.state = States.Initial
+        }
+        
         //hero.physicsBody?.velocity = CGVectorMake(100, 0)
         
         
