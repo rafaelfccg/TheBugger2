@@ -8,6 +8,10 @@
 
 import SpriteKit
 
+protocol SceneChangesDelegate{
+    
+    func mudaScene(nomeSKS: String)
+}
 
 class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
@@ -16,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var lastTouch: UITouch = UITouch()
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
-    
+    var delegateChanger: SceneChangesDelegate?
     
     
     static let CHAO_NODE:UInt32             = 0b000000000001
@@ -55,11 +59,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         self.physicsWorld.contactDelegate = self
         
+        setupButtonRestartLevel()
 
         //self.addChild(hero)
        // self.physicsWorld.addJoint(hero.addMyJoint())
         
     }
+    
+    func setupButtonRestartLevel()
+    {
+        let botao = SKSpriteNode(color: SKColor.blueColor(), size: CGSizeMake(80, 80))
+        botao.physicsBody?.pinned = false
+        botao.physicsBody?.affectedByGravity = false
+        botao.position = CGPoint(x: self.frame.width/2.0, y: self.frame.height/2.0)
+        //        botao.anchorPoint = CGPoint(x: botao.size.width/2.0, y: botao.size.height/2.0)
+        camera!.addChild(botao)
+        botao.name = "restartButton"
+    }
+    
+    
     
     func addJoint(joint: SKPhysicsJoint) {
         self.scene!.physicsWorld.addJoint(joint)
@@ -74,6 +92,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
     }
     
+    func restartLevel()
+    {
+        delegateChanger?.mudaScene("Level1Scene")
+    }
     
     
     func setUpLevel(){
@@ -156,8 +178,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         for touch in touches {
             //let location = touch.locationInNode(self)
-            self.hero.state = States.Initial
-            self.lastTouch = touch
+            let location = touch.locationInNode(self)
+            let touchedNode = self.nodeAtPoint(location)
+            let name = touchedNode.name
+            if (name == "restartButton")
+            {
+                self.restartLevel()
+            }
+            else
+            {
+                self.hero.state = States.Initial
+                self.lastTouch = touch
+            }
         }
     }
     func addJointBody(bodyJoint: SKSpriteNode) {

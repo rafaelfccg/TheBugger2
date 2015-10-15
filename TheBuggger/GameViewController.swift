@@ -9,18 +9,25 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, SceneChangesDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = GameScene(fileNamed:"GameSceneTestEnemy") {
+        mudaScene("Level1Scene")
+    }
+    
+    func mudaScene(nomeSKS: String)
+    {
+        if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
+            scene.delegateChanger = self
+            
             let skView = self.view as! SKView
             skView.showsFPS = true
             skView.showsNodeCount = true
-//            skView.showsPhysics = true;
-
+            //            skView.showsPhysics = true;
+            
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
             
