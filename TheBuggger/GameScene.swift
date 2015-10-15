@@ -205,6 +205,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
        
         
         self.hero.actionCall()
+        self.touchStartedAt = nil
+        
     }
     
     override func update(currentTime: CFTimeInterval) {
