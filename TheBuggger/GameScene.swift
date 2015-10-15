@@ -120,6 +120,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         self.enumerateChildNodesWithName("plataforma", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.CHAO_NODE
             node.physicsBody!.contactTestBitMask = GameScene.PLAYER_NODE
             self.setObstacleTypeHit(node)
