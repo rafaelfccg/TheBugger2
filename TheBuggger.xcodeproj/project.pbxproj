@@ -227,6 +227,7 @@
 				52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */,
 				52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */,
 				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
+				009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -427,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */,
 				52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */,
 				52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */,
 				52E7AEB31BBEFEF6008FE672 /* TBPlayerEntity.swift in Sources */,

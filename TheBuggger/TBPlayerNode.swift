@@ -22,8 +22,9 @@ class TBPlayerNode: SKSpriteNode {
     var delegate :TBPlayerNodeJointsDelegate?
     
     let defaultSpeed = 250
-    let highSpeed = 350
-    let slowSpeed = 150
+    let highSpeed = 550
+    let slowSpeed = 100
+    var speedBost:Bool
     
     
     var lives = 1
@@ -40,6 +41,7 @@ class TBPlayerNode: SKSpriteNode {
         self.realSpeed = defaultSpeed
         jumpState = JumpState.CanJump
         attackState = AttackState.Idle
+        speedBost = false
         super.init(coder: aDecoder)
        
     }
@@ -51,6 +53,7 @@ class TBPlayerNode: SKSpriteNode {
         self.realSpeed = defaultSpeed
         powerUP = TBPowerUpsStates.Normal
         attackState = AttackState.Idle
+        speedBost = false
         super.init(texture:SKTexture(), color: UIColor(), size: CGSizeMake(0, 0) )
     }
     
@@ -70,6 +73,7 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.linearDamping = 0;
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.dynamic = true
+        self.physicsBody?.restitution = 0
         self.physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), 0);
         self.position = CGPointMake(216, 375)
         
@@ -79,12 +83,12 @@ class TBPlayerNode: SKSpriteNode {
         addAttackJoint()
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
-        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE
-        self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE
+        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.TOCO_NODE
+        
+        self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE
 
         
     }
-    
     
     func addAttackJoint()
     {
@@ -98,6 +102,8 @@ class TBPlayerNode: SKSpriteNode {
         atackJointSquare.physicsBody?.allowsRotation = false
         atackJointSquare.physicsBody?.mass = 0.1
         atackJointSquare.physicsBody?.collisionBitMask = 0b0
+        atackJointSquare.physicsBody?.categoryBitMask = GameScene.JOINT_ATTACK_NODE
+        atackJointSquare.physicsBody?.contactTestBitMask = GameScene.MONSTER_NODE
         atackJointSquare.position = CGPointMake(30 , 0)
         self.addChild(atackJointSquare)
         
@@ -121,7 +127,8 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func updateVelocity(){
-        if(physicsBody?.velocity.dx != CGFloat(realSpeed)){
+        print(realSpeed)
+        if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
             physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
         }
     

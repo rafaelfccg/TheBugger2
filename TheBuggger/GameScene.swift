@@ -92,6 +92,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         let spanw = self.childNodeWithName("SpawnHero")
         self.hero.position = (spanw?.position)!
        
+        self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
+            
+            let groundBoti = TBGroundBotNode()
+            groundBoti.position = node.position
+            groundBoti.name = "Monster"
+            groundBoti.physicsBody?.allowsRotation = false
+            groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
+            groundBoti.physicsBody?.collisionBitMask = GameScene.CHAO_NODE | GameScene.PLAYER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.OTHER_NODE
+            groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
+            self.addChild(groundBoti)
+            
+        })
         
         //do something with the each child type
         self.enumerateChildNodesWithName("chao", usingBlock: {
@@ -99,6 +111,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
             self.setObstacleTypeHit(node)
             node.physicsBody!.categoryBitMask = GameScene.CHAO_NODE
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        })
+        
+        self.enumerateChildNodesWithName("chao_quick", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            self.setObstacleTypeHit(node)
+            node.physicsBody!.categoryBitMask = GameScene.CHAO_QUICK_NODE
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        })
+        
+        self.enumerateChildNodesWithName("chao_slow", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            self.setObstacleTypeHit(node)
+            node.physicsBody!.categoryBitMask = GameScene.CHAO_SLOW_NODE
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         })
         
@@ -119,7 +147,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.enumerateChildNodesWithName("parede", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
-            node.physicsBody?.categoryBitMask = GameScene.OTHER_NODE
+            node.physicsBody?.categoryBitMask = GameScene.TOCO_NODE
             self.setObstacleTypeHit(node)
             
         })
@@ -161,7 +189,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             let location = touch.locationInView(self.view)
             let locationPrevious = touch.previousLocationInView(self.view)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+           
             //Calculate movement
             let dx = Double(location.x - locationPrevious.x)
             let dy = -Double(location.y - locationPrevious.y)
@@ -172,12 +200,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 self.hero.state = nextStatefor(self.hero.state, andInput: direc)
                 print(self.hero.state)
                 // gambiarra pra ver movimento
-                sprite.xScale = 0.1
-                sprite.yScale = 0.1
-                sprite.position = location
-                let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-                sprite.runAction(SKAction.sequence([action,SKAction.removeFromParent()]))
-                self.addChild(sprite)
             }
         }
     }
@@ -212,14 +234,61 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             bodyA = aux
         }
         
-        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE)){
+        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
+          (bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||
+          (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
+          (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
+            print("oohhh damange")
         
         
         }else if(bodyA.categoryBitMask == GameScene.CHAO_NODE  && bodyB.categoryBitMask == GameScene.PLAYER_NODE ){
             print("chao \n")
             if(contact.contactNormal.dy>0){
                 self.hero.jumpState = JumpState.CanJump
+            }
+            if bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE {
+                //hero.realSpeed += 100
+                hero.realSpeed = max(hero.realSpeed, hero.defaultSpeed)
+                let accSpeed = SKAction.repeatAction( SKAction.sequence(
+                    [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                        self.hero.realSpeed = min(self.hero.highSpeed, self.hero.realSpeed + 20)
+                        }
+                        )]), count: 12)
+                
+                
+                let actSlow = SKAction.repeatAction( SKAction.sequence(
+                    [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                        self.hero.realSpeed = max(self.hero.defaultSpeed, self.hero.realSpeed-1)}
+                        )]), count: 240)
+                hero.runAction(SKAction.sequence([accSpeed, actSlow]))
+                
+            }else if bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE{
+                
+                hero.realSpeed = min(hero.realSpeed, hero.defaultSpeed)
+                let accSpeed = SKAction.repeatAction( SKAction.sequence(
+                    [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                        self.hero.realSpeed = max(self.hero.slowSpeed, self.hero.realSpeed - 20)
+                        }
+                        )]), count: 10)
+                
+                
+                let actSlow = SKAction.repeatAction( SKAction.sequence(
+                    [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                        self.hero.realSpeed = min(self.hero.defaultSpeed, self.hero.realSpeed+1)}
+                        )]), count: 200)
+                hero.runAction(SKAction.sequence([accSpeed, actSlow]))
+            }
+            
+            
+        }else if(bodyA.categoryBitMask == GameScene.MONSTER_NODE  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
+            if(hero.attackState == AttackState.Attacking){
+                //hit monster
+                bodyA.node?.removeFromParent()
+                print("kill monster")
+            }else{
+                //hero took damange
+               
             }
             
         } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == GameScene.TRAMPOLIM ){
