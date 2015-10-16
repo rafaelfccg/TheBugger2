@@ -108,7 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         //set hero position
         let spanw = self.childNodeWithName("SpawnHero")
         self.hero.position = (spanw?.position)!
-       
+        self.camera?.position = hero.position
         self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
             
             let groundBoti = TBGroundBotNode()
@@ -116,7 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.name = "Monster"
             groundBoti.physicsBody?.allowsRotation = false
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            //groundBoti.physicsBody?.collisionBitMask = GameScene.CHAO_NODE | GameScene.PLAYER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.OTHER_NODE
+            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             self.addChild(groundBoti)
             
@@ -234,7 +234,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        let position = CGPointMake(hero.position.x + 360, hero.position.y + 50)
+        //let heroy = self.hero.position.y
+        
+        let position = CGPointMake(hero.position.x + 360, (camera?.position.y)!)
         let action = SKAction.moveTo(position, duration: 0)
         self.camera!.runAction(action)
         self.hero.updateVelocity()

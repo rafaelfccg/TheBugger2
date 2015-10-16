@@ -67,12 +67,12 @@ class TBPlayerNode: SKSpriteNode {
         self.texture = walkArray[0];
         // initialize physics body
         self.size = (texture?.size())!
-        let scale = CGFloat(150/self.size.height);
+        let scale = CGFloat(130/self.size.height);
         self.xScale = scale
         self.yScale = scale
-        
+       
         //let phBody = CGSizeMake(self.size.width*0.8, self.size.height*0.8)
-        self.physicsBody = SKPhysicsBody.init(texture: physicsTexture, size: self.size)
+        self.physicsBody = SKPhysicsBody.init(texture: physicsTexture, size: CGSizeMake(self.size.width, self.size.height))
         self.physicsBody?.friction = 0;
         self.physicsBody?.linearDamping = 0;
         self.physicsBody?.allowsRotation = false
@@ -96,7 +96,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func addAttackJoint()
     {
-        let atackJointSquare = SKSpriteNode(color: SKColor.greenColor(), size: CGSizeMake(50, 20))
+        let atackJointSquare = SKSpriteNode(color: SKColor.whiteColor(), size: CGSizeMake(600, 150))
         
         atackJointSquare.physicsBody = SKPhysicsBody(rectangleOfSize: atackJointSquare.size)
         atackJointSquare.physicsBody?.affectedByGravity = false;
@@ -108,7 +108,7 @@ class TBPlayerNode: SKSpriteNode {
         atackJointSquare.physicsBody?.collisionBitMask = 0b0
         atackJointSquare.physicsBody?.categoryBitMask = GameScene.JOINT_ATTACK_NODE
         atackJointSquare.physicsBody?.contactTestBitMask = GameScene.MONSTER_NODE
-        atackJointSquare.position = CGPointMake(30 , 0)
+        atackJointSquare.position = CGPointMake(100 , -70)
         self.attackJoint = atackJointSquare;
         self.addChild(atackJointSquare)
         
