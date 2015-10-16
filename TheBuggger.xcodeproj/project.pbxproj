@@ -19,7 +19,6 @@
 		00CDBEA51BB9B39100BC0517 /* TheBugggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEA41BB9B39100BC0517 /* TheBugggerTests.swift */; };
 		00CDBEB01BB9B39100BC0517 /* TheBugggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */; };
 		00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */; settings = {ASSET_TAGS = (); }; };
-		52894CC51BD176CA002C56D1 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52894CC41BD176CA002C56D1 /* Level1Scene.sks */; settings = {ASSET_TAGS = (); }; };
 		52C376F61BC441190012BC96 /* TBShotGroundBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */; settings = {ASSET_TAGS = (); }; };
 		52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */; settings = {ASSET_TAGS = (); }; };
 		52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */; settings = {ASSET_TAGS = (); }; };
@@ -29,9 +28,7 @@
 		52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */; settings = {ASSET_TAGS = (); }; };
 		52E7AEB71BBF0286008FE672 /* TBGroundBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */; settings = {ASSET_TAGS = (); }; };
 		52E7AEB91BBF06D2008FE672 /* TBGroundBotAtack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */; settings = {ASSET_TAGS = (); }; };
-		AFA026D41BD0452600B7FFC5 /* GameSceneTestEnemy.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFA026D31BD0452600B7FFC5 /* GameSceneTestEnemy.sks */; settings = {ASSET_TAGS = (); }; };
 		AFA026D61BD0452E00B7FFC5 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFA026D51BD0452E00B7FFC5 /* Level1Scene.sks */; settings = {ASSET_TAGS = (); }; };
-		AFA026D81BD0453500B7FFC5 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFA026D71BD0453500B7FFC5 /* Level2Scene.sks */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C431BC44E3B003273FF /* PlayerAtack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C3D1BC44E3B003273FF /* PlayerAtack.atlas */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C441BC44E3B003273FF /* PlayerDash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C3E1BC44E3B003273FF /* PlayerDash.atlas */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; settings = {ASSET_TAGS = (); }; };
@@ -76,7 +73,6 @@
 		00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBugggerUITests.swift; sourceTree = "<group>"; };
 		00CDBEB11BB9B39100BC0517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGestureReconizer.swift; sourceTree = "<group>"; };
-		52894CC41BD176CA002C56D1 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotGroundBotNode.swift; sourceTree = "<group>"; };
 		52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotNode.swift; sourceTree = "<group>"; };
 		52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotEntity.swift; sourceTree = "<group>"; };
@@ -86,9 +82,7 @@
 		52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotNode.swift; sourceTree = "<group>"; };
 		52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotEntity.swift; sourceTree = "<group>"; };
 		52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotAtack.swift; sourceTree = "<group>"; };
-		AFA026D31BD0452600B7FFC5 /* GameSceneTestEnemy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameSceneTestEnemy.sks; sourceTree = "<group>"; };
 		AFA026D51BD0452E00B7FFC5 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
-		AFA026D71BD0453500B7FFC5 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
 		AFEF5C3D1BC44E3B003273FF /* PlayerAtack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAtack.atlas; sourceTree = "<group>"; };
 		AFEF5C3E1BC44E3B003273FF /* PlayerDash.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDash.atlas; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
@@ -269,7 +263,6 @@
 		00CDBECA1BBD9FD100BC0517 /* Level 1 */ = {
 			isa = PBXGroup;
 			children = (
-				52894CC41BD176CA002C56D1 /* Level1Scene.sks */,
 			);
 			name = "Level 1";
 			sourceTree = "<group>";
@@ -277,8 +270,6 @@
 		52E7AEAD1BBEF81D008FE672 /* Level 2 */ = {
 			isa = PBXGroup;
 			children = (
-				AFA026D71BD0453500B7FFC5 /* Level2Scene.sks */,
-				AFA026D31BD0452600B7FFC5 /* GameSceneTestEnemy.sks */,
 				52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */,
 			);
 			name = "Level 2";
@@ -388,15 +379,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFEF5C471BC44E3B003273FF /* PlayerJump.atlas in Resources */,
-				AFA026D41BD0452600B7FFC5 /* GameSceneTestEnemy.sks in Resources */,
 				AFEF5C4A1BC45AD2003273FF /* PlayerDefence.atlas in Resources */,
 				AFEF5C441BC44E3B003273FF /* PlayerDash.atlas in Resources */,
 				00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
-				AFA026D81BD0453500B7FFC5 /* Level2Scene.sks in Resources */,
 				AFEF5C431BC44E3B003273FF /* PlayerAtack.atlas in Resources */,
 				AFEF5C4E1BC5ABAD003273FF /* PlayerWalk.atlas in Resources */,
-				52894CC51BD176CA002C56D1 /* Level1Scene.sks in Resources */,
 				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
 				AFA026D61BD0452E00B7FFC5 /* Level1Scene.sks in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
