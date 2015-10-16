@@ -31,6 +31,9 @@
 		52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */; settings = {ASSET_TAGS = (); }; };
 		52E7AEB71BBF0286008FE672 /* TBGroundBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */; settings = {ASSET_TAGS = (); }; };
 		52E7AEB91BBF06D2008FE672 /* TBGroundBotAtack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */; settings = {ASSET_TAGS = (); }; };
+		AFA026D41BD0452600B7FFC5 /* GameSceneTestEnemy.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFA026D31BD0452600B7FFC5 /* GameSceneTestEnemy.sks */; settings = {ASSET_TAGS = (); }; };
+		AFA026D61BD0452E00B7FFC5 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFA026D51BD0452E00B7FFC5 /* Level1Scene.sks */; settings = {ASSET_TAGS = (); }; };
+		AFA026D81BD0453500B7FFC5 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFA026D71BD0453500B7FFC5 /* Level2Scene.sks */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C431BC44E3B003273FF /* PlayerAtack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C3D1BC44E3B003273FF /* PlayerAtack.atlas */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C441BC44E3B003273FF /* PlayerDash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C3E1BC44E3B003273FF /* PlayerDash.atlas */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; settings = {ASSET_TAGS = (); }; };
@@ -87,6 +90,9 @@
 		52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotNode.swift; sourceTree = "<group>"; };
 		52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotEntity.swift; sourceTree = "<group>"; };
 		52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotAtack.swift; sourceTree = "<group>"; };
+		AFA026D31BD0452600B7FFC5 /* GameSceneTestEnemy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameSceneTestEnemy.sks; sourceTree = "<group>"; };
+		AFA026D51BD0452E00B7FFC5 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		AFA026D71BD0453500B7FFC5 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
 		AFEF5C3D1BC44E3B003273FF /* PlayerAtack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAtack.atlas; sourceTree = "<group>"; };
 		AFEF5C3E1BC44E3B003273FF /* PlayerDash.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDash.atlas; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
@@ -275,9 +281,9 @@
 		52E7AEAD1BBEF81D008FE672 /* Level 2 */ = {
 			isa = PBXGroup;
 			children = (
-				5207D9AA1BD0402600AA3219 /* Level2Scene.sks */,
+				AFA026D71BD0453500B7FFC5 /* Level2Scene.sks */,
+				AFA026D31BD0452600B7FFC5 /* GameSceneTestEnemy.sks */,
 				52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */,
-				5207D9A81BD0401F00AA3219 /* GameSceneTestEnemy.sks */,
 			);
 			name = "Level 2";
 			sourceTree = "<group>";
@@ -386,16 +392,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFEF5C471BC44E3B003273FF /* PlayerJump.atlas in Resources */,
+				AFA026D41BD0452600B7FFC5 /* GameSceneTestEnemy.sks in Resources */,
 				AFEF5C4A1BC45AD2003273FF /* PlayerDefence.atlas in Resources */,
 				AFEF5C441BC44E3B003273FF /* PlayerDash.atlas in Resources */,
-				5207D9A91BD0401F00AA3219 /* GameSceneTestEnemy.sks in Resources */,
 				00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
-				5207D9AB1BD0402600AA3219 /* Level2Scene.sks in Resources */,
+				AFA026D81BD0453500B7FFC5 /* Level2Scene.sks in Resources */,
 				AFEF5C431BC44E3B003273FF /* PlayerAtack.atlas in Resources */,
 				AFEF5C4E1BC5ABAD003273FF /* PlayerWalk.atlas in Resources */,
 				526053AA1BD166D900960BFB /* Level1Scene.sks in Resources */,
 				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
+				AFA026D61BD0452E00B7FFC5 /* Level1Scene.sks in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
