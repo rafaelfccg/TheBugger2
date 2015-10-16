@@ -21,7 +21,7 @@ class TBPlayerNode: SKSpriteNode {
     var weponType:Bool // 0 sword, 1 range
     var delegate :TBPlayerNodeJointsDelegate?
     
-    let defaultSpeed = 250
+    let defaultSpeed = 350 // era 250
     let highSpeed = 550
     let slowSpeed = 100
     var speedBost:Bool
@@ -66,7 +66,7 @@ class TBPlayerNode: SKSpriteNode {
     
         self.texture = walkArray[0];
         // initialize physics body
-        self.size = (texture?.size())!
+        self.size = CGSizeMake(60, 100)
 
         let phBody = CGSizeMake(self.size.width*0.8, self.size.height*0.8)
         self.physicsBody = SKPhysicsBody.init(texture: texture!, size: phBody)
@@ -138,7 +138,8 @@ class TBPlayerNode: SKSpriteNode {
     
     func jump(){
         let jumpArray = self.getSprites("PlayerJump", nomeImagens: "jump")
-        self.physicsBody?.applyImpulse(CGVectorMake(0, (self.physicsBody?.mass)! * 1000))
+        //self.physicsBody?.applyImpulse(CGVectorMake(0, (self.physicsBody?.mass)! * 2000))
+        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 130.0))
         let action = SKAction.animateWithTextures(jumpArray, timePerFrame: 0.2);
         runAction(action)
         

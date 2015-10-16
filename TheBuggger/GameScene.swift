@@ -37,7 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-
+        
+        
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
         myLabel.text = "Hello, World!";
         myLabel.fontSize = 45;
@@ -54,6 +55,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         camera.position = hero.position
         setUpLevel()
+        
+        self.physicsWorld.gravity = CGVectorMake(0.0, -35.0) // Diminuindo a gravidade para o personagem cair mais rapido
         
         self.physicsWorld.contactDelegate = self
         
