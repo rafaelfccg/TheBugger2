@@ -116,7 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.name = "Monster"
             groundBoti.physicsBody?.allowsRotation = false
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBoti.physicsBody?.collisionBitMask = GameScene.CHAO_NODE | GameScene.PLAYER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.OTHER_NODE
+            //groundBoti.physicsBody?.collisionBitMask = GameScene.CHAO_NODE | GameScene.PLAYER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.OTHER_NODE
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             self.addChild(groundBoti)
             
@@ -153,6 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.CHAO_NODE
             node.physicsBody!.contactTestBitMask = GameScene.PLAYER_NODE
+            
             self.setObstacleTypeHit(node)
             
         })
