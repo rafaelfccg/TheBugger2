@@ -25,8 +25,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var delegateChanger: SceneChangesDelegate?
     
     
-    static let CHAO_NODE:UInt32             = 0b000000000001
-    static let PLAYER_NODE:UInt32           = 0b000000000010
+    static let CHAO_NODE:UInt32             = 0b000000000010
+    static let PLAYER_NODE:UInt32           = 0b000000000001
     static let MONSTER_NODE:UInt32          = 0b000000000100
     static let POWERUP_NODE:UInt32          = 0b000000001000
     static let ESPINHOS_NODE:UInt32         = 0b000000010000
@@ -41,7 +41,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-
+        
+        
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
         myLabel.text = "Hello, World!";
         myLabel.fontSize = 45;
@@ -58,6 +59,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         camera.position = hero.position
         setUpLevel()
+        
+        self.physicsWorld.gravity = CGVectorMake(0.0, -35.0) // Diminuindo a gravidade para o personagem cair mais rapido
         
         self.physicsWorld.contactDelegate = self
         
@@ -113,7 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.name = "Monster"
             groundBoti.physicsBody?.allowsRotation = false
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBoti.physicsBody?.collisionBitMask = GameScene.CHAO_NODE | GameScene.PLAYER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.OTHER_NODE
+            //groundBoti.physicsBody?.collisionBitMask = GameScene.CHAO_NODE | GameScene.PLAYER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.OTHER_NODE
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             self.addChild(groundBoti)
             
@@ -150,6 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.CHAO_NODE
             node.physicsBody!.contactTestBitMask = GameScene.PLAYER_NODE
+            
             self.setObstacleTypeHit(node)
             
         })
@@ -164,6 +168,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.TOCO_NODE
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
             self.setObstacleTypeHit(node)
             
         })
@@ -250,12 +255,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         var bodyA = contact.bodyA
         var bodyB = contact.bodyB
+        var flagTrocou = false
         
         //ordena para que bodyA tenha sempre a categoria "menor"
         if(bodyA.categoryBitMask > bodyB.categoryBitMask){
             let aux = bodyB
             bodyB = bodyA
             bodyA = aux
+            flagTrocou = true
         }
         
         if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
@@ -266,14 +273,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             restartLevel()
             print("oohhh damange")
         
-        }else if(bodyA.categoryBitMask == GameScene.CHAO_NODE  &&
-                 bodyB.categoryBitMask == GameScene.PLAYER_NODE ) ||
-                (bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
+        }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
                 (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
                  bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
-                 bodyB.categoryBitMask ==  GameScene.TOCO_NODE)){
+                 bodyB.categoryBitMask ==  GameScene.TOCO_NODE ||
+                 bodyB.categoryBitMask == GameScene.CHAO_NODE)){
+            //print(flagTrocou)
+            var norm = sqrt(contact.contactNormal.dx * contact.contactNormal.dx +
+                        contact.contactNormal.dy * contact.contactNormal.dy)
             
-            if(contact.contactNormal.dy>0){
+            if(!flagTrocou) {norm = -norm}
+            //print("dy  \(contact.contactNormal.dy)/\(norm) ")
+            if(contact.contactNormal.dy/norm > 0.5){
                 self.hero.jumpState = JumpState.CanJump
             }
             if bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE {
