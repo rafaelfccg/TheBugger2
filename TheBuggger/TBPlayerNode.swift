@@ -139,7 +139,7 @@ class TBPlayerNode: SKSpriteNode {
     func jump(){
         let jumpArray = self.getSprites("PlayerJump", nomeImagens: "jump")
         //self.physicsBody?.applyImpulse(CGVectorMake(0, (self.physicsBody?.mass)! * 2000))
-        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 130.0))
+        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 150.0))
         let action = SKAction.animateWithTextures(jumpArray, timePerFrame: 0.2);
         runAction(action)
         
