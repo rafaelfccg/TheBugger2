@@ -263,6 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
           (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
           (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
+            restartLevel()
             print("oohhh damange")
         
         }else if(bodyA.categoryBitMask == GameScene.CHAO_NODE  &&

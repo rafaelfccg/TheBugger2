@@ -62,14 +62,17 @@ class TBPlayerNode: SKSpriteNode {
         realSpeed = defaultSpeed
         jumpState = JumpState.CanJump
         attackState = AttackState.Idle
-        var walkArray = self.getSprites("PlayerWalk", nomeImagens: "walk")
-    
+        var walkArray = self.getSprites("PlayerRun", nomeImagens: "run-")
+        let physicsTexture = SKTexture(imageNamed: "heroPhysicsBody")
         self.texture = walkArray[0];
         // initialize physics body
         self.size = (texture?.size())!
-
-        let phBody = CGSizeMake(self.size.width*0.8, self.size.height*0.8)
-        self.physicsBody = SKPhysicsBody.init(texture: texture!, size: phBody)
+        let scale = CGFloat(150/self.size.height);
+        self.xScale = scale
+        self.yScale = scale
+        
+        //let phBody = CGSizeMake(self.size.width*0.8, self.size.height*0.8)
+        self.physicsBody = SKPhysicsBody.init(texture: physicsTexture, size: self.size)
         self.physicsBody?.friction = 0;
         self.physicsBody?.linearDamping = 0;
         self.physicsBody?.allowsRotation = false
@@ -78,7 +81,7 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), 0);
         self.position = CGPointMake(216, 375)
         
-        let action = SKAction.animateWithTextures(walkArray, timePerFrame: 0.12);
+        let action = SKAction.animateWithTextures(walkArray, timePerFrame: 0.05);
         runAction(SKAction.repeatActionForever(action));
         
         addAttackJoint()
