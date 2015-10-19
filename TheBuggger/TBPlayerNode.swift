@@ -96,7 +96,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func addAttackJoint()
     {
-        let atackJointSquare = SKSpriteNode(color: SKColor.whiteColor(), size: CGSizeMake(600, 150))
+        let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(600, 150))
         
         atackJointSquare.physicsBody = SKPhysicsBody(rectangleOfSize: atackJointSquare.size)
         atackJointSquare.physicsBody?.affectedByGravity = false;
@@ -108,7 +108,7 @@ class TBPlayerNode: SKSpriteNode {
         atackJointSquare.physicsBody?.collisionBitMask = 0b0
         atackJointSquare.physicsBody?.categoryBitMask = GameScene.JOINT_ATTACK_NODE
         atackJointSquare.physicsBody?.contactTestBitMask = GameScene.MONSTER_NODE
-        atackJointSquare.position = CGPointMake(100 , -70)
+        atackJointSquare.position = CGPointMake(130 , -70)
         self.attackJoint = atackJointSquare;
         self.addChild(atackJointSquare)
         
@@ -140,20 +140,24 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func jump(){
-        let jumpArray = self.getSprites("PlayerJump", nomeImagens: "jump")
+        let jumpArray = self.getSprites("PlayerJump", nomeImagens: "jump-")
         //self.physicsBody?.applyImpulse(CGVectorMake(0, (self.physicsBody?.mass)! * 2000))
         self.physicsBody?.applyImpulse(CGVectorMake(0.0, 150.0))
-        let action = SKAction.animateWithTextures(jumpArray, timePerFrame: 0.2);
-        runAction(action)
         
-
+        let action = SKAction.animateWithTextures(jumpArray, timePerFrame: 0.03);
+//        let action1 = SKAction.animateWithTextures([jumpArray[0],jumpArray[1]], timePerFrame: 0.03);
+//        let action2 = SKAction.animateWithTextures([jumpArray[2], jumpArray[3], jumpArray[4]], timePerFrame: 0.04);
+//        let jumpAction = SKAction.applyImpulse(CGVectorMake(0.0, 150.0), duration: 0.05)
+//        
+//        runAction(SKAction.sequence([action1, jumpAction, action2]))
+        runAction(action)
     }
     
     func actionCall(){
         switch state{
 
         case States.SD:
-            let dashArray = self.getSprites("PlayerDash", nomeImagens: "dash")
+            let dashArray = self.getSprites("PlayerDash", nomeImagens: "dash-")
             
 //            self.size = dashArray[0].size();
 //            self.texture = dashArray[0];
@@ -163,7 +167,7 @@ class TBPlayerNode: SKSpriteNode {
 //            self.physicsBody?.allowsRotation = false
 //            self.physicsBody?.velocity = CGVectorMake(CGFloat(constantSpeed), 0);
             
-            let action = SKAction.animateWithTextures(dashArray, timePerFrame: 1);
+            let action = SKAction.animateWithTextures(dashArray, timePerFrame: 0.09);
             runAction(action)
 
             
@@ -190,9 +194,9 @@ class TBPlayerNode: SKSpriteNode {
             break;
         case States.SR:
 
-            let atackArray = self.getSprites("PlayerAtack", nomeImagens: "atack")
+            let atackArray = self.getSprites("PlayerAttack", nomeImagens: "attack-")
             
-            let action = SKAction.animateWithTextures(atackArray, timePerFrame: 0.12);
+            let action = SKAction.animateWithTextures(atackArray, timePerFrame: 0.07);
             runAction(action)
             
             let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
@@ -206,7 +210,7 @@ class TBPlayerNode: SKSpriteNode {
 
             
             self.attackState = AttackState.Attacking
-            self.runAction(SKAction.sequence ([SKAction.waitForDuration(0.36), SKAction.runBlock({ self.attackState = AttackState.Idle})]))
+            self.runAction(SKAction.sequence ([SKAction.waitForDuration(0.28), SKAction.runBlock({ self.attackState = AttackState.Idle})]))
             
             break;
         case States.Tap:
