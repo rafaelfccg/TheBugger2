@@ -25,6 +25,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var delegateChanger: SceneChangesDelegate?
     var hudSprite:SKSpriteNode?
     var dx:CGFloat?;
+    var labelScore:SKLabelNode?
+    var score:Int = 0
+    let numFormatter = NSNumberFormatter()
     
     
     static let CHAO_NODE:UInt32             = 0b000000000010
@@ -43,15 +46,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-
+        numFormatter.minimumIntegerDigits = 7
         hero.setUpPlayer()
         self.addChild(hero)
-       
-                
+        self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
+        print(self.size)
+        print(self.view!.frame.size)
         let camera = SKCameraNode();
         self.addChild(camera)
         self.camera = camera
-        
+       
         camera.position = hero.position
         setUpLevel()
         
@@ -68,17 +72,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         let backTexture = SKTexture(imageNamed: "voltar")
         let back = SKSpriteNode(texture: backTexture, size: CGSizeMake(60, 60))
         back.name = "restartButton"
-        //print(botao.position)
-        //print(CGRectGetMaxY(self.frame))
         self.camera!.addChild(back)
         
-        back.position = CGPoint(x: -self.size.width/2 + back.size.width/2, y: self.size.height/2 - back.size.height/2 )
+        back.position = CGPoint(x: -self.size.width/2 + back.size.width/2, y: self.size.height/2 - back.size.height/2)
         
+        labelScore = SKLabelNode(text: numFormatter.stringFromNumber(0))
+        labelScore?.name  = "scoreLabel"
+        self.camera!.addChild(labelScore!)
+        labelScore?.position = CGPointMake(back.position.x + back.size.width/2 + (labelScore?.frame.size.width)! - 10, back.position.y - 5)
         
+        let powerTexture = SKTexture(imageNamed: "power1")
+        let powerNode = SKSpriteNode(texture: powerTexture, size: CGSizeMake( 85, 85) )
+        powerNode.name = "powerNode"
+        self.camera!.addChild(powerNode)
+        powerNode.position = CGPoint(x: self.size.width/2 - powerNode.size.width/2 - 15, y: -self.size.height/2 + powerNode.size.height/2 + 10)
         
     }
-    
-    
     
     func addJoint(joint: SKPhysicsJoint) {
         self.scene!.physicsWorld.addJoint(joint)
@@ -104,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         //set hero position
         let spanw = self.childNodeWithName("SpawnHero")
         self.hero.position = (spanw?.position)!
-        self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 150)
+        self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 100)
         
         dx = hero.position.x
         self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
@@ -228,6 +237,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
         self.hero.actionCall()
         self.touchStartedAt = nil
+        
+    }
+    
+    func updateScore(){
+        labelScore!.text = numFormatter.stringFromNumber(self.score)
         
     }
     
