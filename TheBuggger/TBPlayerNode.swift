@@ -140,19 +140,10 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func jump(){
-        let jumpArray = self.getSprites("PlayerJump", nomeImagens: "jump-")
-        //self.physicsBody?.applyImpulse(CGVectorMake(0, (self.physicsBody?.mass)! * 2000))
+        
         self.physicsBody?.applyImpulse(CGVectorMake(0.0, 150.0))
         
-        let action = SKAction.animateWithTextures(jumpArray, timePerFrame: 0.03);
-//        let action1 = SKAction.animateWithTextures([jumpArray[0],jumpArray[1]], timePerFrame: 0.03);
-//        let action2 = SKAction.animateWithTextures([jumpArray[2], jumpArray[3], jumpArray[4]], timePerFrame: 0.04);
-//        let jumpAction = SKAction.applyImpulse(CGVectorMake(0.0, 150.0), duration: 0.05)
-//        
-//        runAction(SKAction.sequence([action1, jumpAction, action2]))
-        runAction(action)
     }
-    
     func actionCall(){
         switch state{
 
