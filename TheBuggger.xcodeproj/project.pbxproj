@@ -72,6 +72,9 @@
 		52E7AEB71BBF0286008FE672 /* TBGroundBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */; settings = {ASSET_TAGS = (); }; };
 		52E7AEB91BBF06D2008FE672 /* TBGroundBotAtack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */; settings = {ASSET_TAGS = (); }; };
 		AF13D9201BD6C7F00071BF96 /* GroundMonster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF13D91F1BD6C7F00071BF96 /* GroundMonster.atlas */; settings = {ASSET_TAGS = (); }; };
+		AF2A3E451BD85D19001DA3DB /* TBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E441BD85D19001DA3DB /* TBUtils.swift */; settings = {ASSET_TAGS = (); }; };
+		AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */; settings = {ASSET_TAGS = (); }; };
+		AF2A3E491BD861D8001DA3DB /* Espinhos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF2A3E481BD861D8001DA3DB /* Espinhos.atlas */; settings = {ASSET_TAGS = (); }; };
 		AF429F831BD186D5002B5465 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF429F821BD186D5002B5465 /* Level2Scene.sks */; settings = {ASSET_TAGS = (); }; };
 		AFA026E01BD17FDB00B7FFC5 /* heroPhysicsBody.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA026DF1BD17FDB00B7FFC5 /* heroPhysicsBody.png */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; settings = {ASSET_TAGS = (); }; };
@@ -171,6 +174,9 @@
 		52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotEntity.swift; sourceTree = "<group>"; };
 		52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotAtack.swift; sourceTree = "<group>"; };
 		AF13D91F1BD6C7F00071BF96 /* GroundMonster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GroundMonster.atlas; sourceTree = "<group>"; };
+		AF2A3E441BD85D19001DA3DB /* TBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBUtils.swift; sourceTree = "<group>"; };
+		AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhosNode.swift; sourceTree = "<group>"; };
+		AF2A3E481BD861D8001DA3DB /* Espinhos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Espinhos.atlas; sourceTree = "<group>"; };
 		AF429F821BD186D5002B5465 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
 		AFA026DF1BD17FDB00B7FFC5 /* heroPhysicsBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroPhysicsBody.png; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
@@ -435,6 +441,7 @@
 				52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */,
 				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
 				009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */,
+				AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -452,6 +459,7 @@
 				AFEF5C491BC45AD2003273FF /* PlayerDefence.atlas */,
 				AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */,
 				AF13D91F1BD6C7F00071BF96 /* GroundMonster.atlas */,
+				AF2A3E481BD861D8001DA3DB /* Espinhos.atlas */,
 				00CDBE961BB9B39000BC0517 /* Assets.xcassets */,
 			);
 			name = Assets;
@@ -462,6 +470,7 @@
 			children = (
 				00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */,
 				009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */,
+				AF2A3E441BD85D19001DA3DB /* TBUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -677,11 +686,13 @@
 				52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */,
 				52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */,
 				52E7AEB31BBEFEF6008FE672 /* TBPlayerEntity.swift in Sources */,
+				AF2A3E451BD85D19001DA3DB /* TBUtils.swift in Sources */,
 				000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */,
 				009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */,
 				52E7AEB11BBEFA52008FE672 /* GameSceneTestEnemy.swift in Sources */,
 				00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */,
 				00CDBE901BB9B39000BC0517 /* GameScene.swift in Sources */,
+				AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */,
 				52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */,
 				52C376FC1BC44E7E0012BC96 /* TBFlying.swift in Sources */,
 				00CDBE921BB9B39000BC0517 /* GameViewController.swift in Sources */,

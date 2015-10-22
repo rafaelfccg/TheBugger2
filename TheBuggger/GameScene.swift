@@ -47,7 +47,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        numFormatter.minimumIntegerDigits = 7
+        
+        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
+        myLabel.text = "Hello, World!";
+        myLabel.fontSize = 45;
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        
+        self.addChild(myLabel)
         hero.setUpPlayer()
         self.addChild(hero)
         self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
@@ -64,7 +70,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         self.physicsWorld.contactDelegate = self
         
-        setupHUD()
+        setupButtonRestartLevel()
+        
+
+
+        //self.addChild(hero)
+       // self.physicsWorld.addJoint(hero.addMyJoint())
         
     }
     
@@ -132,6 +143,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
+
+            groundBoti.runAction(SKAction.repeatActionForever(TBGroundBotNode.animation!))
+            
             
         })
         
@@ -173,11 +187,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.setObstacleTypeHit(node)
             
         })
-        self.enumerateChildNodesWithName("espinhos", usingBlock: {
+        
+        self.enumerateChildNodesWithName(TBEspinhosNode.name, usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+        
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
              self.setObstacleTypeHit(node)
+            
+            node.runAction(SKAction.repeatActionForever(TBEspinhosNode.animation!))
             
         })
         self.enumerateChildNodesWithName("parede", usingBlock: {

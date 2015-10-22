@@ -55,14 +55,14 @@ class TBPlayerNode: SKSpriteNode {
         powerUP = TBPowerUpsStates.Normal
         attackState = AttackState.Idle
         speedBost = false
-        super.init(texture:SKTexture(), color: UIColor(), size: CGSizeMake(0, 0) )
+        super.init(texture:SKTexture(), color: UIColor(), size: CGSizeMake(0, 0))
     }
     
     func setUpPlayer(){
         realSpeed = defaultSpeed
         jumpState = JumpState.CanJump
         attackState = AttackState.Idle
-        var walkArray = self.getSprites("PlayerRun", nomeImagens: "run-")
+        var walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
         let physicsTexture = SKTexture(imageNamed: "heroPhysicsBody")
         self.texture = walkArray[0];
         // initialize physics body
@@ -115,23 +115,6 @@ class TBPlayerNode: SKSpriteNode {
         
     }
     
-    
-    func getSprites(textureAtlasName: String, nomeImagens: String) -> Array<SKTexture>
-    {
-        let textureAtlas = SKTextureAtlas(named: textureAtlasName)
-        var spriteArray = Array<SKTexture>();
-        
-        let numImages = textureAtlas.textureNames.count
-//        print("\(numImages)")
-        for (var i=1; i <= numImages; i++)
-        {
-            let playerTextureName = "\(nomeImagens)\(i)"
-            spriteArray.append(textureAtlas.textureNamed(playerTextureName))
-        }
-
-        return spriteArray;
-    }
-    
     func updateVelocity(){
         //print(realSpeed)
         if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
@@ -149,7 +132,7 @@ class TBPlayerNode: SKSpriteNode {
         switch state{
 
         case States.SD:
-            let dashArray = self.getSprites("PlayerDash", nomeImagens: "dash-")
+            let dashArray = TBUtils().getSprites("PlayerDash", nomeImagens: "dash-")
             
 //            self.size = dashArray[0].size();
 //            self.texture = dashArray[0];
@@ -178,7 +161,7 @@ class TBPlayerNode: SKSpriteNode {
             let blink = SKAction.sequence([act2,act1])
             self.runAction(SKAction.repeatAction(blink, count: 4))
             
-            let defenceArray = self.getSprites("PlayerDefence", nomeImagens: "defence")
+            let defenceArray = TBUtils().getSprites("PlayerDefence", nomeImagens: "defence")
             
             let action = SKAction.animateWithTextures(defenceArray, timePerFrame: 1.2);
             runAction(action)
@@ -186,7 +169,7 @@ class TBPlayerNode: SKSpriteNode {
             break;
         case States.SR:
 
-            let atackArray = self.getSprites("PlayerAttack", nomeImagens: "attack-")
+            let atackArray = TBUtils().getSprites("PlayerAttack", nomeImagens: "attack-")
             
             let action = SKAction.animateWithTextures(atackArray, timePerFrame: 0.07);
             runAction(action)

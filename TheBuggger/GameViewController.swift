@@ -13,6 +13,10 @@ class GameViewController: UIViewController, SceneChangesDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TBEspinhosNode.createSKActionAnimation()
+        TBGroundBotNode.createSKActionAnimation()
+        
 
         mudaScene("Level1Scene")
     }
