@@ -99,7 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.allowsRotation = false
         node.physicsBody?.dynamic = false
-        node.physicsBody?.pinned = true
+        node.physicsBody?.pinned = false
         node.physicsBody?.restitution = 0
         //node.physicsBody?.contactTestBitMask =
 
@@ -126,6 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.position = node.position
             groundBoti.name = "Monster"
             groundBoti.physicsBody?.allowsRotation = false
+            node.physicsBody?.pinned = false
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
             groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
@@ -139,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
             self.setObstacleTypeHit(node)
-            
+            node.physicsBody?.pinned = true
             node.physicsBody!.categoryBitMask = GameScene.CHAO_NODE
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         })
@@ -148,6 +149,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
             self.setObstacleTypeHit(node)
+            node.physicsBody?.pinned = true
             node.physicsBody!.categoryBitMask = GameScene.CHAO_QUICK_NODE
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         })
@@ -156,6 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
             self.setObstacleTypeHit(node)
+            node.physicsBody?.pinned = true
             node.physicsBody!.categoryBitMask = GameScene.CHAO_SLOW_NODE
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         })
@@ -166,7 +169,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.CHAO_NODE
             node.physicsBody!.contactTestBitMask = GameScene.PLAYER_NODE
-            
+            node.physicsBody?.pinned = true
             self.setObstacleTypeHit(node)
             
         })
@@ -182,6 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.TOCO_NODE
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            node.physicsBody?.pinned = true
             self.setObstacleTypeHit(node)
             
         })
@@ -190,6 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.OTHER_NODE
             self.setObstacleTypeHit(node)
+            node.physicsBody?.pinned = true
             
         })
     
