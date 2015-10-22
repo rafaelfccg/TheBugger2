@@ -42,7 +42,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
-        
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
         myLabel.text = "Hello, World!";
         myLabel.fontSize = 45;
@@ -65,6 +64,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.physicsWorld.contactDelegate = self
         
         setupButtonRestartLevel()
+        
+
 
         //self.addChild(hero)
        // self.physicsWorld.addJoint(hero.addMyJoint())
@@ -118,7 +119,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
             groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
+
             self.addChild(groundBoti)
+
+            groundBoti.runAction(SKAction.repeatActionForever(TBGroundBotNode.animation!))
+            
             
         })
         
@@ -157,11 +162,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.setObstacleTypeHit(node)
             
         })
-        self.enumerateChildNodesWithName("espinhos", usingBlock: {
+        
+        self.enumerateChildNodesWithName(TBEspinhosNode.name, usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+        
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
              self.setObstacleTypeHit(node)
+            
+            node.runAction(SKAction.repeatActionForever(TBEspinhosNode.animation!))
             
         })
         self.enumerateChildNodesWithName("parede", usingBlock: {

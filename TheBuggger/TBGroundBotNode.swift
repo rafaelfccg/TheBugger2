@@ -12,14 +12,13 @@ import GameplayKit
 
 class TBGroundBotNode: SKSpriteNode {
     static let name = "SpawnMonsterType1"
+    static var animation: SKAction?
     
     var jaAtacou = false // Variavel auxiliar para o bot atacar apenas uma vez
     
     init() {
         
-        super.init(texture: nil, color: UIColor.blackColor(), size: CGSizeMake(80, 80))
-        var monsterArray = self.getSprites("GroundMonster", nomeImagens: "groundMonster-")
-        self.texture = monsterArray[0]
+        super.init(texture:SKTexture(), color: UIColor(), size: CGSizeMake(0, 0))
         
         //self.color = UIColor.whiteColor()
         self.size = CGSizeMake(80, 80)
@@ -28,30 +27,16 @@ class TBGroundBotNode: SKSpriteNode {
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
         
-        let action = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.1);
-        runAction(SKAction.repeatActionForever(action));
-        
-        
+    }
+    
+    static func createSKActionAnimation()
+    {
+        let monsterArray = TBUtils().getSprites("GroundMonster", nomeImagens: "groundMonster-")
+        TBGroundBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.1);
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func getSprites(textureAtlasName: String, nomeImagens: String) -> Array<SKTexture>
-    {
-        let textureAtlas = SKTextureAtlas(named: textureAtlasName)
-        var spriteArray = Array<SKTexture>();
-        
-        let numImages = textureAtlas.textureNames.count
-        //        print("\(numImages)")
-        for (var i=1; i <= numImages; i++)
-        {
-            let playerTextureName = "\(nomeImagens)\(i)"
-            spriteArray.append(textureAtlas.textureNamed(playerTextureName))
-        }
-        
-        return spriteArray;
     }
     
     func startAttack() {
