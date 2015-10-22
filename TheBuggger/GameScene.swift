@@ -27,6 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var dx:CGFloat?;
     var labelScore:SKLabelNode?
     var score:Int = 0
+    var count = 0
     let numFormatter = NSNumberFormatter()
     
     
@@ -75,18 +76,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.camera!.addChild(back)
         
         back.position = CGPoint(x: -self.size.width/2 + back.size.width/2, y: self.size.height/2 - back.size.height/2)
-        
+        back.zPosition =  1000
         labelScore = SKLabelNode(text: numFormatter.stringFromNumber(0))
         labelScore?.name  = "scoreLabel"
         self.camera!.addChild(labelScore!)
         labelScore?.position = CGPointMake(back.position.x + back.size.width/2 + (labelScore?.frame.size.width)! - 10, back.position.y - 5)
+        labelScore?.zPosition = 1000
         
         let powerTexture = SKTexture(imageNamed: "power1")
         let powerNode = SKSpriteNode(texture: powerTexture, size: CGSizeMake( 85, 85) )
         powerNode.name = "powerNode"
         self.camera!.addChild(powerNode)
         powerNode.position = CGPoint(x: self.size.width/2 - powerNode.size.width/2 - 15, y: -self.size.height/2 + powerNode.size.height/2 + 10)
-        
+        powerNode.zPosition = CGFloat(1000)
     }
     
     func addJoint(joint: SKPhysicsJoint) {
@@ -96,8 +98,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     func setObstacleTypeHit(node: SKNode){
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.allowsRotation = false
-        node.physicsBody?.dynamic = true
+        node.physicsBody?.dynamic = false
         node.physicsBody?.pinned = true
+        node.physicsBody?.restitution = 0
         //node.physicsBody?.contactTestBitMask =
 
     }
@@ -114,6 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         let spanw = self.childNodeWithName("SpawnHero")
         self.hero.position = (spanw?.position)!
         self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 100)
+        self.hero.zPosition = 100
         
         dx = hero.position.x
         self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
@@ -125,6 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
             groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
+            groundBoti.zPosition = 100
             self.addChild(groundBoti)
             
         })
@@ -134,6 +139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
             self.setObstacleTypeHit(node)
+            
             node.physicsBody!.categoryBitMask = GameScene.CHAO_NODE
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         })
@@ -195,7 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         for touch in touches {
             //let location = touch.locationInNode(self)
             let location = touch.locationInNode(self)
-            print(location)
+            //print(location)
             let touchedNode = self.nodeAtPoint(location)
             let name = touchedNode.name
             if (name == "restartButton")
@@ -227,7 +233,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 //Find movement direction
                 let direc = findDirection(Double(dx), y: Double(dy))
                 self.hero.state = nextStatefor(self.hero.state, andInput: direc)
-                print(self.hero.state)
+                //print(self.hero.state)
                 // gambiarra pra ver movimento
             }
         }
@@ -301,7 +307,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                         contact.contactNormal.dy * contact.contactNormal.dy)
             
             if(!flagTrocou) {norm = -norm}
-            //print("dy  \(contact.contactNormal.dy)/\(norm) ")
+                    print(self.count)
+                    count++
+                    //print("dy  \(contact.contactNormal.dy)/\(norm) ")
             if(contact.contactNormal.dy/norm > 0.5){
                 self.hero.jumpState = JumpState.CanJump
             }

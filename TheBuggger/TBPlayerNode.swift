@@ -72,7 +72,7 @@ class TBPlayerNode: SKSpriteNode {
         self.yScale = scale
        
         //let phBody = CGSizeMake(self.size.width*0.8, self.size.height*0.8)
-        self.physicsBody = SKPhysicsBody.init(texture: physicsTexture, size: CGSizeMake(self.size.width, self.size.height))
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)//SKPhysicsBody.init(texture: physicsTexture, size: CGSizeMake(self.size.width, self.size.height))
         self.physicsBody?.friction = 0;
         self.physicsBody?.linearDamping = 0;
         self.physicsBody?.allowsRotation = false
@@ -104,6 +104,7 @@ class TBPlayerNode: SKSpriteNode {
         atackJointSquare.physicsBody?.friction = 0;
         atackJointSquare.physicsBody?.pinned = true
         atackJointSquare.physicsBody?.allowsRotation = false
+        atackJointSquare.physicsBody?.restitution = 0
         atackJointSquare.physicsBody?.mass = 0.1
         atackJointSquare.physicsBody?.collisionBitMask = 0b0
         atackJointSquare.physicsBody?.categoryBitMask = GameScene.JOINT_ATTACK_NODE
