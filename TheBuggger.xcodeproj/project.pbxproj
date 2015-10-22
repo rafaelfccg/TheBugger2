@@ -652,6 +652,8 @@
 				001E55BF1BD8221600B80833 /* speed booster-02.png in Resources */,
 				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
 				001E55B41BD8221600B80833 /* machinefront-01.png in Resources */,
+				AF2A3E491BD861D8001DA3DB /* Espinhos.atlas in Resources */,
+				AF429F851BD18E72002B5465 /* Level1Scene.sks in Resources */,
 				AF429F831BD186D5002B5465 /* Level2Scene.sks in Resources */,
 				AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */,
 				001E55D11BD8221600B80833 /* roofend1.png in Resources */,

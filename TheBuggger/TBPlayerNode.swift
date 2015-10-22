@@ -72,7 +72,7 @@ class TBPlayerNode: SKSpriteNode {
         self.yScale = scale
        
         //let phBody = CGSizeMake(self.size.width*0.8, self.size.height*0.8)
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)//SKPhysicsBody.init(texture: physicsTexture, size: CGSizeMake(self.size.width, self.size.height))
+        self.physicsBody = SKPhysicsBody.init(texture: physicsTexture, size: CGSizeMake(self.size.width, self.size.height))
         self.physicsBody?.friction = 0;
         self.physicsBody?.linearDamping = 0;
         self.physicsBody?.allowsRotation = false
