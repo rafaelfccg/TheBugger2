@@ -29,6 +29,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var score:Int = 0
     var count = 0
     let numFormatter = NSNumberFormatter()
+    var skyNode:SKSpriteNode?
+    var skyNodeNext:SKSpriteNode?
+    var deltaTime : NSTimeInterval = 0
+    var lastFrameTime :NSTimeInterval  = 0
     
     
     static let CHAO_NODE:UInt32             = 0b000000000010
@@ -48,23 +52,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 45;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
         hero.setUpPlayer()
         self.addChild(hero)
         self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
-        print(self.size)
-        print(self.view!.frame.size)
         let camera = SKCameraNode();
         self.addChild(camera)
         self.camera = camera
+        
        
+        
+        skyNode = SKSpriteNode(imageNamed: "sky")
+        skyNode?.size = self.size
+        skyNodeNext = SKSpriteNode(imageNamed: "sky")
+        skyNodeNext?.size = self.size
         camera.position = hero.position
         setUpLevel()
+        
+        camera.addChild(skyNode!)
+        camera.addChild(skyNodeNext!)
+        skyNode?.position = CGPoint(x: 0,y: 0)
+        skyNode?.zPosition = -100
+        skyNodeNext?.position = CGPoint(x: (skyNode?.position.x)! + (skyNode?.frame.size.width)!,y: 0)
+        skyNodeNext?.zPosition = -100
         
         self.physicsWorld.gravity = CGVectorMake(0.0, -35.0) // Diminuindo a gravidade para o personagem cair mais rapido
         
@@ -73,11 +82,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         setupHUD()
         
 
-
-        //self.addChild(hero)
-       // self.physicsWorld.addJoint(hero.addMyJoint())
-        
     }
+    
+    
+    func moveSprite(sprite : SKSpriteNode,
+        nextSprite : SKSpriteNode, speed : Float) -> Void {
+            var newPosition = CGPointZero
+            
+            // For both the sprite and its duplicate:
+            for spriteToMove in [sprite, nextSprite] {
+                
+                // Shift the sprite leftward based on the speed
+                newPosition = spriteToMove.position
+                newPosition.x -= CGFloat(speed * Float(deltaTime))
+                spriteToMove.position = newPosition
+                
+                // If this sprite is now offscreen (i.e., its rightmost edge is
+                // farther left than the scene's leftmost edge):
+                print(spriteToMove.position.x )
+                print(spriteToMove.size.width)
+                if (spriteToMove.position.x <= -spriteToMove.size.width) {
+                    // Shift it over so that it's now to the immediate right
+                    // of the other sprite.
+                    // This means that the two sprites are effectively
+                    // leap-frogging each other as they both move.
+                    spriteToMove.position =
+                        CGPoint(x:
+                            spriteToMove.size.width,
+                            y: spriteToMove.position.y)
+                }
+                
+            }
+    }
+    
     
     func setupHUD()
     {   
@@ -285,14 +322,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         //print(CGRectGetMaxY(self.frame))
         self.hero.updateVelocity()
         
-        let current =  CACurrentMediaTime()
-        if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < current){
+        //let current =  CACurrentMediaTime()
+        if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
             self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
             self.hero.actionCall()
-            self.touchStartedAt = current
+            self.touchStartedAt = currentTime
             self.hero.state = States.Initial
         }
         
+        if lastFrameTime<=0 {
+            lastFrameTime = currentTime
+        }
+        deltaTime = currentTime - lastFrameTime
+        lastFrameTime = currentTime
+        self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 200)
         //hero.physicsBody?.velocity = CGVectorMake(100, 0)
         
         
