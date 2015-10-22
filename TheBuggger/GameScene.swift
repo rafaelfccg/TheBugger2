@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         self.physicsWorld.contactDelegate = self
         
-        setupButtonRestartLevel()
+        setupHUD()
         
 
 
