@@ -18,7 +18,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
     
     var state :States = States.Initial
-    var lastTouch: UITouch = UITouch()
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
     let limitTimeAction:Double = 0.1
@@ -55,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var stateCamera = "normal"
     
     var backgroundMusicPlayer:AVAudioPlayer?
+    
     
     
     var qtdMoedas:Int = 0
@@ -247,9 +247,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
-
-            
-            
             
         })
         
@@ -350,7 +347,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 }
                 else{
                     self.hero.state = States.Initial
-                    self.lastTouch = touch
                 }
             }
         }else{
@@ -371,8 +367,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         for touch in touches {
             let location = touch.locationInView(self.view)
             let locationPrevious = touch.previousLocationInView(self.view)
-            
-           
             //Calculate movement
             let dx = Double(location.x - locationPrevious.x)
             let dy = -Double(location.y - locationPrevious.y)
