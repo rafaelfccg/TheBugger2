@@ -61,7 +61,7 @@
 		00CDBEA51BB9B39100BC0517 /* TheBugggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEA41BB9B39100BC0517 /* TheBugggerTests.swift */; };
 		00CDBEB01BB9B39100BC0517 /* TheBugggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */; };
 		00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */; settings = {ASSET_TAGS = (); }; };
-		528550501BD9842F0063688C /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5285504F1BD9842F0063688C /* Level1Scene.sks */; settings = {ASSET_TAGS = (); }; };
+		5294A1061BDAA4D6001EC068 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5294A1051BDAA4D6001EC068 /* Level1Scene.sks */; settings = {ASSET_TAGS = (); }; };
 		52C376F61BC441190012BC96 /* TBShotGroundBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */; settings = {ASSET_TAGS = (); }; };
 		52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */; settings = {ASSET_TAGS = (); }; };
 		52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */; settings = {ASSET_TAGS = (); }; };
@@ -75,7 +75,6 @@
 		AF2A3E451BD85D19001DA3DB /* TBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E441BD85D19001DA3DB /* TBUtils.swift */; settings = {ASSET_TAGS = (); }; };
 		AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */; settings = {ASSET_TAGS = (); }; };
 		AF2A3E491BD861D8001DA3DB /* Espinhos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF2A3E481BD861D8001DA3DB /* Espinhos.atlas */; settings = {ASSET_TAGS = (); }; };
-		AF429F831BD186D5002B5465 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF429F821BD186D5002B5465 /* Level2Scene.sks */; settings = {ASSET_TAGS = (); }; };
 		AFA026E01BD17FDB00B7FFC5 /* heroPhysicsBody.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA026DF1BD17FDB00B7FFC5 /* heroPhysicsBody.png */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; settings = {ASSET_TAGS = (); }; };
 		AFEF5C4A1BC45AD2003273FF /* PlayerDefence.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C491BC45AD2003273FF /* PlayerDefence.atlas */; settings = {ASSET_TAGS = (); }; };
@@ -163,7 +162,7 @@
 		00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBugggerUITests.swift; sourceTree = "<group>"; };
 		00CDBEB11BB9B39100BC0517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGestureReconizer.swift; sourceTree = "<group>"; };
-		5285504F1BD9842F0063688C /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		5294A1051BDAA4D6001EC068 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotGroundBotNode.swift; sourceTree = "<group>"; };
 		52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotNode.swift; sourceTree = "<group>"; };
 		52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotEntity.swift; sourceTree = "<group>"; };
@@ -177,7 +176,6 @@
 		AF2A3E441BD85D19001DA3DB /* TBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBUtils.swift; sourceTree = "<group>"; };
 		AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhosNode.swift; sourceTree = "<group>"; };
 		AF2A3E481BD861D8001DA3DB /* Espinhos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Espinhos.atlas; sourceTree = "<group>"; };
-		AF429F821BD186D5002B5465 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
 		AFA026DF1BD17FDB00B7FFC5 /* heroPhysicsBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroPhysicsBody.png; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
 		AFEF5C491BC45AD2003273FF /* PlayerDefence.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDefence.atlas; sourceTree = "<group>"; };
@@ -486,7 +484,7 @@
 		00CDBECA1BBD9FD100BC0517 /* Level 1 */ = {
 			isa = PBXGroup;
 			children = (
-				5285504F1BD9842F0063688C /* Level1Scene.sks */,
+				5294A1051BDAA4D6001EC068 /* Level1Scene.sks */,
 			);
 			name = "Level 1";
 			sourceTree = "<group>";
@@ -494,7 +492,6 @@
 		52E7AEAD1BBEF81D008FE672 /* Level 2 */ = {
 			isa = PBXGroup;
 			children = (
-				AF429F821BD186D5002B5465 /* Level2Scene.sks */,
 				52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */,
 			);
 			name = "Level 2";
@@ -612,6 +609,7 @@
 				001E557A1BD6DA0C00B80833 /* power1.png in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
 				AFA026E01BD17FDB00B7FFC5 /* heroPhysicsBody.png in Resources */,
+				5294A1061BDAA4D6001EC068 /* Level1Scene.sks in Resources */,
 				001E55C11BD8221600B80833 /* speed booster-04.png in Resources */,
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
 				001E55B91BD8221600B80833 /* machinefront-06.png in Resources */,
@@ -648,12 +646,10 @@
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
 				001E55CF1BD8221600B80833 /* prataformlg.png in Resources */,
 				001E55C51BD8221600B80833 /* structure2.png in Resources */,
-				528550501BD9842F0063688C /* Level1Scene.sks in Resources */,
 				001E55BF1BD8221600B80833 /* speed booster-02.png in Resources */,
 				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
 				001E55B41BD8221600B80833 /* machinefront-01.png in Resources */,
 				AF2A3E491BD861D8001DA3DB /* Espinhos.atlas in Resources */,
-				AF429F831BD186D5002B5465 /* Level2Scene.sks in Resources */,
 				AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */,
 				001E55D11BD8221600B80833 /* roofend1.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
