@@ -73,18 +73,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var stateCamera = "normal"
     
     
-    static let CHAO_NODE:UInt32             = 0b000000000010
-    static let PLAYER_NODE:UInt32           = 0b000000000001
-    static let MONSTER_NODE:UInt32          = 0b000000000100
-    static let POWERUP_NODE:UInt32          = 0b000000001000
-    static let ESPINHOS_NODE:UInt32         = 0b000000010000
-    static let TIRO_NODE:UInt32             = 0b000000100000
-    static let JOINT_ATTACK_NODE:UInt32     = 0b000001000000
-    static let CHAO_QUICK_NODE:UInt32       = 0b000010000000
-    static let CHAO_SLOW_NODE:UInt32        = 0b000100000000
-    static let TOCO_NODE:UInt32             = 0b001000000000
-    static let OTHER_NODE:UInt32            = 0b010000000000
-    static let END_LEVEL_NODE:UInt32        = 0b100000000000
+    var qtdMoedas:Int = 0
+    
+    
+    static let CHAO_NODE:UInt32             = 0b0000000000010
+    static let PLAYER_NODE:UInt32           = 0b0000000000001
+    static let MONSTER_NODE:UInt32          = 0b0000000000100
+    static let POWERUP_NODE:UInt32          = 0b0000000001000
+    static let ESPINHOS_NODE:UInt32         = 0b0000000010000
+    static let TIRO_NODE:UInt32             = 0b0000000100000
+    static let JOINT_ATTACK_NODE:UInt32     = 0b0000001000000
+    static let CHAO_QUICK_NODE:UInt32       = 0b0000010000000
+    static let CHAO_SLOW_NODE:UInt32        = 0b0000100000000
+    static let TOCO_NODE:UInt32             = 0b0001000000000
+    static let MOEDA_NODE:UInt32            = 0b0010000000000
+    static let OTHER_NODE:UInt32            = 0b0100000000000
+    static let END_LEVEL_NODE:UInt32        = 0b1000000000000
+
     
     
     override func didMoveToView(view: SKView) {
@@ -301,6 +306,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.categoryBitMask = GameScene.OTHER_NODE
             self.setObstacleTypeHit(node)
             node.physicsBody?.pinned = true
+            
+        })
+        self.enumerateChildNodesWithName("Moeda", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            let moeda = TBMoedasNode()
+            moeda.position = node.position
+            moeda.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
+            moeda.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            self.addChild(moeda)
+            
+            moeda.runAction(SKAction.repeatActionForever( TBMoedasNode.animation! ))
             
         })
     
@@ -662,6 +678,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             
         }
         
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MOEDA_NODE )){
+            //pegou a moeda
+            bodyB.node?.removeFromParent()
+            qtdMoedas++
+            print("\(qtdMoedas) coins in the pocket")
+            
+            
+        }
+        
     }
     
-    }
+}
