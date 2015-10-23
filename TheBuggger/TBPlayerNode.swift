@@ -26,6 +26,8 @@ class TBPlayerNode: SKSpriteNode {
     let slowSpeed = 100
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
+    var attackAction:SKAction?
+    var walkAction:SKAction?
     
     
     var lives = 1
@@ -55,11 +57,13 @@ class TBPlayerNode: SKSpriteNode {
         powerUP = TBPowerUpsStates.Normal
         attackState = AttackState.Idle
         speedBost = false
+        let atackArray = TBUtils().getSprites("PlayerAttack", nomeImagens: "attack-")
+        attackAction = SKAction.animateWithTextures(atackArray, timePerFrame: 0.07);
         super.init(texture:SKTexture(), color: UIColor(), size: CGSizeMake(0, 0))
     }
     
     func setUpPlayer(){
-        realSpeed = defaultSpeed
+        realSpeed = 0
         jumpState = JumpState.CanJump
         attackState = AttackState.Idle
         var walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
@@ -82,7 +86,7 @@ class TBPlayerNode: SKSpriteNode {
         self.position = CGPointMake(216, 375)
         
         let action = SKAction.animateWithTextures(walkArray, timePerFrame: 0.05);
-        runAction(SKAction.repeatActionForever(action));
+        walkAction = SKAction.repeatActionForever(action)
         
         addAttackJoint()
         
@@ -91,9 +95,10 @@ class TBPlayerNode: SKSpriteNode {
         
         self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE
 
-        
     }
-    
+    func runWalkingAction(){
+        self.runAction(walkAction!, withKey:"walk")
+    }
     func addAttackJoint()
     {
         let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(600, 150))
@@ -169,23 +174,23 @@ class TBPlayerNode: SKSpriteNode {
             break;
         case States.SR:
 
-            let atackArray = TBUtils().getSprites("PlayerAttack", nomeImagens: "attack-")
             
-            let action = SKAction.animateWithTextures(atackArray, timePerFrame: 0.07);
-            runAction(action)
-            
-            let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
-            
-            for body : AnyObject in bodies! {
-                if body.categoryBitMask == GameScene.MONSTER_NODE {
-                    body.node?!.removeFromParent()
-                    
+            if( self.actionForKey("attack") == nil){
+                let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
+                
+                for body : AnyObject in bodies! {
+                    if body.categoryBitMask == GameScene.MONSTER_NODE {
+                        body.node?!.removeFromParent()
+                        
+                    }
                 }
+                
+                runAction(SKAction.group([attackAction!, SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({ self.attackState = AttackState.Idle})])]), withKey: "attack")
+                
+                self.attackState = AttackState.Attacking
+               
             }
-
-            
-            self.attackState = AttackState.Attacking
-            self.runAction(SKAction.sequence ([SKAction.waitForDuration(0.28), SKAction.runBlock({ self.attackState = AttackState.Idle})]))
+           
             
             break;
         case States.Tap:

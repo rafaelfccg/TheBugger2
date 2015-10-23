@@ -18,7 +18,7 @@ class TBGroundBotNode: SKSpriteNode {
     
     init() {
         
-        super.init(texture:SKTexture(), color: UIColor(), size: CGSizeMake(0, 0))
+        super.init(texture:SKTexture(), color: UIColor.clearColor(), size: CGSizeMake(0, 0))
         
         //self.color = UIColor.whiteColor()
         self.size = CGSizeMake(80, 80)
@@ -26,6 +26,7 @@ class TBGroundBotNode: SKSpriteNode {
         self.physicsBody?.friction = CGFloat(0)
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
+        self.runAction(SKAction.repeatActionForever(TBGroundBotNode.animation!))
         
     }
     

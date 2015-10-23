@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 protocol SceneChangesDelegate{
     
@@ -28,49 +29,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var labelScore:SKLabelNode?
     var score:Int = 0
     
+    var tapToStartLabel:SKLabelNode?
+    var hasBegan:Bool = false
+    
     var count = 0
     
     let numFormatter = NSNumberFormatter()
-    
+    //parallax
     var skyNode:SKSpriteNode?
-    
     var skyNodeNext:SKSpriteNode?
     
     var deltaTime : NSTimeInterval = 0
-    
     var lastFrameTime :NSTimeInterval  = 0
-    
-    
-    
+    //camera
     var cameraPosition:CGPoint = CGPoint()
-    
     var cameraAction:SKAction = SKAction()
     
-    
-    
     var cameraPostionUp:CGPoint = CGPoint()
-    
     var cameraActionUp:SKAction = SKAction()
-    
-    
-    
     var topLimit:CGPoint = CGPoint()
-    
-    
-    
     var firstHeroPosition:CGPoint = CGPoint()
-    
-    
-    
     var firstCameraPos:CGPoint = CGPoint()
-    
-    
-    
     var upDone = false
     
-    
-    
     var stateCamera = "normal"
+    
+    var backgroundMusicPlayer:AVAudioPlayer?
     
     
     static let CHAO_NODE:UInt32             = 0b000000000010
@@ -89,6 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        
         
         hero.setUpPlayer()
         self.addChild(hero)
@@ -119,9 +104,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         setupHUD()
         
+        tapToStartLabel = SKLabelNode(text: "TAP TO START")
+        self.camera!.addChild(tapToStartLabel!)
+
+        
+        if(backgroundMusicPlayer == nil){
+        
+            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
+            
+            do {
+              try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
+              backgroundMusicPlayer!.numberOfLoops  = -1
+                if(!backgroundMusicPlayer!.playing){
+                    self.backgroundMusicPlayer?.play()
+                }
+            }catch {
+                print("MUSIC NOT FOUND")
+            }
+        }
+        
 
     }
     
+    func startGame(){
+        hero.realSpeed = hero.defaultSpeed
+        hero.runWalkingAction() 
+        tapToStartLabel?.removeFromParent()
+    }
     
     func moveSprite(sprite : SKSpriteNode,
         nextSprite : SKSpriteNode, speed : Float) -> Void {
@@ -207,6 +216,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     func restartLevel()
     {
         delegateChanger?.mudaScene("Level1Scene")
+        //setUpLevel()
     }
     
     
@@ -222,6 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
             
             let groundBoti = TBGroundBotNode()
+            
             groundBoti.position = node.position
             groundBoti.name = "Monster"
             groundBoti.physicsBody?.allowsRotation = false
@@ -232,7 +243,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
 
-            groundBoti.runAction(SKAction.repeatActionForever(TBGroundBotNode.animation!))
+            
             
             
         })
@@ -281,6 +292,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
+            node.zPosition = 1
              self.setObstacleTypeHit(node)
             
             node.runAction(SKAction.repeatActionForever(TBEspinhosNode.animation!))
@@ -308,27 +320,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
-        self.touchStartedAt  = CACurrentMediaTime()
-        for touch in touches {
-            //let location = touch.locationInNode(self)
-            let location = touch.locationInNode(self)
-            //print(location)
-            let touchedNode = self.nodeAtPoint(location)
-            let name = touchedNode.name
-            if (name == "restartButton")
-            {
-                self.restartLevel()
+        
+        if(hasBegan){
+            self.touchStartedAt  = CACurrentMediaTime()
+            for touch in touches {
+                //let location = touch.locationInNode(self)
+                let location = touch.locationInNode(self)
+                //print(location)
+                let touchedNode = self.nodeAtPoint(location)
+                let name = touchedNode.name
+                if (name == "restartButton"){
+                    self.restartLevel()
+                }
+                else{
+                    self.hero.state = States.Initial
+                    self.lastTouch = touch
+                }
             }
-            else
-            {
-                self.hero.state = States.Initial
-                self.lastTouch = touch
-            }
+        }else{
+            hasBegan = true
+            startGame()
+            self.hero.state = States.FAIL   
+            
         }
+        
     }
+    
     func addJointBody(bodyJoint: SKSpriteNode) {
         self.addChild(bodyJoint)
     }
+    
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.touchStartedAt  = CACurrentMediaTime()
         for touch in touches {
@@ -372,9 +393,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         //print(CGRectGetMaxY(self.frame))
         
-        self.hero.updateVelocity()
-        
-        //let current =  CACurrentMediaTime()
+        if(hasBegan) {
+            self.hero.updateVelocity()
+            if(lastFrameTime == 0) {lastFrameTime = currentTime}
+            
+            deltaTime = currentTime - lastFrameTime
+            lastFrameTime = currentTime
+            self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
+
+        }
         
         if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
             self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
@@ -383,16 +410,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.hero.state = States.Initial
             
         }
-        
-        if(lastFrameTime == 0) {lastFrameTime = currentTime}
-        
-        deltaTime = currentTime - lastFrameTime
-        lastFrameTime = currentTime
-        self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
-        
-        
-        
-        
         
     }
     
@@ -430,8 +447,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             
         }
         
-        
-        
         changeCamera()
         
     }
@@ -440,11 +455,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     func changeCamera() {
         
-        
-        
-        print(self.topLimit.y - self.hero.position.y)
-        
-        
+        //print(self.topLimit.y - self.hero.position.y)
         
         switch(stateCamera) {
             
