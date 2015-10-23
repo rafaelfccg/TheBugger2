@@ -73,7 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         skyNode?.position = CGPoint(x: 0,y: 0)
         skyNode?.zPosition = -100
         skyNodeNext?.position = CGPoint(x: (skyNode?.position.x)! + (skyNode?.frame.size.width)!,y: 0)
-        skyNodeNext?.zPosition = -100
+        skyNodeNext?.zPosition = -99
         
         self.physicsWorld.gravity = CGVectorMake(0.0, -35.0) // Diminuindo a gravidade para o personagem cair mais rapido
         
@@ -88,36 +88,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     func moveSprite(sprite : SKSpriteNode,
         nextSprite : SKSpriteNode, speed : Float) -> Void {
             var newPosition = CGPointZero
-            
-            // For both the sprite and its duplicate:
-            for spriteToMove in [sprite, nextSprite] {
-                
-                // Shift the sprite leftward based on the speed
-                newPosition = spriteToMove.position
-                newPosition.x -= CGFloat(speed * Float(deltaTime))
-                spriteToMove.position = newPosition
-                
-                // If this sprite is now offscreen (i.e., its rightmost edge is
-                // farther left than the scene's leftmost edge):
-                print(spriteToMove.position.x )
-                print(spriteToMove.size.width)
-                if (spriteToMove.position.x <= -spriteToMove.size.width) {
-                    // Shift it over so that it's now to the immediate right
-                    // of the other sprite.
-                    // This means that the two sprites are effectively
-                    // leap-frogging each other as they both move.
-                    spriteToMove.position =
-                        CGPoint(x:
-                            spriteToMove.size.width,
-                            y: spriteToMove.position.y)
-                }
+            // Shift the sprite leftward based on the speed
+            newPosition = sprite.position
+            newPosition.x -= CGFloat(speed * Float(deltaTime))
+            sprite.position = newPosition
+            // If this sprite is now offscreen (i.e., its rightmost edge is
+            // farther left than the scene's leftmost edge):
+            if (sprite.position.x <= -sprite.frame.size.width) {
+                // Shift it over so that it's now to the immediate right
+                // of the other sprite.
+                // This means that the two sprites are effectively
+                // leap-frogging each other as they both move.
+                sprite.position =
+                    CGPoint(x:
+                        nextSprite.position.x + nextSprite.frame.size.width - 3.5,
+                        y: sprite.position.y)
+                sprite.zPosition = -99
+                nextSprite.zPosition = -100
                 
             }
+            
+            newPosition = nextSprite.position
+            newPosition.x -= CGFloat(speed * Float(deltaTime))
+            nextSprite.position = newPosition
+            // If this sprite is now offscreen (i.e., its rightmost edge is
+            // farther left than the scene's leftmost edge):
+            if (nextSprite.position.x <= -nextSprite.frame.size.width ) {
+                // Shift it over so that it's now to the immediate right
+                // of the other sprite.
+                // This means that the two sprites are effectively
+                // leap-frogging each other as they both move.
+                nextSprite.position =
+                    CGPoint(x:
+                        sprite.position.x + sprite.frame.size.width - 3.5 ,
+                        y: nextSprite.position.y)
+                sprite.zPosition = -100
+                nextSprite.zPosition = -99
+            }
+
     }
     
     
     func setupHUD()
-    {   
+    {
         let backTexture = SKTexture(imageNamed: "voltar")
         let back = SKSpriteNode(texture: backTexture, size: CGSizeMake(60, 60))
         back.name = "restartButton"
