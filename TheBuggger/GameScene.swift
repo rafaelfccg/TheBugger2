@@ -17,25 +17,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
     
     var state :States = States.Initial
-    
     var lastTouch: UITouch = UITouch()
-    
     let kDistanceThreshold:Double = 10
-    
     var hero: TBPlayerNode = TBPlayerNode()
-    
     let limitTimeAction:Double = 0.1
-    
     var touchStartedAt:Double?
-    
     var delegateChanger: SceneChangesDelegate?
-    
     var hudSprite:SKSpriteNode?
-    
     var dx:CGFloat?;
-    
     var labelScore:SKLabelNode?
-    
     var score:Int = 0
     
     var count = 0
@@ -107,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.addChild(camera)
         self.camera = camera
         
-       
+        numFormatter.minimumIntegerDigits = 9
         
         skyNode = SKSpriteNode(imageNamed: "sky")
         skyNode?.size = self.size
@@ -378,53 +368,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         //let heroy = self.hero.position.y
         
-        
-        
-        //        let position = CGPointMake(hero.position.x + 360, (camera?.position.y)!)
-        
-        //        let action = SKAction.moveTo(position, duration: 0)
-        
-        //        self.camera!.runAction(action)
-        
-        
-        
-        
-        
         cameraState()
-        
-        
-        
-        //        if(self.hero.position.y > self.topLimit.y) {
-        
-        //            self.updateCameraUp()
-        
-        //        } else {
-        
-        //            self.updateCamera()
-        
-        //        }
-        
-        
         
         //print(CGRectGetMaxY(self.frame))
         
         self.hero.updateVelocity()
         
-        
-        
         //let current =  CACurrentMediaTime()
         
         if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
-            
             self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
-            
             self.hero.actionCall()
-            
             self.touchStartedAt = currentTime
-            
             self.hero.state = States.Initial
             
         }
+        
+        if(lastFrameTime == 0) {lastFrameTime = currentTime}
+        
+        deltaTime = currentTime - lastFrameTime
+        lastFrameTime = currentTime
+        self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
         
         
         
