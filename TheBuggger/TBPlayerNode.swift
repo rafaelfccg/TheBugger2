@@ -161,15 +161,17 @@ class TBPlayerNode: SKSpriteNode {
             
             break;
         case States.SL:
-            let act1 = SKAction.fadeInWithDuration(0.1)
-            let act2 = SKAction.fadeOutWithDuration(0.1)
-            let blink = SKAction.sequence([act2,act1])
-            self.runAction(SKAction.repeatAction(blink, count: 4))
             
-            let defenceArray = TBUtils().getSprites("PlayerDefence", nomeImagens: "defence")
+//            let act1 = SKAction.fadeInWithDuration(0.1)
+//            let act2 = SKAction.fadeOutWithDuration(0.1)
+//            let blink = SKAction.sequence([act2,act1])
+//            self.runAction(SKAction.repeatAction(blink, count: 4))
             
-            let action = SKAction.animateWithTextures(defenceArray, timePerFrame: 1.2);
+            let defenceArray = TBUtils().getSprites("PlayerDefence", nomeImagens: "defend-")
+            
+            let action = SKAction.animateWithTextures(defenceArray, timePerFrame: 0.065);
             runAction(action)
+
            
             break;
         case States.SR:
