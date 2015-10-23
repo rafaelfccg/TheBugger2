@@ -17,22 +17,70 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
     
     var state :States = States.Initial
+    
     var lastTouch: UITouch = UITouch()
+    
     let kDistanceThreshold:Double = 10
+    
     var hero: TBPlayerNode = TBPlayerNode()
+    
     let limitTimeAction:Double = 0.1
+    
     var touchStartedAt:Double?
+    
     var delegateChanger: SceneChangesDelegate?
+    
     var hudSprite:SKSpriteNode?
+    
     var dx:CGFloat?;
+    
     var labelScore:SKLabelNode?
+    
     var score:Int = 0
+    
     var count = 0
+    
     let numFormatter = NSNumberFormatter()
+    
     var skyNode:SKSpriteNode?
+    
     var skyNodeNext:SKSpriteNode?
+    
     var deltaTime : NSTimeInterval = 0
+    
     var lastFrameTime :NSTimeInterval  = 0
+    
+    
+    
+    var cameraPosition:CGPoint = CGPoint()
+    
+    var cameraAction:SKAction = SKAction()
+    
+    
+    
+    var cameraPostionUp:CGPoint = CGPoint()
+    
+    var cameraActionUp:SKAction = SKAction()
+    
+    
+    
+    var topLimit:CGPoint = CGPoint()
+    
+    
+    
+    var firstHeroPosition:CGPoint = CGPoint()
+    
+    
+    
+    var firstCameraPos:CGPoint = CGPoint()
+    
+    
+    
+    var upDone = false
+    
+    
+    
+    var stateCamera = "normal"
     
     
     static let CHAO_NODE:UInt32             = 0b000000000010
@@ -325,32 +373,244 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     }
     
     override func update(currentTime: CFTimeInterval) {
+        
         /* Called before each frame is rendered */
+        
         //let heroy = self.hero.position.y
         
-        let position = CGPointMake(hero.position.x + 360, (camera?.position.y)!)
-        let action = SKAction.moveTo(position, duration: 0)
-        self.camera!.runAction(action)
+        
+        
+        //        let position = CGPointMake(hero.position.x + 360, (camera?.position.y)!)
+        
+        //        let action = SKAction.moveTo(position, duration: 0)
+        
+        //        self.camera!.runAction(action)
+        
+        
+        
+        
+        
+        cameraState()
+        
+        
+        
+        //        if(self.hero.position.y > self.topLimit.y) {
+        
+        //            self.updateCameraUp()
+        
+        //        } else {
+        
+        //            self.updateCamera()
+        
+        //        }
+        
+        
         
         //print(CGRectGetMaxY(self.frame))
+        
         self.hero.updateVelocity()
         
+        
+        
         //let current =  CACurrentMediaTime()
+        
         if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
+            
             self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
+            
             self.hero.actionCall()
+            
             self.touchStartedAt = currentTime
+            
             self.hero.state = States.Initial
+            
         }
         
-        if lastFrameTime<=0 {
-            lastFrameTime = currentTime
-        }
-        deltaTime = currentTime - lastFrameTime
-        lastFrameTime = currentTime
-        self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 200)
-        //hero.physicsBody?.velocity = CGVectorMake(100, 0)
         
+        
+        
+        
+    }
+    
+    
+    
+    func cameraState() {
+        
+        if(self.hero.position.y < self.topLimit.y) {
+            
+            stateCamera = "normal"
+            
+        } else if(self.hero.position.y > self.topLimit.y && self.hero.position.y < self.topLimit.y+150) {
+            
+            stateCamera = "up1"
+            
+        } else if(self.hero.position.y > self.topLimit.y+100 && self.hero.position.y < self.topLimit.y+300) {
+            
+            stateCamera = "up2"
+            
+        } else if(self.hero.position.y > self.topLimit.y+200 && self.hero.position.y < self.topLimit.y+450) {
+            
+            stateCamera = "up3"
+            
+        } else if(self.hero.position.y > self.topLimit.y+300 && self.hero.position.y < self.topLimit.y+600) {
+            
+            stateCamera = "up4"
+            
+        } else if(self.hero.position.y > self.topLimit.y+400 && self.hero.position.y < self.topLimit.y+750) {
+            
+            stateCamera = "up5"
+            
+        } else if(self.hero.position.y > self.topLimit.y+500 && self.hero.position.y < self.topLimit.y+900) {
+            
+            stateCamera = "up6"
+            
+        }
+        
+        
+        
+        changeCamera()
+        
+    }
+    
+    
+    
+    func changeCamera() {
+        
+        
+        
+        print(self.topLimit.y - self.hero.position.y)
+        
+        
+        
+        switch(stateCamera) {
+            
+        case "normal":
+            
+            self.cameraPosition = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
+            
+            self.cameraAction = SKAction.moveToX(self.cameraPosition.x, duration: 0)
+            
+            self.cameraActionUp = SKAction.moveToY(self.cameraPosition.y, duration: 0.5)
+            
+            let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
+            
+            self.camera?.runAction(actionBlocks)
+            
+            break
+            
+        case "up1":
+            
+            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+150)
+            
+            //                self.cameraActionUp = SKAction.moveTo(cameraPostionUp, duration: 0)
+            
+            //                self.camera?.runAction(self.cameraActionUp)
+            
+            self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
+            
+            self.cameraActionUp = SKAction.moveToY(self.cameraPostionUp.y, duration: 0.5)
+            
+            let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
+            
+            self.camera?.runAction(actionBlocks)
+            
+            break
+            
+        case "up2":
+            
+            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+300)
+            
+            //                self.cameraActionUp = SKAction.moveTo(cameraPostionUp, duration: 0)
+            
+            //                self.camera?.runAction(self.cameraActionUp)
+            
+            self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
+            
+            self.cameraActionUp = SKAction.moveToY(self.cameraPostionUp.y, duration: 0.5)
+            
+            let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
+            
+            self.camera?.runAction(actionBlocks)
+            
+            break
+            
+        case "up3":
+            
+            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+450)
+            
+            //                self.cameraActionUp = SKAction.moveTo(cameraPostionUp, duration: 0)
+            
+            //                self.camera?.runAction(self.cameraActionUp)
+            
+            self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
+            
+            self.cameraActionUp = SKAction.moveToY(self.cameraPostionUp.y, duration: 0.5)
+            
+            let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
+            
+            self.camera?.runAction(actionBlocks)
+            
+            break
+            
+        case "up4":
+            
+            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+600)
+            
+            //                self.cameraActionUp = SKAction.moveTo(cameraPostionUp, duration: 0)
+            
+            //                self.camera?.runAction(self.cameraActionUp)
+            
+            self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
+            
+            self.cameraActionUp = SKAction.moveToY(self.cameraPostionUp.y, duration: 0.5)
+            
+            let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
+            
+            self.camera?.runAction(actionBlocks)
+            
+            break
+            
+        case "up5":
+            
+            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+750)
+            
+            //                self.cameraActionUp = SKAction.moveTo(cameraPostionUp, duration: 0)
+            
+            //                self.camera?.runAction(self.cameraActionUp)
+            
+            self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
+            
+            self.cameraActionUp = SKAction.moveToY(self.cameraPostionUp.y, duration: 0.5)
+            
+            let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
+            
+            self.camera?.runAction(actionBlocks)
+            
+            break
+            
+        case "up6":
+            
+            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+900)
+            
+            //                self.cameraActionUp = SKAction.moveTo(cameraPostionUp, duration: 0)
+            
+            //                self.camera?.runAction(self.cameraActionUp)
+            
+            self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
+            
+            self.cameraActionUp = SKAction.moveToY(self.cameraPostionUp.y, duration: 0.5)
+            
+            let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
+            
+            self.camera?.runAction(actionBlocks)
+            
+            break
+            
+        default: break
+            
+            
+            
+        }
         
     }
     
