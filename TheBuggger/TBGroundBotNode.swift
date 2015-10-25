@@ -26,6 +26,7 @@ class TBGroundBotNode: SKSpriteNode {
         self.physicsBody?.friction = CGFloat(0)
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.friction = 0.8
         self.runAction(SKAction.repeatActionForever(TBGroundBotNode.animation!))
         
     }

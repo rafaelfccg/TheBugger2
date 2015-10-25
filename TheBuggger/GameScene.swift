@@ -470,17 +470,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         switch(stateCamera) {
             
         case "normal":
-            
             self.cameraPosition = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
-            
             self.cameraAction = SKAction.moveToX(self.cameraPosition.x, duration: 0)
-            
             self.cameraActionUp = SKAction.moveToY(self.cameraPosition.y, duration: 0.5)
-            
             let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
-            
             self.camera?.runAction(actionBlocks)
-            
             break
             
         case "up1":
@@ -618,8 +612,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
           (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
           (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
-            restartLevel()
-            print("oohhh damange")
+            if bodyB.categoryBitMask == GameScene.MONSTER_NODE && hero.attackState == AttackState.Defending {
+                bodyB.applyImpulse(CGVectorMake(100, 30))
+                
+            }else{
+                restartLevel()
+                print("oohhh damange")
+            }
         
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
                 (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||

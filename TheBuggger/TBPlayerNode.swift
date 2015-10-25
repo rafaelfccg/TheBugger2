@@ -26,6 +26,8 @@ class TBPlayerNode: SKSpriteNode {
     let slowSpeed = 100
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
+    
+    var defenceAction:SKAction?
     var attackAction:SKAction?
     var walkAction:SKAction?
     
@@ -66,7 +68,11 @@ class TBPlayerNode: SKSpriteNode {
         realSpeed = 0
         jumpState = JumpState.CanJump
         attackState = AttackState.Idle
+        
         var walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
+        
+        let defenceArray = TBUtils().getSprites("PlayerDefence", nomeImagens: "defend-")
+        
         let physicsTexture = SKTexture(imageNamed: "heroPhysicsBody")
         self.texture = walkArray[0];
         // initialize physics body
@@ -86,7 +92,15 @@ class TBPlayerNode: SKSpriteNode {
         self.position = CGPointMake(216, 375)
         
         let action = SKAction.animateWithTextures(walkArray, timePerFrame: 0.05);
+        
         walkAction = SKAction.repeatActionForever(action)
+        let defenceAnimation =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.065);
+        
+        defenceAction = (SKAction.group([defenceAnimation, SKAction.sequence([SKAction.waitForDuration((defenceAnimation.duration)), SKAction.runBlock({
+            self.attackState = AttackState.Idle
+            
+        })])]))
+        runAction(action)
         
         addAttackJoint()
         
@@ -130,7 +144,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func jump(){
         
-        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 150.0))
+        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 125.0))
         
     }
     func actionCall(){
@@ -139,14 +153,7 @@ class TBPlayerNode: SKSpriteNode {
         case States.SD:
             let dashArray = TBUtils().getSprites("PlayerDash", nomeImagens: "dash-")
             
-//            self.size = dashArray[0].size();
-//            self.texture = dashArray[0];
-//            self.physicsBody = SKPhysicsBody.init(texture: dashArray[0], size: dashArray[0].size())
-//            self.physicsBody?.friction = 0;
-//            self.physicsBody?.linearDamping = 0;
-//            self.physicsBody?.allowsRotation = false
-//            self.physicsBody?.velocity = CGVectorMake(CGFloat(constantSpeed), 0);
-            
+        
             let action = SKAction.animateWithTextures(dashArray, timePerFrame: 0.09);
             runAction(action)
 
@@ -162,15 +169,8 @@ class TBPlayerNode: SKSpriteNode {
             break;
         case States.SL:
             
-//            let act1 = SKAction.fadeInWithDuration(0.1)
-//            let act2 = SKAction.fadeOutWithDuration(0.1)
-//            let blink = SKAction.sequence([act2,act1])
-//            self.runAction(SKAction.repeatAction(blink, count: 4))
-            
-            let defenceArray = TBUtils().getSprites("PlayerDefence", nomeImagens: "defend-")
-            
-            let action = SKAction.animateWithTextures(defenceArray, timePerFrame: 0.065);
-            runAction(action)
+            self.attackState = AttackState.Defending
+            runAction(defenceAction!)
 
            
             break;
@@ -228,6 +228,7 @@ class TBPlayerNode: SKSpriteNode {
 enum AttackState{
     case Idle
     case Attacking
+    case Defending
 }
 
 enum JumpState{
