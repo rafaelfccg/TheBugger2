@@ -125,7 +125,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func jump(){
         
-        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 150.0))
+        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 130.0))
         
     }
     func actionCall(){

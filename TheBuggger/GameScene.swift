@@ -54,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     
     
-    var topLimit:CGPoint = CGPoint()
+    var topLimit:CGPoint = CGPointMake(0, 460)
     
     
     
@@ -62,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     
     
-    var firstCameraPos:CGPoint = CGPoint()
+    var firstCameraPos:CGPoint = CGPointMake(0, 220)
     
     
     
@@ -116,6 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.physicsWorld.gravity = CGVectorMake(0.0, -35.0) // Diminuindo a gravidade para o personagem cair mais rapido
         
         self.physicsWorld.contactDelegate = self
+        
         
         setupHUD()
         
@@ -369,7 +370,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         //let heroy = self.hero.position.y
         
         cameraState()
-        
+        print(self.firstCameraPos)
         //print(CGRectGetMaxY(self.frame))
         
         self.hero.updateVelocity()
@@ -442,7 +443,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         
         
-        print(self.topLimit.y - self.hero.position.y)
+       // print(self.topLimit.y - self.hero.position.y)
         
         
         
