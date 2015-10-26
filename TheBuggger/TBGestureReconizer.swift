@@ -48,7 +48,7 @@ func nextStatefor(state:States,andInput:Directions)->States{
         }else if(andInput == Directions.O){
             return States.ZDiag
         }else if(andInput == Directions.NE){
-            return States.FAIL
+            return States.SR
         }else if (andInput == Directions.END){
             return  States.SR
         }else{
@@ -75,16 +75,22 @@ func nextStatefor(state:States,andInput:Directions)->States{
     case .SL:
         if(andInput == Directions.O){
             return States.SL
-            
+        }else if(andInput == Directions.SO){
+            return States.SL
         }else if(andInput == Directions.END){
             return States.SL
-            
+        }else if(andInput == Directions.NO){
+            return States.SL
         }else{
             return States.FAIL
         }
 
     case .SU:
         if(andInput == Directions.N){
+            return States.SU
+        }else if(andInput == Directions.NE){
+            return States.SU
+        }else if(andInput == Directions.NO){
             return States.SU
         }else if(andInput == Directions.END){
             return States.SU
@@ -93,6 +99,10 @@ func nextStatefor(state:States,andInput:Directions)->States{
         }
     case .SD:
         if(andInput == Directions.S){
+            return States.SD
+        }else if(andInput == Directions.SO){
+            return States.SD
+        }else if(andInput == Directions.SE){
             return States.SD
         }else if(andInput == Directions.END){
             return States.SD

@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 protocol SceneChangesDelegate{
     
@@ -17,7 +18,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
     
     var state :States = States.Initial
-    var lastTouch: UITouch = UITouch()
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
     let limitTimeAction:Double = 0.1
@@ -26,30 +26,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var hudSprite:SKSpriteNode?
     var dx:CGFloat?;
     var labelScore:SKLabelNode?
-    var score:Int = 0
+    
+    var tapToStartLabel:SKLabelNode?
+    var hasBegan:Bool = false
     
     var count = 0
     
     let numFormatter = NSNumberFormatter()
-    
+    //parallax
     var skyNode:SKSpriteNode?
-    
     var skyNodeNext:SKSpriteNode?
     
     var deltaTime : NSTimeInterval = 0
-    
     var lastFrameTime :NSTimeInterval  = 0
-    
-    
-    
+    //camera
     var cameraPosition:CGPoint = CGPoint()
-    
     var cameraAction:SKAction = SKAction()
     
-    
-    
     var cameraPostionUp:CGPoint = CGPoint()
-    
     var cameraActionUp:SKAction = SKAction()
     
     
@@ -68,27 +62,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     var upDone = false
     
-    
-    
     var stateCamera = "normal"
     
+    var backgroundMusicPlayer:AVAudioPlayer?
     
-    static let CHAO_NODE:UInt32             = 0b000000000010
-    static let PLAYER_NODE:UInt32           = 0b000000000001
-    static let MONSTER_NODE:UInt32          = 0b000000000100
-    static let POWERUP_NODE:UInt32          = 0b000000001000
-    static let ESPINHOS_NODE:UInt32         = 0b000000010000
-    static let TIRO_NODE:UInt32             = 0b000000100000
-    static let JOINT_ATTACK_NODE:UInt32     = 0b000001000000
-    static let CHAO_QUICK_NODE:UInt32       = 0b000010000000
-    static let CHAO_SLOW_NODE:UInt32        = 0b000100000000
-    static let TOCO_NODE:UInt32             = 0b001000000000
-    static let OTHER_NODE:UInt32            = 0b010000000000
-    static let END_LEVEL_NODE:UInt32        = 0b100000000000
+    
+    static let CHAO_NODE:UInt32             = 0b0000000000010
+    static let PLAYER_NODE:UInt32           = 0b0000000000001
+    static let MONSTER_NODE:UInt32          = 0b0000000000100
+    static let POWERUP_NODE:UInt32          = 0b0000000001000
+    static let ESPINHOS_NODE:UInt32         = 0b0000000010000
+    static let TIRO_NODE:UInt32             = 0b0000000100000
+    static let JOINT_ATTACK_NODE:UInt32     = 0b0000001000000
+    static let CHAO_QUICK_NODE:UInt32       = 0b0000010000000
+    static let CHAO_SLOW_NODE:UInt32        = 0b0000100000000
+    static let TOCO_NODE:UInt32             = 0b0001000000000
+    static let MOEDA_NODE:UInt32            = 0b0010000000000
+    static let OTHER_NODE:UInt32            = 0b0100000000000
+    static let END_LEVEL_NODE:UInt32        = 0b1000000000000
+
     
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        
         
         hero.setUpPlayer()
         self.addChild(hero)
@@ -120,9 +117,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         setupHUD()
         
+        tapToStartLabel = SKLabelNode(text: "TAP TO START")
+        self.camera!.addChild(tapToStartLabel!)
+
+        
+        if(backgroundMusicPlayer == nil){
+        
+            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
+            
+            do {
+              try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
+              backgroundMusicPlayer!.numberOfLoops  = -1
+                if(!backgroundMusicPlayer!.playing){
+                    self.backgroundMusicPlayer?.play()
+                }
+            }catch {
+                print("MUSIC NOT FOUND")
+            }
+        }
+        
 
     }
     
+    func startGame(){
+        hero.realSpeed = hero.defaultSpeed
+        hero.runWalkingAction() 
+        tapToStartLabel?.removeFromParent()
+    }
     
     func moveSprite(sprite : SKSpriteNode,
         nextSprite : SKSpriteNode, speed : Float) -> Void {
@@ -208,6 +229,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     func restartLevel()
     {
         delegateChanger?.mudaScene("Level1Scene")
+        //setUpLevel()
     }
     
     
@@ -223,6 +245,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
             
             let groundBoti = TBGroundBotNode()
+            
             groundBoti.position = node.position
             groundBoti.name = "Monster"
             groundBoti.physicsBody?.allowsRotation = false
@@ -232,9 +255,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
-
-            groundBoti.runAction(SKAction.repeatActionForever(TBGroundBotNode.animation!))
-            
             
         })
         
@@ -282,6 +302,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
+            node.zPosition = 1
              self.setObstacleTypeHit(node)
             
             node.runAction(SKAction.repeatActionForever(TBEspinhosNode.animation!))
@@ -304,39 +325,65 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.pinned = true
             
         })
+        self.enumerateChildNodesWithName("Moeda", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            let moeda = TBMoedasNode()
+            moeda.position = node.position
+            moeda.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
+            moeda.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            self.addChild(moeda)
+            
+            moeda.runAction(SKAction.repeatActionForever( TBMoedasNode.animation! ))
+            
+        })
+        self.enumerateChildNodesWithName("FINAL", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            node.physicsBody?.categoryBitMask = GameScene.END_LEVEL_NODE
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            node.physicsBody?.pinned = true
+            self.setObstacleTypeHit(node)
+            
+        })
     
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
-        self.touchStartedAt  = CACurrentMediaTime()
-        for touch in touches {
-            //let location = touch.locationInNode(self)
-            let location = touch.locationInNode(self)
-            //print(location)
-            let touchedNode = self.nodeAtPoint(location)
-            let name = touchedNode.name
-            if (name == "restartButton")
-            {
-                self.restartLevel()
+        
+        if(hasBegan){
+            self.touchStartedAt  = CACurrentMediaTime()
+            for touch in touches {
+                //let location = touch.locationInNode(self)
+                let location = touch.locationInNode(self)
+                //print(location)
+                let touchedNode = self.nodeAtPoint(location)
+                let name = touchedNode.name
+                if (name == "restartButton"){
+                    self.restartLevel()
+                }
+                else{
+                    self.hero.state = States.Initial
+                }
             }
-            else
-            {
-                self.hero.state = States.Initial
-                self.lastTouch = touch
-            }
+        }else{
+            hasBegan = true
+            startGame()
+            self.hero.state = States.FAIL   
+            
         }
+        
     }
+    
     func addJointBody(bodyJoint: SKSpriteNode) {
         self.addChild(bodyJoint)
     }
+    
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.touchStartedAt  = CACurrentMediaTime()
         for touch in touches {
             let location = touch.locationInView(self.view)
             let locationPrevious = touch.previousLocationInView(self.view)
-            
-           
             //Calculate movement
             let dx = Double(location.x - locationPrevious.x)
             let dy = -Double(location.y - locationPrevious.y)
@@ -359,7 +406,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     }
     
     func updateScore(){
-        labelScore!.text = numFormatter.stringFromNumber(self.score)
+        labelScore!.text = numFormatter.stringFromNumber(hero.score)
         
     }
     
@@ -369,13 +416,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         //let heroy = self.hero.position.y
         
+        updateScore()
         cameraState()
         print(self.firstCameraPos)
         //print(CGRectGetMaxY(self.frame))
         
-        self.hero.updateVelocity()
-        
-        //let current =  CACurrentMediaTime()
+        if(hasBegan) {
+            self.hero.updateVelocity()
+            if(lastFrameTime == 0) {lastFrameTime = currentTime}
+            
+            deltaTime = currentTime - lastFrameTime
+            lastFrameTime = currentTime
+            self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
+
+        }
         
         if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
             self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
@@ -384,16 +438,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.hero.state = States.Initial
             
         }
-        
-        if(lastFrameTime == 0) {lastFrameTime = currentTime}
-        
-        deltaTime = currentTime - lastFrameTime
-        lastFrameTime = currentTime
-        self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
-        
-        
-        
-        
         
     }
     
@@ -431,8 +475,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             
         }
         
-        
-        
         changeCamera()
         
     }
@@ -450,17 +492,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         switch(stateCamera) {
             
         case "normal":
-            
             self.cameraPosition = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
-            
             self.cameraAction = SKAction.moveToX(self.cameraPosition.x, duration: 0)
-            
             self.cameraActionUp = SKAction.moveToY(self.cameraPosition.y, duration: 0.5)
-            
             let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
-            
             self.camera?.runAction(actionBlocks)
-            
             break
             
         case "up1":
@@ -598,8 +634,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
           (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
           (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
-            restartLevel()
-            print("oohhh damange")
+            if bodyB.categoryBitMask == GameScene.MONSTER_NODE && hero.attackState == AttackState.Defending {
+                bodyB.applyImpulse(CGVectorMake(100, 30))
+                
+            }else{
+                restartLevel()
+                print("oohhh damange")
+            }
         
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
                 (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
@@ -655,6 +696,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             if(hero.attackState == AttackState.Attacking){
                 //hit monster
                 bodyA.node?.removeFromParent()
+                hero.score += 5
+                hero.monstersKilled++
                 print("kill monster")
             }else{
                 //hero took damange
@@ -662,7 +705,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             }
             
         }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MOEDA_NODE )){
+            //pegou a moeda
+            bodyB.node?.removeFromParent()
+            hero.qtdMoedas++
+            hero.score += 10
+            print("\(hero.qtdMoedas) coins in the pocket")
+            
+            
+        }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.END_LEVEL_NODE )){
+            //terminou
+            //pausa bruscamente
+            
+            let action = SKAction.sequence([SKAction.waitForDuration(0.45), SKAction.runBlock({
+            self.scene?.view?.paused = true
+                
+            })])
+            
+            runAction(action)
+            print("win")
+        }
         
     }
     
-    }
+}
