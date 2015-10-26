@@ -31,6 +31,10 @@ class TBPlayerNode: SKSpriteNode {
     var attackAction:SKAction?
     var walkAction:SKAction?
     
+    var score: Int = 0
+    var monstersKilled: Int = 0
+    var qtdMoedas: Int = 0
+    
     
     var lives = 1
     var realSpeed:Int
@@ -182,6 +186,8 @@ class TBPlayerNode: SKSpriteNode {
                 
                 for body : AnyObject in bodies! {
                     if body.categoryBitMask == GameScene.MONSTER_NODE {
+                        score += 5
+                        monstersKilled++
                         body.node?!.removeFromParent()
                         
                     }

@@ -26,7 +26,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var hudSprite:SKSpriteNode?
     var dx:CGFloat?;
     var labelScore:SKLabelNode?
-    var score:Int = 0
     
     var tapToStartLabel:SKLabelNode?
     var hasBegan:Bool = false
@@ -54,10 +53,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var stateCamera = "normal"
     
     var backgroundMusicPlayer:AVAudioPlayer?
-    
-    
-    
-    var qtdMoedas:Int = 0
     
     
     static let CHAO_NODE:UInt32             = 0b0000000000010
@@ -328,6 +323,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             moeda.runAction(SKAction.repeatActionForever( TBMoedasNode.animation! ))
             
         })
+        self.enumerateChildNodesWithName("FINAL", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            node.physicsBody?.categoryBitMask = GameScene.END_LEVEL_NODE
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            node.physicsBody?.pinned = true
+            self.setObstacleTypeHit(node)
+            
+        })
     
     }
     
@@ -389,7 +393,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     }
     
     func updateScore(){
-        labelScore!.text = numFormatter.stringFromNumber(self.score)
+        labelScore!.text = numFormatter.stringFromNumber(hero.score)
         
     }
     
@@ -399,6 +403,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         //let heroy = self.hero.position.y
         
+        updateScore()
         cameraState()
         
         //print(CGRectGetMaxY(self.frame))
@@ -674,6 +679,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             if(hero.attackState == AttackState.Attacking){
                 //hit monster
                 bodyA.node?.removeFromParent()
+                hero.score += 5
+                hero.monstersKilled++
                 print("kill monster")
             }else{
                 //hero took damange
@@ -681,14 +688,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             }
             
         }
-        
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MOEDA_NODE )){
             //pegou a moeda
             bodyB.node?.removeFromParent()
-            qtdMoedas++
-            print("\(qtdMoedas) coins in the pocket")
+            hero.qtdMoedas++
+            hero.score += 10
+            print("\(hero.qtdMoedas) coins in the pocket")
             
             
+        }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.END_LEVEL_NODE )){
+            //terminou
+            //pausa bruscamente
+            
+            let action = SKAction.sequence([SKAction.waitForDuration(0.45), SKAction.runBlock({
+            self.scene?.view?.paused = true
+                
+            })])
+            
+            runAction(action)
+            print("win")
         }
         
     }

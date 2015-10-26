@@ -19,7 +19,7 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         TBMoedasNode.createSKActionAnimation()
         
 
-        mudaScene("Level1SceneFaltaAlteracoes")
+        mudaScene("Level1Scene")
     }
     
     func mudaScene(nomeSKS: String)
