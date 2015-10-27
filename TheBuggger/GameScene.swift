@@ -11,7 +11,8 @@ import AVFoundation
 
 protocol SceneChangesDelegate{
     
-    func mudaScene(nomeSKS: String)
+    func mudaScene(nomeSKS: String, withMethod:Int)
+    func backToMenu()
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
@@ -45,15 +46,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     var cameraPostionUp:CGPoint = CGPoint()
     var cameraActionUp:SKAction = SKAction()
-    var topLimit:CGPoint = CGPoint()
+    var topLimit:CGPoint = CGPointMake(0, 460)
     var firstHeroPosition:CGPoint = CGPoint()
-    var firstCameraPos:CGPoint = CGPoint()
+    var firstCameraPos:CGPoint = CGPointMake(0, 220)
     var upDone = false
     
     var stateCamera = "normal"
     
     var backgroundMusicPlayer:AVAudioPlayer?
     
+    //PlayTesting
+    var isMethodOne:Int?
     
     static let CHAO_NODE:UInt32             = 0b0000000000010
     static let PLAYER_NODE:UInt32           = 0b0000000000001
@@ -76,6 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         
         hero.setUpPlayer()
+        hero.method = isMethodOne
         self.addChild(hero)
         self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
         let camera = SKCameraNode();
@@ -215,8 +219,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     func restartLevel()
     {
-        delegateChanger?.mudaScene("Level1Scene")
+        delegateChanger?.mudaScene("Level1Scene", withMethod: self.isMethodOne!)
+        //delegateChanger?.backToMenu()
         //setUpLevel()
+    }
+    
+    func backtToMenu(){
+        delegateChanger?.backToMenu()   
     }
     
     
@@ -338,7 +347,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
         
-        if(hasBegan){
+        
             self.touchStartedAt  = CACurrentMediaTime()
             for touch in touches {
                 //let location = touch.locationInNode(self)
@@ -347,19 +356,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 let touchedNode = self.nodeAtPoint(location)
                 let name = touchedNode.name
                 if (name == "restartButton"){
-                    self.restartLevel()
-                }
-                else{
-                    self.hero.state = States.Initial
-                }
-            }
-        }else{
-            hasBegan = true
-            startGame()
-            self.hero.state = States.FAIL   
+                    self.backtToMenu()
+                }else{
+                    
+                    if(hasBegan){
+                        self.hero.state = States.Initial
+                    }else{
+                        hasBegan = true
+                        startGame()
+                        self.hero.state = States.FAIL
             
-        }
-        
+                    }
+                }
+
+            }
+               
     }
     
     func addJointBody(bodyJoint: SKSpriteNode) {
