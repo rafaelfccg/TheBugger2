@@ -48,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     
     
-    var topLimit:CGPoint = CGPointMake(0, 460)
+    var topLimit:CGPoint = CGPointMake(0, 430)
     
     
     
@@ -325,7 +325,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.pinned = true
             
         })
-        self.enumerateChildNodesWithName("Moeda", usingBlock: {
+        self.enumerateChildNodesWithName("moeda", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             let moeda = TBMoedasNode()
             moeda.position = node.position
