@@ -190,7 +190,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func jumpImpulse(){
         
-        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 125.0))
+        self.physicsBody?.applyImpulse(CGVectorMake(0.0, 130.0))
         
     }
     func jump(){

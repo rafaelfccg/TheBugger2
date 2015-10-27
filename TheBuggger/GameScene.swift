@@ -106,6 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         self.physicsWorld.contactDelegate = self
         
+        
         setupHUD()
         
         tapToStartLabel = SKLabelNode(text: "TAP TO START")
@@ -321,7 +322,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.pinned = true
             
         })
-        self.enumerateChildNodesWithName("Moeda", usingBlock: {
+        self.enumerateChildNodesWithName("moeda", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             let moeda = TBMoedasNode()
             moeda.position = node.position
@@ -416,7 +417,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         updateScore()
         cameraState()
-        
+        print(self.firstCameraPos)
         //print(CGRectGetMaxY(self.frame))
         
         if(hasBegan) {
@@ -481,7 +482,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     func changeCamera() {
         
-        //print(self.topLimit.y - self.hero.position.y)
+        
+        
+       // print(self.topLimit.y - self.hero.position.y)
+        
+        
         
         switch(stateCamera) {
             
