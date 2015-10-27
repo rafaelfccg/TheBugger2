@@ -25,7 +25,7 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         
         self.navigationController?.navigationBar.hidden = true
 
-        mudaScene("Level1Scene",withMethod: gameMethod!)
+        mudaScene("Level1SceneFinal",withMethod: gameMethod!)
     }
     
     func mudaScene(nomeSKS: String, withMethod:Int)

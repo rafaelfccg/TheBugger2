@@ -219,7 +219,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     func restartLevel()
     {
-        delegateChanger?.mudaScene("Level1Scene", withMethod: self.isMethodOne!)
+        delegateChanger?.mudaScene("Level1SceneFinal", withMethod: self.isMethodOne!)
         //delegateChanger?.backToMenu()
         //setUpLevel()
     }
