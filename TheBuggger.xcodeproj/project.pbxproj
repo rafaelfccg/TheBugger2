@@ -62,11 +62,7 @@
 		00CDBEB01BB9B39100BC0517 /* TheBugggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */; };
 		00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */; };
 		00EF3CEA1BDAC819005A9CB3 /* Move_Ya.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00EF3CE91BDAC819005A9CB3 /* Move_Ya.mp3 */; };
-		00F6CFD11BDE9747006F0302 /* edge1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFCF1BDE9747006F0302 /* edge1.png */; };
-		00F6CFD21BDE9747006F0302 /* edge2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD01BDE9747006F0302 /* edge2.png */; };
 		00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD31BDE9777006F0302 /* blocksmg-01.png */; };
-		00F6CFD71BDE9777006F0302 /* metalblocksm-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD41BDE9777006F0302 /* metalblocksm-1.png */; };
-		00F6CFD81BDE9777006F0302 /* metalbolcklg-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD51BDE9777006F0302 /* metalbolcklg-1.png */; };
 		00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD91BDEAAD5006F0302 /* icon app.png */; };
 		00F6CFDC1BDEAB8C006F0302 /* TBMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F6CFDB1BDEAB8C006F0302 /* TBMenuController.swift */; };
 		00F6CFE21BDEBF6A006F0302 /* play_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFE11BDEBF6A006F0302 /* play_off.png */; };
@@ -176,11 +172,7 @@
 		00CDBEB11BB9B39100BC0517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGestureReconizer.swift; sourceTree = "<group>"; };
 		00EF3CE91BDAC819005A9CB3 /* Move_Ya.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Move_Ya.mp3; sourceTree = "<group>"; };
-		00F6CFCF1BDE9747006F0302 /* edge1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edge1.png; sourceTree = "<group>"; };
-		00F6CFD01BDE9747006F0302 /* edge2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edge2.png; sourceTree = "<group>"; };
 		00F6CFD31BDE9777006F0302 /* blocksmg-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blocksmg-01.png"; sourceTree = "<group>"; };
-		00F6CFD41BDE9777006F0302 /* metalblocksm-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metalblocksm-1.png"; sourceTree = "<group>"; };
-		00F6CFD51BDE9777006F0302 /* metalbolcklg-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metalbolcklg-1.png"; sourceTree = "<group>"; };
 		00F6CFD91BDEAAD5006F0302 /* icon app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon app.png"; sourceTree = "<group>"; };
 		00F6CFDB1BDEAB8C006F0302 /* TBMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMenuController.swift; sourceTree = "<group>"; };
 		00F6CFE11BDEBF6A006F0302 /* play_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_off.png; sourceTree = "<group>"; };
@@ -328,8 +320,6 @@
 		001E559D1BD8221600B80833 /* Plataformas */ = {
 			isa = PBXGroup;
 			children = (
-				00F6CFCF1BDE9747006F0302 /* edge1.png */,
-				00F6CFD01BDE9747006F0302 /* edge2.png */,
 				001E559E1BD8221600B80833 /* collision plataform */,
 				001E55AA1BD8221600B80833 /* estructure1.png */,
 				001E55AB1BD8221600B80833 /* estructure2.png */,
@@ -346,8 +336,6 @@
 				001E559F1BD8221600B80833 /* BaseA.png */,
 				001E55A01BD8221600B80833 /* BaseB.png */,
 				00F6CFD31BDE9777006F0302 /* blocksmg-01.png */,
-				00F6CFD41BDE9777006F0302 /* metalblocksm-1.png */,
-				00F6CFD51BDE9777006F0302 /* metalbolcklg-1.png */,
 				001E55A11BD8221600B80833 /* BaseD.png */,
 				001E55A21BD8221600B80833 /* machine-01.png */,
 				001E55A31BD8221600B80833 /* plataformmd.png */,
@@ -643,7 +631,6 @@
 				001E55B61BD8221600B80833 /* machinefront-03.png in Resources */,
 				001E55D31BD8221600B80833 /* estructure1.png in Resources */,
 				00F6CFE21BDEBF6A006F0302 /* play_off.png in Resources */,
-				00F6CFD81BDE9777006F0302 /* metalbolcklg-1.png in Resources */,
 				00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */,
 				001E55CB1BD8221600B80833 /* machine-01.png in Resources */,
 				001E557A1BD6DA0C00B80833 /* power1.png in Resources */,
@@ -664,7 +651,6 @@
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
 				001E55B01BD8221600B80833 /* alert-01.png in Resources */,
 				001E55B21BD8221600B80833 /* alert-03.png in Resources */,
-				00F6CFD21BDE9747006F0302 /* edge2.png in Resources */,
 				AF6006F71BDAC31200540D7C /* PlayerDefence.Atlas in Resources */,
 				001E55BE1BD8221600B80833 /* speed booster-01.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
@@ -690,7 +676,6 @@
 				00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */,
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
 				AF6006F91BDAC34900540D7C /* Moedas.Atlas in Resources */,
-				00F6CFD11BDE9747006F0302 /* edge1.png in Resources */,
 				001E55CF1BD8221600B80833 /* prataformlg.png in Resources */,
 				001E55C51BD8221600B80833 /* structure2.png in Resources */,
 				001E55BF1BD8221600B80833 /* speed booster-02.png in Resources */,
@@ -700,7 +685,6 @@
 				AF429F831BD186D5002B5465 /* Level2Scene.sks in Resources */,
 				AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */,
 				001E55D11BD8221600B80833 /* roofend1.png in Resources */,
-				00F6CFD71BDE9777006F0302 /* metalblocksm-1.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 				AF6006FB1BDAC36400540D7C /* GroundMonster.atlas in Resources */,
 				AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */,
