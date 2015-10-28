@@ -100,8 +100,6 @@ class TBPlayerNode: SKSpriteNode {
         
         var walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
         
-       
-        
         let physicsTexture = SKTexture(imageNamed: "heroPhysicsBody")
         self.texture = walkArray[0];
         // initialize physics body
@@ -194,26 +192,28 @@ class TBPlayerNode: SKSpriteNode {
         
     }
     func jump(){
-        switch(jumpState){
-        case JumpState.CanJump:
-            self.jumpImpulse()
-            jumpState = JumpState.FirstJump
-            break
-        case JumpState.FirstJump:
-            if(powerUP == TBPowerUpsStates.DoubleJumper){
+        if fabs((self.physicsBody?.velocity.dy)!) < 10 {
+            switch(jumpState){
+            case JumpState.CanJump:
                 self.jumpImpulse()
-                jumpState = JumpState.SecondJump
-            }
-            break
-        case JumpState.SecondJump:
+                jumpState = JumpState.FirstJump
+                break
+            case JumpState.FirstJump:
+                if(powerUP == TBPowerUpsStates.DoubleJumper){
+                    self.jumpImpulse()
+                    jumpState = JumpState.SecondJump
+                }
+                break
+            case JumpState.SecondJump:
             
-            break
+                break
+            }
         }
 
     }
     
     func actionCall(){
-        switch state{
+        switch state {
 
         case States.SD:
             let dashArray = TBUtils().getSprites("PlayerDash", nomeImagens: "dash-")

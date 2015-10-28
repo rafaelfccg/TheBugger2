@@ -35,6 +35,7 @@ class GameViewController: UIViewController, SceneChangesDelegate {
             scene.delegateChanger = self
             
             let skView = self.view as! SKView
+//            skView.scene?.
             //skView.showsFPS = true
             //skView.showsNodeCount = true
             //skView.showsPhysics = true;

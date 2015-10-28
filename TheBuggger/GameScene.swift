@@ -31,6 +31,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var tapToStartLabel:SKLabelNode?
     var hasBegan:Bool = false
     
+    let removable = "removable"
+    
     var count = 0
     
     let numFormatter = NSNumberFormatter()
@@ -46,9 +48,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     var cameraPostionUp:CGPoint = CGPoint()
     var cameraActionUp:SKAction = SKAction()
-    var topLimit:CGPoint = CGPointMake(0, 460)
+    
+    var topLimit:CGPoint = CGPointMake(0, 430)
+    // count number of deaths
+    var numberOfDeath:Int = 0
+    
     var firstHeroPosition:CGPoint = CGPoint()
+    
     var firstCameraPos:CGPoint = CGPointMake(0, 220)
+    
     var upDone = false
     
     var stateCamera = "normal"
@@ -73,14 +81,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     static let END_LEVEL_NODE:UInt32        = 0b1000000000000
 
     
-    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
-        
-        hero.setUpPlayer()
         hero.method = isMethodOne
         self.addChild(hero)
+        hero.setUpPlayer()
         self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
         let camera = SKCameraNode();
         self.addChild(camera)
@@ -120,7 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             do {
               try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
               backgroundMusicPlayer!.numberOfLoops  = -1
-                if(!backgroundMusicPlayer!.playing){
+                if(backgroundMusicPlayer!.playing){
                     self.backgroundMusicPlayer?.play()
                 }
             }catch {
@@ -220,31 +226,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     func restartLevel()
     {
-        delegateChanger?.mudaScene("Level1SceneFinal", withMethod: self.isMethodOne!)
-        //delegateChanger?.backToMenu()
-        //setUpLevel()
+        //delegateChanger?.mudaScene("Level1SceneFinal", withMethod: self.isMethodOne!)
+        self.numberOfDeath++
+        
+        self.enumerateChildNodesWithName(self.removable, usingBlock: {
+            (node, ponter)->Void in
+            
+            node.removeFromParent()
+
+            })
+        let method = hero.method
+        setHeroPosition()
+        self.hero.score = 0;
+        
+        self.addChild(hero)
+        
+        hero.method = method
+        
+        skyNode?.position = CGPoint(x: 0,y: 0)
+        skyNodeNext?.position = CGPoint(x: (skyNode?.position.x)! + (skyNode?.frame.size.width)!,y: 0)
+
+        if(tapToStartLabel?.parent == nil){
+            self.camera!.addChild(tapToStartLabel!)
+        }
+        
+        spawnMoedas()
+        spawnMonstros()
+        
+        
     }
     
-    func backtToMenu(){
-        delegateChanger?.backToMenu()   
-    }
-    
-    
-    func setUpLevel(){
-        
-        //set hero position
-        let spanw = self.childNodeWithName("SpawnHero")
-        self.hero.position = (spanw?.position)!
-        self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 100)
-        self.hero.zPosition = 100
-        
-        dx = hero.position.x
+    func spawnMonstros(){
         self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
             
             let groundBoti = TBGroundBotNode()
             
             groundBoti.position = node.position
-            groundBoti.name = "Monster"
+            groundBoti.name = self.removable
             groundBoti.physicsBody?.allowsRotation = false
             node.physicsBody?.pinned = false
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
@@ -254,6 +272,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.addChild(groundBoti)
             
         })
+        
+    }
+    func spawnMoedas(){
+        self.enumerateChildNodesWithName("moeda", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            let moeda = TBMoedasNode()
+            moeda.position = node.position
+            moeda.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
+            moeda.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            moeda.name  = self.removable
+            self.addChild(moeda)
+            
+            moeda.runAction(SKAction.repeatActionForever( TBMoedasNode.animation! ))
+            
+        })
+    }
+    
+    func backtToMenu(){
+        delegateChanger?.backToMenu()   
+    }
+    
+    func setHeroPosition(){
+        let spanw = self.childNodeWithName("SpawnHero")
+        
+        self.hero.position = (spanw!.position)
+        self.hero.realSpeed = 0
+        hero.updateVelocity()
+        print(hero.position)
+        self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 100)
+        self.hero.zPosition = 100
+        hasBegan = false
+        
+        
+
+    }
+    
+    func setUpLevel(){
+        
+        //set hero position
+        setHeroPosition()
+        
+        dx = hero.position.x
+        
+        spawnMonstros()
         
         //do something with the each child type
         self.enumerateChildNodesWithName("chao", usingBlock: {
@@ -322,17 +384,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.pinned = true
             
         })
-        self.enumerateChildNodesWithName("moeda", usingBlock: {
-            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-            let moeda = TBMoedasNode()
-            moeda.position = node.position
-            moeda.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
-            moeda.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
-            self.addChild(moeda)
-            
-            moeda.runAction(SKAction.repeatActionForever( TBMoedasNode.animation! ))
-            
-        })
+        
+        spawnMoedas()
+        
         self.enumerateChildNodesWithName("FINAL", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
@@ -417,7 +471,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         updateScore()
         cameraState()
-        print(self.firstCameraPos)
+        //print(self.firstCameraPos)
         //print(CGRectGetMaxY(self.frame))
         
         if(hasBegan) {
@@ -637,6 +691,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 bodyB.applyImpulse(CGVectorMake(100, 30))
                 
             }else{
+                self.hero.removeFromParent()
                 restartLevel()
                 print("oohhh damange")
             }
@@ -651,8 +706,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                         contact.contactNormal.dy * contact.contactNormal.dy)
             
             if(!flagTrocou) {norm = -norm}
-                    print(self.count)
-                    count++
+//                    print(self.count)
+            count++
                     //print("dy  \(contact.contactNormal.dy)/\(norm) ")
             if(contact.contactNormal.dy/norm > 0.5){
                 self.hero.jumpState = JumpState.CanJump
