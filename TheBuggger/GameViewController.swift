@@ -17,6 +17,7 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         TBEspinhosNode.createSKActionAnimation()
         TBGroundBotNode.createSKActionAnimation()
         TBMoedasNode.createSKActionAnimation()
+        TBFinalNode.createSKActionAnimation()
         
 
         mudaScene("Level1Scene")
