@@ -100,8 +100,6 @@ class TBPlayerNode: SKSpriteNode {
         
         var walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
         
-       
-        
         let physicsTexture = SKTexture(imageNamed: "heroPhysicsBody")
         self.texture = walkArray[0];
         // initialize physics body
@@ -188,32 +186,45 @@ class TBPlayerNode: SKSpriteNode {
 
     }
     
+    func defence(){
+        if( self.actionForKey("defence") == nil){
+            self.attackState = AttackState.Defending
+            runAction(defenceActionChangeState!, withKey:"defence")
+            
+        }
+    
+    }
+    
     func jumpImpulse(){
         
         self.physicsBody?.applyImpulse(CGVectorMake(0.0, 130.0))
         
     }
     func jump(){
-        switch(jumpState){
-        case JumpState.CanJump:
-            self.jumpImpulse()
-            jumpState = JumpState.FirstJump
-            break
-        case JumpState.FirstJump:
-            if(powerUP == TBPowerUpsStates.DoubleJumper){
-                self.jumpImpulse()
-                jumpState = JumpState.SecondJump
-            }
-            break
-        case JumpState.SecondJump:
+        
+            switch(jumpState){
+            case JumpState.CanJump:
+                if (self.physicsBody?.velocity.dy)! > -10 {
+                    self.jumpImpulse()
+                    jumpState = JumpState.FirstJump
+                }
+                break
+            case JumpState.FirstJump:
+                if(powerUP == TBPowerUpsStates.DoubleJumper){
+                    self.jumpImpulse()
+                    jumpState = JumpState.SecondJump
+                }
+                break
+            case JumpState.SecondJump:
             
-            break
-        }
+                break
+            }
+        
 
     }
     
     func actionCall(){
-        switch state{
+        switch state {
 
         case States.SD:
             let dashArray = TBUtils().getSprites("PlayerDash", nomeImagens: "dash-")
@@ -237,9 +248,8 @@ class TBPlayerNode: SKSpriteNode {
             
             break;
         case States.SL:
-            
-            self.attackState = AttackState.Defending
-            runAction(defenceActionChangeState!)
+        
+            defence()
 
            
             break;
@@ -247,8 +257,6 @@ class TBPlayerNode: SKSpriteNode {
             if method! == 1  || method! == 3{
                 attack()
             }
-            
-            
             
             break;
         case States.Tap:
