@@ -61,7 +61,7 @@ class TBMenuViewController :UIViewController {
     }
     
     @IBAction func normalLevel(sender: AnyObject) {
-        self.stringLevel = "Level1Scene"
+        self.stringLevel = "Level2Scene"
         self.performSegueWithIdentifier("ToGameSegue", sender: self)
     }
     @IBAction func veryHarLevel(sender: AnyObject) {

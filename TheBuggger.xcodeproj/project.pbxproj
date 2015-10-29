@@ -51,16 +51,18 @@
 		001E55D71BD8221600B80833 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AE1BD8221600B80833 /* texture.png */; };
 		001E55D81BD8221600B80833 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AF1BD8221600B80833 /* sky.png */; };
 		0022BFDE1BE28B0D00A184D5 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0022BFDD1BE28B0D00A184D5 /* Level1Scene.sks */; };
-		0022C0141BE29BA600A184D5 /* AttackTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C00A1BE29BA600A184D5 /* AttackTutorial.atlas */; };
-		0022C0151BE29BA600A184D5 /* attacktxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C00B1BE29BA600A184D5 /* attacktxt.png */; };
-		0022C0161BE29BA600A184D5 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 0022C00C1BE29BA600A184D5 /* Icon */; };
-		0022C0171BE29BA600A184D5 /* JumpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C00D1BE29BA600A184D5 /* JumpTutorial.atlas */; };
-		0022C0181BE29BA600A184D5 /* jumptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C00E1BE29BA600A184D5 /* jumptxt.png */; };
-		0022C0191BE29BA600A184D5 /* SlideFrontTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C00F1BE29BA600A184D5 /* SlideFrontTutorial.atlas */; };
-		0022C01A1BE29BA600A184D5 /* slidetxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0101BE29BA600A184D5 /* slidetxt.png */; };
-		0022C01B1BE29BA600A184D5 /* SlideUpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0111BE29BA600A184D5 /* SlideUpTutorial.atlas */; };
-		0022C01C1BE29BA600A184D5 /* TapTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0121BE29BA600A184D5 /* TapTutorial.atlas */; };
-		0022C01D1BE29BA600A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0131BE29BA600A184D5 /* taptxt.png */; };
+		0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */; };
+		0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0201BE2A44200A184D5 /* attacktxt.png */; };
+		0022C02B1BE2A44300A184D5 /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0211BE2A44200A184D5 /* Icon */; };
+		0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */; };
+		0022C02D1BE2A44300A184D5 /* jumptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0231BE2A44200A184D5 /* jumptxt.png */; };
+		0022C02E1BE2A44300A184D5 /* SlideFrontTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0241BE2A44300A184D5 /* SlideFrontTutorial.atlas */; };
+		0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0251BE2A44300A184D5 /* slidetxt.png */; };
+		0022C0301BE2A44300A184D5 /* SlideUpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0261BE2A44300A184D5 /* SlideUpTutorial.atlas */; };
+		0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0271BE2A44300A184D5 /* TapTutorial.atlas */; };
+		0022C0321BE2A44300A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0281BE2A44300A184D5 /* taptxt.png */; };
+		0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C04D1BE2A95800A184D5 /* pixels.atlas */; };
+		0022C0501BE2B3C600A184D5 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0022C04F1BE2B3C600A184D5 /* Level2Scene.sks */; };
 		009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */; };
 		009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */; };
 		00CDBE8C1BB9B39000BC0517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */; };
@@ -172,16 +174,18 @@
 		001E55AE1BD8221600B80833 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		001E55AF1BD8221600B80833 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		0022BFDD1BE28B0D00A184D5 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
-		0022C00A1BE29BA600A184D5 /* AttackTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AttackTutorial.atlas; sourceTree = "<group>"; };
-		0022C00B1BE29BA600A184D5 /* attacktxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attacktxt.png; sourceTree = "<group>"; };
-		0022C00C1BE29BA600A184D5 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
-		0022C00D1BE29BA600A184D5 /* JumpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpTutorial.atlas; sourceTree = "<group>"; };
-		0022C00E1BE29BA600A184D5 /* jumptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumptxt.png; sourceTree = "<group>"; };
-		0022C00F1BE29BA600A184D5 /* SlideFrontTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlideFrontTutorial.atlas; sourceTree = "<group>"; };
-		0022C0101BE29BA600A184D5 /* slidetxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slidetxt.png; sourceTree = "<group>"; };
-		0022C0111BE29BA600A184D5 /* SlideUpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlideUpTutorial.atlas; sourceTree = "<group>"; };
-		0022C0121BE29BA600A184D5 /* TapTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = TapTutorial.atlas; sourceTree = "<group>"; };
-		0022C0131BE29BA600A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
+		0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AttackTutorial.atlas; sourceTree = "<group>"; };
+		0022C0201BE2A44200A184D5 /* attacktxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attacktxt.png; sourceTree = "<group>"; };
+		0022C0211BE2A44200A184D5 /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon"; sourceTree = "<group>"; };
+		0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpTutorial.atlas; sourceTree = "<group>"; };
+		0022C0231BE2A44200A184D5 /* jumptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumptxt.png; sourceTree = "<group>"; };
+		0022C0241BE2A44300A184D5 /* SlideFrontTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlideFrontTutorial.atlas; sourceTree = "<group>"; };
+		0022C0251BE2A44300A184D5 /* slidetxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slidetxt.png; sourceTree = "<group>"; };
+		0022C0261BE2A44300A184D5 /* SlideUpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlideUpTutorial.atlas; sourceTree = "<group>"; };
+		0022C0271BE2A44300A184D5 /* TapTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = TapTutorial.atlas; sourceTree = "<group>"; };
+		0022C0281BE2A44300A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
+		0022C04D1BE2A95800A184D5 /* pixels.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pixels.atlas; sourceTree = "<group>"; };
+		0022C04F1BE2B3C600A184D5 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
 		009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPowerUpsStates.swift; sourceTree = "<group>"; };
 		009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBChangeSpeedGround.swift; sourceTree = "<group>"; };
 		00CDBE881BB9B39000BC0517 /* TheBuggger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBuggger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +269,7 @@
 		001E557D1BD8221600B80833 /* Cenario */ = {
 			isa = PBXGroup;
 			children = (
+				0022C04D1BE2A95800A184D5 /* pixels.atlas */,
 				5289B84D1BE0068600CA6C2D /* darkness.png */,
 				5289B84B1BE002FD00CA6C2D /* ENDZONE.atlas */,
 				001E557E1BD8221600B80833 /* Animateds */,
@@ -389,19 +394,19 @@
 			path = "collision plataform";
 			sourceTree = "<group>";
 		};
-		0022C0091BE29BA600A184D5 /* Tutorial  */ = {
+		0022C01E1BE2A44200A184D5 /* Tutorial  */ = {
 			isa = PBXGroup;
 			children = (
-				0022C00A1BE29BA600A184D5 /* AttackTutorial.atlas */,
-				0022C00B1BE29BA600A184D5 /* attacktxt.png */,
-				0022C00C1BE29BA600A184D5 /* Icon */,
-				0022C00D1BE29BA600A184D5 /* JumpTutorial.atlas */,
-				0022C00E1BE29BA600A184D5 /* jumptxt.png */,
-				0022C00F1BE29BA600A184D5 /* SlideFrontTutorial.atlas */,
-				0022C0101BE29BA600A184D5 /* slidetxt.png */,
-				0022C0111BE29BA600A184D5 /* SlideUpTutorial.atlas */,
-				0022C0121BE29BA600A184D5 /* TapTutorial.atlas */,
-				0022C0131BE29BA600A184D5 /* taptxt.png */,
+				0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */,
+				0022C0201BE2A44200A184D5 /* attacktxt.png */,
+				0022C0211BE2A44200A184D5 /* Icon */,
+				0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */,
+				0022C0231BE2A44200A184D5 /* jumptxt.png */,
+				0022C0241BE2A44300A184D5 /* SlideFrontTutorial.atlas */,
+				0022C0251BE2A44300A184D5 /* slidetxt.png */,
+				0022C0261BE2A44300A184D5 /* SlideUpTutorial.atlas */,
+				0022C0271BE2A44300A184D5 /* TapTutorial.atlas */,
+				0022C0281BE2A44300A184D5 /* taptxt.png */,
 			);
 			path = "Tutorial ";
 			sourceTree = "<group>";
@@ -525,7 +530,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				0022C0091BE29BA600A184D5 /* Tutorial  */,
+				0022C01E1BE2A44200A184D5 /* Tutorial  */,
 				00F6CFE11BDEBF6A006F0302 /* play_off.png */,
 				00F6CFE31BDEBF74006F0302 /* play_on.png */,
 				00F6CFD91BDEAAD5006F0302 /* icon app.png */,
@@ -578,6 +583,7 @@
 		52E7AEAD1BBEF81D008FE672 /* Level 2 */ = {
 			isa = PBXGroup;
 			children = (
+				0022C04F1BE2B3C600A184D5 /* Level2Scene.sks */,
 				52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */,
 			);
 			name = "Level 2";
@@ -697,8 +703,8 @@
 				001E557A1BD6DA0C00B80833 /* power1.png in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
-				0022C0141BE29BA600A184D5 /* AttackTutorial.atlas in Resources */,
-				0022C01D1BE29BA600A184D5 /* taptxt.png in Resources */,
+				0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */,
+				0022C0321BE2A44300A184D5 /* taptxt.png in Resources */,
 				AFA026E01BD17FDB00B7FFC5 /* heroPhysicsBody.png in Resources */,
 				001E55C11BD8221600B80833 /* speed booster-04.png in Resources */,
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
@@ -708,8 +714,10 @@
 				001E55B11BD8221600B80833 /* alert-02.png in Resources */,
 				001E55CA1BD8221600B80833 /* BaseD.png in Resources */,
 				001E55BD1BD8221600B80833 /* greensignal-04.png in Resources */,
+				0022C0501BE2B3C600A184D5 /* Level2Scene.sks in Resources */,
+				0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */,
 				001E55C41BD8221600B80833 /* structure1.png in Resources */,
-				0022C0151BE29BA600A184D5 /* attacktxt.png in Resources */,
+				0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */,
 				001E55CC1BD8221600B80833 /* plataformmd.png in Resources */,
 				001E55D51BD8221600B80833 /* estructure3.png in Resources */,
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
@@ -719,13 +727,13 @@
 				001E55BE1BD8221600B80833 /* speed booster-01.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
 				5289B84E1BE0068600CA6C2D /* darkness.png in Resources */,
-				0022C0161BE29BA600A184D5 /* Icon in Resources */,
+				0022C02B1BE2A44300A184D5 /* Icon in Resources */,
 				001E55BC1BD8221600B80833 /* greensignal-03.png in Resources */,
 				521269441BDACCE100B5FB2E /* edge1.png in Resources */,
 				001E55BB1BD8221600B80833 /* greensignal-02.png in Resources */,
 				AFF489F41BD56D8700463411 /* PlayerRun.atlas in Resources */,
-				0022C0171BE29BA600A184D5 /* JumpTutorial.atlas in Resources */,
-				0022C0181BE29BA600A184D5 /* jumptxt.png in Resources */,
+				0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */,
+				0022C02D1BE2A44300A184D5 /* jumptxt.png in Resources */,
 				001E55B71BD8221600B80833 /* machinefront-04.png in Resources */,
 				001E55D01BD8221600B80833 /* roof.png in Resources */,
 				001E55B51BD8221600B80833 /* machinefront-02.png in Resources */,
@@ -745,7 +753,7 @@
 				001E55C61BD8221600B80833 /* base floor.png in Resources */,
 				001E55D71BD8221600B80833 /* texture.png in Resources */,
 				001E55B31BD8221600B80833 /* alert-04.png in Resources */,
-				0022C01B1BE29BA600A184D5 /* SlideUpTutorial.atlas in Resources */,
+				0022C0301BE2A44300A184D5 /* SlideUpTutorial.atlas in Resources */,
 				001E55C01BD8221600B80833 /* speed booster-03.png in Resources */,
 				00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */,
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
@@ -757,13 +765,13 @@
 				AF2A3E491BD861D8001DA3DB /* Espinhos.atlas in Resources */,
 				AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */,
 				001E55D11BD8221600B80833 /* roofend1.png in Resources */,
-				0022C01A1BE29BA600A184D5 /* slidetxt.png in Resources */,
+				0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 				AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */,
 				001E55D21BD8221600B80833 /* roofend2.png in Resources */,
 				52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */,
-				0022C0191BE29BA600A184D5 /* SlideFrontTutorial.atlas in Resources */,
-				0022C01C1BE29BA600A184D5 /* TapTutorial.atlas in Resources */,
+				0022C02E1BE2A44300A184D5 /* SlideFrontTutorial.atlas in Resources */,
+				0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var delegateChanger: SceneChangesDelegate?
     var labelScore:SKLabelNode?
     var percentage:SKLabelNode?
+    var numberDeathLabel:SKLabelNode?
     
     var tapToStartLabel:SKLabelNode?
     var hasBegan:Bool = false
@@ -82,6 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.addChild(hero)
         hero.setUpPlayer()
         self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
+        print(size)
         let camera = SKCameraNode();
         self.addChild(camera)
         self.camera = camera
@@ -203,6 +205,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.camera!.addChild(percentage!)
         percentage?.zPosition = 1000
         percentage?.position = CGPointMake(0, back.position.y)
+        
+//        self.numberDeathLabel = SKLabelNode(text: "0%")
+//        self.camera!.addChild(numberDeathLabel!)
+//        numberDeathLabel?.zPosition = 1000
+//        numberDeathLabel?.position = CGPointMake(0, back.position.y)
         //percentage?.fontSize = 70
         
         
