@@ -17,23 +17,18 @@ protocol SceneChangesDelegate{
 
 class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
-    
-    var state :States = States.Initial
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
     let limitTimeAction:Double = 0.1
     var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
-    var hudSprite:SKSpriteNode?
-    var dx:CGFloat?;
     var labelScore:SKLabelNode?
+    var percentage:SKLabelNode?
     
     var tapToStartLabel:SKLabelNode?
     var hasBegan:Bool = false
     
     let removable = "removable"
-    
-    var count = 0
     
     let numFormatter = NSNumberFormatter()
     //parallax
@@ -45,20 +40,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     //camera
     var cameraPosition:CGPoint = CGPoint()
     var cameraAction:SKAction = SKAction()
-    
     var cameraPostionUp:CGPoint = CGPoint()
     var cameraActionUp:SKAction = SKAction()
     
     var topLimit:CGPoint = CGPointMake(0, 430)
     // count number of deaths
     var numberOfDeath:Int = 0
+    // death node
+    var deathNodeReference:SKNode?
+    var stagePercentage:Double?
     
     var firstHeroPosition:CGPoint = CGPoint()
-    
     var firstCameraPos:CGPoint = CGPointMake(0, 220)
-    
     var upDone = false
-    
     var stateCamera = "normal"
     
     var backgroundMusicPlayer:AVAudioPlayer?
@@ -93,6 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.camera = camera
         
         numFormatter.minimumIntegerDigits = 9
+        numFormatter.maximumFractionDigits = 0
         
         skyNode = SKSpriteNode(imageNamed: "sky")
         skyNode?.size = self.size
@@ -112,12 +107,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         self.physicsWorld.contactDelegate = self
         
-        
         setupHUD()
         
         tapToStartLabel = SKLabelNode(text: "TAP TO START")
         self.camera!.addChild(tapToStartLabel!)
-
         
         if(backgroundMusicPlayer == nil){
         
@@ -186,6 +179,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
     }
     
+    func updatePercentageLabel(){
+        let per = Int(stagePercentage!)
+        percentage?.text = "\(per)%"
+    }
     
     func setupHUD()
     {
@@ -199,15 +196,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         labelScore = SKLabelNode(text: numFormatter.stringFromNumber(0))
         labelScore?.name  = "scoreLabel"
         self.camera!.addChild(labelScore!)
-        labelScore?.position = CGPointMake(back.position.x + back.size.width/2 + (labelScore?.frame.size.width)! - 10, back.position.y - 5)
+        labelScore?.position = CGPointMake(back.position.x + back.size.width/2 + (labelScore?.frame.size.width)! - 20, back.position.y - 5)
         labelScore?.zPosition = 1000
         
-        let powerTexture = SKTexture(imageNamed: "power1")
-        let powerNode = SKSpriteNode(texture: powerTexture, size: CGSizeMake( 85, 85) )
-        powerNode.name = "powerNode"
-        self.camera!.addChild(powerNode)
-        powerNode.position = CGPoint(x: self.size.width/2 - powerNode.size.width/2 - 15, y: -self.size.height/2 + powerNode.size.height/2 + 10)
-        powerNode.zPosition = CGFloat(1000)
+        percentage = SKLabelNode(text: "0%")
+        self.camera!.addChild(percentage!)
+        percentage?.zPosition = 1000
+        percentage?.position = CGPointMake(0, back.position.y)
+        //percentage?.fontSize = 70
+        
+        
+        //como não funciona tirei do primeiro playtesting
+        
+//        let powerTexture = SKTexture(imageNamed: "power1")
+//        let powerNode = SKSpriteNode(texture: powerTexture, size: CGSizeMake( 85, 85) )
+//        powerNode.name = "powerNode"
+//        self.camera!.addChild(powerNode)
+//        powerNode.position = CGPoint(x: self.size.width/2 - powerNode.size.width/2 - 15, y: -self.size.height/2 + powerNode.size.height/2 + 10)
+//        powerNode.zPosition = CGFloat(1000)
     }
     
     func addJoint(joint: SKPhysicsJoint) {
@@ -238,10 +244,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         let method = hero.method
         setHeroPosition()
         self.hero.score = 0;
+        lastFrameTime = 0
         
         self.addChild(hero)
         
         hero.method = method
+        
+        print(numberOfDeath)
         
         skyNode?.position = CGPoint(x: 0,y: 0)
         skyNodeNext?.position = CGPoint(x: (skyNode?.position.x)! + (skyNode?.frame.size.width)!,y: 0)
@@ -298,6 +307,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         self.hero.position = (spanw!.position)
         self.hero.realSpeed = 0
+        firstHeroPosition = hero.position
         hero.updateVelocity()
         print(hero.position)
         self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 100)
@@ -312,8 +322,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         //set hero position
         setHeroPosition()
-        
-        dx = hero.position.x
         
         spawnMonstros()
         
@@ -367,6 +375,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.runAction(SKAction.repeatActionForever(TBEspinhosNode.animation!))
             
         })
+        //nó pulo morte
+        self.enumerateChildNodesWithName("morte_queda", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
+            node.zPosition = 1
+            self.setObstacleTypeHit(node)
+            
+            self.deathNodeReference = node
+            
+        })
         self.enumerateChildNodesWithName("parede", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
@@ -396,6 +416,85 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.setObstacleTypeHit(node)
             
         })
+        
+        
+        self.enumerateChildNodesWithName("firstGestureTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            if(self.isMethodOne == 1 ){
+                node.runAction(SKAction.repeatActionForever(TBTutorialNodes.tapTutorialAction!))
+            }else {
+                node.runAction(SKAction.repeatActionForever(TBTutorialNodes.slideUpTutorialAction!))
+            }
+        })
+        
+        self.enumerateChildNodesWithName("secondGestureTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            if(self.isMethodOne == 1 || self.isMethodOne == 3){
+                node.runAction(SKAction.repeatActionForever(TBTutorialNodes.slideRightTutorialAction!))
+            }else if self.isMethodOne == 2 {
+                node.runAction(SKAction.repeatActionForever(TBTutorialNodes.tapTutorialAction!))
+            }
+
+        })
+        
+        self.enumerateChildNodesWithName("firstActionTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            node.runAction(SKAction.repeatActionForever(TBTutorialNodes.jumpTutorialAction!))
+          
+
+            
+        })
+        
+        self.enumerateChildNodesWithName("secondActionTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            node.runAction(SKAction.repeatActionForever(TBTutorialNodes.attackTutorialAction!))
+            
+            
+        })
+        
+        self.enumerateChildNodesWithName("firstGestureTutorialLabel", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            
+            
+            if(self.isMethodOne! == 2 || self.isMethodOne! == 3 ){
+                let newNode = SKSpriteNode(imageNamed: "slidetxt")
+                newNode.position = node.position
+                newNode.size =  node.frame.size
+                self.addChild(newNode)
+                
+            }else{
+                let newNode = SKSpriteNode(imageNamed: "taptxt")
+                newNode.position = node.position
+                newNode.size =  node.frame.size
+                self.addChild(newNode)
+            }
+
+            
+        })
+        
+        self.enumerateChildNodesWithName("secondGestureTutorialLabel", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            if(self.isMethodOne! == 2 ){
+                let newNode = SKSpriteNode(imageNamed: "taptxt")
+                newNode.position = node.position
+                newNode.size =  node.frame.size
+                self.addChild(newNode)
+                
+            }else{
+                let newNode = SKSpriteNode(imageNamed: "slidetxt")
+                newNode.position = node.position
+                newNode.size =  node.frame.size
+                self.addChild(newNode)
+            }
+
+            
+        })
+
     
     }
     
@@ -481,6 +580,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             deltaTime = currentTime - lastFrameTime
             lastFrameTime = currentTime
             self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
+            
+            self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
+//            print(self.stagePercentage)
+            updatePercentageLabel()
 
         }
         
@@ -706,9 +809,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                         contact.contactNormal.dy * contact.contactNormal.dy)
             
             if(!flagTrocou) {norm = -norm}
-//                    print(self.count)
-            count++
-                    //print("dy  \(contact.contactNormal.dy)/\(norm) ")
+            //print("dy  \(contact.contactNormal.dy)/\(norm) ")
             if(contact.contactNormal.dy/norm > 0.5){
                 self.hero.jumpState = JumpState.CanJump
             }

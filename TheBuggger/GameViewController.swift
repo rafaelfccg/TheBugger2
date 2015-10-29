@@ -12,20 +12,16 @@ import SpriteKit
 class GameViewController: UIViewController, SceneChangesDelegate {
     
     var gameMethod:Int?
+    var level:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TBEspinhosNode.createSKActionAnimation()
-        TBGroundBotNode.createSKActionAnimation()
-        TBMoedasNode.createSKActionAnimation()
-        TBPlayerNode.createPlayerAttack()
-        TBPlayerNode.createPlayerDefense()
-        TBPlayerNode.createPlayerWalkAnimation()    
+            
         
         self.navigationController?.navigationBar.hidden = true
 
-        mudaScene("Level1SceneFinal",withMethod: gameMethod!)
+        mudaScene(level! ,withMethod: gameMethod!)
     }
     
     func mudaScene(nomeSKS: String, withMethod:Int)

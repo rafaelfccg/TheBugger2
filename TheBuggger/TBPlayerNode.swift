@@ -186,17 +186,28 @@ class TBPlayerNode: SKSpriteNode {
 
     }
     
+    func defence(){
+        if( self.actionForKey("defence") == nil){
+            self.attackState = AttackState.Defending
+            runAction(defenceActionChangeState!, withKey:"defence")
+            
+        }
+    
+    }
+    
     func jumpImpulse(){
         
         self.physicsBody?.applyImpulse(CGVectorMake(0.0, 130.0))
         
     }
     func jump(){
-        if fabs((self.physicsBody?.velocity.dy)!) < 10 {
+        
             switch(jumpState){
             case JumpState.CanJump:
-                self.jumpImpulse()
-                jumpState = JumpState.FirstJump
+                if (self.physicsBody?.velocity.dy)! > -10 {
+                    self.jumpImpulse()
+                    jumpState = JumpState.FirstJump
+                }
                 break
             case JumpState.FirstJump:
                 if(powerUP == TBPowerUpsStates.DoubleJumper){
@@ -208,7 +219,7 @@ class TBPlayerNode: SKSpriteNode {
             
                 break
             }
-        }
+        
 
     }
     
@@ -237,9 +248,8 @@ class TBPlayerNode: SKSpriteNode {
             
             break;
         case States.SL:
-            
-            self.attackState = AttackState.Defending
-            runAction(defenceActionChangeState!)
+        
+            defence()
 
            
             break;
@@ -247,8 +257,6 @@ class TBPlayerNode: SKSpriteNode {
             if method! == 1  || method! == 3{
                 attack()
             }
-            
-            
             
             break;
         case States.Tap:
