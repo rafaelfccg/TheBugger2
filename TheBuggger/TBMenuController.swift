@@ -36,6 +36,7 @@ class TBMenuViewController :UIViewController {
         TBTutorialNodes.createSlideUpTutorialAction()
         TBTutorialNodes.createSlideRightTutorialAction()
         TBTutorialNodes.createAttackTutorialAction()
+        TBFinalNode.createSKActionAnimation()
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {
