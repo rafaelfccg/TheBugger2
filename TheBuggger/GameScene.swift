@@ -186,6 +186,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         percentage?.text = "\(per)%"
     }
     
+    func updateNumberOfTries(){
+        let per = Int(self.numberOfDeath)
+        numberDeathLabel?.text = NSString(format: "Tentativas:%03d", per) as String//"Tentativas: \(per)"
+    }
+    
     func setupHUD()
     {
         let backTexture = SKTexture(imageNamed: "voltar")
@@ -206,12 +211,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         percentage?.zPosition = 1000
         percentage?.position = CGPointMake(0, back.position.y)
         
-//        self.numberDeathLabel = SKLabelNode(text: "0%")
-//        self.camera!.addChild(numberDeathLabel!)
-//        numberDeathLabel?.zPosition = 1000
-//        numberDeathLabel?.position = CGPointMake(0, back.position.y)
-        //percentage?.fontSize = 70
-        
+        self.numberDeathLabel = SKLabelNode(text: "Tentativas: 000")
+        self.camera!.addChild(numberDeathLabel!)
+        numberDeathLabel?.zPosition = 1000
+        numberDeathLabel?.position = CGPointMake(CGRectGetMidX(self.frame) - self.numberDeathLabel!.frame.width/2 - 10, back.position.y)
         
         //como não funciona tirei do primeiro playtesting
         
@@ -268,6 +271,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         spawnMoedas()
         spawnMonstros()
+        updateNumberOfTries()
         
         
     }
@@ -591,6 +595,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
 //            print(self.stagePercentage)
             updatePercentageLabel()
+            
 
         }
         
