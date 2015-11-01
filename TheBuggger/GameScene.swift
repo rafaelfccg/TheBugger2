@@ -745,16 +745,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         }else if(bodyA.categoryBitMask == GameScene.MONSTER_NODE  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
             if(hero.attackState == AttackState.Attacking){
                 //hit monster
-//                bodyA.node?.physicsBody?.categoryBitMask = 0
-//                bodyA.node?.physicsBody?.collisionBitMask = 0
-//                bodyA.node?.physicsBody?.pinned = true
-//                bodyA.node?.runAction(SKAction.sequence([TBGroundBotNode.deathAnimation!, SKAction.runBlock({
-//                     bodyA.node?.removeFromParent()
-//                })]))
-                
                 
                 //não funciona
-                if let gbotmonste = bodyB.node as? TBGroundBotNode{
+                if let gbotmonste = bodyA.node as? TBGroundBotNode{
                     gbotmonste.dieAnimation()
                     hero.score += 5
                     hero.monstersKilled++
