@@ -43,6 +43,11 @@ class TBGroundBotNode: SKSpriteNode {
     
     func dieAnimation()
     {
+        //tirando corpo fisico e contato
+        self.physicsBody?.categoryBitMask = 0
+        self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.pinned = true
+        
         runAction(SKAction.sequence([TBGroundBotNode.deathAnimation!, SKAction.runBlock({
             self.removeFromParent()
         })]), withKey: "dieMonster")

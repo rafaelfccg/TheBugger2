@@ -193,9 +193,9 @@ class TBPlayerNode: SKSpriteNode {
                 
                 for body : SKPhysicsBody in bodies! {
                     if body.categoryBitMask == GameScene.MONSTER_NODE {
-                        body.node?.physicsBody?.categoryBitMask = 0
-                        body.node?.physicsBody?.collisionBitMask = 0
-                        body.node?.physicsBody?.pinned = true
+//                        body.node?.physicsBody?.categoryBitMask = 0
+//                        body.node?.physicsBody?.collisionBitMask = 0
+//                        body.node?.physicsBody?.pinned = true
 //                        body.node.runAction(SKAction.sequence([TBGroundBotNode.deathAnimation!, SKAction.runBlock({
 //                            body.node?!.removeFromParent()
 //
