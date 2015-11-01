@@ -26,6 +26,7 @@ class TBPlayerNode: SKSpriteNode {
     let slowSpeed = 100
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
+    static var deathAnimation: SKAction?
     
     var defenceAction:SKAction?
     var attackAction:SKAction?
@@ -117,6 +118,12 @@ class TBPlayerNode: SKSpriteNode {
     func runWalkingAction(){
         self.runAction(walkAction!, withKey:"walk")
     }
+    static func createSKActionAnimation()
+    {
+        let deathArray = TBUtils().getSprites("PlayerDeath", nomeImagens: "death")
+        TBPlayerNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
+    }
+    
     func addAttackJoint()
     {
         let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(600, 150))
@@ -181,15 +188,21 @@ class TBPlayerNode: SKSpriteNode {
         case States.SR:
 
             
-            if( self.actionForKey("attack") == nil){
+            if( self.actionForKey("attack") == nil && self.actionForKey("die") == nil){
                 let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
                 
-                for body : AnyObject in bodies! {
+                for body : SKPhysicsBody in bodies! {
                     if body.categoryBitMask == GameScene.MONSTER_NODE {
+                        body.node?.physicsBody?.categoryBitMask = 0
+                        body.node?.physicsBody?.collisionBitMask = 0
+                        body.node?.physicsBody?.pinned = true
+//                        body.node.runAction(SKAction.sequence([TBGroundBotNode.deathAnimation!, SKAction.runBlock({
+//                            body.node?!.removeFromParent()
+//
+                        let gbotmonste = body.node as? TBGroundBotNode
+                        gbotmonste!.dieAnimation()
                         score += 5
                         monstersKilled++
-                        body.node?!.removeFromParent()
-                        
                     }
                 }
                 

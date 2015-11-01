@@ -14,6 +14,7 @@ class GameViewController: UIViewController, SceneChangesDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        TBPlayerNode.createSKActionAnimation()
         TBEspinhosNode.createSKActionAnimation()
         TBGroundBotNode.createSKActionAnimation()
         TBMoedasNode.createSKActionAnimation()

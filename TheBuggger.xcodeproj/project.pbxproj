@@ -86,6 +86,9 @@
 		AF2A3E451BD85D19001DA3DB /* TBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E441BD85D19001DA3DB /* TBUtils.swift */; };
 		AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */; };
 		AF2A3E491BD861D8001DA3DB /* Espinhos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF2A3E481BD861D8001DA3DB /* Espinhos.atlas */; };
+		AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF9061211BE290AE00C61746 /* PlayerDeath.atlas */; };
+		AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF9061231BE291C400C61746 /* MonsterDeath.atlas */; };
+		AF9C570A1BE67F7D00214D1C /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF9C57091BE67F7D00214D1C /* Level1Scene.sks */; };
 		AFA026E01BD17FDB00B7FFC5 /* heroPhysicsBody.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA026DF1BD17FDB00B7FFC5 /* heroPhysicsBody.png */; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; };
 		AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */; };
@@ -197,6 +200,9 @@
 		AF2A3E441BD85D19001DA3DB /* TBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBUtils.swift; sourceTree = "<group>"; };
 		AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhosNode.swift; sourceTree = "<group>"; };
 		AF2A3E481BD861D8001DA3DB /* Espinhos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Espinhos.atlas; sourceTree = "<group>"; };
+		AF9061211BE290AE00C61746 /* PlayerDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDeath.atlas; sourceTree = "<group>"; };
+		AF9061231BE291C400C61746 /* MonsterDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MonsterDeath.atlas; sourceTree = "<group>"; };
+		AF9C57091BE67F7D00214D1C /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		AFA026DF1BD17FDB00B7FFC5 /* heroPhysicsBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroPhysicsBody.png; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
 		AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack.atlas; sourceTree = "<group>"; };
@@ -478,11 +484,13 @@
 			children = (
 				52E75DC31BDEAD0300F91E00 /* Move_Ya.mp3 */,
 				52E75DC11BDEAC6900F91E00 /* GroundMonster.atlas */,
+				AF9061231BE291C400C61746 /* MonsterDeath.atlas */,
 				52E75DBF1BDEAC5700F91E00 /* Moedas.Atlas */,
 				52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */,
 				AFA026DF1BD17FDB00B7FFC5 /* heroPhysicsBody.png */,
 				001E55791BD6DA0C00B80833 /* power1.png */,
 				001E557D1BD8221600B80833 /* Cenario */,
+				AF9061211BE290AE00C61746 /* PlayerDeath.atlas */,
 				AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */,
 				AFF489EE1BD56D8700463411 /* PlayerDash.atlas */,
 				AFF489EF1BD56D8700463411 /* PlayerJump.atlas */,
@@ -515,6 +523,7 @@
 		00CDBECA1BBD9FD100BC0517 /* Level 1 */ = {
 			isa = PBXGroup;
 			children = (
+				AF9C57091BE67F7D00214D1C /* Level1Scene.sks */,
 			);
 			name = "Level 1";
 			sourceTree = "<group>";
@@ -640,6 +649,8 @@
 				001E557A1BD6DA0C00B80833 /* power1.png in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
 				AFA026E01BD17FDB00B7FFC5 /* heroPhysicsBody.png in Resources */,
+				AF9C570A1BE67F7D00214D1C /* Level1Scene.sks in Resources */,
+				AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */,
 				001E55C11BD8221600B80833 /* speed booster-04.png in Resources */,
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
 				001E55B91BD8221600B80833 /* machinefront-06.png in Resources */,
@@ -650,6 +661,7 @@
 				001E55BD1BD8221600B80833 /* greensignal-04.png in Resources */,
 				001E55C41BD8221600B80833 /* structure1.png in Resources */,
 				001E55CC1BD8221600B80833 /* plataformmd.png in Resources */,
+				AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */,
 				001E55D51BD8221600B80833 /* estructure3.png in Resources */,
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
 				AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */,

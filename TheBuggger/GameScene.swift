@@ -678,7 +678,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 bodyB.applyImpulse(CGVectorMake(100, 30))
                 
             }else{
-                restartLevel()
+                
+//                hero.attackJoint?.physicsBody?.categoryBitMask = 0
+//                hero.physicsBody?.categoryBitMask = 0
+//                hero.physicsBody?.collisionBitMask = 0
+                hero.physicsBody?.pinned = true
+                bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
+          
+                hero.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
+                    self.hero.removeFromParent()
+                    self.restartLevel()
+                })])), withKey: "die")
                 print("oohhh damange")
             }
         
@@ -735,9 +745,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         }else if(bodyA.categoryBitMask == GameScene.MONSTER_NODE  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
             if(hero.attackState == AttackState.Attacking){
                 //hit monster
-                bodyA.node?.removeFromParent()
-                hero.score += 5
-                hero.monstersKilled++
+                bodyA.node?.physicsBody?.categoryBitMask = 0
+                bodyA.node?.physicsBody?.collisionBitMask = 0
+                bodyA.node?.physicsBody?.pinned = true
+//                bodyA.node?.runAction(SKAction.sequence([TBGroundBotNode.deathAnimation!, SKAction.runBlock({
+//                     bodyA.node?.removeFromParent()
+//                })]))
+                if let gbotmonste = bodyB.node as? TBGroundBotNode{
+                    gbotmonste.dieAnimation()
+                    hero.score += 5
+                    hero.monstersKilled++
+                }
                 print("kill monster")
             }else{
                 //hero took damange
