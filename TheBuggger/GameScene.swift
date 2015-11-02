@@ -746,7 +746,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             if(hero.attackState == AttackState.Attacking){
                 //hit monster
                 
-                //não funciona
                 if let gbotmonste = bodyA.node as? TBGroundBotNode{
                     gbotmonste.dieAnimation()
                     hero.score += 5
