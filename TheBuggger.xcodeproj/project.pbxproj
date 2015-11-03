@@ -62,7 +62,6 @@
 		0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0271BE2A44300A184D5 /* TapTutorial.atlas */; };
 		0022C0321BE2A44300A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0281BE2A44300A184D5 /* taptxt.png */; };
 		0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C04D1BE2A95800A184D5 /* pixels.atlas */; };
-		0022C0501BE2B3C600A184D5 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0022C04F1BE2B3C600A184D5 /* Level2Scene.sks */; };
 		009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */; };
 		009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */; };
 		00CDBE8C1BB9B39000BC0517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */; };
@@ -177,7 +176,6 @@
 		0022C0271BE2A44300A184D5 /* TapTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = TapTutorial.atlas; sourceTree = "<group>"; };
 		0022C0281BE2A44300A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
 		0022C04D1BE2A95800A184D5 /* pixels.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pixels.atlas; sourceTree = "<group>"; };
-		0022C04F1BE2B3C600A184D5 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
 		009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPowerUpsStates.swift; sourceTree = "<group>"; };
 		009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBChangeSpeedGround.swift; sourceTree = "<group>"; };
 		00CDBE881BB9B39000BC0517 /* TheBuggger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBuggger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -342,8 +340,6 @@
 		001E559D1BD8221600B80833 /* Plataformas */ = {
 			isa = PBXGroup;
 			children = (
-				521269451BDACCEC00B5FB2E /* edge2.png */,
-				521269431BDACCE100B5FB2E /* edge1.png */,
 				001E559E1BD8221600B80833 /* collision plataform */,
 				001E55AA1BD8221600B80833 /* estructure1.png */,
 				001E55AB1BD8221600B80833 /* estructure2.png */,
@@ -357,8 +353,6 @@
 		001E559E1BD8221600B80833 /* collision plataform */ = {
 			isa = PBXGroup;
 			children = (
-				52714B721BDE787C006200A1 /* metalblocksm-1.png */,
-				52714B701BDE7875006200A1 /* metalbolcklg-1.png */,
 				001E559F1BD8221600B80833 /* BaseA.png */,
 				001E55A01BD8221600B80833 /* BaseB.png */,
 				00F6CFD31BDE9777006F0302 /* blocksmg-01.png */,
@@ -503,7 +497,6 @@
 				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
 				009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */,
 				AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */,
-				00DCF2D71BE15213006F9F86 /* TBTutorialNodes.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -562,7 +555,6 @@
 		52E7AEAD1BBEF81D008FE672 /* Level 2 */ = {
 			isa = PBXGroup;
 			children = (
-				0022C04F1BE2B3C600A184D5 /* Level2Scene.sks */,
 				52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */,
 			);
 			name = "Level 2";
@@ -691,7 +683,6 @@
 				001E55B11BD8221600B80833 /* alert-02.png in Resources */,
 				001E55CA1BD8221600B80833 /* BaseD.png in Resources */,
 				001E55BD1BD8221600B80833 /* greensignal-04.png in Resources */,
-				0022C0501BE2B3C600A184D5 /* Level2Scene.sks in Resources */,
 				0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */,
 				001E55C41BD8221600B80833 /* structure1.png in Resources */,
 				0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */,
@@ -702,7 +693,6 @@
 				001E55B21BD8221600B80833 /* alert-03.png in Resources */,
 				001E55BE1BD8221600B80833 /* speed booster-01.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
-				5289B84E1BE0068600CA6C2D /* darkness.png in Resources */,
 				0022C02B1BE2A44300A184D5 /* Icon in Resources */,
 				001E55BC1BD8221600B80833 /* greensignal-03.png in Resources */,
 				001E55BB1BD8221600B80833 /* greensignal-02.png in Resources */,
@@ -778,7 +768,6 @@
 				AF2A3E451BD85D19001DA3DB /* TBUtils.swift in Sources */,
 				000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */,
 				009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */,
-				00DCF2D81BE15213006F9F86 /* TBTutorialNodes.swift in Sources */,
 				52E7AEB11BBEFA52008FE672 /* GameSceneTestEnemy.swift in Sources */,
 				00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */,
 				00CDBE901BB9B39000BC0517 /* GameScene.swift in Sources */,
