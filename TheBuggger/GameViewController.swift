@@ -10,7 +10,10 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController, SceneChangesDelegate {
-
+    
+    var gameMethod:Int?
+    var level:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,16 +24,19 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         TBFinalNode.createSKActionAnimation()
         
 
-        mudaScene("Level1Scene")
+        self.navigationController?.navigationBar.hidden = true
+
+        mudaScene(level! ,withMethod: gameMethod!)
     }
     
-    func mudaScene(nomeSKS: String)
+    func mudaScene(nomeSKS: String, withMethod:Int)
     {
         if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
             scene.delegateChanger = self
             
             let skView = self.view as! SKView
+//            skView.scene?.
             //skView.showsFPS = true
             //skView.showsNodeCount = true
             //skView.showsPhysics = true;
@@ -41,8 +47,18 @@ class GameViewController: UIViewController, SceneChangesDelegate {
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .AspectFill
             
+            scene.isMethodOne = withMethod
+            
             skView.presentScene(scene)
         }
+    }
+    func backToMenu() {
+        let skView = self.view as! SKView
+        
+        skView.paused = true
+        skView.scene?.removeAllChildren()
+        
+        self.performSegueWithIdentifier("backToMenuSegue", sender: self)  
     }
 
     override func shouldAutorotate() -> Bool {
