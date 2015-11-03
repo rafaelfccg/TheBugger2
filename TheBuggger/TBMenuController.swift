@@ -38,6 +38,9 @@ class TBMenuViewController :UIViewController {
         TBTutorialNodes.createAttackTutorialAction()
         TBFinalNode.createSKActionAnimation()
         TBBrilhoNode.createBrilhoAnimation()
+        TBAlertNode.createAlertAnimation()
+        TBSignalNode.createSignalAnimation()
+        TBMachineFrontNode.createMachineFrontAnimation()
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {

@@ -9,12 +9,12 @@
 import Foundation
 import SpriteKit
 
-class TBBrilhoNode {
+class TBBrilhoNode :SKSpriteNode{
     static var brilhoAnimation:SKAction?
     
     static func createBrilhoAnimation(){
         let pixelsArray = TBUtils().getSprites("pixels", nomeImagens: "pixels")
-        TBMoedasNode.animation = SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.05);
+        TBBrilhoNode.brilhoAnimation = SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.05);
         
     }
 }
