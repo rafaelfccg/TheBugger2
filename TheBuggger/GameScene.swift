@@ -125,7 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             do {
               try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
               backgroundMusicPlayer!.numberOfLoops  = -1
-                if(backgroundMusicPlayer!.playing){
+                if(!backgroundMusicPlayer!.playing){
                     self.backgroundMusicPlayer?.play()
                 }
             }catch {
@@ -138,7 +138,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     func startGame(){
         hero.realSpeed = hero.defaultSpeed
-        hero.runWalkingAction() 
+        hero.runWalkingAction()
+        self.scene?.view?.paused = false
         tapToStartLabel?.removeFromParent()
     }
     
@@ -259,9 +260,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         setHeroPosition()
         self.hero.score = 0;
         lastFrameTime = 0
+        hero.physicsBody?.pinned = false
         
         self.addChild(hero)
-        
+        hasBegan = false
         hero.method = method
         
         print(numberOfDeath)
@@ -321,15 +323,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         let spanw = self.childNodeWithName("SpawnHero")
         
         self.hero.position = (spanw!.position)
+        //print(self.hero.position)
         self.hero.realSpeed = 0
         firstHeroPosition = hero.position
         hero.updateVelocity()
-        print(hero.position)
+//        print(hero.position)
         self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 100)
         self.hero.zPosition = 100
-        hasBegan = false
-        
-        
 
     }
     
@@ -419,6 +419,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.pinned = true
             
         })
+        
+        self.enumerateChildNodesWithName("Teto", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+           
+            
+        })
+
         self.enumerateChildNodesWithName("cicloChoque", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             
@@ -554,13 +561,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 let touchedNode = self.nodeAtPoint(location)
                 let name = touchedNode.name
                 if (name == "restartButton"){
+                    self.backgroundMusicPlayer?.pause()
                     self.backtToMenu()
+                    
                 }else{
                     
                     if(hasBegan){
                         self.hero.state = States.Initial
                     }else{
                         hasBegan = true
+                        self.paused = false
+                        
                         startGame()
                         self.hero.state = States.FAIL
             
@@ -624,6 +635,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         if(hasBegan) {
             self.hero.updateVelocity()
+//            print(self.hero.physicsBody?.velocity)
             if(lastFrameTime == 0) {lastFrameTime = currentTime}
             
             deltaTime = currentTime - lastFrameTime
@@ -848,18 +860,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 bodyB.applyImpulse(CGVectorMake(100, 30))
                 
             }else{
-                
-//                hero.attackJoint?.physicsBody?.categoryBitMask = 0
-//                hero.physicsBody?.categoryBitMask = 0
-//                hero.physicsBody?.collisionBitMask = 0
-                hero.physicsBody?.pinned = true
                 bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
-          
+                hero.physicsBody?.pinned = true
                 hero.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.hero.removeFromParent()
                     self.restartLevel()
                 })])), withKey: "die")
-                print("oohhh damange")
             }
         
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE &&

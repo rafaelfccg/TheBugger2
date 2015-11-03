@@ -173,24 +173,23 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func attack(){
-        if( self.actionForKey("attack") == nil){
+        if( self.actionForKey("attack") == nil && self.actionForKey("die") == nil){
             let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
             
-            for body : AnyObject in bodies! {
+            for body : SKPhysicsBody in bodies! {
+                
                 if body.categoryBitMask == GameScene.MONSTER_NODE {
+                    let gbotmonste = body.node as? TBGroundBotNode
+                    gbotmonste!.dieAnimation()
                     score += 5
                     monstersKilled++
-                    body.node?!.removeFromParent()
-                    
                 }
             }
             
             runAction(SKAction.group([TBPlayerNode.attackAction!, SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({ self.attackState = AttackState.Idle})])]), withKey: "attack")
             
             self.attackState = AttackState.Attacking
-            
         }
-
     }
     
     func defence(){
@@ -261,25 +260,8 @@ class TBPlayerNode: SKSpriteNode {
            
             break;
         case States.SR:
-
-            
-            if( self.actionForKey("attack") == nil && self.actionForKey("die") == nil){
-                let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
-                
-                for body : SKPhysicsBody in bodies! {
-                    
-                    if body.categoryBitMask == GameScene.MONSTER_NODE {
-                     let gbotmonste = body.node as? TBGroundBotNode
-                        gbotmonste!.dieAnimation()
-                        score += 5
-                        monstersKilled++
-                    }
-                }
-                
-                runAction(SKAction.group([attackAction!, SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({ self.attackState = AttackState.Idle})])]), withKey: "attack")
-                
-                self.attackState = AttackState.Attacking
-               
+            if method! == 1  || method! == 3{
+                attack()
             }
             
             break;
