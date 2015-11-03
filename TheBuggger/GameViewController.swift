@@ -16,9 +16,7 @@ class GameViewController: UIViewController, SceneChangesDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-            
-        
+
         self.navigationController?.navigationBar.hidden = true
 
         mudaScene(level! ,withMethod: gameMethod!)

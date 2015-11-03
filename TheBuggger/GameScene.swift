@@ -23,11 +23,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
     var labelScore:SKLabelNode?
+    var finalNode: SKNode?
+    var finalBackNode: SKNode?
     var percentage:SKLabelNode?
     var numberDeathLabel:SKLabelNode?
     
     var tapToStartLabel:SKLabelNode?
     var hasBegan:Bool = false
+    var stopParalax:Bool = false
     
     let removable = "removable"
     
@@ -61,19 +64,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     //PlayTesting
     var isMethodOne:Int?
     
-    static let CHAO_NODE:UInt32             = 0b0000000000010
-    static let PLAYER_NODE:UInt32           = 0b0000000000001
-    static let MONSTER_NODE:UInt32          = 0b0000000000100
-    static let POWERUP_NODE:UInt32          = 0b0000000001000
-    static let ESPINHOS_NODE:UInt32         = 0b0000000010000
-    static let TIRO_NODE:UInt32             = 0b0000000100000
-    static let JOINT_ATTACK_NODE:UInt32     = 0b0000001000000
-    static let CHAO_QUICK_NODE:UInt32       = 0b0000010000000
-    static let CHAO_SLOW_NODE:UInt32        = 0b0000100000000
-    static let TOCO_NODE:UInt32             = 0b0001000000000
-    static let MOEDA_NODE:UInt32            = 0b0010000000000
-    static let OTHER_NODE:UInt32            = 0b0100000000000
-    static let END_LEVEL_NODE:UInt32        = 0b1000000000000
+    static let CHAO_NODE:UInt32             = 0b00000000000010
+    static let PLAYER_NODE:UInt32           = 0b00000000000001
+    static let MONSTER_NODE:UInt32          = 0b00000000000100
+    static let POWERUP_NODE:UInt32          = 0b00000000001000
+    static let ESPINHOS_NODE:UInt32         = 0b00000000010000
+    static let TIRO_NODE:UInt32             = 0b00000000100000
+    static let JOINT_ATTACK_NODE:UInt32     = 0b00000001000000
+    static let CHAO_QUICK_NODE:UInt32       = 0b00000010000000
+    static let CHAO_SLOW_NODE:UInt32        = 0b00000100000000
+    static let TOCO_NODE:UInt32             = 0b00001000000000
+    static let MOEDA_NODE:UInt32            = 0b00010000000000
+    static let OTHER_NODE:UInt32            = 0b00100000000000
+    static let STOP_CAMERA_NODE:UInt32      = 0b01000000000000
+    static let END_LEVEL_NODE:UInt32        = 0b10000000000000
 
     
     override func didMoveToView(view: SKView) {
@@ -186,6 +190,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         percentage?.text = "\(per)%"
     }
     
+    func updateNumberOfTries(){
+        let per = Int(self.numberOfDeath)
+        numberDeathLabel?.text = NSString(format: "Tentativas:%03d", per) as String//"Tentativas: \(per)"
+    }
+    
     func setupHUD()
     {
         let backTexture = SKTexture(imageNamed: "voltar")
@@ -206,12 +215,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         percentage?.zPosition = 1000
         percentage?.position = CGPointMake(0, back.position.y)
         
-//        self.numberDeathLabel = SKLabelNode(text: "0%")
-//        self.camera!.addChild(numberDeathLabel!)
-//        numberDeathLabel?.zPosition = 1000
-//        numberDeathLabel?.position = CGPointMake(0, back.position.y)
-        //percentage?.fontSize = 70
-        
+        self.numberDeathLabel = SKLabelNode(text: "Tentativas: 000")
+        self.camera!.addChild(numberDeathLabel!)
+        numberDeathLabel?.zPosition = 1000
+        numberDeathLabel?.position = CGPointMake(CGRectGetMidX(self.frame) - self.numberDeathLabel!.frame.width/2 - 10, back.position.y)
         
         //como não funciona tirei do primeiro playtesting
         
@@ -268,6 +275,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         spawnMoedas()
         spawnMonstros()
+        updateNumberOfTries()
         
         
     }
@@ -411,17 +419,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody?.pinned = true
             
         })
+        self.enumerateChildNodesWithName("cicloChoque", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            self.setObstacleTypeHit(node)
+            node.physicsBody?.collisionBitMask = 0
+            
+            // alternando entre os estados, acho que da pra otimizar
+            let deBoas = SKAction.sequence([SKAction.runBlock({ node.physicsBody?.categoryBitMask = 0} ),SKAction.colorizeWithColor(UIColor.greenColor(), colorBlendFactor: 1, duration: 0.3), SKAction.waitForDuration(1)])
+            
+            let danger = SKAction.sequence([SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1, duration: 0.3), SKAction.runBlock({ node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE} ), SKAction.waitForDuration(0.1)])
+            
+            let alert = SKAction.sequence([SKAction.colorizeWithColor(UIColor.orangeColor(), colorBlendFactor: 1, duration: 0.3), SKAction.waitForDuration(0.3)])
+            
+            node.runAction(SKAction.repeatActionForever( SKAction.sequence([deBoas, alert, danger]) ) )
+            
+        })
+        self.enumerateChildNodesWithName("paraCamera", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            node.physicsBody?.collisionBitMask = 0
+            node.physicsBody?.categoryBitMask = GameScene.STOP_CAMERA_NODE
+            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            node.physicsBody?.pinned = true
+            self.setObstacleTypeHit(node)
+        })
         
         spawnMoedas()
         
         self.enumerateChildNodesWithName("FINAL", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            node.physicsBody?.collisionBitMask = 0
             node.physicsBody?.categoryBitMask = GameScene.END_LEVEL_NODE
             node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
             node.physicsBody?.pinned = true
             self.setObstacleTypeHit(node)
-            
         })
         
         
@@ -503,6 +538,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         })
 
     
+        finalNode = childNodeWithName(TBFinalNode.name)
+        finalBackNode = self.childNodeWithName(TBFinalNode.nameBack)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -576,8 +613,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         //let heroy = self.hero.position.y
         
         updateScore()
-        cameraState()
-        //print(self.firstCameraPos)
+        
+        if(stateCamera != "final")
+        {
+            cameraState()
+        }
+        
+        print(self.firstCameraPos)
         //print(CGRectGetMaxY(self.frame))
         
         if(hasBegan) {
@@ -586,11 +628,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             
             deltaTime = currentTime - lastFrameTime
             lastFrameTime = currentTime
+            if(stopParalax == false)
+            {
+                self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
+            }
             self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
             
             self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
 //            print(self.stagePercentage)
             updatePercentageLabel()
+            
 
         }
         
@@ -876,17 +923,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             
             
         }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
+            //muda o estado da camera para a função update não alterar a posição dela
+            stateCamera = "final"
+            stopParalax = true
+        }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.END_LEVEL_NODE )){
             //terminou
-            //pausa bruscamente
             
-            let action = SKAction.sequence([SKAction.waitForDuration(0.45), SKAction.runBlock({
-            self.scene?.view?.paused = true
-                
+            hero.realSpeed = 0
+            
+            let action = SKAction.sequence([TBFinalNode.animation!, SKAction.runBlock({
+
+                self.childNodeWithName(TBFinalNode.nameBack)!.runAction(
+                    
+                    SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
+                        self.scene?.view?.paused = true
+                    })])
+                )
+            
             })])
             
-            runAction(action)
-            print("win")
+          finalNode!.runAction(action)
+            
         }
         
     }
