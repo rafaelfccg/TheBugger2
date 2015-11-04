@@ -273,8 +273,20 @@
                                     <action selector="normalLevel:" destination="Dhb-x5-7Yg" eventType="touchUpInside" id="jCQ-uI-unL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHz-vq-FuG">
+                                <rect key="frame" x="13" y="83" width="112" height="32"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="2d0-p4-17d"/>
+                                    <constraint firstAttribute="width" secondItem="bHz-vq-FuG" secondAttribute="height" multiplier="7:2" id="ogW-cX-x2x"/>
+                                </constraints>
+                                <state key="normal" image="back2"/>
+                                <connections>
+                                    <action selector="backButton:" destination="Dhb-x5-7Yg" eventType="touchUpInside" id="YVi-14-F43"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uth-aJ-qXz">
-                                <rect key="frame" x="227" y="118" width="146" height="73"/>
+                                <rect key="frame" x="227" y="153" width="146" height="38"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <color key="textColor" red="0.14509803921568629" green="0.87058823529411766" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
@@ -285,6 +297,7 @@
                         <color key="backgroundColor" red="0.0" green="0.054901960780000002" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="AxN-gb-MCK" firstAttribute="height" secondItem="Uy3-TK-Ip1" secondAttribute="height" constant="1" id="4Dr-15-vhN"/>
+                            <constraint firstItem="bHz-vq-FuG" firstAttribute="leading" secondItem="for-9b-C6u" secondAttribute="leadingMargin" constant="-7" id="6rP-Su-j9s"/>
                             <constraint firstItem="AxN-gb-MCK" firstAttribute="centerX" secondItem="for-9b-C6u" secondAttribute="centerX" constant="125" id="9G7-Ha-mk0"/>
                             <constraint firstItem="esn-2i-BqX" firstAttribute="height" secondItem="Uy3-TK-Ip1" secondAttribute="height" id="Ato-eU-BgQ"/>
                             <constraint firstItem="uth-aJ-qXz" firstAttribute="centerX" secondItem="for-9b-C6u" secondAttribute="centerX" id="CRb-Sf-RWs"/>
@@ -302,10 +315,13 @@
                             <constraint firstItem="Uy3-TK-Ip1" firstAttribute="top" secondItem="esn-2i-BqX" secondAttribute="bottom" constant="23" id="fpj-l6-Mno"/>
                             <constraint firstItem="AxN-gb-MCK" firstAttribute="leading" secondItem="mc2-vG-gvC" secondAttribute="trailing" constant="28" id="gJr-Rj-xra"/>
                             <constraint firstItem="mc2-vG-gvC" firstAttribute="top" secondItem="AxN-gb-MCK" secondAttribute="top" id="l2g-v7-dsT"/>
+                            <constraint firstItem="uth-aJ-qXz" firstAttribute="top" secondItem="bHz-vq-FuG" secondAttribute="bottom" constant="3" id="lbY-Yc-IJJ"/>
+                            <constraint firstItem="bHz-vq-FuG" firstAttribute="top" secondItem="5Qb-z8-i9b" secondAttribute="bottom" constant="19" id="muA-Cq-dbr"/>
                             <constraint firstItem="AxN-gb-MCK" firstAttribute="width" secondItem="Uy3-TK-Ip1" secondAttribute="width" id="xCz-Ja-yg2"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="lbY-Yc-IJJ"/>
                                 <exclude reference="4Dr-15-vhN"/>
                                 <exclude reference="V1s-Cp-4Zx"/>
                             </mask>
@@ -325,6 +341,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back2" width="275" height="80"/>
         <image name="icon app.png" width="2404" height="2404"/>
         <image name="play_off.png" width="679" height="149"/>
         <image name="play_on.png" width="679" height="149"/>

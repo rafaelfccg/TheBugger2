@@ -25,12 +25,14 @@ class TBMenuViewController :UIViewController {
     
     
     override func viewDidAppear(animated: Bool) {
+        
         TBEspinhosNode.createSKActionAnimation()
         TBGroundBotNode.createSKActionAnimation()
         TBMoedasNode.createSKActionAnimation()
         TBPlayerNode.createPlayerAttack()
         TBPlayerNode.createPlayerDefense()
         TBPlayerNode.createPlayerWalkAnimation()
+        TBPlayerNode.createPlayerStandAnimation()
         TBTutorialNodes.createJumpTutorialAction()
         TBTutorialNodes.createTapTutorialAction()
         TBTutorialNodes.createSlideUpTutorialAction()
@@ -42,6 +44,8 @@ class TBMenuViewController :UIViewController {
         TBSignalNode.createSignalAnimation()
         TBMachineFrontNode.createMachineFrontAnimation()
         TBRedLightEffect.createRedLightAnimation()
+        TBPlayerNode.createDeathAnimation()
+        
         
         self.navigationController?.navigationBarHidden = true
     }
@@ -86,5 +90,8 @@ class TBMenuViewController :UIViewController {
             levelView.isMethodOne = isMethodOne
 
         }
+    }
+    @IBAction func backButton(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

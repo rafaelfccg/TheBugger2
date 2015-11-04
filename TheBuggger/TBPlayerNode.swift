@@ -31,6 +31,7 @@ class TBPlayerNode: SKSpriteNode {
     static var defenceAction:SKAction?
     static var attackAction:SKAction?
     static var walkAction:SKAction?
+    static var standActionAnimation:SKAction?
     
     var defenceActionChangeState:SKAction?
     
@@ -50,6 +51,12 @@ class TBPlayerNode: SKSpriteNode {
     var method:Int?
     
     
+    static func createPlayerStandAnimation(){
+        let walkArray = TBUtils().getSprites("PlayerStop", nomeImagens: "stop")
+        let action = SKAction.animateWithTextures(walkArray, timePerFrame: 0.15);
+        
+        TBPlayerNode.standActionAnimation = SKAction.repeatActionForever(action)
+    }
     
     static func createPlayerWalkAnimation(){
         let walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
@@ -124,7 +131,8 @@ class TBPlayerNode: SKSpriteNode {
             
         })])]))
         
-        runAction(TBPlayerNode.walkAction!)
+        //runAction(TBPlayerNode.standActionAnimation!)
+        self.runStandingAction()
         
         addAttackJoint()
         
@@ -135,9 +143,15 @@ class TBPlayerNode: SKSpriteNode {
 
     }
     func runWalkingAction(){
+        self.removeActionForKey("stand")
         self.runAction(TBPlayerNode.walkAction!, withKey:"walk")
     }
-    static func createSKActionAnimation()
+    func runStandingAction(){
+        self.removeActionForKey("walk")
+        self.runAction(TBPlayerNode.standActionAnimation!, withKey:"stand")
+    }
+    
+    static func createDeathAnimation()
     {
         let deathArray = TBUtils().getSprites("PlayerDeath", nomeImagens: "death")
         TBPlayerNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);

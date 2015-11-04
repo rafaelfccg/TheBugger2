@@ -17,13 +17,6 @@ class GameViewController: UIViewController, SceneChangesDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TBPlayerNode.createSKActionAnimation()
-        TBEspinhosNode.createSKActionAnimation()
-        TBGroundBotNode.createSKActionAnimation()
-        TBMoedasNode.createSKActionAnimation()
-        TBFinalNode.createSKActionAnimation()
-        
-
         self.navigationController?.navigationBar.hidden = true
 //        self.navigationController.
 

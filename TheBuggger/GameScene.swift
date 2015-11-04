@@ -296,6 +296,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.addChild(hero)
         hasBegan = false
         hero.method = method
+        hero.runStandingAction()
         
         print(numberOfDeath)
         
@@ -467,6 +468,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
            node.runAction(TBRedLightEffect.redLight!)
             
         })
+        
+        self.enumerateChildNodesWithName("alert", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.runAction(TBAlertNode.alertAnimation!)
+            node.zPosition = 10
+            
+        })
+
 
         self.enumerateChildNodesWithName("cicloChoque", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
