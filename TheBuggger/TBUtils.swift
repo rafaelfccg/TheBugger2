@@ -26,4 +26,12 @@ class TBUtils {
         
         return spriteArray;
     }
+    
+    static func getNextBackground()->SKTexture?{
+        let textureAtlas = SKTextureAtlas(named:"Paralax2")
+        let numImages = textureAtlas.textureNames.count
+        let rand = Int(arc4random_uniform(100)) % (numImages+1)
+        if rand == numImages{return nil}
+        return textureAtlas.textureNamed(textureAtlas.textureNames[rand])
+    }
 }

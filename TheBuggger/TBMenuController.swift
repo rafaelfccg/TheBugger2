@@ -41,6 +41,8 @@ class TBMenuViewController :UIViewController {
         TBAlertNode.createAlertAnimation()
         TBSignalNode.createSignalAnimation()
         TBMachineFrontNode.createMachineFrontAnimation()
+        
+        self.navigationController?.navigationBarHidden = true
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {
@@ -55,8 +57,7 @@ class TBMenuViewController :UIViewController {
     
     @IBAction func actionButMet3(sender: AnyObject) {
         isMethodOne = 3
-        self.performSegueWithIdentifier("toLevelSegue", sender: self)
-        
+        self.performSegueWithIdentifier("toLevelSegue", sender: self)  
         
     }
     

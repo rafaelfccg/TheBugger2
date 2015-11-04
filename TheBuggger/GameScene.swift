@@ -38,6 +38,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     //parallax
     var skyNode:SKSpriteNode?
     var skyNodeNext:SKSpriteNode?
+    var background1:SKSpriteNode?
+    var background2:SKSpriteNode?
+    
     
     var deltaTime : NSTimeInterval = 0
     var lastFrameTime :NSTimeInterval  = 0
@@ -94,20 +97,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         
         numFormatter.minimumIntegerDigits = 9
         numFormatter.maximumFractionDigits = 0
-        
+        //paralax ceu
         skyNode = SKSpriteNode(imageNamed: "sky")
         skyNode?.size = self.size
         skyNodeNext = SKSpriteNode(imageNamed: "sky")
         skyNodeNext?.size = self.size
+        
+        background1 = SKSpriteNode(texture: TBUtils.getNextBackground())
+        background1?.size = self.size
+        background2 = SKSpriteNode(texture: TBUtils.getNextBackground())
+        background2?.size = self.size
+        
+        
         camera.position = hero.position
         setUpLevel()
         
         camera.addChild(skyNode!)
         camera.addChild(skyNodeNext!)
+        camera.addChild(background1!)
+        camera.addChild(background2!)
+        
+        
         skyNode?.position = CGPoint(x: 0,y: 0)
         skyNode?.zPosition = -100
         skyNodeNext?.position = CGPoint(x: (skyNode?.position.x)! + (skyNode?.frame.size.width)!,y: 0)
         skyNodeNext?.zPosition = -99
+        
+        background1?.position = CGPoint(x: 0,y: 0)
+        background1?.zPosition = -50
+        background2?.position = CGPoint(x: (background1?.position.x)! + (background1?.frame.size.width)!,y: 0)
+        background2?.zPosition = -49
         
         self.physicsWorld.gravity = CGVectorMake(0.0, -35.0) // Diminuindo a gravidade para o personagem cair mais rapido
         
@@ -144,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     }
     
     func moveSprite(sprite : SKSpriteNode,
-        nextSprite : SKSpriteNode, speed : Float) -> Void {
+        nextSprite : SKSpriteNode, speed : Float, isParalaxSky:Bool) -> Void {
             var newPosition = CGPointZero
             // Shift the sprite leftward based on the speed
             newPosition = sprite.position
@@ -161,8 +180,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     CGPoint(x:
                         nextSprite.position.x + nextSprite.frame.size.width - 3.5,
                         y: sprite.position.y)
-                sprite.zPosition = -99
-                nextSprite.zPosition = -100
+                if(isParalaxSky){
+                    sprite.zPosition = -99
+                    nextSprite.zPosition = -100
+                }else{
+                    sprite.zPosition = -49
+                    nextSprite.zPosition = -50
+                    sprite.texture = TBUtils.getNextBackground()
+                }
                 
             }
             
@@ -180,8 +205,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     CGPoint(x:
                         sprite.position.x + sprite.frame.size.width - 3.5 ,
                         y: nextSprite.position.y)
-                sprite.zPosition = -100
-                nextSprite.zPosition = -99
+                if(isParalaxSky){
+                    sprite.zPosition = -100
+                    nextSprite.zPosition = -99
+                }else{
+                    sprite.zPosition = -50
+                    nextSprite.zPosition = -49
+                    nextSprite.texture = TBUtils.getNextBackground()
+                }
             }
 
     }
@@ -249,7 +280,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     {
         //delegateChanger?.mudaScene("Level1SceneFinal", withMethod: self.isMethodOne!)
         self.numberOfDeath++
-        
+        self.stopParalax = false
         self.enumerateChildNodesWithName(self.removable, usingBlock: {
             (node, ponter)->Void in
             
@@ -642,9 +673,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             lastFrameTime = currentTime
             if(stopParalax == false)
             {
-                self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
+                self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100,isParalaxSky: true)
+                self.moveSprite(background1!, nextSprite: background2!, speed: 150,isParalaxSky: false)
+                
             }
-            self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100)
             
             self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
 //            print(self.stagePercentage)
@@ -862,6 +894,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             }else{
                 bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
                 hero.physicsBody?.pinned = true
+                self.stopParalax = true
                 hero.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.hero.removeFromParent()
                     self.restartLevel()

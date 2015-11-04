@@ -25,6 +25,7 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         
 
         self.navigationController?.navigationBar.hidden = true
+//        self.navigationController.
 
         mudaScene(level! ,withMethod: gameMethod!)
     }
@@ -36,7 +37,6 @@ class GameViewController: UIViewController, SceneChangesDelegate {
             scene.delegateChanger = self
             
             let skView = self.view as! SKView
-//            skView.scene?.
             //skView.showsFPS = true
             //skView.showsNodeCount = true
             //skView.showsPhysics = true;
@@ -57,8 +57,8 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         
         skView.paused = true
         skView.scene?.removeAllChildren()
-        
-        self.performSegueWithIdentifier("backToMenuSegue", sender: self)  
+        //self.navigationController?.popViewControllerAnimated(true)
+        self.performSegueWithIdentifier("backToMenuSegue", sender: self)
     }
 
     override func shouldAutorotate() -> Bool {
