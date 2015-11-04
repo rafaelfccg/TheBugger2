@@ -451,9 +451,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             
         })
         
-        self.enumerateChildNodesWithName("Teto", usingBlock: {
+        self.enumerateChildNodesWithName("pixel", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-           
+            let sprite = node as! SKSpriteNode
+            //node.runAction(TBBrilhoNode.brilhoAnimation!)
+            //node.zPosition = 90
+            
+            //REMOVENDO TEMPORARIAMENTE
+            sprite.texture = nil
+            
+        })
+        
+        self.enumerateChildNodesWithName("redlight", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+           node.runAction(TBRedLightEffect.redLight!)
             
         })
 

@@ -14,7 +14,7 @@ class TBMachineFrontNode:SKSpriteNode {
     static var machineFrontAnimation:SKAction?
     
     static func createMachineFrontAnimation(){
-        let pixelsArray = TBUtils().getSprites("pixels", nomeImagens: "pixel")
-        TBMachineFrontNode.machineFrontAnimation = SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.05);
+        let pixelsArray = TBUtils().getSprites("Machine", nomeImagens: "machinefront-")
+        TBMachineFrontNode.machineFrontAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.05));
     }
 }

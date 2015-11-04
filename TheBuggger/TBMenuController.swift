@@ -41,6 +41,7 @@ class TBMenuViewController :UIViewController {
         TBAlertNode.createAlertAnimation()
         TBSignalNode.createSignalAnimation()
         TBMachineFrontNode.createMachineFrontAnimation()
+        TBRedLightEffect.createRedLightAnimation()
         
         self.navigationController?.navigationBarHidden = true
     }
