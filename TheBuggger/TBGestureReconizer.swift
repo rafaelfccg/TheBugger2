@@ -130,7 +130,7 @@ func nextStatefor(state:States,andInput:Directions)->States{
         }
     case .ZFinal:
         
-        print("é um Z carai")
+        print("é um Z ")
         if(andInput == Directions.NE){
             return States.ZFinal
         }else if(andInput == Directions.L){

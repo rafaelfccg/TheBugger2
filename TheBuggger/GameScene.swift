@@ -90,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.addChild(hero)
         hero.setUpPlayer()
         self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
-        print(size)
+//        print(size)
         let camera = SKCameraNode();
         self.addChild(camera)
         self.camera = camera
@@ -298,7 +298,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         hero.method = method
         hero.runStandingAction()
         
-        print(numberOfDeath)
+//        print(numberOfDeath)
         
         skyNode?.position = CGPoint(x: 0,y: 0)
         skyNodeNext?.position = CGPoint(x: (skyNode?.position.x)! + (skyNode?.frame.size.width)!,y: 0)
@@ -466,6 +466,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         self.enumerateChildNodesWithName("redlight", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
            node.runAction(TBRedLightEffect.redLight!)
+           node.zPosition = 10
             
         })
         
@@ -977,9 +978,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     gbotmonste.dieAnimation()
                     hero.score += 5
                     hero.monstersKilled++
-                    print("kill monster in")
+//                    print("kill monster in")
                 }
-                print("kill monster")
+//                print("kill monster")
             }else{
                 //hero took damange
                
@@ -991,7 +992,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             bodyB.node?.removeFromParent()
             hero.qtdMoedas++
             hero.score += 10
-            print("\(hero.qtdMoedas) coins in the pocket")
+//            print("\(hero.qtdMoedas) coins in the pocket")
             
             
         }

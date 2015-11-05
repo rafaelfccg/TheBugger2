@@ -14,7 +14,6 @@ class TBRedLightEffect :SKSpriteNode{
     
     static func createRedLightAnimation(){
         let pixelsArray = TBUtils().getSprites("redlight2", nomeImagens: "redlight-")
-        print(pixelsArray.count)
         TBRedLightEffect.redLight = SKAction.repeatActionForever( SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.15));
         
     }

@@ -14,7 +14,6 @@ class TBBrilhoNode :SKSpriteNode{
     
     static func createBrilhoAnimation(){
         let pixelsArray = TBUtils().getSprites("pixels", nomeImagens: "pixels")
-        print(pixelsArray.count)
         TBBrilhoNode.brilhoAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.35));
         
     }

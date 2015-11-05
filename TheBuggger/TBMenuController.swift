@@ -23,6 +23,9 @@ class TBMenuViewController :UIViewController {
     var isMethodOne:Int?
     var stringLevel:String?
     
+    override func viewDidLoad() {
+        self.navigationController?.navigationBarHidden = true
+    }
     
     override func viewDidAppear(animated: Bool) {
         
@@ -46,8 +49,6 @@ class TBMenuViewController :UIViewController {
         TBRedLightEffect.createRedLightAnimation()
         TBPlayerNode.createDeathAnimation()
         
-        
-        self.navigationController?.navigationBarHidden = true
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {
