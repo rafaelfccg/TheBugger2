@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
-    let limitTimeAction:Double = 0.05
+    let limitTimeAction:Double = 0.07
     var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
     var labelScore:SKLabelNode?
