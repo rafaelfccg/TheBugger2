@@ -58,7 +58,6 @@
 		00AC3AC71BEA886B00323B6D /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3AC41BEA886B00323B6D /* Level1Scene.sks */; };
 		00AC3AC81BEA886B00323B6D /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3AC51BEA886B00323B6D /* Level2Scene.sks */; };
 		00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */; };
-		00AC3ACF1BEA92BD00323B6D /* Level3SceneFinal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ACE1BEA92BD00323B6D /* Level3SceneFinal.sks */; };
 		00C0FCE21BE9495800F8C730 /* TBBrilhoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C0FCE11BE9495800F8C730 /* TBBrilhoNode.swift */; };
 		00C0FCE41BE94AEF00F8C730 /* TBMachineFrontNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C0FCE31BE94AEF00F8C730 /* TBMachineFrontNode.swift */; };
 		00CDBE8C1BB9B39000BC0517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */; };
@@ -70,6 +69,7 @@
 		00CDBEA51BB9B39100BC0517 /* TheBugggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEA41BB9B39100BC0517 /* TheBugggerTests.swift */; };
 		00CDBEB01BB9B39100BC0517 /* TheBugggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */; };
 		00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */; };
+		00DB22DF1BEBD3CD0056A63D /* Level3SceneFinal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00DB22DE1BEBD3CD0056A63D /* Level3SceneFinal.sks */; };
 		00DCF2D81BE15213006F9F86 /* TBTutorialNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCF2D71BE15213006F9F86 /* TBTutorialNodes.swift */; };
 		00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD31BDE9777006F0302 /* blocksmg-01.png */; };
 		00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD91BDEAAD5006F0302 /* icon app.png */; };
@@ -181,7 +181,6 @@
 		00AC3AC41BEA886B00323B6D /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		00AC3AC51BEA886B00323B6D /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
 		00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerStop.atlas; sourceTree = "<group>"; };
-		00AC3ACE1BEA92BD00323B6D /* Level3SceneFinal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3SceneFinal.sks; sourceTree = "<group>"; };
 		00C0FCE11BE9495800F8C730 /* TBBrilhoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBBrilhoNode.swift; sourceTree = "<group>"; };
 		00C0FCE31BE94AEF00F8C730 /* TBMachineFrontNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMachineFrontNode.swift; sourceTree = "<group>"; };
 		00CDBE881BB9B39000BC0517 /* TheBuggger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBuggger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +198,7 @@
 		00CDBEAF1BB9B39100BC0517 /* TheBugggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBugggerUITests.swift; sourceTree = "<group>"; };
 		00CDBEB11BB9B39100BC0517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00CDBEBF1BB9CC3100BC0517 /* TBGestureReconizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGestureReconizer.swift; sourceTree = "<group>"; };
+		00DB22DE1BEBD3CD0056A63D /* Level3SceneFinal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3SceneFinal.sks; sourceTree = "<group>"; };
 		00DCF2D71BE15213006F9F86 /* TBTutorialNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBTutorialNodes.swift; sourceTree = "<group>"; };
 		00F6CFD31BDE9777006F0302 /* blocksmg-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blocksmg-01.png"; sourceTree = "<group>"; };
 		00F6CFD91BDEAAD5006F0302 /* icon app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon app.png"; sourceTree = "<group>"; };
@@ -541,7 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				00AC3AC41BEA886B00323B6D /* Level1Scene.sks */,
-				00AC3ACE1BEA92BD00323B6D /* Level3SceneFinal.sks */,
+				00DB22DE1BEBD3CD0056A63D /* Level3SceneFinal.sks */,
 			);
 			name = "Level 1";
 			sourceTree = "<group>";
@@ -706,7 +706,7 @@
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
 				52E75DC01BDEAC5700F91E00 /* Moedas.Atlas in Resources */,
 				52714B731BDE787C006200A1 /* metalblocksm-1.png in Resources */,
-				00AC3ACF1BEA92BD00323B6D /* Level3SceneFinal.sks in Resources */,
+				00DB22DF1BEBD3CD0056A63D /* Level3SceneFinal.sks in Resources */,
 				008698B31BE94DA900EE80F2 /* signal.atlas in Resources */,
 				001E55C81BD8221600B80833 /* BaseA.png in Resources */,
 				52E75DC41BDEAD0300F91E00 /* Move_Ya.mp3 in Resources */,

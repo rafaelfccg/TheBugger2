@@ -34,6 +34,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     let removable = "removable"
     
+    //SPEED
+    let skyspeed:Float = 270.0
+    let parallaxSpeed:Float = 320.0
+    
     let numFormatter = NSNumberFormatter()
     //parallax
     var skyNode:SKSpriteNode?
@@ -99,9 +103,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         numFormatter.maximumFractionDigits = 0
         //paralax ceu
         skyNode = SKSpriteNode(imageNamed: "sky")
-        skyNode?.size = self.size
+        skyNode?.size = CGSizeMake(self.size.width+100, self.size.height+100)
         skyNodeNext = SKSpriteNode(imageNamed: "sky")
-        skyNodeNext?.size = self.size
+        skyNodeNext?.size = skyNode!.size
         
         background1 = SKSpriteNode(texture: TBUtils.getNextBackground())
         background1?.size = self.size
@@ -178,7 +182,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 // leap-frogging each other as they both move.
                 sprite.position =
                     CGPoint(x:
-                        nextSprite.position.x + nextSprite.frame.size.width - 3.5,
+                        nextSprite.position.x + nextSprite.frame.size.width - 7,
                         y: sprite.position.y)
                 if(isParalaxSky){
                     sprite.zPosition = -99
@@ -203,7 +207,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 // leap-frogging each other as they both move.
                 nextSprite.position =
                     CGPoint(x:
-                        sprite.position.x + sprite.frame.size.width - 3.5 ,
+                        sprite.position.x + sprite.frame.size.width - 7 ,
                         y: nextSprite.position.y)
                 if(isParalaxSky){
                     sprite.zPosition = -100
@@ -694,8 +698,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             lastFrameTime = currentTime
             if(stopParalax == false)
             {
-                self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: 100,isParalaxSky: true)
-                self.moveSprite(background1!, nextSprite: background2!, speed: 150,isParalaxSky: false)
+                self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: self.skyspeed,isParalaxSky: true)
+                self.moveSprite(background1!, nextSprite: background2!, speed: self.parallaxSpeed,isParalaxSky: false)
                 
             }
             

@@ -21,7 +21,8 @@ class TBPlayerNode: SKSpriteNode {
     var weponType:Bool // 0 sword, 1 range
     var delegate :TBPlayerNodeJointsDelegate?
     
-    let defaultSpeed = 350 // era 250
+    let defaultSpeed = 430 // era 250
+    //AJUSTAR HIGH E LOW
     let highSpeed = 550
     let slowSpeed = 100
     var speedBost:Bool
@@ -29,11 +30,13 @@ class TBPlayerNode: SKSpriteNode {
     static var deathAnimation: SKAction?
     
     static var defenceAction:SKAction?
-    static var attackAction:SKAction?
+    static var attackActionAnimation:SKAction?
     static var walkAction:SKAction?
     static var standActionAnimation:SKAction?
     
+    
     var defenceActionChangeState:SKAction?
+    var attackActionChangeState:SKAction?
     
     var score: Int = 0
     var monstersKilled: Int = 0
@@ -67,7 +70,7 @@ class TBPlayerNode: SKSpriteNode {
     
     static func createPlayerAttack(){
         let atackArray = TBUtils().getSprites("PlayerAttack", nomeImagens: "attack-")
-        TBPlayerNode.attackAction = SKAction.animateWithTextures(atackArray, timePerFrame: 0.07);
+        TBPlayerNode.attackActionAnimation = SKAction.animateWithTextures(atackArray, timePerFrame: 0.07);
     }
     
     static func createPlayerDefense(){
@@ -131,6 +134,15 @@ class TBPlayerNode: SKSpriteNode {
             
         })])]))
         
+        
+        self.attackActionChangeState = SKAction.group([TBPlayerNode.attackActionAnimation!,SKAction.sequence([SKAction.waitForDuration(0.05),SKAction.runBlock({
+            self.attackState = AttackState.Attacking})]) ,
+            SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
+                self.attackState = AttackState.Idle}
+            )])])
+        
+        
+        
         //runAction(TBPlayerNode.standActionAnimation!)
         self.runStandingAction()
         
@@ -190,6 +202,9 @@ class TBPlayerNode: SKSpriteNode {
         if( self.actionForKey("attack") == nil && self.actionForKey("die") == nil){
             let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
             
+            
+                self.runAction(attackActionChangeState!)
+            
             for body : SKPhysicsBody in bodies! {
                 
                 if body.categoryBitMask == GameScene.MONSTER_NODE {
@@ -199,10 +214,10 @@ class TBPlayerNode: SKSpriteNode {
                     monstersKilled++
                 }
             }
-            
-            runAction(SKAction.group([TBPlayerNode.attackAction!, SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({ self.attackState = AttackState.Idle})])]), withKey: "attack")
-            
-            self.attackState = AttackState.Attacking
+//            runAction(SKAction.group([TBPlayerNode.attackActionAnimation!, SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
+//                self.attackState = AttackState.Idle})])]), withKey: "attack")
+//            
+//            self.attackState = AttackState.Attacking
         }
     }
     
