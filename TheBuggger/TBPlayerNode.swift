@@ -82,9 +82,6 @@ class TBPlayerNode: SKSpriteNode {
     static func createPlayerDefense(){
         let defenceArray = TBUtils().getSprites("PlayerDefence", nomeImagens: "defend-")
          TBPlayerNode.defenceAction =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.065);
-        
-        
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -141,7 +138,7 @@ class TBPlayerNode: SKSpriteNode {
         })])]))
         
         
-        self.attackActionChangeState1 = SKAction.group([TBPlayerNode.attackActionAnimation1!,SKAction.sequence([SKAction.waitForDuration(0.04),SKAction.runBlock({
+        self.attackActionChangeState1 = SKAction.group([TBPlayerNode.attackActionAnimation1!,SKAction.sequence([SKAction.runBlock({
             self.attackState = AttackState.Attacking})]) ,
             SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
                 self.attackState = AttackState.Idle}
