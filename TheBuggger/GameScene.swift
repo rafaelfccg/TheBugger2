@@ -710,7 +710,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
                 self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
                 self.hero.actionCall()
-                self.touchStartedAt = currentTime
+                if hero.state != States.FAIL{
+                    self.touchStartedAt = currentTime
+                }
                 self.hero.state = States.Initial
                 
             }

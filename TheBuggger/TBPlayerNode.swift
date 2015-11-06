@@ -30,13 +30,15 @@ class TBPlayerNode: SKSpriteNode {
     static var deathAnimation: SKAction?
     
     static var defenceAction:SKAction?
-    static var attackActionAnimation:SKAction?
+    static var attackActionAnimation1:SKAction?
+    static var attackActionAnimation2:SKAction?
     static var walkAction:SKAction?
     static var standActionAnimation:SKAction?
     
     
     var defenceActionChangeState:SKAction?
-    var attackActionChangeState:SKAction?
+    var attackActionChangeState1:SKAction?
+    var attackActionChangeState2:SKAction?
     
     var score: Int = 0
     var monstersKilled: Int = 0
@@ -70,7 +72,11 @@ class TBPlayerNode: SKSpriteNode {
     
     static func createPlayerAttack(){
         let atackArray = TBUtils().getSprites("PlayerAttack", nomeImagens: "attack-")
-        TBPlayerNode.attackActionAnimation = SKAction.animateWithTextures(atackArray, timePerFrame: 0.07);
+        let atackArray2 = TBUtils().getSprites("PlayerAttack2", nomeImagens: "attack-")
+        TBPlayerNode.attackActionAnimation1  = SKAction.animateWithTextures(atackArray2, timePerFrame: 0.07)
+        
+        
+        TBPlayerNode.attackActionAnimation2 = SKAction.animateWithTextures(atackArray, timePerFrame: 0.07)
     }
     
     static func createPlayerDefense(){
@@ -135,11 +141,17 @@ class TBPlayerNode: SKSpriteNode {
         })])]))
         
         
-        self.attackActionChangeState = SKAction.group([TBPlayerNode.attackActionAnimation!,SKAction.sequence([SKAction.waitForDuration(0.04),SKAction.runBlock({
+        self.attackActionChangeState1 = SKAction.group([TBPlayerNode.attackActionAnimation1!,SKAction.sequence([SKAction.waitForDuration(0.04),SKAction.runBlock({
             self.attackState = AttackState.Attacking})]) ,
             SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
                 self.attackState = AttackState.Idle}
             )])])
+        
+        self.attackActionChangeState2 = SKAction.group([TBPlayerNode.attackActionAnimation2!,SKAction.sequence([SKAction.waitForDuration(0.04),SKAction.runBlock({
+            self.attackState = AttackState.Attacking})]) ,
+            SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
+                self.attackState = AttackState.Idle}
+                )])])
         
         
         
@@ -171,7 +183,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func addAttackJoint()
     {
-        let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(600, 150))
+        let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(570, 150))
         
         atackJointSquare.physicsBody = SKPhysicsBody(rectangleOfSize: atackJointSquare.size)
         atackJointSquare.physicsBody?.affectedByGravity = false;
@@ -184,7 +196,7 @@ class TBPlayerNode: SKSpriteNode {
         atackJointSquare.physicsBody?.collisionBitMask = 0b0
         atackJointSquare.physicsBody?.categoryBitMask = GameScene.JOINT_ATTACK_NODE
         atackJointSquare.physicsBody?.contactTestBitMask = GameScene.MONSTER_NODE
-        atackJointSquare.position = CGPointMake(130 , -70)
+        atackJointSquare.position = CGPointMake(120 , -70)
         self.attackJoint = atackJointSquare;
         self.addChild(atackJointSquare)
         
@@ -203,7 +215,11 @@ class TBPlayerNode: SKSpriteNode {
             let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
             
             
-                self.runAction(attackActionChangeState!,withKey: "attack")
+            if rand() % 2 == 0 {
+                self.runAction(attackActionChangeState1!,withKey: "attack")
+            }else {
+                self.runAction(attackActionChangeState2!,withKey: "attack")
+            }
             
             for body : SKPhysicsBody in bodies! {
                 

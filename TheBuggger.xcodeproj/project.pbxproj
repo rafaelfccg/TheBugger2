@@ -53,6 +53,10 @@
 		008698BE1BE9519200EE80F2 /* Espinhos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698BD1BE9519200EE80F2 /* Espinhos.atlas */; };
 		009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */; };
 		009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */; };
+		009CAFCD1BED2B76003BA434 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFCA1BED2B76003BA434 /* Level1Scene.sks */; };
+		009CAFCE1BED2B76003BA434 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFCB1BED2B76003BA434 /* Level2Scene.sks */; };
+		009CAFCF1BED2B76003BA434 /* Level3SceneFinal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFCC1BED2B76003BA434 /* Level3SceneFinal.sks */; };
+		009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */; };
 		00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ABE1BEA7EAB00323B6D /* smoke1.png */; };
 		00AC3AC11BEA83EA00323B6D /* TBRedLightEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC3AC01BEA83EA00323B6D /* TBRedLightEffect.swift */; };
 		00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */; };
@@ -172,6 +176,10 @@
 		008698BD1BE9519200EE80F2 /* Espinhos.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Espinhos.atlas; sourceTree = "<group>"; };
 		009018B91BC82F63002AABC7 /* TBPowerUpsStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPowerUpsStates.swift; sourceTree = "<group>"; };
 		009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBChangeSpeedGround.swift; sourceTree = "<group>"; };
+		009CAFCA1BED2B76003BA434 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		009CAFCB1BED2B76003BA434 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
+		009CAFCC1BED2B76003BA434 /* Level3SceneFinal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3SceneFinal.sks; sourceTree = "<group>"; };
+		009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack2.atlas; sourceTree = "<group>"; };
 		00AC3ABE1BEA7EAB00323B6D /* smoke1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke1.png; sourceTree = "<group>"; };
 		00AC3AC01BEA83EA00323B6D /* TBRedLightEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRedLightEffect.swift; sourceTree = "<group>"; };
 		00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerStop.atlas; sourceTree = "<group>"; };
@@ -498,6 +506,7 @@
 				52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */,
 				AFA026DF1BD17FDB00B7FFC5 /* heroPhysicsBody.png */,
 				001E55791BD6DA0C00B80833 /* power1.png */,
+				009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */,
 				001E557D1BD8221600B80833 /* Cenario */,
 				AF9061211BE290AE00C61746 /* PlayerDeath.atlas */,
 				AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */,
@@ -532,6 +541,9 @@
 		00CDBECA1BBD9FD100BC0517 /* Level 1 */ = {
 			isa = PBXGroup;
 			children = (
+				009CAFCA1BED2B76003BA434 /* Level1Scene.sks */,
+				009CAFCB1BED2B76003BA434 /* Level2Scene.sks */,
+				009CAFCC1BED2B76003BA434 /* Level3SceneFinal.sks */,
 			);
 			name = "Level 1";
 			sourceTree = "<group>";
@@ -611,7 +623,7 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = N4UKH6NFCZ;
+						DevelopmentTeam = 46HQV8ZA5C;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -659,6 +671,7 @@
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
 				0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */,
+				009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */,
 				0022C0321BE2A44300A184D5 /* taptxt.png in Resources */,
 				00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */,
 				AFA026E01BD17FDB00B7FFC5 /* heroPhysicsBody.png in Resources */,
@@ -673,6 +686,7 @@
 				0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */,
 				001E55CC1BD8221600B80833 /* plataformmd.png in Resources */,
 				AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */,
+				009CAFCE1BED2B76003BA434 /* Level2Scene.sks in Resources */,
 				001E55D51BD8221600B80833 /* estructure3.png in Resources */,
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
 				AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */,
@@ -701,12 +715,14 @@
 				001E55C61BD8221600B80833 /* base floor.png in Resources */,
 				001E55D71BD8221600B80833 /* texture.png in Resources */,
 				0022C0301BE2A44300A184D5 /* SlideUpTutorial.atlas in Resources */,
+				009CAFCF1BED2B76003BA434 /* Level3SceneFinal.sks in Resources */,
 				00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */,
 				008698BE1BE9519200EE80F2 /* Espinhos.atlas in Resources */,
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
 				001E55CF1BD8221600B80833 /* prataformlg.png in Resources */,
 				001E55C51BD8221600B80833 /* structure2.png in Resources */,
 				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
+				009CAFCD1BED2B76003BA434 /* Level1Scene.sks in Resources */,
 				AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */,
 				001E55D11BD8221600B80833 /* roofend1.png in Resources */,
 				0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */,
