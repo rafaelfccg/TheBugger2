@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
-    let limitTimeAction:Double = 0.1
+    let limitTimeAction:Double = 0.05
     var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
     var labelScore:SKLabelNode?
@@ -707,16 +707,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 //            print(self.stagePercentage)
             updatePercentageLabel()
             
+            if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
+                self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
+                self.hero.actionCall()
+                self.touchStartedAt = currentTime
+                self.hero.state = States.Initial
+                
+            }
 
         }
         
-        if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
-            self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
-            self.hero.actionCall()
-            self.touchStartedAt = currentTime
-            self.hero.state = States.Initial
-            
-        }
+        
         
     }
     
