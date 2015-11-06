@@ -920,6 +920,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
                 hero.physicsBody?.pinned = true
                 self.stopParalax = true
+                
+                // para a animação do ataque caso ele morra
+                if((self.hero.actionForKey("attack")) != nil) {
+                    self.hero.removeActionForKey("attack")
+                }
+                
                 hero.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.hero.removeFromParent()
                     self.restartLevel()

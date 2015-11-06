@@ -135,7 +135,7 @@ class TBPlayerNode: SKSpriteNode {
         })])]))
         
         
-        self.attackActionChangeState = SKAction.group([TBPlayerNode.attackActionAnimation!,SKAction.sequence([SKAction.waitForDuration(0.05),SKAction.runBlock({
+        self.attackActionChangeState = SKAction.group([TBPlayerNode.attackActionAnimation!,SKAction.sequence([SKAction.waitForDuration(0.04),SKAction.runBlock({
             self.attackState = AttackState.Attacking})]) ,
             SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
                 self.attackState = AttackState.Idle}
@@ -203,7 +203,7 @@ class TBPlayerNode: SKSpriteNode {
             let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
             
             
-                self.runAction(attackActionChangeState!)
+                self.runAction(attackActionChangeState!,withKey: "attack")
             
             for body : SKPhysicsBody in bodies! {
                 
