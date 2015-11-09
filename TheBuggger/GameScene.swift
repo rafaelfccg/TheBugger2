@@ -926,6 +926,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     self.hero.removeActionForKey("attack")
                 }
                 
+                // muda o estado da camera para o normal caso entre em contato com o paraCamera depois de morrer
+                stateCamera = "normal"
+                
                 hero.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.hero.removeFromParent()
                     self.restartLevel()
@@ -1008,8 +1011,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
             //muda o estado da camera para a função update não alterar a posição dela
-            stateCamera = "final"
-            stopParalax = true
+                stateCamera = "final"
+                stopParalax = true
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.END_LEVEL_NODE )){
             //terminou
