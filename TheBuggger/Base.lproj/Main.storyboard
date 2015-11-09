@@ -332,7 +332,7 @@
                         <outlet property="normalBut" destination="esn-2i-BqX" id="LrA-3R-rqU"/>
                         <outlet property="veryEasyBut" destination="AxN-gb-MCK" id="Oxg-N3-DB6"/>
                         <outlet property="veryHardBut" destination="Uy3-TK-Ip1" id="6BL-uy-AfH"/>
-                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="ToGameSegue" id="nwz-GZ-5gB"/>
+                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="ToGameSegue" animates="NO" id="nwz-GZ-5gB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dA-Tf-h6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
