@@ -58,6 +58,8 @@
 		009CAFCF1BED2B76003BA434 /* Level3SceneFinal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFCC1BED2B76003BA434 /* Level3SceneFinal.sks */; };
 		009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */; };
 		009CAFD31BED4297003BA434 /* heroPhysicsBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD21BED4297003BA434 /* heroPhysicsBody.png */; };
+		009CAFE31BF10D72003BA434 /* SelectLevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFE21BF10D72003BA434 /* SelectLevelScene.sks */; };
+		009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */; };
 		00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ABE1BEA7EAB00323B6D /* smoke1.png */; };
 		00AC3AC11BEA83EA00323B6D /* TBRedLightEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC3AC01BEA83EA00323B6D /* TBRedLightEffect.swift */; };
 		00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */; };
@@ -181,6 +183,8 @@
 		009CAFCC1BED2B76003BA434 /* Level3SceneFinal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3SceneFinal.sks; sourceTree = "<group>"; };
 		009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack2.atlas; sourceTree = "<group>"; };
 		009CAFD21BED4297003BA434 /* heroPhysicsBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroPhysicsBody.png; sourceTree = "<group>"; };
+		009CAFE21BF10D72003BA434 /* SelectLevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectLevelScene.sks; sourceTree = "<group>"; };
+		009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLevelScene.swift; sourceTree = "<group>"; };
 		00AC3ABE1BEA7EAB00323B6D /* smoke1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke1.png; sourceTree = "<group>"; };
 		00AC3AC01BEA83EA00323B6D /* TBRedLightEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRedLightEffect.swift; sourceTree = "<group>"; };
 		00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerStop.atlas; sourceTree = "<group>"; };
@@ -364,6 +368,15 @@
 			path = "Tutorial ";
 			sourceTree = "<group>";
 		};
+		009CAFE11BF10C2D003BA434 /* selectLevel */ = {
+			isa = PBXGroup;
+			children = (
+				009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */,
+				009CAFE21BF10D72003BA434 /* SelectLevelScene.sks */,
+			);
+			name = selectLevel;
+			sourceTree = "<group>";
+		};
 		00CDBE7F1BB9B39000BC0517 = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +439,7 @@
 		00CDBEC11BB9FE3700BC0517 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				009CAFE11BF10C2D003BA434 /* selectLevel */,
 				00CDBE8F1BB9B39000BC0517 /* GameScene.swift */,
 				00CDBECA1BBD9FD100BC0517 /* Level 1 */,
 				52E7AEAD1BBEF81D008FE672 /* Level 2 */,
@@ -717,6 +731,7 @@
 				009CAFD31BED4297003BA434 /* heroPhysicsBody.png in Resources */,
 				009CAFCF1BED2B76003BA434 /* Level3SceneFinal.sks in Resources */,
 				00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */,
+				009CAFE31BF10D72003BA434 /* SelectLevelScene.sks in Resources */,
 				008698BE1BE9519200EE80F2 /* Espinhos.atlas in Resources */,
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
 				001E55CF1BD8221600B80833 /* prataformlg.png in Resources */,
@@ -760,6 +775,7 @@
 				00C0FCE21BE9495800F8C730 /* TBBrilhoNode.swift in Sources */,
 				008698BA1BE9503200EE80F2 /* TBSignalNode.swift in Sources */,
 				00F6CFDC1BDEAB8C006F0302 /* TBMenuController.swift in Sources */,
+				009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */,
 				009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */,
 				52E75DBC1BDEAC3200F91E00 /* TBMoedasNode.swift in Sources */,
 				52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */,
