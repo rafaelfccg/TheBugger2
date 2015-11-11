@@ -20,7 +20,31 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         self.navigationController?.navigationBar.hidden = true
 //        self.navigationController.
 
-        mudaScene(level! ,withMethod: gameMethod!)
+        //mudaScene(level! ,withMethod: 1)
+        selectLevel(self.level!)
+    }
+    
+    func selectLevel(nomeSKS: String){
+        if let scene = SelectLevelScene(fileNamed: nomeSKS) {
+            // Configure the view.
+            //scene.delegateChanger = self
+            scene.delegateChanger = self
+            
+            let skView = self.view as! SKView
+            //skView.showsFPS = true
+            //skView.showsNodeCount = true
+            //            skView.showsPhysics = true;
+            
+            /* Sprite Kit applies additional optimizations to improve rendering performance */
+            skView.ignoresSiblingOrder = true
+            
+            /* Set the scale mode to scale to fit the window */
+            scene.scaleMode = .AspectFill
+            
+            //scene.isMethodOne = 1
+            
+            skView.presentScene(scene)
+        }
     }
     
     func mudaScene(nomeSKS: String, withMethod:Int)
@@ -49,6 +73,7 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         let skView = self.view as! SKView
         
         skView.paused = true
+        skView.scene?.removeAllActions()
         skView.scene?.removeAllChildren()
         //self.navigationController?.popViewControllerAnimated(true)
         self.performSegueWithIdentifier("backToMenuSegue", sender: self)

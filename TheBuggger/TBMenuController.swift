@@ -19,6 +19,8 @@ class TBMenuViewController :UIViewController {
     @IBOutlet weak var normalBut: UIButton!
     @IBOutlet weak var veryHardBut: UIButton!
     
+    @IBOutlet weak var efeitoCima: UIImageView!
+    @IBOutlet weak var efeitoBaixo: UIImageView!
     
     var isMethodOne:Int?
     var stringLevel:String?
@@ -50,51 +52,63 @@ class TBMenuViewController :UIViewController {
         TBMachineFrontNode.createMachineFrontAnimation()
         TBRedLightEffect.createRedLightAnimation()
         TBPlayerNode.createDeathAnimation()
+    
+        self.efeitoCima.animationImages = [UIImage(named:"enfeiteCima-1")!,
+                                          UIImage(named: "enfeiteCima-2")!,
+                                          UIImage(named: "enfeiteCima-3")!,
+                                          UIImage(named: "enfeiteCima-4")!,
+                                          UIImage(named: "enfeiteCima-5")!,
+                                          UIImage(named: "enfeiteCima-4")!,
+                                          UIImage(named: "enfeiteCima-3")!,
+                                          UIImage(named: "enfeiteCima-2")!,]
+        self.efeitoCima.animationRepeatCount = -1
+        self.efeitoCima.animationDuration   = 0.9
+        self.efeitoCima.startAnimating()
+        
+        
+        self.efeitoBaixo.animationImages = [UIImage(named:"enfeiteBaixo-1")!,
+            UIImage(named: "enfeiteBaixo-2")!,
+            UIImage(named: "enfeiteBaixo-3")!,
+            UIImage(named: "enfeiteBaixo-4")!,
+            UIImage(named: "enfeiteBaixo-3")!,
+            UIImage(named: "enfeiteBaixo-2")!,]
+        self.efeitoBaixo.animationRepeatCount = -1
+        self.efeitoBaixo.animationDuration   = 0.9
+        self.efeitoBaixo.startAnimating()
         
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {
-        isMethodOne = 1
-        self.performSegueWithIdentifier("toLevelSegue", sender: self)
+        //isMethodOne = 1
+        self.performSegueWithIdentifier("ToGameSegue", sender: self)
     }
     
     @IBAction func actionButMet2(sender: AnyObject) {
-        isMethodOne = 2
-        self.performSegueWithIdentifier("toLevelSegue", sender: self)
-    }
-    
-    @IBAction func actionButMet3(sender: AnyObject) {
-        isMethodOne = 3
-        self.performSegueWithIdentifier("toLevelSegue", sender: self)  
+        self.performSegueWithIdentifier("ToOptionsSegue", sender: self)
+        
         
     }
-    
-    @IBAction func veryEasyLevel(sender: AnyObject) {
-        self.stringLevel = "Level1Scene"
-        self.performSegueWithIdentifier("ToGameSegue", sender: self)
+    func screenShotMethod()->UIImage {
+        //Create the UIImage
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, UIScreen.mainScreen().scale)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
     
-    @IBAction func normalLevel(sender: AnyObject) {
-        self.stringLevel = "Level2Scene"
-        self.performSegueWithIdentifier("ToGameSegue", sender: self)
-    }
-    @IBAction func veryHarLevel(sender: AnyObject) {
-        self.stringLevel = "Level3SceneFinal"
-        self.performSegueWithIdentifier("ToGameSegue", sender: self)
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "ToGameSegue"){
             let gameView = segue.destinationViewController as! GameViewController
             gameView.gameMethod = isMethodOne
-            gameView.level = self.stringLevel
-        }else if segue.identifier == "toLevelSegue"{
-            let levelView = segue.destinationViewController as! TBMenuViewController
-            levelView.isMethodOne = isMethodOne
+            gameView.level = "SelectLevelScene"
+        }else if segue.identifier == "ToOptionsSegue"{
+            let options = segue.destinationViewController as! TBOptionsViewController
+            options.imageBack = screenShotMethod()
+            
 
         }
     }
-    @IBAction func backButton(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
+
 }
