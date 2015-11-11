@@ -88,6 +88,7 @@
 		009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */; };
 		009CAFD31BED4297003BA434 /* heroPhysicsBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD21BED4297003BA434 /* heroPhysicsBody.png */; };
 		009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */; };
+		00A6EF381BF3D03800006196 /* SelectLevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00A6EF371BF3D03800006196 /* SelectLevelScene.sks */; };
 		00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ABE1BEA7EAB00323B6D /* smoke1.png */; };
 		00AC3AC11BEA83EA00323B6D /* TBRedLightEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC3AC01BEA83EA00323B6D /* TBRedLightEffect.swift */; };
 		00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */; };
@@ -241,6 +242,7 @@
 		009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack2.atlas; sourceTree = "<group>"; };
 		009CAFD21BED4297003BA434 /* heroPhysicsBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroPhysicsBody.png; sourceTree = "<group>"; };
 		009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLevelScene.swift; sourceTree = "<group>"; };
+		00A6EF371BF3D03800006196 /* SelectLevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectLevelScene.sks; sourceTree = "<group>"; };
 		00AC3ABE1BEA7EAB00323B6D /* smoke1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke1.png; sourceTree = "<group>"; };
 		00AC3AC01BEA83EA00323B6D /* TBRedLightEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRedLightEffect.swift; sourceTree = "<group>"; };
 		00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerStop.atlas; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 			children = (
 				009CAFE11BF10C2D003BA434 /* selectLevel */,
 				00CDBE8F1BB9B39000BC0517 /* GameScene.swift */,
+				00A6EF371BF3D03800006196 /* SelectLevelScene.sks */,
 				00CDBECA1BBD9FD100BC0517 /* Level 1 */,
 				52E7AEAD1BBEF81D008FE672 /* Level 2 */,
 			);
@@ -824,6 +827,7 @@
 				001E55D81BD8221600B80833 /* sky.png in Resources */,
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
 				001E55C71BD8221600B80833 /* plataforma-01.png in Resources */,
+				00A6EF381BF3D03800006196 /* SelectLevelScene.sks in Resources */,
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
