@@ -81,6 +81,10 @@ class TBMenuViewController :UIViewController {
         if method > 2 || method <= 0{
             defaults.setInteger(1, forKey: "method")
         }
+        let level = defaults.integerForKey("level")
+        if level <= 0{
+            defaults.setInteger(1, forKey: "level")
+        }
         
     }
     

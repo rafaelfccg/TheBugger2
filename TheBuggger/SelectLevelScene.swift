@@ -36,10 +36,18 @@ class SelectLevelScene: SKScene {
             (node:SKNode?, stop:UnsafeMutablePointer <ObjCBool>) in
                 node?.zPosition = 5
         })
-        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let inLevel =  defaults.integerForKey("level")
+        let openLevel = SKTexture(imageNamed: "estagio-1")
+        let closedLevel = SKTexture(imageNamed: "estagio-5")
         for (var i = 1 ; i <= numberOfLevels ; i++) {
             let name = "//selectStage\(i)"
             let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
+            if(i > inLevel){
+                node.texture = closedLevel
+            }else{
+                node.texture = openLevel
+            }
             let backgroundNode = SKShapeNode(circleOfRadius:(node.frame.size.width)/2 )
             backgroundNode.position = (node.position)
             backgroundNode.antialiased = true
@@ -59,6 +67,7 @@ class SelectLevelScene: SKScene {
             var level = ""
             let defaults = NSUserDefaults.standardUserDefaults()
             let method = defaults.integerForKey("method")
+            let inLevel =  defaults.integerForKey("level")
             print("\(name) + \(level)")
             if (name == "Back"){
                 self.delegateChanger?.backToMenu()
@@ -70,20 +79,20 @@ class SelectLevelScene: SKScene {
                 //touchedNode.runAction(stageSelect!)
                 touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
                     
-                    self.delegateChanger?.mudaScene("Level1Scene", withMethod: method)
+                    self.delegateChanger?.mudaScene("Level1Scene", withMethod: method, andLevel: 1)
                 })])]))
                 
-            }else if ( level == "2" ) {
+            }else if ( level == "2" && inLevel>=2) {
                 
                 touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
                     
-                    self.delegateChanger?.mudaScene("Level2Scene", withMethod: method)
+                    self.delegateChanger?.mudaScene("Level2Scene", withMethod: method, andLevel: 2)
                 })])]))
-            }else if( level == "3"){
+            }else if( level == "3" && inLevel>=3){
 
                 touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
                     
-                    self.delegateChanger?.mudaScene("Level3Scene", withMethod: method)
+                    self.delegateChanger?.mudaScene("Level3Scene", withMethod: method, andLevel: 3)
                 })])]))
                 
             }

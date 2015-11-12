@@ -47,11 +47,12 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         }
     }
     
-    func mudaScene(nomeSKS: String, withMethod:Int)
+    func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     {
         if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
             scene.delegateChanger = self
+            scene.levelSelected = andLevel
             
             let skView = self.view as! SKView
             //skView.showsFPS = true

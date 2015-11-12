@@ -11,15 +11,18 @@ import AVFoundation
 
 protocol SceneChangesDelegate{
     
-    func mudaScene(nomeSKS: String, withMethod:Int)
+    func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     func backToMenu()
+    func selectLevel(nomeSKS: String)
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
-
+    
+    var levelSelected:Int?
+    
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
-    let limitTimeAction:Double = 0.07
+    let limitTimeAction:Double = 0.08
     var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
     var labelScore:SKLabelNode?
@@ -112,8 +115,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         background2 = SKSpriteNode(texture: TBUtils.getNextBackground())
         background2?.size = self.size
         
-        
-        
         setUpLevel()
         camera.position = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
         
@@ -121,7 +122,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         camera.addChild(skyNodeNext!)
         camera.addChild(background1!)
         camera.addChild(background2!)
-        
         
         skyNode?.position = CGPoint(x: 0,y: 0)
         skyNode?.zPosition = -100
@@ -1049,6 +1049,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     
                     SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
                         self.scene?.view?.paused = true
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setInteger(self.levelSelected! + 1, forKey: "level")
+                        self.delegateChanger!.selectLevel("SelectLevelScene")
                     })])
                 )
             
