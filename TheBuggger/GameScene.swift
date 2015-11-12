@@ -292,6 +292,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
             })
         let method = hero.method
+        
+        self.hero.addAttackJoint()
+        self.hero.zRotation = 0
         setHeroPosition()
         self.hero.score = 0;
         lastFrameTime = 0
@@ -916,10 +919,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
           (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
           (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
+            if(bodyA.node?.name == hero.standJoint?.name){
+                bodyA = hero.physicsBody!
+            }
+            
             if bodyB.categoryBitMask == GameScene.MONSTER_NODE && hero.attackState == AttackState.Defending {
                 bodyB.applyImpulse(CGVectorMake(100, 30))
                 
             }else{
+                
                 bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
                 hero.physicsBody?.pinned = true
                 self.stopParalax = true
@@ -930,7 +938,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 }
                 
                 hero.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
+                    self.hero.removeAttackJoint()
                     self.hero.removeFromParent()
+                    
                     self.restartLevel()
                 })])), withKey: "die")
             }

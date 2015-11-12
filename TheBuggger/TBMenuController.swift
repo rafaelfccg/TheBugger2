@@ -74,6 +74,12 @@ class TBMenuViewController :UIViewController {
         self.efeitoBaixo.animationDuration   = 0.9
         self.efeitoBaixo.startAnimating()
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let method = defaults.integerForKey("method")
+        if method > 2 || method <= 0{
+            defaults.setInteger(1, forKey: "method")
+        }
+        
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {
