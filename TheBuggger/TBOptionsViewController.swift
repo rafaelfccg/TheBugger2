@@ -17,6 +17,7 @@ class TBOptionsViewController: UIViewController {
     @IBOutlet weak var radioButtonMethod2: CheckBox!
     @IBOutlet weak var radioButtonMethod1: CheckBox!
    
+    @IBOutlet weak var backButton: UIImageView!
     @IBOutlet weak var method2Description: UILabel!
     @IBOutlet weak var method2Label: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -48,6 +49,18 @@ class TBOptionsViewController: UIViewController {
     
         let defaults = NSUserDefaults.standardUserDefaults()
         method = defaults.integerForKey("method")
+        
+        backButton.animationImages = [UIImage(named: "back-1")!,
+            UIImage(named: "back-2")!,
+            UIImage(named: "back-3")!,
+            UIImage(named: "back-2")!]
+        backButton.animationRepeatCount = -1
+        backButton.animationDuration = 1
+        backButton.startAnimating()
+        backButton.userInteractionEnabled = true
+        let gestureBack2 = UITapGestureRecognizer(target: self, action: Selector("back"))
+        backButton.addGestureRecognizer(gestureBack2)
+        
         
         if method == 1 {
             radioButtonMethod1.isChecked = true

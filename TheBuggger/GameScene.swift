@@ -113,8 +113,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         background2?.size = self.size
         
         
-        camera.position = hero.position
+        
         setUpLevel()
+        camera.position = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
         
         camera.addChild(skyNode!)
         camera.addChild(skyNodeNext!)
@@ -436,6 +437,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
             node.zPosition = 1
+            
+            let colorNode = node as! SKSpriteNode
+            colorNode.color = SKColor.clearColor()
+            
             self.setObstacleTypeHit(node)
             
             self.deathNodeReference = node
