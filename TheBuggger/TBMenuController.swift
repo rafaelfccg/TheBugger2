@@ -48,6 +48,8 @@ class TBMenuViewController :UIViewController {
         TBMachineFrontNode.createMachineFrontAnimation()
         TBRedLightEffect.createRedLightAnimation()
         TBPlayerNode.createDeathAnimation()
+        TBShotBotNode.createSKActionAnimation()
+        TBShotNode.createSKActionAnimation()
         
     }
     
@@ -68,7 +70,7 @@ class TBMenuViewController :UIViewController {
     }
     
     @IBAction func veryEasyLevel(sender: AnyObject) {
-        self.stringLevel = "Level1Scene"
+        self.stringLevel = "Level4Scene"
         self.performSegueWithIdentifier("ToGameSegue", sender: self)
     }
     

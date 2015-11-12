@@ -104,7 +104,7 @@ class GameSceneTestEnemy: SKScene {
         
         if(delta>5.0) {
             self.lastShot = currentTime
-            self.shooting()
+           // self.shooting()
         }
         
     }
@@ -139,14 +139,14 @@ class GameSceneTestEnemy: SKScene {
         }
     }
     
-    func shooting() {
-        self.enumerateChildNodesWithName(TBShotGroundBotNode.name , usingBlock: {(node, ponter)->Void in
-            
-            let shot = TBShotGroundBotNode()
-            shot.position = node.position
-            shot.name = "ShotBot"
-            self.addChild(shot)
-            
-        })
-    }
+//    func shooting() {
+//        self.enumerateChildNodesWithName(TBShotGroundBotNode.name , usingBlock: {(node, ponter)->Void in
+//            
+//            let shot = TBShotGroundBotNode()
+//            shot.position = node.position
+//            shot.name = "ShotBot"
+//            self.addChild(shot)
+//            
+//        })
+//    }
 }
