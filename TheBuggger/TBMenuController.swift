@@ -38,6 +38,8 @@ class TBMenuViewController :UIViewController {
         TBPlayerNode.createPlayerDefense()
         TBPlayerNode.createPlayerWalkAnimation()
         TBPlayerNode.createPlayerStandAnimation()
+        TBPlayerNode.createPlayerAirAnimation()
+        TBPlayerNode.createPlayerFallingAnimation()
         TBTutorialNodes.createJumpTutorialAction()
         TBTutorialNodes.createTapTutorialAction()
         TBTutorialNodes.createSlideUpTutorialAction()

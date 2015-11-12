@@ -35,6 +35,8 @@ class TBPlayerNode: SKSpriteNode {
     static var attackActionAnimation2:SKAction?
     static var walkAction:SKAction?
     static var standActionAnimation:SKAction?
+    static var airActionAnimation:SKAction?
+    static var fallActionAnimation:SKAction?
     
     
     var defenceActionChangeState:SKAction?
@@ -83,6 +85,15 @@ class TBPlayerNode: SKSpriteNode {
     static func createPlayerDefense(){
         let defenceArray = TBUtils().getSprites("PlayerDefence", nomeImagens: "defend-")
          TBPlayerNode.defenceAction =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.065);
+    }
+    
+    static func createPlayerAirAnimation(){
+        let defenceArray = TBUtils().getSprites("PlayerAir", nomeImagens: "air-")
+        TBPlayerNode.airActionAnimation =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.12);
+    }
+    static func createPlayerFallingAnimation(){
+        let defenceArray = TBUtils().getSprites("PlayerFall", nomeImagens: "fall-")
+        TBPlayerNode.fallActionAnimation =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.03);
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -183,6 +194,21 @@ class TBPlayerNode: SKSpriteNode {
     func runStandingAction(){
         self.removeActionForKey("walk")
         self.runAction(TBPlayerNode.standActionAnimation!, withKey:"stand")
+    }
+    func runAirAction()
+    {
+        if(self.actionForKey("air") == nil && self.actionForKey("attack") == nil)
+        {
+            self.runAction(TBPlayerNode.airActionAnimation!, withKey:"air")
+        }
+    }
+    func runFallAction()
+    {
+        if(self.actionForKey("fall") == nil && self.actionForKey("attack") == nil)
+        {
+            self.removeActionForKey("air")
+            self.runAction(TBPlayerNode.fallActionAnimation!, withKey:"fall")
+        }
     }
     
     static func createDeathAnimation()

@@ -65,6 +65,15 @@ class TBOptionsViewController: UIViewController {
     }
     
     func back(){
+        //logs customizados no flurry
+        if(method == 1)
+        {
+            Flurry.logEvent("Method 1 Choosed")
+        }
+        else if(method == 2)
+        {
+            Flurry.logEvent("Method 2 Choosed")
+        }
         self.navigationController?.popViewControllerAnimated(false)
     }
     

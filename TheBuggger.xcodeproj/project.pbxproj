@@ -85,7 +85,6 @@
 		0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 009221661BF12EFE007C7DDC /* cabos-3.png */; };
 		0092216B1BF12EFE007C7DDC /* cabos-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 009221671BF12EFE007C7DDC /* cabos-4.png */; };
 		0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */ = {isa = PBXBuildFile; fileRef = 0092216C1BF138E6007C7DDC /* back-estagio.png */; };
-		009221701BF179BC007C7DDC /* SelectLevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0092216F1BF179BC007C7DDC /* SelectLevelScene.sks */; };
 		009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */; };
 		009CAFD31BED4297003BA434 /* heroPhysicsBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD21BED4297003BA434 /* heroPhysicsBody.png */; };
 		009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */; };
@@ -135,6 +134,14 @@
 		AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */; };
 		AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF9061211BE290AE00C61746 /* PlayerDeath.atlas */; };
 		AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF9061231BE291C400C61746 /* MonsterDeath.atlas */; };
+		AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF691BF3B0C200C99A94 /* libFlurry_7.3.0.a */; };
+		AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF6C1BF3B65B00C99A94 /* Security.framework */; };
+		AFE7EF6F1BF3B67000C99A94 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF6E1BF3B67000C99A94 /* SystemConfiguration.framework */; };
+		AFE7EF781BF3C7BC00C99A94 /* PlayerAir.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */; };
+		AFE7EF8C1BF3D59000C99A94 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF891BF3D59000C99A94 /* Level1Scene.sks */; };
+		AFE7EF8D1BF3D59000C99A94 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF8A1BF3D59000C99A94 /* Level2Scene.sks */; };
+		AFE7EF8E1BF3D59000C99A94 /* Level3SceneFinal.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF8B1BF3D59000C99A94 /* Level3SceneFinal.sks */; };
+		AFE7EF901BF3D59A00C99A94 /* SelectLevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF8F1BF3D59A00C99A94 /* SelectLevelScene.sks */; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; };
 		AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */; };
 		AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489EE1BD56D8700463411 /* PlayerDash.atlas */; };
@@ -239,7 +246,6 @@
 		009221661BF12EFE007C7DDC /* cabos-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cabos-3.png"; sourceTree = "<group>"; };
 		009221671BF12EFE007C7DDC /* cabos-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cabos-4.png"; sourceTree = "<group>"; };
 		0092216C1BF138E6007C7DDC /* back-estagio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-estagio.png"; sourceTree = "<group>"; };
-		0092216F1BF179BC007C7DDC /* SelectLevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = SelectLevelScene.sks; path = ../SelectLevelScene.sks; sourceTree = "<group>"; };
 		009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack2.atlas; sourceTree = "<group>"; };
 		009CAFD21BED4297003BA434 /* heroPhysicsBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroPhysicsBody.png; sourceTree = "<group>"; };
 		009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLevelScene.swift; sourceTree = "<group>"; };
@@ -295,6 +301,16 @@
 		AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhosNode.swift; sourceTree = "<group>"; };
 		AF9061211BE290AE00C61746 /* PlayerDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDeath.atlas; sourceTree = "<group>"; };
 		AF9061231BE291C400C61746 /* MonsterDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MonsterDeath.atlas; sourceTree = "<group>"; };
+		AFE7EF691BF3B0C200C99A94 /* libFlurry_7.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.3.0.a; sourceTree = "<group>"; };
+		AFE7EF6A1BF3B0C200C99A94 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		AFE7EF6C1BF3B65B00C99A94 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		AFE7EF6E1BF3B67000C99A94 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AFE7EF701BF3B6DC00C99A94 /* TheBugger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheBugger-Bridging-Header.h"; sourceTree = "<group>"; };
+		AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAir.atlas; sourceTree = "<group>"; };
+		AFE7EF891BF3D59000C99A94 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		AFE7EF8A1BF3D59000C99A94 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
+		AFE7EF8B1BF3D59000C99A94 /* Level3SceneFinal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3SceneFinal.sks; sourceTree = "<group>"; };
+		AFE7EF8F1BF3D59A00C99A94 /* SelectLevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectLevelScene.sks; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
 		AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack.atlas; sourceTree = "<group>"; };
 		AFF489EE1BD56D8700463411 /* PlayerDash.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDash.atlas; sourceTree = "<group>"; };
@@ -307,6 +323,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE7EF6F1BF3B67000C99A94 /* SystemConfiguration.framework in Frameworks */,
+				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
+				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */,
-				0092216F1BF179BC007C7DDC /* SelectLevelScene.sks */,
+				AFE7EF8F1BF3D59A00C99A94 /* SelectLevelScene.sks */,
 			);
 			name = selectLevel;
 			sourceTree = "<group>";
@@ -473,6 +492,7 @@
 		00CDBE7F1BB9B39000BC0517 = {
 			isa = PBXGroup;
 			children = (
+				AFE7EF701BF3B6DC00C99A94 /* TheBugger-Bridging-Header.h */,
 				00CDBE8A1BB9B39000BC0517 /* TheBuggger */,
 				00CDBEA31BB9B39100BC0517 /* TheBugggerTests */,
 				00CDBEAE1BB9B39100BC0517 /* TheBugggerUITests */,
@@ -494,6 +514,7 @@
 		00CDBE8A1BB9B39000BC0517 /* TheBuggger */ = {
 			isa = PBXGroup;
 			children = (
+				AFE7EF681BF3B0AE00C99A94 /* Analytics */,
 				00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */,
 				00CDBE981BB9B39000BC0517 /* LaunchScreen.storyboard */,
 				00CDBE931BB9B39000BC0517 /* Main.storyboard */,
@@ -620,6 +641,7 @@
 				AFF489EE1BD56D8700463411 /* PlayerDash.atlas */,
 				AFF489EF1BD56D8700463411 /* PlayerJump.atlas */,
 				AFF489F01BD56D8700463411 /* PlayerRun.atlas */,
+				AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */,
 				AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */,
 				00CDBE961BB9B39000BC0517 /* Assets.xcassets */,
 			);
@@ -663,6 +685,17 @@
 				52E7AEB01BBEFA52008FE672 /* GameSceneTestEnemy.swift */,
 			);
 			name = "Level 2";
+			sourceTree = "<group>";
+		};
+		AFE7EF681BF3B0AE00C99A94 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				AFE7EF6E1BF3B67000C99A94 /* SystemConfiguration.framework */,
+				AFE7EF6C1BF3B65B00C99A94 /* Security.framework */,
+				AFE7EF691BF3B0C200C99A94 /* libFlurry_7.3.0.a */,
+				AFE7EF6A1BF3B0C200C99A94 /* Flurry.h */,
+			);
+			name = Analytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,7 +765,6 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 46HQV8ZA5C;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -791,6 +823,7 @@
 				0092215D1BF11A88007C7DDC /* efeitoBaixo.atlas in Resources */,
 				001E557A1BD6DA0C00B80833 /* power1.png in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
+				AFE7EF8E1BF3D59000C99A94 /* Level3SceneFinal.sks in Resources */,
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
 				0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */,
 				009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */,
@@ -809,6 +842,7 @@
 				001E55CC1BD8221600B80833 /* plataformmd.png in Resources */,
 				AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */,
 				001E55D51BD8221600B80833 /* estructure3.png in Resources */,
+				AFE7EF781BF3C7BC00C99A94 /* PlayerAir.atlas in Resources */,
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
 				AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */,
 				0002CE761BF5034A00FDE20A /* Level2Scene.sks in Resources */,
@@ -826,8 +860,10 @@
 				003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */,
 				001E55D81BD8221600B80833 /* sky.png in Resources */,
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
+				AFE7EF901BF3D59A00C99A94 /* SelectLevelScene.sks in Resources */,
 				001E55C71BD8221600B80833 /* plataforma-01.png in Resources */,
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
+				AFE7EF8C1BF3D59000C99A94 /* Level1Scene.sks in Resources */,
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
 				00648CC21BF2882000C1F906 /* set-4.png in Resources */,
@@ -837,7 +873,6 @@
 				52714B731BDE787C006200A1 /* metalblocksm-1.png in Resources */,
 				0092215F1BF11AAE007C7DDC /* efeitoCima.atlas in Resources */,
 				008698B31BE94DA900EE80F2 /* signal.atlas in Resources */,
-				009221701BF179BC007C7DDC /* SelectLevelScene.sks in Resources */,
 				001E55C81BD8221600B80833 /* BaseA.png in Resources */,
 				0002CE771BF5034A00FDE20A /* Level3Scene.sks in Resources */,
 				00648CAF1BF27CE900C1F906 /* selected.png in Resources */,
@@ -845,6 +880,7 @@
 				0092215A1BF1187E007C7DDC /* enfeiteBaixo-3.png in Resources */,
 				52E75DC41BDEAD0300F91E00 /* Move_Ya.mp3 in Resources */,
 				001E55D41BD8221600B80833 /* estructure2.png in Resources */,
+				AFE7EF8D1BF3D59000C99A94 /* Level2Scene.sks in Resources */,
 				AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */,
 				0002CE751BF5034A00FDE20A /* Level1Scene.sks in Resources */,
 				009221631BF12D10007C7DDC /* estagioSelect.atlas in Resources */,
@@ -1067,9 +1103,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TheBuggger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TheBuggger",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.TheBuggger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TheBugger-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -1081,9 +1122,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TheBuggger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TheBuggger",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.TheBuggger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TheBugger-Bridging-Header.h";
 			};
 			name = Release;
 		};

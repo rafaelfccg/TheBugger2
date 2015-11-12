@@ -722,7 +722,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
         }
         
-        
+        //subindo
+        if(hero.physicsBody?.velocity.dy > 0.9)
+        {
+            hero.runAirAction()
+        }
+        //caindo
+        if(hero.physicsBody?.velocity.dy < -0.9)
+        {
+            hero.runFallAction()
+        }
         
     }
     
