@@ -37,6 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     let removable = "removable"
     
+    //coins
+    var coinsMark:[Bool] = [false,false,false]
+    
     //SPEED
     let skyspeed:Float = 270.0
     let parallaxSpeed:Float = 320.0
@@ -48,9 +51,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var background1:SKSpriteNode?
     var background2:SKSpriteNode?
     
-    
     var deltaTime : NSTimeInterval = 0
     var lastFrameTime :NSTimeInterval  = 0
+    
     //camera
     var cameraPosition:CGPoint = CGPoint()
     var cameraAction:SKAction = SKAction()
@@ -68,10 +71,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var firstCameraPos:CGPoint = CGPointMake(0, 220)
     var upDone = false
     var stateCamera = "normal"
-    
+    //musica
     var backgroundMusicPlayer:AVAudioPlayer?
     
-    //PlayTesting
     var isMethodOne:Int?
     
     static let CHAO_NODE:UInt32             = 0b00000000000010
@@ -363,6 +365,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             moeda.runAction(SKAction.repeatActionForever( TBMoedasNode.animation! ))
             
         })
+        
+        for (var i = 0 ; i < 3 ;i++) {
+            let node = self.childNodeWithName("bit\(i)")
+            var bit = TBBitNode()
+            bit.position = (node!.position)
+            bit.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
+            bit.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            bit.name  = self.removable
+            bit.num = i
+            self.addChild(bit)
+            
+            bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
+        }
+        
+       
     }
     
     func backtToMenu(){
@@ -791,14 +808,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     
     func changeCamera() {
-        
-        
-        
-       // print(self.topLimit.y - self.hero.position.y)
-        
-        
-        
-        switch(stateCamera) {
+          switch(stateCamera) {
             
         case "normal":
             self.cameraPosition = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
@@ -917,9 +927,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             break
             
         default: break
-            
-            
-            
+ 
         }
         
     }
@@ -1036,11 +1044,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MOEDA_NODE )){
             //pegou a moeda
-            bodyB.node?.removeFromParent()
-            hero.qtdMoedas++
-            hero.score += 10
-//            print("\(hero.qtdMoedas) coins in the pocket")
             
+            bodyB.categoryBitMask = 0b0
+            if  let bit = bodyB.node as? TBBitNode {
+                hero.score += 100
+                self.coinsMark[bit.num!] = true
+               
+            }else{
+                hero.qtdMoedas++
+                hero.score += 10
+            }
+            bodyB.node?.removeFromParent()
             
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
@@ -1060,7 +1074,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
                         self.scene?.view?.paused = true
                         let defaults = NSUserDefaults.standardUserDefaults()
-                        defaults.setInteger(self.levelSelected! + 1, forKey: "level")
+                        let max = defaults.integerForKey("level")
+                        if max < self.levelSelected! + 1 {
+                             defaults.setInteger(self.levelSelected! + 1, forKey: "level")
+                        } 
                         self.delegateChanger!.selectLevel("SelectLevelScene")
                     })])
                 )

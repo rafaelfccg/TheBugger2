@@ -66,13 +66,13 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPk-d8-x15">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPk-d8-x15">
                                 <rect key="frame" x="289" y="245" width="272" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="FcV-2r-cTQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="18"/>
                                 <state key="normal" title="Play" backgroundImage="play_off.png">
                                     <color key="titleColor" red="0.16078431369999999" green="0.94901960780000005" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -80,7 +80,9 @@
                                 <state key="selected" backgroundImage="play_on.png">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <state key="highlighted" backgroundImage="play_on.png"/>
+                                <state key="highlighted" backgroundImage="play_on.png">
+                                    <color key="titleColor" red="0.0" green="0.047058823529411764" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <state key="focused" backgroundImage="play_on.png">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -93,21 +95,23 @@
                                     <action selector="actionButMet1:" destination="Tj2-nD-NVA" eventType="touchUpInside" id="YVJ-9Y-4we"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3k-xd-aA3">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3k-xd-aA3">
                                 <rect key="frame" x="289" y="315" width="272" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="VGB-J8-ra7"/>
                                     <constraint firstAttribute="width" constant="272" id="w11-7l-fpD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="18"/>
                                 <state key="normal" title="Settings" backgroundImage="play_off.png">
                                     <color key="titleColor" red="0.16078431369999999" green="0.94901960780000005" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="selected" backgroundImage="play_on.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" backgroundImage="play_on.png"/>
+                                <state key="highlighted" backgroundImage="play_on.png">
+                                    <color key="titleColor" red="0.0" green="0.047058823529411764" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="VGB-J8-ra7"/>
