@@ -10,7 +10,6 @@
 		0002CE711BF3D0CD00FDE20A /* heroDashPhysicsBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE701BF3D0CD00FDE20A /* heroDashPhysicsBody.png */; };
 		0002CE751BF5034A00FDE20A /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE721BF5034A00FDE20A /* Level1Scene.sks */; };
 		0002CE761BF5034A00FDE20A /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE731BF5034A00FDE20A /* Level2Scene.sks */; };
-		0002CE771BF5034A00FDE20A /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE741BF5034A00FDE20A /* Level3Scene.sks */; };
 		0002CE871BF50B1A00FDE20A /* back-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE841BF50B1A00FDE20A /* back-1.png */; };
 		0002CE881BF50B1A00FDE20A /* back-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE851BF50B1A00FDE20A /* back-2.png */; };
 		0002CE891BF50B1A00FDE20A /* back-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE861BF50B1A00FDE20A /* back-3.png */; };
@@ -147,6 +146,7 @@
 		AFE7EF6F1BF3B67000C99A94 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF6E1BF3B67000C99A94 /* SystemConfiguration.framework */; };
 		AFE7EF781BF3C7BC00C99A94 /* PlayerAir.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */; };
 		AFE7EF901BF3D59A00C99A94 /* SelectLevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF8F1BF3D59A00C99A94 /* SelectLevelScene.sks */; };
+		AFE7EF981BF65F7C00C99A94 /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF971BF65F7C00C99A94 /* Level3Scene.sks */; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; };
 		AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */; };
 		AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489EE1BD56D8700463411 /* PlayerDash.atlas */; };
@@ -175,7 +175,6 @@
 		0002CE701BF3D0CD00FDE20A /* heroDashPhysicsBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroDashPhysicsBody.png; sourceTree = "<group>"; };
 		0002CE721BF5034A00FDE20A /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		0002CE731BF5034A00FDE20A /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
-		0002CE741BF5034A00FDE20A /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
 		0002CE841BF50B1A00FDE20A /* back-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-1.png"; sourceTree = "<group>"; };
 		0002CE851BF50B1A00FDE20A /* back-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-2.png"; sourceTree = "<group>"; };
 		0002CE861BF50B1A00FDE20A /* back-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-3.png"; sourceTree = "<group>"; };
@@ -321,6 +320,7 @@
 		AFE7EF701BF3B6DC00C99A94 /* TheBugger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheBugger-Bridging-Header.h"; sourceTree = "<group>"; };
 		AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAir.atlas; sourceTree = "<group>"; };
 		AFE7EF8F1BF3D59A00C99A94 /* SelectLevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectLevelScene.sks; sourceTree = "<group>"; };
+		AFE7EF971BF65F7C00C99A94 /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level3Scene.sks; path = "../../SKS Backup/Level3Scene.sks"; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
 		AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack.atlas; sourceTree = "<group>"; };
 		AFF489EE1BD56D8700463411 /* PlayerDash.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDash.atlas; sourceTree = "<group>"; };
@@ -692,7 +692,7 @@
 			children = (
 				0002CE721BF5034A00FDE20A /* Level1Scene.sks */,
 				0002CE731BF5034A00FDE20A /* Level2Scene.sks */,
-				0002CE741BF5034A00FDE20A /* Level3Scene.sks */,
+				AFE7EF971BF65F7C00C99A94 /* Level3Scene.sks */,
 			);
 			name = "Level 1";
 			sourceTree = "<group>";
@@ -839,6 +839,7 @@
 				001E55CB1BD8221600B80833 /* machine-01.png in Resources */,
 				0092215D1BF11A88007C7DDC /* efeitoBaixo.atlas in Resources */,
 				0002CE941BF5171000FDE20A /* set-5.png in Resources */,
+				AFE7EF981BF65F7C00C99A94 /* Level3Scene.sks in Resources */,
 				001E557A1BD6DA0C00B80833 /* power1.png in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
@@ -896,7 +897,6 @@
 				0002CE901BF5171000FDE20A /* set-1.png in Resources */,
 				008698B31BE94DA900EE80F2 /* signal.atlas in Resources */,
 				001E55C81BD8221600B80833 /* BaseA.png in Resources */,
-				0002CE771BF5034A00FDE20A /* Level3Scene.sks in Resources */,
 				00648CAF1BF27CE900C1F906 /* selected.png in Resources */,
 				0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */,
 				0092215A1BF1187E007C7DDC /* enfeiteBaixo-3.png in Resources */,
