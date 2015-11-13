@@ -161,6 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     }
     
     func startGame(){
+        
         hero.realSpeed = hero.defaultSpeed
         hero.runWalkingAction()
         self.scene?.view?.paused = false
@@ -234,28 +235,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     func setupHUD()
     {
-        let backTexture = SKTexture(imageNamed: "voltar")
-        let back = SKSpriteNode(texture: backTexture, size: CGSizeMake(60, 60))
+        let backTexture = SKTexture(imageNamed: "back-hud")
+        let back = SKSpriteNode(texture: backTexture, size: CGSizeMake(80, 33))
         back.name = "restartButton"
         self.camera!.addChild(back)
         
-        back.position = CGPoint(x: -self.size.width/2 + back.size.width/2, y: self.size.height/2 - back.size.height/2)
+        back.position = CGPoint(x: -self.size.width/2 + back.size.width/2 + 5, y: self.size.height/2 - back.size.height/2 - 5)
         back.zPosition =  1000
-        labelScore = SKLabelNode(text: numFormatter.stringFromNumber(0))
+        labelScore = SKLabelNode(fontNamed: "Squares Bold")
+        labelScore!.text = self.numFormatter.stringFromNumber(0)
         labelScore?.name  = "scoreLabel"
         self.camera!.addChild(labelScore!)
-        labelScore?.position = CGPointMake(back.position.x + back.size.width/2 + (labelScore?.frame.size.width)! - 20, back.position.y - 5)
+        labelScore?.fontSize = 25
+        labelScore?.position = CGPointMake(self.size.width/2 - (labelScore?.frame.size.width)! + 20, back.position.y - 15)
         labelScore?.zPosition = 1000
+        let backScore = SKSpriteNode(imageNamed: "pt-hud")
+        backScore.size = CGSizeMake(280,50)
+        backScore.position = CGPointMake(0, 10)
+        backScore.zPosition = -1
+        labelScore?.addChild(backScore)
+        
         
         percentage = SKLabelNode(text: "0%")
+        percentage?.fontName = "Squares Bold"
         self.camera!.addChild(percentage!)
         percentage?.zPosition = 1000
-        percentage?.position = CGPointMake(0, back.position.y)
+        percentage?.position = CGPointMake(0, labelScore!.position.y )
         
-        self.numberDeathLabel = SKLabelNode(text: "Tentativas: 000")
-        self.camera!.addChild(numberDeathLabel!)
-        numberDeathLabel?.zPosition = 1000
-        numberDeathLabel?.position = CGPointMake(CGRectGetMidX(self.frame) - self.numberDeathLabel!.frame.width/2 - 10, back.position.y)
+//        self.numberDeathLabel = SKLabelNode(text: "Tentativas: 000")
+//        self.camera!.addChild(numberDeathLabel!)
+//        numberDeathLabel?.zPosition = 1000
+//        numberDeathLabel?.position = CGPointMake(CGRectGetMidX(self.frame) - self.numberDeathLabel!.frame.width/2 - 10, back.position.y)
         
         //como não funciona tirei do primeiro playtesting
         

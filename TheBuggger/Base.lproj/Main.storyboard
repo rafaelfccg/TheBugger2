@@ -180,15 +180,15 @@
                                 <animations/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L87-0n-jbE">
-                                <rect key="frame" x="24" y="75" width="552" height="450"/>
+                                <rect key="frame" x="60" y="90" width="480" height="420"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" alpha="0.96999999999999997" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="set-6.png" translatesAutoresizingMaskIntoConstraints="NO" id="SsU-zI-Mxx">
-                                        <rect key="frame" x="0.0" y="0.0" width="552" height="450"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="420"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.0" green="0.054901960784313725" blue="0.098039215686274508" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-Ml-bme" customClass="CheckBox" customModule="TheBuggger" customModuleProvider="target">
-                                        <rect key="frame" x="26" y="64.5" width="42.5" height="43"/>
+                                        <rect key="frame" x="26" y="48.5" width="24.5" height="24"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Kp4-Ml-bme" secondAttribute="height" multiplier="1:1" id="Mcd-7M-xFW"/>
@@ -198,15 +198,15 @@
                                             <action selector="selectMethod1:" destination="fQM-Zk-OLa" eventType="touchUpInside" id="EPt-cf-NU3"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Method 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="xKp-cT-Vjj">
-                                        <rect key="frame" x="88.5" y="65" width="244.5" height="41.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Method 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="xKp-cT-Vjj">
+                                        <rect key="frame" x="70" y="46" width="170" height="29"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="36"/>
+                                        <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="25"/>
                                         <color key="textColor" red="0.51372549019607838" green="0.96470588235294119" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLK-qU-dom" customClass="CheckBox" customModule="TheBuggger" customModuleProvider="target">
-                                        <rect key="frame" x="26" y="138.5" width="42.5" height="43"/>
+                                        <rect key="frame" x="26" y="108.5" width="24.5" height="24"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="DLK-qU-dom" secondAttribute="height" multiplier="1:1" id="NYm-kO-Aq6"/>
@@ -216,29 +216,29 @@
                                             <action selector="selectMethod2:" destination="fQM-Zk-OLa" eventType="touchUpInside" id="Yiy-pB-2Ia"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Method 2.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="J6l-rD-BHb">
-                                        <rect key="frame" x="88.5" y="139" width="328" height="41.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Method 2.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="J6l-rD-BHb">
+                                        <rect key="frame" x="70" y="106" width="274" height="29"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="35"/>
+                                        <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="25"/>
                                         <color key="textColor" red="0.51372549020000002" green="0.96470588239999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[JUMP - TAP / ATTACK - SLIDE RIGHT] " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yDH-Af-m9h">
-                                        <rect key="frame" x="118.5" y="109" width="401" height="17.5"/>
+                                        <rect key="frame" x="100" y="78" width="348" height="15"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="13"/>
                                         <color key="textColor" red="0.51372549019607838" green="0.96470588235294119" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[JUMP - SLIDE UP/ ATTACK - TAP] " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="L8j-sE-bkN">
-                                        <rect key="frame" x="118.5" y="178" width="403" height="17.5"/>
+                                        <rect key="frame" x="100" y="132" width="350" height="15"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="13"/>
                                         <color key="textColor" red="0.51372549020000002" green="0.96470588239999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="chw-98-FLY">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="38"/>
                                         <animations/>
                                     </imageView>
                                 </subviews>
@@ -251,9 +251,9 @@
                                     <constraint firstItem="L8j-sE-bkN" firstAttribute="top" secondItem="J6l-rD-BHb" secondAttribute="bottom" constant="-3" id="46L-16-MQf"/>
                                     <constraint firstItem="yDH-Af-m9h" firstAttribute="leading" secondItem="SsU-zI-Mxx" secondAttribute="trailing" constant="-381" id="Ak4-tU-o4T"/>
                                     <constraint firstItem="SsU-zI-Mxx" firstAttribute="leading" secondItem="Kp4-Ml-bme" secondAttribute="trailing" constant="-72" id="CQv-u8-m5J"/>
-                                    <constraint firstItem="Kp4-Ml-bme" firstAttribute="centerY" secondItem="L87-0n-jbE" secondAttribute="top" constant="86" id="D6O-bB-skJ"/>
+                                    <constraint firstItem="Kp4-Ml-bme" firstAttribute="centerY" secondItem="L87-0n-jbE" secondAttribute="top" constant="61" id="D6O-bB-skJ"/>
                                     <constraint firstItem="chw-98-FLY" firstAttribute="leading" secondItem="L87-0n-jbE" secondAttribute="leading" id="DkB-P1-vLd"/>
-                                    <constraint firstItem="Kp4-Ml-bme" firstAttribute="width" secondItem="SsU-zI-Mxx" secondAttribute="width" multiplier="0.06" constant="10" id="E5d-Bl-AbV"/>
+                                    <constraint firstItem="Kp4-Ml-bme" firstAttribute="width" secondItem="SsU-zI-Mxx" secondAttribute="width" multiplier="0.03" constant="10" id="E5d-Bl-AbV"/>
                                     <constraint firstItem="SsU-zI-Mxx" firstAttribute="leading" secondItem="L87-0n-jbE" secondAttribute="leading" id="IVv-Pz-MIS"/>
                                     <constraint firstAttribute="bottom" secondItem="SsU-zI-Mxx" secondAttribute="bottom" id="Lg6-Vb-6AA"/>
                                     <constraint firstAttribute="trailing" secondItem="yDH-Af-m9h" secondAttribute="trailing" constant="32" id="PwQ-Ov-wyt"/>
@@ -267,7 +267,7 @@
                                     <constraint firstItem="Kp4-Ml-bme" firstAttribute="height" secondItem="DLK-qU-dom" secondAttribute="height" id="WFA-HJ-ux9"/>
                                     <constraint firstItem="xKp-cT-Vjj" firstAttribute="leading" secondItem="yDH-Af-m9h" secondAttribute="leading" constant="-30" id="XJv-aD-uk2"/>
                                     <constraint firstItem="J6l-rD-BHb" firstAttribute="centerX" secondItem="L8j-sE-bkN" secondAttribute="centerX" constant="-68" id="XrH-nB-HGc"/>
-                                    <constraint firstItem="Kp4-Ml-bme" firstAttribute="top" relation="greaterThanOrEqual" secondItem="chw-98-FLY" secondAttribute="bottom" constant="15" id="dYy-Ch-JLu"/>
+                                    <constraint firstItem="Kp4-Ml-bme" firstAttribute="top" relation="greaterThanOrEqual" secondItem="chw-98-FLY" secondAttribute="bottom" constant="7.5" id="dYy-Ch-JLu"/>
                                     <constraint firstItem="DLK-qU-dom" firstAttribute="centerY" secondItem="J6l-rD-BHb" secondAttribute="centerY" id="eTE-eO-VLb"/>
                                     <constraint firstItem="J6l-rD-BHb" firstAttribute="height" secondItem="xKp-cT-Vjj" secondAttribute="height" id="h3H-3n-afj"/>
                                     <constraint firstItem="J6l-rD-BHb" firstAttribute="top" secondItem="yDH-Af-m9h" secondAttribute="bottom" constant="13" id="iur-WM-AP0"/>
@@ -294,7 +294,7 @@
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g98-I1-qJg">
-                                <rect key="frame" x="458.5" y="32" width="87" height="54"/>
+                                <rect key="frame" x="423" y="45" width="87" height="60"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="15"/>
                                 <color key="textColor" red="0.51372549019607838" green="0.96470588235294119" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
@@ -304,18 +304,18 @@
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="L87-0n-jbE" firstAttribute="height" secondItem="Y6J-WA-vYt" secondAttribute="height" multiplier="0.75" id="1ZK-eG-CtZ"/>
+                            <constraint firstItem="L87-0n-jbE" firstAttribute="height" secondItem="Y6J-WA-vYt" secondAttribute="height" multiplier="0.7" id="1ZK-eG-CtZ"/>
                             <constraint firstItem="L87-0n-jbE" firstAttribute="centerX" secondItem="Y6J-WA-vYt" secondAttribute="centerX" id="3j8-gG-XH1"/>
                             <constraint firstItem="xAm-kD-QYx" firstAttribute="top" secondItem="L87-0n-jbE" secondAttribute="bottom" constant="43" id="E3g-1L-iNU"/>
-                            <constraint firstItem="L87-0n-jbE" firstAttribute="width" secondItem="Y6J-WA-vYt" secondAttribute="width" multiplier="0.92" id="GGZ-iT-FDJ"/>
+                            <constraint firstItem="L87-0n-jbE" firstAttribute="width" secondItem="Y6J-WA-vYt" secondAttribute="width" multiplier="0.8" id="GGZ-iT-FDJ"/>
                             <constraint firstItem="L87-0n-jbE" firstAttribute="centerY" secondItem="Y6J-WA-vYt" secondAttribute="centerY" id="M82-EW-vtt"/>
-                            <constraint firstItem="g98-I1-qJg" firstAttribute="top" secondItem="pYB-SK-Dgk" secondAttribute="bottom" constant="12" id="RAh-Qv-RGG"/>
+                            <constraint firstItem="g98-I1-qJg" firstAttribute="top" secondItem="pYB-SK-Dgk" secondAttribute="bottom" priority="750" constant="25" id="RAh-Qv-RGG"/>
                             <constraint firstItem="L87-0n-jbE" firstAttribute="top" secondItem="pYB-SK-Dgk" secondAttribute="bottom" constant="22" id="WVk-in-EmV"/>
                             <constraint firstItem="L87-0n-jbE" firstAttribute="leading" secondItem="Y6J-WA-vYt" secondAttribute="leadingMargin" constant="5" id="Wuq-v1-0FP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kzV-NK-yw4" secondAttribute="trailing" constant="-20" id="YhK-xb-QoO"/>
                             <constraint firstItem="kzV-NK-yw4" firstAttribute="top" secondItem="Y6J-WA-vYt" secondAttribute="topMargin" id="ZFm-8h-3aT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="L87-0n-jbE" secondAttribute="trailing" constant="5" id="Znn-q4-Ntd"/>
-                            <constraint firstItem="SsU-zI-Mxx" firstAttribute="top" secondItem="g98-I1-qJg" secondAttribute="bottom" constant="-11" id="cNR-DQ-McV"/>
+                            <constraint firstItem="SsU-zI-Mxx" firstAttribute="top" secondItem="g98-I1-qJg" secondAttribute="bottom" constant="-15" id="cNR-DQ-McV"/>
                             <constraint firstItem="kzV-NK-yw4" firstAttribute="leading" secondItem="Y6J-WA-vYt" secondAttribute="leadingMargin" constant="-20" id="oVd-gb-4N1"/>
                             <constraint firstItem="xAm-kD-QYx" firstAttribute="top" secondItem="kzV-NK-yw4" secondAttribute="bottom" id="rWQ-7p-MT7"/>
                             <constraint firstItem="g98-I1-qJg" firstAttribute="leading" secondItem="SsU-zI-Mxx" secondAttribute="leading" constant="29" id="um4-89-CUq"/>
@@ -323,10 +323,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="um4-89-CUq"/>
                                 <exclude reference="WVk-in-EmV"/>
                                 <exclude reference="Wuq-v1-0FP"/>
                                 <exclude reference="Znn-q4-Ntd"/>
+                                <exclude reference="um4-89-CUq"/>
                                 <exclude reference="E3g-1L-iNU"/>
                             </mask>
                         </variation>

@@ -218,7 +218,7 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func createStandingJoint(){
-        self.standJoint = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(135,120))
+        self.standJoint = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(130,120))
         self.standJoint?.physicsBody = SKPhysicsBody(rectangleOfSize: (standJoint?.size)!)
         self.standJoint!.physicsBody?.affectedByGravity = false
         self.standJoint!.physicsBody?.linearDamping = 0;
