@@ -55,6 +55,9 @@
 		0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0271BE2A44300A184D5 /* TapTutorial.atlas */; };
 		0022C0321BE2A44300A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0281BE2A44300A184D5 /* taptxt.png */; };
 		0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C04D1BE2A95800A184D5 /* pixels.atlas */; };
+		002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80D1BF6508A003514A4 /* startCount.atlas */; };
+		002FD8101BF650D0003514A4 /* pt-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80F1BF650D0003514A4 /* pt-hud.png */; };
+		002FD8121BF6597D003514A4 /* back-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD8111BF6597D003514A4 /* back-hud.png */; };
 		003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */; };
 		003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */; };
 		00648CAC1BF27BB600C1F906 /* TBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */; };
@@ -215,6 +218,9 @@
 		0022C0271BE2A44300A184D5 /* TapTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = TapTutorial.atlas; sourceTree = "<group>"; };
 		0022C0281BE2A44300A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
 		0022C04D1BE2A95800A184D5 /* pixels.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pixels.atlas; sourceTree = "<group>"; };
+		002FD80D1BF6508A003514A4 /* startCount.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = startCount.atlas; sourceTree = "<group>"; };
+		002FD80F1BF650D0003514A4 /* pt-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pt-hud.png"; sourceTree = "<group>"; };
+		002FD8111BF6597D003514A4 /* back-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-hud.png"; sourceTree = "<group>"; };
 		003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Paralax2.atlas; sourceTree = "<group>"; };
 		003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = redlight2.atlas; sourceTree = "<group>"; };
 		00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRadioButton.swift; sourceTree = "<group>"; };
@@ -621,6 +627,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				002FD8111BF6597D003514A4 /* back-hud.png */,
 				0002CE701BF3D0CD00FDE20A /* heroDashPhysicsBody.png */,
 				009221601BF1269F007C7DDC /* Squares Bold Free.otf */,
 				0092211D1BF11333007C7DDC /* Infertace */,
@@ -631,12 +638,14 @@
 				008698BD1BE9519200EE80F2 /* Espinhos.atlas */,
 				0022C01E1BE2A44200A184D5 /* Tutorial  */,
 				009CAFD21BED4297003BA434 /* heroPhysicsBody.png */,
+				002FD80F1BF650D0003514A4 /* pt-hud.png */,
 				52E75DC31BDEAD0300F91E00 /* Move_Ya.mp3 */,
 				52E75DC11BDEAC6900F91E00 /* GroundMonster.atlas */,
 				AF9061231BE291C400C61746 /* MonsterDeath.atlas */,
 				52E75DBF1BDEAC5700F91E00 /* Moedas.Atlas */,
 				52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */,
 				001E55791BD6DA0C00B80833 /* power1.png */,
+				002FD80D1BF6508A003514A4 /* startCount.atlas */,
 				009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */,
 				001E557D1BD8221600B80833 /* Cenario */,
 				AF9061211BE290AE00C61746 /* PlayerDeath.atlas */,
@@ -842,6 +851,7 @@
 				0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */,
 				001E55CC1BD8221600B80833 /* plataformmd.png in Resources */,
 				AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */,
+				002FD8121BF6597D003514A4 /* back-hud.png in Resources */,
 				001E55D51BD8221600B80833 /* estructure3.png in Resources */,
 				AFE7EF781BF3C7BC00C99A94 /* PlayerAir.atlas in Resources */,
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
@@ -853,6 +863,7 @@
 				0002CE951BF5171000FDE20A /* set-6.png in Resources */,
 				52714B711BDE7875006200A1 /* metalbolcklg-1.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
+				002FD8101BF650D0003514A4 /* pt-hud.png in Resources */,
 				5289B84E1BE0068600CA6C2D /* darkness.png in Resources */,
 				521269441BDACCE100B5FB2E /* edge1.png in Resources */,
 				AFF489F41BD56D8700463411 /* PlayerRun.atlas in Resources */,
@@ -864,6 +875,7 @@
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
 				AFE7EF901BF3D59A00C99A94 /* SelectLevelScene.sks in Resources */,
 				001E55C71BD8221600B80833 /* plataforma-01.png in Resources */,
+				002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */,
 				0002CE871BF50B1A00FDE20A /* back-1.png in Resources */,
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
