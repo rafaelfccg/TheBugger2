@@ -47,16 +47,17 @@ class GameViewController: UIViewController, SceneChangesDelegate {
         }
     }
     
-    func mudaScene(nomeSKS: String, withMethod:Int)
+    func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     {
         if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
             scene.delegateChanger = self
+            scene.levelSelected = andLevel
             
             let skView = self.view as! SKView
             //skView.showsFPS = true
             //skView.showsNodeCount = true
-//            skView.showsPhysics = true;
+           // skView.showsPhysics = true;
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true

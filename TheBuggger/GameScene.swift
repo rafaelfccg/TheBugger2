@@ -11,15 +11,18 @@ import AVFoundation
 
 protocol SceneChangesDelegate{
     
-    func mudaScene(nomeSKS: String, withMethod:Int)
+    func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     func backToMenu()
+    func selectLevel(nomeSKS: String)
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
-
+    
+    var levelSelected:Int?
+    
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
-    let limitTimeAction:Double = 0.07
+    let limitTimeAction:Double = 0.08
     var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
     var labelScore:SKLabelNode?
@@ -112,15 +115,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         background2 = SKSpriteNode(texture: TBUtils.getNextBackground())
         background2?.size = self.size
         
-        
-        camera.position = hero.position
         setUpLevel()
+        camera.position = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
         
         camera.addChild(skyNode!)
         camera.addChild(skyNodeNext!)
         camera.addChild(background1!)
         camera.addChild(background2!)
-        
         
         skyNode?.position = CGPoint(x: 0,y: 0)
         skyNode?.zPosition = -100
@@ -292,6 +293,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
             })
         let method = hero.method
+        
+        self.hero.addAttackJoint()
+        self.hero.zRotation = 0
         setHeroPosition()
         self.hero.score = 0;
         lastFrameTime = 0
@@ -433,6 +437,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
             node.zPosition = 1
+            
+            let colorNode = node as! SKSpriteNode
+            colorNode.color = SKColor.clearColor()
+            
             self.setObstacleTypeHit(node)
             
             self.deathNodeReference = node
@@ -925,10 +933,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
           (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
           (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
+            if(bodyA.node?.name == hero.standJoint?.name){
+                bodyA = hero.physicsBody!
+            }
+            
             if bodyB.categoryBitMask == GameScene.MONSTER_NODE && hero.attackState == AttackState.Defending {
                 bodyB.applyImpulse(CGVectorMake(100, 30))
                 
             }else{
+                
                 bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
                 hero.physicsBody?.pinned = true
                 self.stopParalax = true
@@ -939,7 +952,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 }
                 
                 hero.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
+                    self.hero.removeAttackJoint()
                     self.hero.removeFromParent()
+                    
                     self.restartLevel()
                 })])), withKey: "die")
             }
@@ -1034,6 +1049,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     
                     SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
                         self.scene?.view?.paused = true
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setInteger(self.levelSelected! + 1, forKey: "level")
+                        self.delegateChanger!.selectLevel("SelectLevelScene")
                     })])
                 )
             
