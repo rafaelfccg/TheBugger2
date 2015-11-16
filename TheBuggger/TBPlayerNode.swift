@@ -288,6 +288,31 @@ class TBPlayerNode: SKSpriteNode {
         }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.attackState == AttackState.Defending {
             bodyB.applyImpulse(CGVectorMake(100, 30))
             
+        }else if (bodyB.categoryBitMask == GameScene.TIRO_NODE && self.attackState == AttackState.Defending) {
+            
+            
+            if let gbotmonste = bodyB.node as? TBShotNode{
+                gbotmonste.defendeAnimation()
+                
+            }
+            //bodyB.node?.removeFromParent()
+            
+            
+        } else if(bodyB.categoryBitMask == GameScene.TIRO_NODE) {
+            bodyB.node?.removeFromParent()
+            
+            self.physicsBody?.pinned = true
+            sender.stopParalax = true
+            
+            // para a animação do ataque caso ele morra
+            if((self.actionForKey("attack")) != nil) {
+                self.removeActionForKey("attack")
+            }
+            
+            self.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
+                self.removeFromParent()
+                sender.restartLevel()
+            })])), withKey: "die")
         }else{
             
             bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE

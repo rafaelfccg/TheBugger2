@@ -79,7 +79,7 @@ class SelectLevelScene: SKScene {
                 //touchedNode.runAction(stageSelect!)
                 touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
                     
-                    self.delegateChanger?.mudaScene("Level1Scene", withMethod: method, andLevel: 1)
+                    self.delegateChanger?.mudaScene("Level4Scene", withMethod: method, andLevel: 1)
                 })])]))
                 
             }else if ( level == "2" && inLevel>=2) {
