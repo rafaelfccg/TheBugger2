@@ -5,26 +5,20 @@
 //  Created by Rafael Gouveia on 10/2/15.
 //  Copyright © 2015 rfccg. All rights reserved.
 //
-
 import UIKit
 import SpriteKit
-
-protocol TBPlayerNodeJointsDelegate{
-    func addJoint(joint:SKPhysicsJoint)
-    func addJointBody(bodyJoint:SKSpriteNode)
-}
 
 class TBPlayerNode: SKSpriteNode {
     static let name = "SpawnPlayer"
 
     var state:States //Slides states, gesture recognizer
     var weponType:Bool // 0 sword, 1 range
-    var delegate :TBPlayerNodeJointsDelegate?
     
     let defaultSpeed = 430 // era 250
     //AJUSTAR HIGH E LOW
-    let highSpeed = 550
-    let slowSpeed = 100
+    let highSpeed = 650
+    let slowSpeed = 200
+    
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
     var standJoint:SKSpriteNode?
@@ -37,7 +31,6 @@ class TBPlayerNode: SKSpriteNode {
     static var standActionAnimation:SKAction?
     static var airActionAnimation:SKAction?
     static var fallActionAnimation:SKAction?
-    
     
     var defenceActionChangeState:SKAction?
     var attackActionChangeState1:SKAction?
@@ -57,7 +50,6 @@ class TBPlayerNode: SKSpriteNode {
     
     //PlayTesting
     var method:Int?
-    
     
     static func createPlayerStandAnimation(){
         let walkArray = TBUtils().getSprites("PlayerStop", nomeImagens: "stop")
@@ -96,6 +88,13 @@ class TBPlayerNode: SKSpriteNode {
         TBPlayerNode.fallActionAnimation =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.03);
     }
     
+    static func createDeathAnimation()
+    {
+        let deathArray = TBUtils().getSprites("PlayerDeath", nomeImagens: "death")
+        TBPlayerNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
+    }
+    
+    
     required init?(coder aDecoder: NSCoder) {
         state = States.Initial
         powerUP = TBPowerUpsStates.Normal
@@ -125,19 +124,16 @@ class TBPlayerNode: SKSpriteNode {
         attackState = AttackState.Idle
         
         var walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
-        
-        //let physicsTexture = SKTexture(imageNamed: "heroPhysicsBody")
+
         self.texture = walkArray[0];
-        // initialize physics body
+        
         self.size = (texture?.size())!
         let scale = CGFloat(130/self.size.height);
         self.xScale = scale
         self.yScale = scale
-       
-        //let phBody = CGSizeMake(self.size.width*0.8, self.size.height*0.8)
         
         self.anchorPoint.y = 0.18
-        
+        //init body
         self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(30, 45))
         self.physicsBody?.friction = 0;
         self.physicsBody?.linearDamping = 0;
@@ -147,31 +143,11 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), 0);
         self.position = CGPointMake(216, 375)
         self.physicsBody?.mass = 0.069672822603786
-                                
+      
+        configDefence()
+        configAttack()
+        configDash()
 
-        self.defenceActionChangeState = (SKAction.group([TBPlayerNode.defenceAction!, SKAction.sequence([SKAction.waitForDuration((TBPlayerNode.defenceAction!.duration)), SKAction.runBlock({
-            self.attackState = AttackState.Idle
-            
-        })])]))
-        
-        
-        self.attackActionChangeState1 = SKAction.group([TBPlayerNode.attackActionAnimation1!,
-            SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
-                self.attackState = AttackState.Idle}
-            )])])
-        
-        self.attackActionChangeState2 = SKAction.group([TBPlayerNode.attackActionAnimation2!,
-            SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
-                self.attackState = AttackState.Idle}
-                )])])
-        
-        let dashArray = TBUtils().getSprites("PlayerDash", nomeImagens: "dash-")
-        let action = SKAction.animateWithTextures(dashArray, timePerFrame: 0.09);
-        self.dashActionModifier = SKAction.sequence([action, SKAction.runBlock({
-            self.addStandingJoint()
-        })])
-        
-        //runAction(TBPlayerNode.standActionAnimation!)
         self.runStandingAction()
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
@@ -185,6 +161,34 @@ class TBPlayerNode: SKSpriteNode {
         addStandingJoint()
 
     }
+    
+    func configDefence(){
+        self.defenceActionChangeState = (SKAction.group([TBPlayerNode.defenceAction!, SKAction.sequence([SKAction.waitForDuration((TBPlayerNode.defenceAction!.duration)), SKAction.runBlock({
+            self.attackState = AttackState.Idle
+            
+        })])]))
+    }
+    
+    func configAttack(){
+        self.attackActionChangeState1 = SKAction.group([TBPlayerNode.attackActionAnimation1!,
+            SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
+                self.attackState = AttackState.Idle}
+                )])])
+        
+        self.attackActionChangeState2 = SKAction.group([TBPlayerNode.attackActionAnimation2!,
+            SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
+                self.attackState = AttackState.Idle}
+                )])])
+    }
+    
+    func configDash(){
+        let dashArray = TBUtils().getSprites("PlayerDash", nomeImagens: "dash-")
+        let action = SKAction.animateWithTextures(dashArray, timePerFrame: 0.09);
+        self.dashActionModifier = SKAction.sequence([action, SKAction.runBlock({
+            self.addStandingJoint()
+        })])
+    }
+    
     func runWalkingAction(){
         self.removeActionForKey("stand")
         self.runAction(TBPlayerNode.walkAction!, withKey:"walk")
@@ -208,13 +212,7 @@ class TBPlayerNode: SKSpriteNode {
             self.runAction(TBPlayerNode.fallActionAnimation!, withKey:"fall")
         }
     }
-    
-    static func createDeathAnimation()
-    {
-        let deathArray = TBUtils().getSprites("PlayerDeath", nomeImagens: "death")
-        TBPlayerNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
-    }
-    
+
     func createStandingJoint(){
         self.standJoint = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(130,120))
         self.standJoint?.physicsBody = SKPhysicsBody(rectangleOfSize: (standJoint?.size)!)
@@ -238,8 +236,6 @@ class TBPlayerNode: SKSpriteNode {
     func removeStandingNode(){
         self.standJoint?.removeFromParent()
     }
-    
-    
     
     func createAttackJoint()
     {
@@ -270,13 +266,79 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func updateVelocity(){
-        //print(realSpeed)
         if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
             physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
         }
-    
+        //subindo
+        if(self.physicsBody?.velocity.dy > 1){
+            self.runAirAction()
+        }
+        //caindo
+        if(self.physicsBody?.velocity.dy < -1){
+            self.runFallAction()
+        }
     }
     
+    func dangerCollision(bodyB:SKPhysicsBody, sender:GameScene){
+        
+        if(self.powerUP == TBPowerUpsStates.Frenezy){
+            //Dont die
+            //kill?
+            
+        }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.attackState == AttackState.Defending {
+            bodyB.applyImpulse(CGVectorMake(100, 30))
+            
+        }else{
+            
+            bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
+            self.physicsBody?.pinned = true
+            sender.stopParalax = true
+            // para a animação do ataque caso ele morra
+            if((self.actionForKey("attack")) != nil) {
+                self.removeActionForKey("attack")
+            }
+            
+            self.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
+                self.removeAttackJoint()
+                self.removeFromParent()
+                
+                sender.restartLevel()
+            })])), withKey: "die")
+        }
+    }
+    
+    func quickFloorCollision(bodyB:SKPhysicsBody, sender:GameScene){
+        realSpeed = max(realSpeed, defaultSpeed)
+        let accSpeed = SKAction.repeatAction( SKAction.sequence(
+            [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                self.realSpeed = min(self.highSpeed, self.realSpeed + 20)
+                }
+                )]), count: 12)
+        
+        
+        let actSlow = SKAction.repeatAction( SKAction.sequence(
+            [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                self.realSpeed = max(self.defaultSpeed, self.realSpeed-1)}
+                )]), count: 240)
+        runAction(SKAction.sequence([accSpeed, actSlow]))
+    }
+    
+    func slowFloorCollision(bodyB:SKPhysicsBody, sender:GameScene){
+        self.realSpeed = min(self.realSpeed, self.defaultSpeed)
+        let accSpeed = SKAction.repeatAction( SKAction.sequence(
+            [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                self.realSpeed = max(self.slowSpeed, self.realSpeed - 20)
+                }
+                )]), count: 10)
+        
+        
+        let actSlow = SKAction.repeatAction( SKAction.sequence(
+            [SKAction.waitForDuration(0.02), SKAction.runBlock({
+                self.realSpeed = min(self.defaultSpeed, self.realSpeed+1)}
+                )]), count: 200)
+        
+        runAction(SKAction.sequence([accSpeed, actSlow]))
+    }
     func attack(){
         if( self.actionForKey("attack") == nil && self.actionForKey("die") == nil){
             let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
@@ -297,10 +359,6 @@ class TBPlayerNode: SKSpriteNode {
                     monstersKilled++
                 }
             }
-//            runAction(SKAction.group([TBPlayerNode.attackActionAnimation!, SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
-//                self.attackState = AttackState.Idle})])]), withKey: "attack")
-//            
-//            self.attackState = AttackState.Attacking
         }
     }
     
@@ -325,63 +383,46 @@ class TBPlayerNode: SKSpriteNode {
             self.addStandingJoint()
         }
             switch(jumpState){
-            case JumpState.CanJump:
-                if (self.physicsBody?.velocity.dy)! > -10 {
-                    self.jumpImpulse()
-                    jumpState = JumpState.FirstJump
-                }
+                case JumpState.CanJump:
+                    if (self.physicsBody?.velocity.dy)! > -10 {
+                        self.jumpImpulse()
+                        jumpState = JumpState.FirstJump
+                    }
                 break
-            case JumpState.FirstJump:
-                if(powerUP == TBPowerUpsStates.DoubleJumper){
-                    self.jumpImpulse()
-                    jumpState = JumpState.SecondJump
-                }
+                case JumpState.FirstJump:
+                    if(powerUP == TBPowerUpsStates.DoubleJumper){
+                        self.jumpImpulse()
+                        jumpState = JumpState.SecondJump
+                    }
                 break
-            case JumpState.SecondJump:
-            
+                case JumpState.SecondJump:
+                    
                 break
             }
-        
 
     }
     
     func dash(){
         if self.actionForKey("defence") == nil && self.actionForKey("attack") == nil && self.actionForKey("dash") == nil {
-        
-            
             self.removeStandingNode()
             self.runAction(self.dashActionModifier!,withKey: "dash")
             
         }
-        
-        
     }
     
     func actionCall(){
         switch state {
 
         case States.SD:
-            
             dash()
-            
             break;
         case States.SU:
-//            if(weponType){
-//                self.color = UIColor.whiteColor()
-//            }else{
-//                self.color = UIColor.blueColor()
-//            }
             if (method!) == 2 || method! == 3 {
                 jump()
             }
-            
-            
             break;
         case States.SL:
-        
             defence()
-
-           
             break;
         case States.SR:
             if method! == 1  || method! == 3{
@@ -395,16 +436,13 @@ class TBPlayerNode: SKSpriteNode {
             }else if method! == 2{
                 attack()
             }
-            
-            
         break;
             
-        default: break
-        
+        default:
+            break
         }
     
     }
-    
 
 }
 
