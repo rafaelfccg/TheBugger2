@@ -18,6 +18,8 @@ class TBPlayerNode: SKSpriteNode {
     //AJUSTAR HIGH E LOW
     let highSpeed = 650
     let slowSpeed = 200
+    let frenezyTime:NSTimeInterval = 10
+    
     
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
@@ -279,6 +281,15 @@ class TBPlayerNode: SKSpriteNode {
         }
     }
     
+    func enterFrenezy(){
+        self.powerUP = TBPowerUpsStates.Frenezy
+        
+        self.runAction(SKAction.sequence([SKAction.waitForDuration(frenezyTime), SKAction.runBlock({
+            self.powerUP  = TBPowerUpsStates.Normal
+        })]))
+    
+    }
+    
     func dangerCollision(bodyB:SKPhysicsBody, sender:GameScene){
         
         if(self.powerUP == TBPowerUpsStates.Frenezy){
@@ -289,7 +300,6 @@ class TBPlayerNode: SKSpriteNode {
             bodyB.applyImpulse(CGVectorMake(100, 30))
             
         }else if (bodyB.categoryBitMask == GameScene.TIRO_NODE && self.attackState == AttackState.Defending) {
-            
             
             if let gbotmonste = bodyB.node as? TBShotNode{
                 gbotmonste.defendeAnimation()

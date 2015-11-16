@@ -8,22 +8,31 @@
 
 import UIKit
 import SpriteKit
+import GoogleMobileAds
 
-class GameViewController: UIViewController, SceneChangesDelegate {
+class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitialDelegate {
     
     var gameMethod:Int?
     var level:String?
+    var bannerView:GADInterstitial?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.hidden = true
-//        self.navigationController.
-
-        //mudaScene(level! ,withMethod: 1)
+        self.bannerView = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
+//        self.bannerView
+        let request = GADRequest()
+        
+        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb"]
+        self.bannerView!.loadRequest(request)
         selectLevel(self.level!)
+        //showAds()
     }
     
+    func interstitialDidReceiveAd(ad: GADInterstitial!) {
+        ad.presentFromRootViewController(self)
+    }
     func selectLevel(nomeSKS: String){
         if let scene = SelectLevelScene(fileNamed: nomeSKS) {
             // Configure the view.
@@ -44,6 +53,14 @@ class GameViewController: UIViewController, SceneChangesDelegate {
             //scene.isMethodOne = 1
             
             skView.presentScene(scene)
+        }
+        
+    }
+    
+    func showAds(){
+    
+        if(self.bannerView!.isReady){
+            self.bannerView?.presentFromRootViewController(self)
         }
     }
     
