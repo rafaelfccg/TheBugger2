@@ -425,16 +425,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         for (var i = 0 ; i < 3 ;i++) {
-            let node = self.childNodeWithName("bit\(i)")
-            let bit = TBBitNode()
-            bit.position = (node!.position)
-            bit.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
-            bit.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
-            bit.name  = self.removable
-            bit.num = i
-            self.addChild(bit)
+            if let node = self.childNodeWithName("bit\(i)") {
+                let bit = TBBitNode()
+                bit.position = (node.position)
+                bit.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
+                bit.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+                bit.name  = self.removable
+                bit.num = i
+                self.addChild(bit)
             
-            bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
+                bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
+            }
         }
     }
     
@@ -747,6 +748,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        //let heroy = self.hero.position.y
+        
+        // O tempo para o tiro é a cada 5 segundos
+//        let delta: CFTimeInterval = currentTime - self.lastShot
+//        
+//        if(delta>5.0) {
+//            self.lastShot = currentTime
+//            self.shooting()
+//        }
+//        
+       
+        
+        //checkBotShot()
+       // checkCurrentShots(currentTime)
         updateScore()
         
         if(stateCamera != "final")
@@ -1024,8 +1040,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     gbotmonste.dieAnimation()
                     hero.score += 5
                     hero.monstersKilled++
-               }
-            }else{
+                
+                } else if let gbotmonste2 = bodyA.node as? TBShotBotNode{
+                        gbotmonste2.dieAnimation()
+                        hero.score += 10
+                        hero.monstersKilled++
+                } 
                
             }
             
