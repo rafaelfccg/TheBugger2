@@ -11,15 +11,18 @@ import AVFoundation
 
 protocol SceneChangesDelegate{
     
-    func mudaScene(nomeSKS: String, withMethod:Int)
+    func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     func backToMenu()
+    func selectLevel(nomeSKS: String)
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
-
+    
+    var levelSelected:Int?
+    
     let kDistanceThreshold:Double = 10
     var hero: TBPlayerNode = TBPlayerNode()
-    let limitTimeAction:Double = 0.07
+    let limitTimeAction:Double = 0.08
     var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
     var labelScore:SKLabelNode?
@@ -34,6 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     let removable = "removable"
     
+    //coins
+    var coinsMark:[Bool] = [false,false,false]
+    
     //SPEED
     let skyspeed:Float = 270.0
     let parallaxSpeed:Float = 320.0
@@ -47,6 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     var deltaTime : NSTimeInterval = 0
     var lastFrameTime :NSTimeInterval  = 0
+    
     //camera
     var cameraPosition:CGPoint = CGPoint()
     var cameraAction:SKAction = SKAction()
@@ -64,11 +71,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     var firstCameraPos:CGPoint = CGPointMake(0, 220)
     var upDone = false
     var stateCamera = "normal"
-    
+    //musica
     var backgroundMusicPlayer:AVAudioPlayer?
     var lastShot:CFTimeInterval = 0 // Variavel auxiliar para dar o tiro no tempo correto
     
-    //PlayTesting
     var isMethodOne:Int?
     
     static let REFERENCIA_NODE:UInt32       = 0b000000000000000
@@ -115,15 +121,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         background2 = SKSpriteNode(texture: TBUtils.getNextBackground())
         background2?.size = self.size
         
-        
-        camera.position = hero.position
         setUpLevel()
+        camera.position = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
         
         camera.addChild(skyNode!)
         camera.addChild(skyNodeNext!)
         camera.addChild(background1!)
         camera.addChild(background2!)
-        
         
         skyNode?.position = CGPoint(x: 0,y: 0)
         skyNode?.zPosition = -100
@@ -163,6 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     }
     
     func startGame(){
+        
         hero.realSpeed = hero.defaultSpeed
         hero.runWalkingAction()
         self.scene?.view?.paused = false
@@ -236,28 +241,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     func setupHUD()
     {
-        let backTexture = SKTexture(imageNamed: "voltar")
-        let back = SKSpriteNode(texture: backTexture, size: CGSizeMake(60, 60))
+        let backTexture = SKTexture(imageNamed: "back-hud")
+        let back = SKSpriteNode(texture: backTexture, size: CGSizeMake(80, 33))
         back.name = "restartButton"
         self.camera!.addChild(back)
         
-        back.position = CGPoint(x: -self.size.width/2 + back.size.width/2, y: self.size.height/2 - back.size.height/2)
+        back.position = CGPoint(x: -self.size.width/2 + back.size.width/2 + 5, y: self.size.height/2 - back.size.height/2 - 5)
         back.zPosition =  1000
-        labelScore = SKLabelNode(text: numFormatter.stringFromNumber(0))
+        labelScore = SKLabelNode(fontNamed: "Squares Bold")
+        labelScore!.text = self.numFormatter.stringFromNumber(0)
         labelScore?.name  = "scoreLabel"
         self.camera!.addChild(labelScore!)
-        labelScore?.position = CGPointMake(back.position.x + back.size.width/2 + (labelScore?.frame.size.width)! - 20, back.position.y - 5)
+        labelScore?.fontSize = 25
+        labelScore?.position = CGPointMake(self.size.width/2 - (labelScore?.frame.size.width)! + 20, back.position.y - 15)
         labelScore?.zPosition = 1000
+        let backScore = SKSpriteNode(imageNamed: "pt-hud")
+        backScore.size = CGSizeMake(280,50)
+        backScore.position = CGPointMake(0, 10)
+        backScore.zPosition = -1
+        labelScore?.addChild(backScore)
+        
         
         percentage = SKLabelNode(text: "0%")
+        percentage?.fontName = "Squares Bold"
         self.camera!.addChild(percentage!)
         percentage?.zPosition = 1000
-        percentage?.position = CGPointMake(0, back.position.y)
+        percentage?.position = CGPointMake(0, labelScore!.position.y )
         
-        self.numberDeathLabel = SKLabelNode(text: "Tentativas: 000")
-        self.camera!.addChild(numberDeathLabel!)
-        numberDeathLabel?.zPosition = 1000
-        numberDeathLabel?.position = CGPointMake(CGRectGetMidX(self.frame) - self.numberDeathLabel!.frame.width/2 - 10, back.position.y)
+//        self.numberDeathLabel = SKLabelNode(text: "Tentativas: 000")
+//        self.camera!.addChild(numberDeathLabel!)
+//        numberDeathLabel?.zPosition = 1000
+//        numberDeathLabel?.position = CGPointMake(CGRectGetMidX(self.frame) - self.numberDeathLabel!.frame.width/2 - 10, back.position.y)
         
         //como não funciona tirei do primeiro playtesting
         
@@ -310,6 +324,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         })
         
         let method = hero.method
+        
+        self.hero.addAttackJoint()
+        self.hero.zRotation = 0
         setHeroPosition()
         self.hero.score = 0;
         lastFrameTime = 0
@@ -411,6 +428,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             moeda.runAction(SKAction.repeatActionForever( TBMoedasNode.animation! ))
             
         })
+        
+        for (var i = 0 ; i < 3 ;i++) {
+            let node = self.childNodeWithName("bit\(i)")
+            var bit = TBBitNode()
+            bit.position = (node!.position)
+            bit.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
+            bit.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            bit.name  = self.removable
+            bit.num = i
+            self.addChild(bit)
+            
+            bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
+        }
+        
+       
     }
     
     func backtToMenu(){
@@ -496,6 +528,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
             node.zPosition = 1
+            
+            let colorNode = node as! SKSpriteNode
+            colorNode.color = SKColor.clearColor()
+            
             self.setObstacleTypeHit(node)
             
             self.deathNodeReference = node
@@ -794,7 +830,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
 
         }
         
-        
+        //subindo
+        if(hero.physicsBody?.velocity.dy > 0.9)
+        {
+            hero.runAirAction()
+        }
+        //caindo
+        if(hero.physicsBody?.velocity.dy < -0.9)
+        {
+            hero.runFallAction()
+        }
         
     }
     
@@ -839,14 +884,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
     
     
     func changeCamera() {
-        
-        
-        
-       // print(self.topLimit.y - self.hero.position.y)
-        
-        
-        
-        switch(stateCamera) {
+          switch(stateCamera) {
             
         case "normal":
             self.cameraPosition = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
@@ -965,9 +1003,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
             break
             
         default: break
-            
-            
-            
+ 
         }
         
     }
@@ -1052,6 +1088,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
           (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
             (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
             //MORRE ou PERDE VIDA
+            if(bodyA.node?.name == hero.standJoint?.name){
+                bodyA = hero.physicsBody!
+            }
             if (bodyB.categoryBitMask == GameScene.MONSTER_NODE && hero.attackState == AttackState.Defending) {
                 bodyB.applyImpulse(CGVectorMake(100, 30))
             } else if (bodyB.categoryBitMask == GameScene.TIRO_NODE && hero.attackState == AttackState.Defending) {
@@ -1080,6 +1119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     self.restartLevel()
                 })])), withKey: "die")
             }else{
+                
                 bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
                 hero.physicsBody?.pinned = true
                 self.stopParalax = true
@@ -1094,7 +1134,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                 
                 
                 hero.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
+                    self.hero.removeAttackJoint()
                     self.hero.removeFromParent()
+                    
                     self.restartLevel()
                 })])), withKey: "die")
             }
@@ -1169,11 +1211,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MOEDA_NODE )){
             //pegou a moeda
+            if  let bit = bodyB.node as? TBBitNode {
+                hero.score += 100
+                self.coinsMark[bit.num!] = true
+               
+            }else{
+                hero.qtdMoedas++
+                hero.score += 10
+            }
             bodyB.node?.removeFromParent()
-            hero.qtdMoedas++
-            hero.score += 10
-//            print("\(hero.qtdMoedas) coins in the pocket")
-            
             
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
@@ -1192,6 +1238,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, TBPlayerNodeJointsDelegate {
                     
                     SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
                         self.scene?.view?.paused = true
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        let max = defaults.integerForKey("level")
+                        if max < self.levelSelected! + 1 {
+                             defaults.setInteger(self.levelSelected! + 1, forKey: "level")
+                        } 
+                        self.delegateChanger!.selectLevel("SelectLevelScene")
                     })])
                 )
             
