@@ -52,6 +52,8 @@ class TBMenuViewController :UIViewController {
         TBMachineFrontNode.createMachineFrontAnimation()
         TBRedLightEffect.createRedLightAnimation()
         TBPlayerNode.createDeathAnimation()
+        TBShotBotNode.createSKActionAnimation()
+        TBShotNode.createSKActionAnimation()
         TBBitNode.createSKActionAnimation()
     
         self.efeitoCima.animationImages = [UIImage(named:"enfeiteCima-1")!,

@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class TBGroundBotNode: SKSpriteNode {
+class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
     static let name = "SpawnMonsterType1"
     static var animation: SKAction?
     static var deathAnimation: SKAction?

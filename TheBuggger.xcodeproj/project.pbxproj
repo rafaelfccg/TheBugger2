@@ -121,11 +121,16 @@
 		521269461BDACCEC00B5FB2E /* edge2.png in Resources */ = {isa = PBXBuildFile; fileRef = 521269451BDACCEC00B5FB2E /* edge2.png */; };
 		52714B711BDE7875006200A1 /* metalbolcklg-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52714B701BDE7875006200A1 /* metalbolcklg-1.png */; };
 		52714B731BDE787C006200A1 /* metalblocksm-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52714B721BDE787C006200A1 /* metalblocksm-1.png */; };
+		5279DD261BF3C75500E61727 /* Shot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5279DD251BF3C75500E61727 /* Shot.atlas */; };
+		5279DD2C1BF3DBC800E61727 /* ShooterBot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5279DD2B1BF3DBC800E61727 /* ShooterBot.atlas */; };
+		5279DD2E1BF3DBFE00E61727 /* RepousoShotBot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5279DD2D1BF3DBFE00E61727 /* RepousoShotBot.atlas */; };
+		5279DD301BF3DF5400E61727 /* ShotDefended.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5279DD2F1BF3DF5400E61727 /* ShotDefended.atlas */; };
 		5289B84E1BE0068600CA6C2D /* darkness.png in Resources */ = {isa = PBXBuildFile; fileRef = 5289B84D1BE0068600CA6C2D /* darkness.png */; };
-		52C376F61BC441190012BC96 /* TBShotGroundBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */; };
+		52C376F61BC441190012BC96 /* TBShotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F51BC441190012BC96 /* TBShotNode.swift */; };
 		52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */; };
 		52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */; };
 		52C376FC1BC44E7E0012BC96 /* TBFlying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376FB1BC44E7E0012BC96 /* TBFlying.swift */; };
+		52CABF6E1BF13171008670B9 /* TBShotBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */; };
 		52E75DBC1BDEAC3200F91E00 /* TBMoedasNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */; };
 		52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */; };
 		52E75DC01BDEAC5700F91E00 /* Moedas.Atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E75DBF1BDEAC5700F91E00 /* Moedas.Atlas */; };
@@ -136,6 +141,9 @@
 		52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */; };
 		52E7AEB71BBF0286008FE672 /* TBGroundBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */; };
 		52E7AEB91BBF06D2008FE672 /* TBGroundBotAtack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */; };
+		52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52EF6EE11BF51FF600780377 /* ShooterBot2.atlas */; };
+		52EF6EE41BF52F4700780377 /* TBMonsterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */; };
+		52FDE2DE1BF29285003D9A1D /* DieShooterBot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */; };
 		AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27231BE00EC80027965B /* ENDZONE.atlas */; };
 		AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27241BE00EC80027965B /* EndzoneBack.atlas */; };
 		AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A27291BE010E20027965B /* TBFinalNode.swift */; };
@@ -294,11 +302,16 @@
 		521269451BDACCEC00B5FB2E /* edge2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edge2.png; sourceTree = "<group>"; };
 		52714B701BDE7875006200A1 /* metalbolcklg-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metalbolcklg-1.png"; sourceTree = "<group>"; };
 		52714B721BDE787C006200A1 /* metalblocksm-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metalblocksm-1.png"; sourceTree = "<group>"; };
+		5279DD251BF3C75500E61727 /* Shot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Shot.atlas; sourceTree = "<group>"; };
+		5279DD2B1BF3DBC800E61727 /* ShooterBot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShooterBot.atlas; sourceTree = "<group>"; };
+		5279DD2D1BF3DBFE00E61727 /* RepousoShotBot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RepousoShotBot.atlas; sourceTree = "<group>"; };
+		5279DD2F1BF3DF5400E61727 /* ShotDefended.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShotDefended.atlas; sourceTree = "<group>"; };
 		5289B84D1BE0068600CA6C2D /* darkness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = darkness.png; sourceTree = "<group>"; };
-		52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotGroundBotNode.swift; sourceTree = "<group>"; };
+		52C376F51BC441190012BC96 /* TBShotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotNode.swift; sourceTree = "<group>"; };
 		52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotNode.swift; sourceTree = "<group>"; };
 		52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotEntity.swift; sourceTree = "<group>"; };
 		52C376FB1BC44E7E0012BC96 /* TBFlying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlying.swift; sourceTree = "<group>"; };
+		52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotBotNode.swift; sourceTree = "<group>"; };
 		52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMoedasNode.swift; sourceTree = "<group>"; };
 		52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDefence.atlas; sourceTree = "<group>"; };
 		52E75DBF1BDEAC5700F91E00 /* Moedas.Atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Moedas.Atlas; sourceTree = "<group>"; };
@@ -309,6 +322,9 @@
 		52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotNode.swift; sourceTree = "<group>"; };
 		52E7AEB61BBF0286008FE672 /* TBGroundBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotEntity.swift; sourceTree = "<group>"; };
 		52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotAtack.swift; sourceTree = "<group>"; };
+		52EF6EE11BF51FF600780377 /* ShooterBot2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShooterBot2.atlas; sourceTree = "<group>"; };
+		52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMonsterProtocol.swift; sourceTree = "<group>"; };
+		52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DieShooterBot.atlas; sourceTree = "<group>"; };
 		AF0A27231BE00EC80027965B /* ENDZONE.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ENDZONE.atlas; sourceTree = "<group>"; };
 		AF0A27241BE00EC80027965B /* EndzoneBack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EndzoneBack.atlas; sourceTree = "<group>"; };
 		AF0A27291BE010E20027965B /* TBFinalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFinalNode.swift; sourceTree = "<group>"; };
@@ -619,8 +635,9 @@
 				52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */,
 				002FD8151BF66235003514A4 /* TBBitNode.swift */,
 				000D09D81BBEF31100631559 /* TBPlayerNode.swift */,
+				52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */,
 				52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */,
-				52C376F51BC441190012BC96 /* TBShotGroundBotNode.swift */,
+				52C376F51BC441190012BC96 /* TBShotNode.swift */,
 				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
 				009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */,
 				AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */,
@@ -628,6 +645,7 @@
 				00DCF2D71BE15213006F9F86 /* TBTutorialNodes.swift */,
 				008698B51BE94F7A00EE80F2 /* TBAlertNode.swift */,
 				008698B91BE9503200EE80F2 /* TBSignalNode.swift */,
+				52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -640,6 +658,12 @@
 				0002CE701BF3D0CD00FDE20A /* heroDashPhysicsBody.png */,
 				009221601BF1269F007C7DDC /* Squares Bold Free.otf */,
 				0092211D1BF11333007C7DDC /* Infertace */,
+				52EF6EE11BF51FF600780377 /* ShooterBot2.atlas */,
+				5279DD2F1BF3DF5400E61727 /* ShotDefended.atlas */,
+				5279DD2D1BF3DBFE00E61727 /* RepousoShotBot.atlas */,
+				5279DD2B1BF3DBC800E61727 /* ShooterBot.atlas */,
+				5279DD251BF3C75500E61727 /* Shot.atlas */,
+				52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */,
 				00AC3ABE1BEA7EAB00323B6D /* smoke1.png */,
 				00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */,
 				003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */,
@@ -786,6 +810,7 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = N4UKH6NFCZ;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -830,6 +855,7 @@
 				0002CE881BF50B1A00FDE20A /* back-2.png in Resources */,
 				0092216B1BF12EFE007C7DDC /* cabos-4.png in Resources */,
 				001E55D31BD8221600B80833 /* estructure1.png in Resources */,
+				5279DD2C1BF3DBC800E61727 /* ShooterBot.atlas in Resources */,
 				00F6CFE21BDEBF6A006F0302 /* play_off.png in Resources */,
 				00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */,
 				0092214F1BF11863007C7DDC /* enfeiteCima-1.png in Resources */,
@@ -845,21 +871,26 @@
 				0002CE941BF5171000FDE20A /* set-5.png in Resources */,
 				001E557A1BD6DA0C00B80833 /* power1.png in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
+				5279DD301BF3DF5400E61727 /* ShotDefended.atlas in Resources */,
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
 				0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */,
 				009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */,
+				52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */,
 				0022C0321BE2A44300A184D5 /* taptxt.png in Resources */,
 				00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */,
 				AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */,
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
 				001E55CD1BD8221600B80833 /* plataformsm.png in Resources */,
+				52FDE2DE1BF29285003D9A1D /* DieShooterBot.atlas in Resources */,
 				00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */,
 				AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */,
+				5279DD261BF3C75500E61727 /* Shot.atlas in Resources */,
 				001E55CA1BD8221600B80833 /* BaseD.png in Resources */,
 				0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */,
 				001E55C41BD8221600B80833 /* structure1.png in Resources */,
 				0002CE891BF50B1A00FDE20A /* back-3.png in Resources */,
 				0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */,
+				5279DD2E1BF3DBFE00E61727 /* RepousoShotBot.atlas in Resources */,
 				001E55CC1BD8221600B80833 /* plataformmd.png in Resources */,
 				AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */,
 				002FD8121BF6597D003514A4 /* back-hud.png in Resources */,
@@ -867,7 +898,6 @@
 				AFE7EF781BF3C7BC00C99A94 /* PlayerAir.atlas in Resources */,
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
 				AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */,
-				0002CE761BF5034A00FDE20A /* Level2Scene.sks in Resources */,
 				008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */,
 				0002CE931BF5171000FDE20A /* set-4.png in Resources */,
 				008698B41BE94DA900EE80F2 /* speedbooster.atlas in Resources */,
@@ -969,6 +999,7 @@
 				52E7AEB31BBEFEF6008FE672 /* TBPlayerEntity.swift in Sources */,
 				AF2A3E451BD85D19001DA3DB /* TBUtils.swift in Sources */,
 				000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */,
+				52EF6EE41BF52F4700780377 /* TBMonsterProtocol.swift in Sources */,
 				00AC3AC11BEA83EA00323B6D /* TBRedLightEffect.swift in Sources */,
 				009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */,
 				00DCF2D81BE15213006F9F86 /* TBTutorialNodes.swift in Sources */,
@@ -985,8 +1016,9 @@
 				52E7AEB91BBF06D2008FE672 /* TBGroundBotAtack.swift in Sources */,
 				00BE1EF11BF8C43300F091B9 /* TBPowerUpNode.swift in Sources */,
 				00C0FCE41BE94AEF00F8C730 /* TBMachineFrontNode.swift in Sources */,
+				52CABF6E1BF13171008670B9 /* TBShotBotNode.swift in Sources */,
 				52E7AEB71BBF0286008FE672 /* TBGroundBotEntity.swift in Sources */,
-				52C376F61BC441190012BC96 /* TBShotGroundBotNode.swift in Sources */,
+				52C376F61BC441190012BC96 /* TBShotNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

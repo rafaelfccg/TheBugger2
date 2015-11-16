@@ -141,6 +141,7 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.dynamic = true
         self.physicsBody?.restitution = 0
         self.physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), 0);
+        self.position = CGPointMake(216, 375)
         self.physicsBody?.mass = 0.069672822603786
       
         configDefence()
@@ -352,7 +353,7 @@ class TBPlayerNode: SKSpriteNode {
             for body : SKPhysicsBody in bodies! {
                 
                 if body.categoryBitMask == GameScene.MONSTER_NODE {
-                    let gbotmonste = body.node as? TBGroundBotNode
+                    let gbotmonste = body.node as? TBMonsterProtocol
                     gbotmonste!.dieAnimation()
                     score += 5
                     monstersKilled++
