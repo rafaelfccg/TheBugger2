@@ -90,8 +90,6 @@
 		0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 009221661BF12EFE007C7DDC /* cabos-3.png */; };
 		0092216B1BF12EFE007C7DDC /* cabos-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 009221671BF12EFE007C7DDC /* cabos-4.png */; };
 		0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */ = {isa = PBXBuildFile; fileRef = 0092216C1BF138E6007C7DDC /* back-estagio.png */; };
-		0095E71B1BFA509400582387 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0095E71A1BFA509400582387 /* Level2Scene.sks */; };
-		0095E71D1BFA509D00582387 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0095E71C1BFA509D00582387 /* Level4Scene.sks */; };
 		009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */; };
 		009CAFD31BED4297003BA434 /* heroPhysicsBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD21BED4297003BA434 /* heroPhysicsBody.png */; };
 		009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */; };
@@ -267,8 +265,6 @@
 		009221661BF12EFE007C7DDC /* cabos-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cabos-3.png"; sourceTree = "<group>"; };
 		009221671BF12EFE007C7DDC /* cabos-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cabos-4.png"; sourceTree = "<group>"; };
 		0092216C1BF138E6007C7DDC /* back-estagio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-estagio.png"; sourceTree = "<group>"; };
-		0095E71A1BFA509400582387 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
-		0095E71C1BFA509D00582387 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
 		009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack2.atlas; sourceTree = "<group>"; };
 		009CAFD21BED4297003BA434 /* heroPhysicsBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroPhysicsBody.png; sourceTree = "<group>"; };
 		009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLevelScene.swift; sourceTree = "<group>"; };
@@ -913,7 +909,6 @@
 				521269441BDACCE100B5FB2E /* edge1.png in Resources */,
 				AFF489F41BD56D8700463411 /* PlayerRun.atlas in Resources */,
 				0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */,
-				0095E71B1BFA509400582387 /* Level2Scene.sks in Resources */,
 				0022C02D1BE2A44300A184D5 /* jumptxt.png in Resources */,
 				001E55D01BD8221600B80833 /* roof.png in Resources */,
 				003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */,
@@ -952,7 +947,6 @@
 				008698BE1BE9519200EE80F2 /* Espinhos.atlas in Resources */,
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
 				001E55CF1BD8221600B80833 /* prataformlg.png in Resources */,
-				0095E71D1BFA509D00582387 /* Level4Scene.sks in Resources */,
 				001E55C51BD8221600B80833 /* structure2.png in Resources */,
 				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
 				009221691BF12EFE007C7DDC /* cabos-2.png in Resources */,
