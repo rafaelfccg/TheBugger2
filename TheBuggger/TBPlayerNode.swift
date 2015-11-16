@@ -293,8 +293,15 @@ class TBPlayerNode: SKSpriteNode {
     func dangerCollision(bodyB:SKPhysicsBody, sender:GameScene){
         
         if(self.powerUP == TBPowerUpsStates.Frenezy){
-            //Dont die
-            //kill?
+            if let gbotmonste = bodyB.node as? TBMonsterProtocol{
+                gbotmonste.dieAnimation()
+                if ((gbotmonste as? TBGroundBotNode) != nil){
+                    score+=5
+                }
+                if ((gbotmonste as? TBShotBotNode) != nil) {
+                    score+=10
+                }
+            }
             
         }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.attackState == AttackState.Defending {
             bodyB.applyImpulse(CGVectorMake(100, 30))
@@ -306,7 +313,6 @@ class TBPlayerNode: SKSpriteNode {
                 
             }
             //bodyB.node?.removeFromParent()
-            
             
         } else{
             
@@ -466,6 +472,17 @@ class TBPlayerNode: SKSpriteNode {
             break
         }
     
+    }
+    
+    func activatePowerUp(type:TBPowerUpsStates){
+        switch type{
+        case TBPowerUpsStates.Frenezy:
+            self.enterFrenezy()
+            
+            break;
+        default:
+            break
+        }
     }
 
 }

@@ -380,7 +380,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBotj.zPosition = 100
             self.addChild(groundBotj)
             
-            var referencia:SKSpriteNode! = SKSpriteNode()
+            let referencia:SKSpriteNode! = SKSpriteNode()
             referencia?.name = "referencia"
             referencia?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
             referencia?.position = CGPointMake(-750, 0)
@@ -393,7 +393,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             referencia.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
             groundBotj.addChild(referencia!)
             
-            var referencia2:SKSpriteNode! = SKSpriteNode()
+            let referencia2:SKSpriteNode! = SKSpriteNode()
             referencia2?.name = "referencia2"
             referencia2?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
             referencia2?.position = CGPointMake(0, 0)
@@ -680,8 +680,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.addChild(newNode)
             }
         })
+        
+        self.enumerateChildNodesWithName("frenezy", usingBlock:
+            {(node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+                
+                let frenezy  = TBPowerUpNode()
+                frenezy.setUP(TBPowerUpsStates.Frenezy)
+                frenezy.position = node.position
+                self.addChild(frenezy)   
+        
+        })
         finalNode = childNodeWithName(TBFinalNode.name)
         finalBackNode = self.childNodeWithName(TBFinalNode.nameBack)
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -985,7 +996,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var bodyA = contact.bodyA
         var bodyB = contact.bodyB
         var flagTrocou = false
-        
+//        
         //ordena para que bodyA tenha sempre a categoria "menor"
         if(bodyA.categoryBitMask > bodyB.categoryBitMask){
             let aux = bodyB
@@ -997,7 +1008,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
             bodyB.categoryBitMask == GameScene.POWERUP_NODE {
-                
+                let node = bodyB.node as! TBPowerUpNode
+                hero.activatePowerUp(node.powerUP!)
                 
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
           (bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||

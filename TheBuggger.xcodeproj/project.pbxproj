@@ -27,8 +27,10 @@
 		000AA8031BFA617400EC4E20 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000AA8021BFA617400EC4E20 /* EventKitUI.framework */; };
 		000AA8051BFA617A00EC4E20 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000AA8041BFA617A00EC4E20 /* MessageUI.framework */; };
 		000AA8071BFA618000EC4E20 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000AA8061BFA618000EC4E20 /* StoreKit.framework */; };
-		000AA8131BFA62CB00EC4E20 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000AA8121BFA62CB00EC4E20 /* GoogleMobileAds.framework */; };
-		000AA81B1BFA67E400EC4E20 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 000AA81A1BFA67E400EC4E20 /* README.txt */; };
+		000AA8201BFA720000EC4E20 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000AA81C1BFA720000EC4E20 /* Level1Scene.sks */; };
+		000AA8211BFA720000EC4E20 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000AA81D1BFA720000EC4E20 /* Level2Scene.sks */; };
+		000AA8221BFA720000EC4E20 /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000AA81E1BFA720000EC4E20 /* Level3Scene.sks */; };
+		000AA8231BFA720000EC4E20 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000AA81F1BFA720000EC4E20 /* Level4Scene.sks */; };
 		000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000D09D81BBEF31100631559 /* TBPlayerNode.swift */; };
 		001E557A1BD6DA0C00B80833 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55791BD6DA0C00B80833 /* power1.png */; };
 		001E55C21BD8221600B80833 /* cable.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55961BD8221600B80833 /* cable.png */; };
@@ -216,7 +218,10 @@
 		000AA8171BFA67E400EC4E20 /* GADMEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMEnums.h; sourceTree = "<group>"; };
 		000AA8181BFA67E400EC4E20 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
 		000AA8191BFA67E400EC4E20 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
-		000AA81A1BFA67E400EC4E20 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		000AA81C1BFA720000EC4E20 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		000AA81D1BFA720000EC4E20 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
+		000AA81E1BFA720000EC4E20 /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
+		000AA81F1BFA720000EC4E20 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
 		000D09D81BBEF31100631559 /* TBPlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPlayerNode.swift; sourceTree = "<group>"; };
 		001E55791BD6DA0C00B80833 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
 		001E55961BD8221600B80833 /* cable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cable.png; sourceTree = "<group>"; };
@@ -386,7 +391,6 @@
 				000AA7F71BFA614300EC4E20 /* AudioToolbox.framework in Frameworks */,
 				000AA7F51BFA613900EC4E20 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				000AA8131BFA62CB00EC4E20 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +440,6 @@
 				000AA8171BFA67E400EC4E20 /* GADMEnums.h */,
 				000AA8181BFA67E400EC4E20 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */,
 				000AA8191BFA67E400EC4E20 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */,
-				000AA81A1BFA67E400EC4E20 /* README.txt */,
 			);
 			path = "Mediation Adapters";
 			sourceTree = "<group>";
@@ -784,6 +787,10 @@
 		00CDBECA1BBD9FD100BC0517 /* Level 1 */ = {
 			isa = PBXGroup;
 			children = (
+				000AA81C1BFA720000EC4E20 /* Level1Scene.sks */,
+				000AA81D1BFA720000EC4E20 /* Level2Scene.sks */,
+				000AA81E1BFA720000EC4E20 /* Level3Scene.sks */,
+				000AA81F1BFA720000EC4E20 /* Level4Scene.sks */,
 			);
 			name = "Level 1";
 			sourceTree = "<group>";
@@ -874,7 +881,7 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = N4UKH6NFCZ;
+						DevelopmentTeam = 46HQV8ZA5C;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -941,6 +948,7 @@
 				52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */,
 				0022C0321BE2A44300A184D5 /* taptxt.png in Resources */,
 				00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */,
+				000AA8211BFA720000EC4E20 /* Level2Scene.sks in Resources */,
 				AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */,
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
 				001E55CD1BD8221600B80833 /* plataformsm.png in Resources */,
@@ -965,7 +973,6 @@
 				0002CE931BF5171000FDE20A /* set-4.png in Resources */,
 				008698B41BE94DA900EE80F2 /* speedbooster.atlas in Resources */,
 				0002CE951BF5171000FDE20A /* set-6.png in Resources */,
-				000AA81B1BFA67E400EC4E20 /* README.txt in Resources */,
 				52714B711BDE7875006200A1 /* metalbolcklg-1.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
 				002FD8101BF650D0003514A4 /* pt-hud.png in Resources */,
@@ -987,6 +994,7 @@
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
 				009221581BF1187E007C7DDC /* enfeiteBaixo-1.png in Resources */,
 				52E75DC01BDEAC5700F91E00 /* Moedas.Atlas in Resources */,
+				000AA8221BFA720000EC4E20 /* Level3Scene.sks in Resources */,
 				0092215B1BF1187E007C7DDC /* enfeiteBaixo-4.png in Resources */,
 				0002CE921BF5171000FDE20A /* set-3.png in Resources */,
 				52714B731BDE787C006200A1 /* metalblocksm-1.png in Resources */,
@@ -1010,6 +1018,7 @@
 				008698BE1BE9519200EE80F2 /* Espinhos.atlas in Resources */,
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
 				001E55CF1BD8221600B80833 /* prataformlg.png in Resources */,
+				000AA8231BFA720000EC4E20 /* Level4Scene.sks in Resources */,
 				001E55C51BD8221600B80833 /* structure2.png in Resources */,
 				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
 				009221691BF12EFE007C7DDC /* cabos-2.png in Resources */,
@@ -1023,6 +1032,7 @@
 				001E55D21BD8221600B80833 /* roofend2.png in Resources */,
 				52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */,
 				0022C02E1BE2A44300A184D5 /* SlideFrontTutorial.atlas in Resources */,
+				000AA8201BFA720000EC4E20 /* Level1Scene.sks in Resources */,
 				0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
