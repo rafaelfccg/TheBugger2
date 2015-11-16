@@ -379,33 +379,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBotj.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBotj.zPosition = 100
             self.addChild(groundBotj)
-            
-            var referencia:SKSpriteNode! = SKSpriteNode()
-            referencia?.name = "referencia"
-            referencia?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
-            referencia?.position = CGPointMake(-750, 0)
-            referencia.physicsBody?.pinned = true
-            referencia.physicsBody?.affectedByGravity = false
-            referencia.physicsBody?.allowsRotation = false
-            referencia.physicsBody?.friction = 0
-            referencia.physicsBody?.dynamic = false
-            referencia.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
-            referencia.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
-            groundBotj.addChild(referencia!)
-            
-            var referencia2:SKSpriteNode! = SKSpriteNode()
-            referencia2?.name = "referencia2"
-            referencia2?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
-            referencia2?.position = CGPointMake(0, 0)
-            referencia2.physicsBody?.pinned = true
-            referencia2.physicsBody?.affectedByGravity = false
-            referencia2.physicsBody?.allowsRotation = false
-            referencia2.physicsBody?.friction = 0
-            referencia2.physicsBody?.dynamic = false
-            referencia2.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
-            referencia2.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
-            groundBotj.addChild(referencia2!)
-            
         })
         
     }
@@ -943,43 +916,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        
 //    }
     
-    // o shooterBot comeca a tirar
-    func activeShotMode(shotBot: SKNode) {
-        if let myBot = shotBot as? TBShotBotNode {
-            if(myBot.shooted == false) {
-                myBot.shooted = true
-                startShot(myBot.position, parentBot: myBot)
-            }
-        }
-    }
-    
-    // Cria um tiro a partir do bot
-    func startShot(botPosition: CGPoint, parentBot: TBShotBotNode) {
-        parentBot.runAction(SKAction.repeatActionForever((SKAction.sequence([TBShotBotNode.shootingAnimation!, SKAction.runBlock({self.shooting(botPosition, parentBot: parentBot)}), TBShotBotNode.shootingAnimation2!, SKAction.waitForDuration(1.5)]))))
-        
-    }
-    
-    
-    // cria os tiros
-    func shooting(botPosition: CGPoint, parentBot: TBShotBotNode) {
-        let shot = TBShotNode(shotPosition: CGPointMake(-12, -2))
-        shot.name = TBShotNode.name
-        shot.physicsBody?.categoryBitMask = GameScene.TIRO_NODE
-        shot.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE
-        shot.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
-        parentBot.addChild(shot)
-    }
-    
-    // o shooter bot para de atirar
-    func stopShotMode(shotBot: SKNode) {
-        if let myBot = shotBot as? TBShotBotNode {
-            if(myBot.shootedStopped == false) {
-                myBot.stopShooting()
-            }
-        }
-    }
-    
-    
     //MARK -- CONTACT
     func didBeginContact(contact: SKPhysicsContact) {
         var bodyA = contact.bodyA
@@ -1094,9 +1030,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         } else if(bodyA.categoryBitMask == GameScene.REFERENCIA_NODE && bodyB.categoryBitMask == GameScene.PLAYER_NODE)  {
             if(bodyA.node?.name == "referencia") {
-                activeShotMode((bodyA.node?.parent)!)
-            } else {
-                stopShotMode((bodyA.node?.parent)!)
+                if let myBot = bodyA.node!.parent as? TBShotBotNode {
+                    myBot.activeShotMode()
+                }
+            }
+            else {
+                if let myBot = bodyA.node!.parent as? TBShotBotNode {
+                    myBot.stopShotMode()
+                }
             }
         }
     }
