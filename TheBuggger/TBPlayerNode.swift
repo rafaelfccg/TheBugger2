@@ -308,22 +308,11 @@ class TBPlayerNode: SKSpriteNode {
             //bodyB.node?.removeFromParent()
             
             
-        } else if(bodyB.categoryBitMask == GameScene.TIRO_NODE) {
-            bodyB.node?.removeFromParent()
+        } else{
             
-            self.physicsBody?.pinned = true
-            sender.stopParalax = true
-            
-            // para a animação do ataque caso ele morra
-            if((self.actionForKey("attack")) != nil) {
-                self.removeActionForKey("attack")
+            if(bodyB.categoryBitMask == GameScene.TIRO_NODE) {
+                bodyB.node?.removeFromParent()
             }
-            
-            self.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
-                self.removeFromParent()
-                sender.restartLevel()
-            })])), withKey: "die")
-        }else{
             
             bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
             self.physicsBody?.pinned = true
