@@ -930,29 +930,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    // Checa se o personagem passou no range do bot
-//    func checkBotShot() {
-//        
-//        self.enumerateChildNodesWithName("shooterBot") { (node, ponter) -> Void in
-//            
-//            let myBot:TBShotBotNode   = node as! TBShotBotNode
-//            
-//            print("hero")
-//            print(self.hero.position)
-//            print("myBot")
-//            print(myBot.position)
-//            //            print("\(myBot.position.x)  -- player \(self.player.position.x)\n")
-//            if(((myBot.position.x - 800) < (self.hero.position.x)) && myBot.jaAtacou == false) {
-//                myBot.shooting()
-//                myBot.jaAtacou = true
-//               // self.createAShotNode(myBot.position, currentTime: currentTime)
-//            
-//            }
-//            
-//            
-//        }
-//        
-//    }
+
     
     // o shooterBot comeca a tirar
     func activeShotMode(shotBot: SKNode) {
