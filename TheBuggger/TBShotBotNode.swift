@@ -39,6 +39,33 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
         self.physicsBody?.friction = 0.8
         self.runAction(SKAction.repeatActionForever(TBShotBotNode.animation!))
         
+        // adicionando referencias
+        let referencia:SKSpriteNode! = SKSpriteNode()
+        referencia?.name = "referencia"
+        referencia?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
+        referencia?.position = CGPointMake(-750, 0)
+        referencia.physicsBody?.pinned = true
+        referencia.physicsBody?.affectedByGravity = false
+        referencia.physicsBody?.allowsRotation = false
+        referencia.physicsBody?.friction = 0
+        referencia.physicsBody?.dynamic = false
+        referencia.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
+        referencia.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        self.addChild(referencia!)
+        
+        let referencia2:SKSpriteNode! = SKSpriteNode()
+        referencia2?.name = "referencia2"
+        referencia2?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
+        referencia2?.position = CGPointMake(0, 0)
+        referencia2.physicsBody?.pinned = true
+        referencia2.physicsBody?.affectedByGravity = false
+        referencia2.physicsBody?.allowsRotation = false
+        referencia2.physicsBody?.friction = 0
+        referencia2.physicsBody?.dynamic = false
+        referencia2.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
+        referencia2.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        self.addChild(referencia2!)
+        
     }
     
     static func createSKActionAnimation()
@@ -73,19 +100,48 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
         })]), withKey: "dieMonster")
     }
     
+    // Cria um tiro a partir do bot
+    func startAttack() {
+        self.runAction(SKAction.repeatActionForever((SKAction.sequence([TBShotBotNode.shootingAnimation!, SKAction.runBlock({self.createShot()}), TBShotBotNode.shootingAnimation2!, SKAction.waitForDuration(1.5)]))))
+        
+    }
+    
+    // o shooterBot comeca a tirar
+    func activeShotMode() {
+            if(self.shooted == false) {
+                self.shooted = true
+                self.startAttack()
+            }
+    }
+    
+    // o shooter bot para de atirar
+    func stopShotMode() {
+            if(self.shootedStopped == false) {
+                runAction(TBShotBotNode.animation!)
+                self.shootedStopped = true
+                print("stopped")
+            }
+    }
+    
+    // cria os tiros
+    func createShot() {
+        let shot = TBShotNode(shotPosition: CGPointMake(-12, -2))
+        shot.name = TBShotNode.name
+        shot.physicsBody?.categoryBitMask = GameScene.TIRO_NODE
+        shot.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE
+        shot.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        self.addChild(shot)
+    }
+    
+    // animação de ataque 1
     func shooting() {
         runAction(TBShotBotNode.shootingAnimation!)
         print("entrou")
     }
     
+    // animação de ataque 2
     func shooting2() {
         runAction(SKAction.sequence([TBShotBotNode.shootingAnimation2!, TBShotBotNode.animation!]))
-    }
-    
-    func stopShooting() {
-        runAction(TBShotBotNode.animation!)
-        self.shootedStopped = true
-        print("stopped")
     }
     
     required init?(coder aDecoder: NSCoder) {

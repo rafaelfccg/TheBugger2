@@ -12,21 +12,9 @@ import SpriteKit
 class TBPowerUpNode: SKSpriteNode {
     var powerUP:TBPowerUpsStates?
     
-    init(){
-        super.init(texture:SKTexture(), color: UIColor.clearColor(), size: CGSizeMake(40, 40))
-        
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
     func setUP(type:TBPowerUpsStates){
-        self.color = UIColor.whiteColor()
-        self.size = CGSizeMake(40, 40)
         self.powerUP = type
-        self.physicsBody = SKPhysicsBody(rectangleOfSize:self.size)
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(40, 40))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = GameScene.POWERUP_NODE

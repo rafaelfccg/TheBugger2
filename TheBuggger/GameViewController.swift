@@ -9,30 +9,21 @@
 import UIKit
 import SpriteKit
 
-
 class GameViewController: UIViewController, SceneChangesDelegate {
     
     var gameMethod:Int?
     var level:String?
-    //var bannerView:GADInterstitial?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.hidden = true
-        //self.bannerView = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
-//        self.bannerView
-       // let request = GADRequest()
-        
-        //request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb"]
-        //self.bannerView!.loadRequest(request)
+//        self.navigationController.
+
+        //mudaScene(level! ,withMethod: 1)
         selectLevel(self.level!)
-        //showAds()
     }
     
-//    func interstitialDidReceiveAd(ad: GADInterstitial!) {
-//        ad.presentFromRootViewController(self)
-//    }
     func selectLevel(nomeSKS: String){
         if let scene = SelectLevelScene(fileNamed: nomeSKS) {
             // Configure the view.
@@ -54,16 +45,8 @@ class GameViewController: UIViewController, SceneChangesDelegate {
             
             skView.presentScene(scene)
         }
-        
     }
     
-//    func showAds(){
-//    
-//        if(self.bannerView!.isReady){
-//            self.bannerView?.presentFromRootViewController(self)
-//        }
-//    }
-//    
     func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     {
         if let scene = GameScene(fileNamed: nomeSKS) {

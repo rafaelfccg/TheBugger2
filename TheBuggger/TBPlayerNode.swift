@@ -18,8 +18,6 @@ class TBPlayerNode: SKSpriteNode {
     //AJUSTAR HIGH E LOW
     let highSpeed = 650
     let slowSpeed = 200
-    let frenezyTime:NSTimeInterval = 10
-    
     
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
@@ -280,39 +278,33 @@ class TBPlayerNode: SKSpriteNode {
             self.runFallAction()
         }
     }
-    
-    func enterFrenezy(){
-        self.powerUP = TBPowerUpsStates.Frenezy
-        
-        self.runAction(SKAction.sequence([SKAction.waitForDuration(frenezyTime), SKAction.runBlock({
-            self.powerUP  = TBPowerUpsStates.Normal
-        })]))
-    
+    func resetHero(){
+        self.attackState = AttackState.Idle
+        self.powerUP = TBPowerUpsStates.Normal
+        self.physicsBody?.pinned = false
+        self.zRotation = 0
+        self.score = 0
+        self.addAttackJoint()
+        self.runStandingAction()
     }
-    
     func dangerCollision(bodyB:SKPhysicsBody, sender:GameScene){
         
         if(self.powerUP == TBPowerUpsStates.Frenezy){
-            if let gbotmonste = bodyB.node as? TBMonsterProtocol{
-                gbotmonste.dieAnimation()
-                if ((gbotmonste as? TBGroundBotNode) != nil){
-                    score+=5
-                }
-                if ((gbotmonste as? TBShotBotNode) != nil) {
-                    score+=10
-                }
-            }
+            //Dont die
+            //kill?
             
         }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.attackState == AttackState.Defending {
             bodyB.applyImpulse(CGVectorMake(100, 30))
             
         }else if (bodyB.categoryBitMask == GameScene.TIRO_NODE && self.attackState == AttackState.Defending) {
             
+            
             if let gbotmonste = bodyB.node as? TBShotNode{
                 gbotmonste.defendeAnimation()
                 
             }
             //bodyB.node?.removeFromParent()
+            
             
         } else{
             
@@ -472,17 +464,6 @@ class TBPlayerNode: SKSpriteNode {
             break
         }
     
-    }
-    
-    func activatePowerUp(type:TBPowerUpsStates){
-        switch type{
-        case TBPowerUpsStates.Frenezy:
-            self.enterFrenezy()
-            
-            break;
-        default:
-            break
-        }
     }
 
 }

@@ -11,5 +11,8 @@ import Foundation
 protocol TBMonsterProtocol{
 
     func dieAnimation()
-    
+    func startAttack()
 }
+
+
+

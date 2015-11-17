@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum TBPowerUpsStates: String{
+enum TBPowerUpsStates{
     
-    case Normal  = "normal"
-    case Frenezy   =  "frenezy"   //estrelinha
-    case Protected   = "protected"  //protect from 1 hit
-    case DoubleJumper   = "doubleJumper"// aceita pulo duplo
+    case Normal
+    case Frenezy        //estrelinha
+    case Protected      //protect from 1 hit
+    case DoubleJumper   // aceita pulo duplo
     
     
 }

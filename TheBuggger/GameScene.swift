@@ -77,7 +77,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isMethodOne:Int?
     
-    static let REFERENCIA_NODE:UInt32       = 0b000000000000000
     static let CHAO_NODE:UInt32             = 0b000000000000010
     static let PLAYER_NODE:UInt32           = 0b000000000000001
     static let MONSTER_NODE:UInt32          = 0b000000000000100
@@ -92,6 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     static let OTHER_NODE:UInt32            = 0b000100000000000
     static let STOP_CAMERA_NODE:UInt32      = 0b001000000000000
     static let END_LEVEL_NODE:UInt32        = 0b010000000000000
+    static let REFERENCIA_NODE:UInt32       = 0b100000000000000
 
     
     override func didMoveToView(view: SKView) {
@@ -173,6 +173,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.scene?.view?.paused = false
         tapToStartLabel?.removeFromParent()
     }
+    
     
     func moveSprite(sprite : SKSpriteNode,
         nextSprite : SKSpriteNode, speed : Float, isParalaxSky:Bool) -> Void {
@@ -307,13 +308,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             })
         // removendo tb o monstro que atira
-        self.enumerateChildNodesWithName("shooterBot", usingBlock: {
-            (node, ponter)->Void in
-            
-            node.removeFromParent()
-            
-        })
-        
         self.enumerateChildNodesWithName("shot", usingBlock: {
             (node, ponter)->Void in
             
@@ -322,18 +316,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         let method = hero.method
-        
-        self.hero.addAttackJoint()
-        self.hero.zRotation = 0
+
         setHeroPosition()
-        self.hero.score = 0;
+        
+        hero.resetHero()
         lastFrameTime = 0
-        hero.physicsBody?.pinned = false
         
         self.addChild(hero)
         hasBegan = false
         hero.method = method
-        hero.runStandingAction()
         
         skyNode?.position = CGPoint(x: 0,y: 0)
         skyNodeNext?.position = CGPoint(x: (skyNode?.position.x)! + (skyNode?.frame.size.width)!,y: 0)
@@ -370,8 +361,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let groundBotj = TBShotBotNode()
             
             groundBotj.position = node.position
-            //groundBotj.name = self.removable
-            groundBotj.name = "shooterBot"
+            groundBotj.name = self.removable
             groundBotj.physicsBody?.allowsRotation = false
             node.physicsBody?.pinned = false
             groundBotj.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
@@ -379,33 +369,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBotj.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBotj.zPosition = 100
             self.addChild(groundBotj)
-            
-            let referencia:SKSpriteNode! = SKSpriteNode()
-            referencia?.name = "referencia"
-            referencia?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
-            referencia?.position = CGPointMake(-750, 0)
-            referencia.physicsBody?.pinned = true
-            referencia.physicsBody?.affectedByGravity = false
-            referencia.physicsBody?.allowsRotation = false
-            referencia.physicsBody?.friction = 0
-            referencia.physicsBody?.dynamic = false
-            referencia.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
-            referencia.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
-            groundBotj.addChild(referencia!)
-            
-            let referencia2:SKSpriteNode! = SKSpriteNode()
-            referencia2?.name = "referencia2"
-            referencia2?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
-            referencia2?.position = CGPointMake(0, 0)
-            referencia2.physicsBody?.pinned = true
-            referencia2.physicsBody?.affectedByGravity = false
-            referencia2.physicsBody?.allowsRotation = false
-            referencia2.physicsBody?.friction = 0
-            referencia2.physicsBody?.dynamic = false
-            referencia2.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
-            referencia2.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
-            groundBotj.addChild(referencia2!)
-            
         })
         
     }
@@ -572,7 +535,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.enumerateChildNodesWithName("cicloChoque", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-            
+// a textura tem que ser criada estaticamente para otimização
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             self.setObstacleTypeHit(node)
             node.physicsBody?.collisionBitMask = 0
@@ -680,19 +643,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.addChild(newNode)
             }
         })
-        
-        self.enumerateChildNodesWithName("frenezy", usingBlock:
-            {(node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-                
-                let frenezy  = TBPowerUpNode()
-                frenezy.setUP(TBPowerUpsStates.Frenezy)
-                frenezy.position = node.position
-                self.addChild(frenezy)   
-        
-        })
         finalNode = childNodeWithName(TBFinalNode.name)
         finalBackNode = self.childNodeWithName(TBFinalNode.nameBack)
-        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -932,49 +884,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
 
     
-    // o shooterBot comeca a tirar
-    func activeShotMode(shotBot: SKNode) {
-        if let myBot = shotBot as? TBShotBotNode {
-            if(myBot.shooted == false) {
-                myBot.shooted = true
-                startShot(myBot.position, parentBot: myBot)
-            }
-        }
-    }
-    
-    // Cria um tiro a partir do bot
-    func startShot(botPosition: CGPoint, parentBot: TBShotBotNode) {
-        parentBot.runAction(SKAction.repeatActionForever((SKAction.sequence([TBShotBotNode.shootingAnimation!, SKAction.runBlock({self.shooting(botPosition, parentBot: parentBot)}), TBShotBotNode.shootingAnimation2!, SKAction.waitForDuration(1.5)]))))
-        
-    }
-    
-    
-    // cria os tiros
-    func shooting(botPosition: CGPoint, parentBot: TBShotBotNode) {
-        let shot = TBShotNode(shotPosition: CGPointMake(-12, -2))
-        shot.name = TBShotNode.name
-        shot.physicsBody?.categoryBitMask = GameScene.TIRO_NODE
-        shot.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE
-        shot.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
-        parentBot.addChild(shot)
-    }
-    
-    // o shooter bot para de atirar
-    func stopShotMode(shotBot: SKNode) {
-        if let myBot = shotBot as? TBShotBotNode {
-            if(myBot.shootedStopped == false) {
-                myBot.stopShooting()
-            }
-        }
-    }
-    
-    
     //MARK -- CONTACT
     func didBeginContact(contact: SKPhysicsContact) {
         var bodyA = contact.bodyA
         var bodyB = contact.bodyB
         var flagTrocou = false
-//        
+        
         //ordena para que bodyA tenha sempre a categoria "menor"
         if(bodyA.categoryBitMask > bodyB.categoryBitMask){
             let aux = bodyB
@@ -986,8 +901,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
             bodyB.categoryBitMask == GameScene.POWERUP_NODE {
-                let node = bodyB.node as! TBPowerUpNode
-                hero.activatePowerUp(node.powerUP!)
+                
                 
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
           (bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||
@@ -1082,11 +996,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
           finalNode!.runAction(action)
             
-        } else if(bodyA.categoryBitMask == GameScene.REFERENCIA_NODE && bodyB.categoryBitMask == GameScene.PLAYER_NODE)  {
-            if(bodyA.node?.name == "referencia") {
-                activeShotMode((bodyA.node?.parent)!)
-            } else {
-                stopShotMode((bodyA.node?.parent)!)
+        } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE)  {
+            if(bodyB.node?.name == "referencia") {
+                if let myBot = bodyB.node!.parent as? TBShotBotNode {
+                    myBot.activeShotMode()
+                }
+            }
+            else {
+                if let myBot = bodyB.node!.parent as? TBShotBotNode {
+                    myBot.stopShotMode()
+                }
             }
         }
     }
