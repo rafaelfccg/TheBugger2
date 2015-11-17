@@ -535,7 +535,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.enumerateChildNodesWithName("cicloChoque", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-            
+// a textura tem que ser criada estaticamente para otimização
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
             self.setObstacleTypeHit(node)
             node.physicsBody?.collisionBitMask = 0
