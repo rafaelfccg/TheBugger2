@@ -278,7 +278,15 @@ class TBPlayerNode: SKSpriteNode {
             self.runFallAction()
         }
     }
-    
+    func resetHero(){
+        self.attackState = AttackState.Idle
+        self.powerUP = TBPowerUpsStates.Normal
+        self.physicsBody?.pinned = false
+        self.zRotation = 0
+        self.score = 0
+        self.addAttackJoint()
+        self.runStandingAction()
+    }
     func dangerCollision(bodyB:SKPhysicsBody, sender:GameScene){
         
         if(self.powerUP == TBPowerUpsStates.Frenezy){

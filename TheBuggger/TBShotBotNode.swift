@@ -128,7 +128,7 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
         let shot = TBShotNode(shotPosition: CGPointMake(-12, -2))
         shot.name = TBShotNode.name
         shot.physicsBody?.categoryBitMask = GameScene.TIRO_NODE
-        shot.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE
+        shot.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE
         shot.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         self.addChild(shot)
     }
