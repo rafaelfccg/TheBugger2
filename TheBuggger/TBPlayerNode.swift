@@ -16,8 +16,8 @@ class TBPlayerNode: SKSpriteNode {
     
     let defaultSpeed = 430 // era 250
     //AJUSTAR HIGH E LOW
-    let highSpeed = 650
-    let slowSpeed = 200
+    let highSpeed = 12*30 + 430 // use multiples of 12 for diff
+    let slowSpeed = 430 - 12*20
     
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
@@ -151,7 +151,7 @@ class TBPlayerNode: SKSpriteNode {
         self.runStandingAction()
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
-        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.TOCO_NODE
+        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.TOCO_NODE
         
         self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE
         
@@ -330,36 +330,51 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func quickFloorCollision(bodyB:SKPhysicsBody, sender:GameScene){
+        if let node  = bodyB.node as? TBChangeSpeedGround{
+            if node.hadEffect! {
+                return;
+            }else{
+                node.hadEffect = true
+            }
+        }
         realSpeed = max(realSpeed, defaultSpeed)
+        let diff = (self.highSpeed - defaultSpeed)
+        let acc = diff/12
         let accSpeed = SKAction.repeatAction( SKAction.sequence(
             [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                self.realSpeed = min(self.highSpeed, self.realSpeed + 20)
+                self.realSpeed = min(self.highSpeed, self.realSpeed + acc)
                 }
                 )]), count: 12)
         
-        
+        let deacc = diff/120
         let actSlow = SKAction.repeatAction( SKAction.sequence(
             [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                self.realSpeed = max(self.defaultSpeed, self.realSpeed-1)}
-                )]), count: 240)
-        runAction(SKAction.sequence([accSpeed, actSlow]))
+                self.realSpeed = max(self.defaultSpeed, self.realSpeed-deacc)}
+                )]), count: 120)
+        runAction(SKAction.sequence([accSpeed, actSlow, SKAction.runBlock({
+            self.realSpeed =  self.defaultSpeed
+        })]))
     }
     
     func slowFloorCollision(bodyB:SKPhysicsBody, sender:GameScene){
         self.realSpeed = min(self.realSpeed, self.defaultSpeed)
+        let diff = (self.highSpeed - defaultSpeed)
+        let acc = diff/12
         let accSpeed = SKAction.repeatAction( SKAction.sequence(
             [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                self.realSpeed = max(self.slowSpeed, self.realSpeed - 20)
+                self.realSpeed = max(self.slowSpeed, self.realSpeed - acc)
                 }
                 )]), count: 10)
         
-        
+        let deacc = diff/120
         let actSlow = SKAction.repeatAction( SKAction.sequence(
             [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                self.realSpeed = min(self.defaultSpeed, self.realSpeed+1)}
-                )]), count: 200)
+                self.realSpeed = min(self.defaultSpeed, self.realSpeed+deacc)}
+                )]), count: 120)
         
-        runAction(SKAction.sequence([accSpeed, actSlow]))
+        runAction(SKAction.sequence([accSpeed, actSlow, SKAction.runBlock({
+                self.realSpeed =  self.defaultSpeed
+        })]))
     }
     func attack(){
         if( self.actionForKey("attack") == nil && self.actionForKey("die") == nil){

@@ -17,6 +17,7 @@
 		0002CE931BF5171000FDE20A /* set-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE8D1BF5171000FDE20A /* set-4.png */; };
 		0002CE941BF5171000FDE20A /* set-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE8E1BF5171000FDE20A /* set-5.png */; };
 		0002CE951BF5171000FDE20A /* set-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE8F1BF5171000FDE20A /* set-6.png */; };
+		000AA8291BFBC20200EC4E20 /* slow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 000AA8281BFBC20200EC4E20 /* slow.atlas */; };
 		000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000D09D81BBEF31100631559 /* TBPlayerNode.swift */; };
 		001E557A1BD6DA0C00B80833 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55791BD6DA0C00B80833 /* power1.png */; };
 		001E55C21BD8221600B80833 /* cable.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55961BD8221600B80833 /* cable.png */; };
@@ -66,7 +67,7 @@
 		008698B11BE94DA900EE80F2 /* Alert.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AD1BE94DA900EE80F2 /* Alert.atlas */; };
 		008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AE1BE94DA900EE80F2 /* Machine.atlas */; };
 		008698B31BE94DA900EE80F2 /* signal.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AF1BE94DA900EE80F2 /* signal.atlas */; };
-		008698B41BE94DA900EE80F2 /* speedbooster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698B01BE94DA900EE80F2 /* speedbooster.atlas */; };
+		008698B41BE94DA900EE80F2 /* speedBooster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698B01BE94DA900EE80F2 /* speedBooster.atlas */; };
 		008698B61BE94F7A00EE80F2 /* TBAlertNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008698B51BE94F7A00EE80F2 /* TBAlertNode.swift */; };
 		008698BA1BE9503200EE80F2 /* TBSignalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008698B91BE9503200EE80F2 /* TBSignalNode.swift */; };
 		008698BE1BE9519200EE80F2 /* Espinhos.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698BD1BE9519200EE80F2 /* Espinhos.atlas */; };
@@ -192,6 +193,7 @@
 		0002CE8D1BF5171000FDE20A /* set-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set-4.png"; sourceTree = "<group>"; };
 		0002CE8E1BF5171000FDE20A /* set-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set-5.png"; sourceTree = "<group>"; };
 		0002CE8F1BF5171000FDE20A /* set-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set-6.png"; sourceTree = "<group>"; };
+		000AA8281BFBC20200EC4E20 /* slow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = slow.atlas; sourceTree = "<group>"; };
 		000D09D81BBEF31100631559 /* TBPlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPlayerNode.swift; sourceTree = "<group>"; };
 		001E55791BD6DA0C00B80833 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
 		001E55961BD8221600B80833 /* cable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cable.png; sourceTree = "<group>"; };
@@ -241,7 +243,7 @@
 		008698AD1BE94DA900EE80F2 /* Alert.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Alert.atlas; sourceTree = "<group>"; };
 		008698AE1BE94DA900EE80F2 /* Machine.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Machine.atlas; sourceTree = "<group>"; };
 		008698AF1BE94DA900EE80F2 /* signal.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = signal.atlas; sourceTree = "<group>"; };
-		008698B01BE94DA900EE80F2 /* speedbooster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = speedbooster.atlas; sourceTree = "<group>"; };
+		008698B01BE94DA900EE80F2 /* speedBooster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = speedBooster.atlas; sourceTree = "<group>"; };
 		008698B51BE94F7A00EE80F2 /* TBAlertNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBAlertNode.swift; sourceTree = "<group>"; };
 		008698B71BE94FCC00EE80F2 /* TBSignalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSignalNode.swift; sourceTree = "<group>"; };
 		008698B91BE9503200EE80F2 /* TBSignalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSignalNode.swift; sourceTree = "<group>"; };
@@ -376,6 +378,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000AA8261BFBBEB100EC4E20 /* Monsters */ = {
+			isa = PBXGroup;
+			children = (
+				52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */,
+				52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */,
+				52C376F51BC441190012BC96 /* TBShotNode.swift */,
+				52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */,
+				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
+			);
+			name = Monsters;
+			sourceTree = "<group>";
+		};
+		000AA8271BFBBEF500EC4E20 /* Scenario */ = {
+			isa = PBXGroup;
+			children = (
+				00C0FCE31BE94AEF00F8C730 /* TBMachineFrontNode.swift */,
+				00AC3AC01BEA83EA00323B6D /* TBRedLightEffect.swift */,
+				AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */,
+				002FD8151BF66235003514A4 /* TBBitNode.swift */,
+				009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */,
+				008698B51BE94F7A00EE80F2 /* TBAlertNode.swift */,
+				00C0FCE11BE9495800F8C730 /* TBBrilhoNode.swift */,
+			);
+			name = Scenario;
+			sourceTree = "<group>";
+		};
 		001E557D1BD8221600B80833 /* Cenario */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,10 +423,11 @@
 		001E557E1BD8221600B80833 /* Animateds */ = {
 			isa = PBXGroup;
 			children = (
+				000AA8281BFBC20200EC4E20 /* slow.atlas */,
 				008698AD1BE94DA900EE80F2 /* Alert.atlas */,
 				008698AE1BE94DA900EE80F2 /* Machine.atlas */,
 				008698AF1BE94DA900EE80F2 /* signal.atlas */,
-				008698B01BE94DA900EE80F2 /* speedbooster.atlas */,
+				008698B01BE94DA900EE80F2 /* speedBooster.atlas */,
 			);
 			path = Animateds;
 			sourceTree = "<group>";
@@ -630,24 +659,14 @@
 		00CDBEC61BBD9EE600BC0517 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				000AA8271BFBBEF500EC4E20 /* Scenario */,
+				000AA8261BFBBEB100EC4E20 /* Monsters */,
 				00BE1EF01BF8C43300F091B9 /* TBPowerUpNode.swift */,
-				00AC3AC01BEA83EA00323B6D /* TBRedLightEffect.swift */,
-				00C0FCE11BE9495800F8C730 /* TBBrilhoNode.swift */,
-				00C0FCE31BE94AEF00F8C730 /* TBMachineFrontNode.swift */,
 				52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */,
-				002FD8151BF66235003514A4 /* TBBitNode.swift */,
 				000D09D81BBEF31100631559 /* TBPlayerNode.swift */,
-				52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */,
-				52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */,
-				52C376F51BC441190012BC96 /* TBShotNode.swift */,
-				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
-				009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */,
-				AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */,
 				AF0A27291BE010E20027965B /* TBFinalNode.swift */,
 				00DCF2D71BE15213006F9F86 /* TBTutorialNodes.swift */,
-				008698B51BE94F7A00EE80F2 /* TBAlertNode.swift */,
 				008698B91BE9503200EE80F2 /* TBSignalNode.swift */,
-				52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -890,6 +909,7 @@
 				001E55CA1BD8221600B80833 /* BaseD.png in Resources */,
 				AF36E04E1BFA550C004A4560 /* Level2Scene.sks in Resources */,
 				0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */,
+				000AA8291BFBC20200EC4E20 /* slow.atlas in Resources */,
 				001E55C41BD8221600B80833 /* structure1.png in Resources */,
 				0002CE891BF50B1A00FDE20A /* back-3.png in Resources */,
 				0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */,
@@ -903,7 +923,7 @@
 				AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */,
 				008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */,
 				0002CE931BF5171000FDE20A /* set-4.png in Resources */,
-				008698B41BE94DA900EE80F2 /* speedbooster.atlas in Resources */,
+				008698B41BE94DA900EE80F2 /* speedBooster.atlas in Resources */,
 				0002CE951BF5171000FDE20A /* set-6.png in Resources */,
 				52714B711BDE7875006200A1 /* metalbolcklg-1.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
