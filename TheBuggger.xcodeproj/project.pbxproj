@@ -393,6 +393,7 @@
 				52E7AEB41BBF0227008FE672 /* TBGroundBotNode.swift */,
 				52C376F51BC441190012BC96 /* TBShotNode.swift */,
 				52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */,
+				52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */,
 				AFCCF2F41BFBC28C00645850 /* TBBopperBotNode.swift */,
 			);
 			name = Monsters;
@@ -675,7 +676,6 @@
 				AF0A27291BE010E20027965B /* TBFinalNode.swift */,
 				00DCF2D71BE15213006F9F86 /* TBTutorialNodes.swift */,
 				008698B91BE9503200EE80F2 /* TBSignalNode.swift */,
-				52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
