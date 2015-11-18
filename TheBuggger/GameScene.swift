@@ -975,22 +975,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }else if((bodyA.categoryBitMask == GameScene.MONSTER_NODE)  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
             if(hero.attackState == AttackState.Attacking){
-//otimizar aqui
-                if let gbotmonste = bodyA.node as? TBGroundBotNode{
-                    gbotmonste.dieAnimation()
-                    hero.score += 5
-                    hero.monstersKilled++
-                
-                }
-                else if let gbotmonste2 = bodyA.node as? TBShotBotNode{
-                        gbotmonste2.dieAnimation()
-                        hero.score += 10
-                        hero.monstersKilled++
-                }
-                else if let gbotmonste2 = bodyA.node as? TBBopperBotNode{
-                    gbotmonste2.dieAnimation()
-                    hero.score += 10
-                    hero.monstersKilled++
+                if let gbotmonste = bodyA.node as? TBMonsterProtocol{
+                    gbotmonste.dieAnimation(self.hero)
                 }
                
             }

@@ -63,8 +63,11 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         TBBopperBotNode.attackAnimation = SKAction.group([attack, move])
     }
     
-    func dieAnimation()
+    func dieAnimation(hero: TBPlayerNode)
     {
+        //adicionando score ao heroi
+        hero.score += 10
+        hero.monstersKilled++
         //tirando corpo fisico e contato
         self.physicsBody?.categoryBitMask = 0
         self.physicsBody?.collisionBitMask = 0

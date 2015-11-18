@@ -41,8 +41,11 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
         TBGroundBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.07);
     }
     
-    func dieAnimation()
+    func dieAnimation(hero: TBPlayerNode)
     {
+        //adicionando score ao heroi
+        hero.score += 5
+        hero.monstersKilled++
         //tirando corpo fisico e contato
         self.physicsBody?.categoryBitMask = 0
         self.physicsBody?.collisionBitMask = 0

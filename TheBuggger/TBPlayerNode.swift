@@ -376,9 +376,7 @@ class TBPlayerNode: SKSpriteNode {
                 
                 if body.categoryBitMask == GameScene.MONSTER_NODE {
                     let gbotmonste = body.node as? TBMonsterProtocol
-                    gbotmonste!.dieAnimation()
-                    score += 5
-                    monstersKilled++
+                    gbotmonste!.dieAnimation(self)
                 }
             }
         }

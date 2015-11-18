@@ -10,7 +10,7 @@ import Foundation
 
 protocol TBMonsterProtocol{
 
-    func dieAnimation()
+    func dieAnimation(hero: TBPlayerNode)
     func startAttack()
 }
 
