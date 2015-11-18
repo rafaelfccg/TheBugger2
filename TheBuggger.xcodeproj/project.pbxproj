@@ -152,6 +152,10 @@
 		AF36E0651BFA5E6B004A4560 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF36E0641BFA5E6B004A4560 /* Level4Scene.sks */; };
 		AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF9061211BE290AE00C61746 /* PlayerDeath.atlas */; };
 		AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF9061231BE291C400C61746 /* MonsterDeath.atlas */; };
+		AFCCF2F51BFBC28C00645850 /* TBBopperBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCF2F41BFBC28C00645850 /* TBBopperBotNode.swift */; };
+		AFCCF2FA1BFBC8C200645850 /* BopperMonsterAttack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFCCF2F71BFBC8C200645850 /* BopperMonsterAttack.atlas */; };
+		AFCCF2FB1BFBC8C200645850 /* BopperMonsterDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFCCF2F81BFBC8C200645850 /* BopperMonsterDeath.atlas */; };
+		AFCCF2FD1BFBC93900645850 /* BopperMonsterStand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFCCF2FC1BFBC93900645850 /* BopperMonsterStand.atlas */; };
 		AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF691BF3B0C200C99A94 /* libFlurry_7.3.0.a */; };
 		AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF6C1BF3B65B00C99A94 /* Security.framework */; };
 		AFE7EF6F1BF3B67000C99A94 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF6E1BF3B67000C99A94 /* SystemConfiguration.framework */; };
@@ -334,6 +338,10 @@
 		AF36E0641BFA5E6B004A4560 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
 		AF9061211BE290AE00C61746 /* PlayerDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDeath.atlas; sourceTree = "<group>"; };
 		AF9061231BE291C400C61746 /* MonsterDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MonsterDeath.atlas; sourceTree = "<group>"; };
+		AFCCF2F41BFBC28C00645850 /* TBBopperBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBBopperBotNode.swift; sourceTree = "<group>"; };
+		AFCCF2F71BFBC8C200645850 /* BopperMonsterAttack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BopperMonsterAttack.atlas; sourceTree = "<group>"; };
+		AFCCF2F81BFBC8C200645850 /* BopperMonsterDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BopperMonsterDeath.atlas; sourceTree = "<group>"; };
+		AFCCF2FC1BFBC93900645850 /* BopperMonsterStand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BopperMonsterStand.atlas; sourceTree = "<group>"; };
 		AFE7EF691BF3B0C200C99A94 /* libFlurry_7.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.3.0.a; sourceTree = "<group>"; };
 		AFE7EF6A1BF3B0C200C99A94 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		AFE7EF6C1BF3B65B00C99A94 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -648,6 +656,7 @@
 				008698B51BE94F7A00EE80F2 /* TBAlertNode.swift */,
 				008698B91BE9503200EE80F2 /* TBSignalNode.swift */,
 				52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */,
+				AFCCF2F41BFBC28C00645850 /* TBBopperBotNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -660,6 +669,9 @@
 				0002CE701BF3D0CD00FDE20A /* heroDashPhysicsBody.png */,
 				009221601BF1269F007C7DDC /* Squares Bold Free.otf */,
 				0092211D1BF11333007C7DDC /* Infertace */,
+				AFCCF2FC1BFBC93900645850 /* BopperMonsterStand.atlas */,
+				AFCCF2F71BFBC8C200645850 /* BopperMonsterAttack.atlas */,
+				AFCCF2F81BFBC8C200645850 /* BopperMonsterDeath.atlas */,
 				52EF6EE11BF51FF600780377 /* ShooterBot2.atlas */,
 				5279DD2F1BF3DF5400E61727 /* ShotDefended.atlas */,
 				5279DD2D1BF3DBFE00E61727 /* RepousoShotBot.atlas */,
@@ -875,6 +887,7 @@
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
 				5279DD301BF3DF5400E61727 /* ShotDefended.atlas in Resources */,
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
+				AFCCF2FA1BFBC8C200645850 /* BopperMonsterAttack.atlas in Resources */,
 				0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */,
 				009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */,
 				52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */,
@@ -923,6 +936,7 @@
 				0002CE871BF50B1A00FDE20A /* back-1.png in Resources */,
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
+				AFCCF2FD1BFBC93900645850 /* BopperMonsterStand.atlas in Resources */,
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
 				009221581BF1187E007C7DDC /* enfeiteBaixo-1.png in Resources */,
 				AF36E0631BFA5DAD004A4560 /* Level3Scene.sks in Resources */,
@@ -934,6 +948,7 @@
 				0002CE901BF5171000FDE20A /* set-1.png in Resources */,
 				008698B31BE94DA900EE80F2 /* signal.atlas in Resources */,
 				001E55C81BD8221600B80833 /* BaseA.png in Resources */,
+				AFCCF2FB1BFBC8C200645850 /* BopperMonsterDeath.atlas in Resources */,
 				00648CAF1BF27CE900C1F906 /* selected.png in Resources */,
 				0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */,
 				0092215A1BF1187E007C7DDC /* enfeiteBaixo-3.png in Resources */,
@@ -1013,6 +1028,7 @@
 				AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */,
 				52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */,
 				008698B61BE94F7A00EE80F2 /* TBAlertNode.swift in Sources */,
+				AFCCF2F51BFBC28C00645850 /* TBBopperBotNode.swift in Sources */,
 				52C376FC1BC44E7E0012BC96 /* TBFlying.swift in Sources */,
 				AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */,
 				00CDBE921BB9B39000BC0517 /* GameViewController.swift in Sources */,

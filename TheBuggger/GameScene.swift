@@ -370,6 +370,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBotj.zPosition = 100
             self.addChild(groundBotj)
         })
+        self.enumerateChildNodesWithName(TBBopperBotNode.name , usingBlock: {(node, ponter)->Void in
+            
+            let groundBoti = TBBopperBotNode()
+            groundBoti.position = node.position
+            groundBoti.name = self.removable
+            groundBoti.physicsBody?.allowsRotation = false
+            node.physicsBody?.pinned = false
+            groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
+            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE
+            groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
+            groundBoti.zPosition = 100
+            self.addChild(groundBoti)
+        })
+        
         
     }
     
@@ -961,17 +975,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }else if((bodyA.categoryBitMask == GameScene.MONSTER_NODE)  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
             if(hero.attackState == AttackState.Attacking){
-
+//otimizar aqui
                 if let gbotmonste = bodyA.node as? TBGroundBotNode{
                     gbotmonste.dieAnimation()
                     hero.score += 5
                     hero.monstersKilled++
                 
-                } else if let gbotmonste2 = bodyA.node as? TBShotBotNode{
+                }
+                else if let gbotmonste2 = bodyA.node as? TBShotBotNode{
                         gbotmonste2.dieAnimation()
                         hero.score += 10
                         hero.monstersKilled++
-                } 
+                }
+                else if let gbotmonste2 = bodyA.node as? TBBopperBotNode{
+                    gbotmonste2.dieAnimation()
+                    hero.score += 10
+                    hero.monstersKilled++
+                }
                
             }
             
@@ -1019,9 +1039,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
           finalNode!.runAction(action)
             
         } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE)  {
+
+//otimizar aqui
             if(bodyB.node?.name == "referencia") {
                 if let myBot = bodyB.node!.parent as? TBShotBotNode {
                     myBot.activeShotMode()
+                }
+                if let bot = bodyB.node!.parent as? TBBopperBotNode {
+                    bot.startAttack()
                 }
             }
             else {
