@@ -55,6 +55,8 @@ class TBMenuViewController :UIViewController {
         TBShotBotNode.createSKActionAnimation()
         TBShotNode.createSKActionAnimation()
         TBBitNode.createSKActionAnimation()
+        TBChangeSpeedGround.createAccelerateAnimation()
+        TBChangeSpeedGround.createSlowAnimation()
         TBBopperBotNode.createSKActionAnimation()
     
         self.efeitoCima.animationImages = [UIImage(named:"enfeiteCima-1")!,
