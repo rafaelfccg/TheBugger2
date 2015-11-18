@@ -37,7 +37,7 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         let referencia:SKSpriteNode! = SKSpriteNode()
         referencia?.name = "referencia"
         referencia?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
-        referencia?.position = CGPointMake(-400, 0)
+        referencia?.position = CGPointMake(-370, 0)
         referencia.physicsBody?.pinned = true
         referencia.physicsBody?.affectedByGravity = false
         referencia.physicsBody?.allowsRotation = false
@@ -59,7 +59,7 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         
         let attackArray = TBUtils().getSprites("BopperMonsterAttack", nomeImagens: "enemyatk-")
         let attack = SKAction.animateWithTextures(attackArray, timePerFrame: 0.05)
-        let move = SKAction.moveBy(CGVector(dx: -60, dy: 0), duration: 0.45)
+        let move = SKAction.moveBy(CGVector(dx: -90, dy: 0), duration: 0.45)
         TBBopperBotNode.attackAnimation = SKAction.group([attack, move])
     }
     
