@@ -78,11 +78,9 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         })]), withKey: "dieMonster")
     }
     
-    // Cria um tiro a partir do bot
     func startAttack() {
-        
+    
         self.runAction(TBBopperBotNode.attackAnimation!)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

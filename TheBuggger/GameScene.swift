@@ -340,6 +340,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnMonstros(){
+//otimizar, acho que da pra colocar umas paradas dentro das respectivas classes
         self.enumerateChildNodesWithName(TBGroundBotNode.name , usingBlock: {(node, ponter)->Void in
             
             let groundBoti = TBGroundBotNode()
@@ -1031,7 +1032,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if let myBot = bodyB.node!.parent as? TBShotBotNode {
                     myBot.activeShotMode()
                 }
-                if let bot = bodyB.node!.parent as? TBBopperBotNode {
+                else if let bot = bodyB.node!.parent as? TBBopperBotNode {
                     bot.startAttack()
                 }
             }
