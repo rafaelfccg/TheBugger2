@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBPlayerNode.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "jump()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "462"
-            endingLineNumber = "462"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
             landmarkName = "setUpLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBPlayerNode.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "jump()"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
-            landmarkName = "spawnMoedas()"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
+            landmarkName = "setHeroPosition()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBPlayerNode.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "attack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
             landmarkName = "spawnMonstros()"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBPlayerNode.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487430.874469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "quickFloorCollision(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "634"
-            endingLineNumber = "634"
+            startingLineNumber = "645"
+            endingLineNumber = "645"
             landmarkName = "setUpLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "636"
-            endingLineNumber = "636"
+            startingLineNumber = "647"
+            endingLineNumber = "647"
             landmarkName = "setUpLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "498"
+            endingLineNumber = "498"
             landmarkName = "setUpLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "640"
-            endingLineNumber = "640"
+            startingLineNumber = "651"
+            endingLineNumber = "651"
             landmarkName = "setUpLevel()"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,12 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "718"
-            endingLineNumber = "718"
-            landmarkName = "touchesMoved(_:withEvent:)"
+            startingLineNumber = "729"
+            endingLineNumber = "729"
+            landmarkName = "update(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBMenuController.swift"
-            timestampString = "469133763.158066"
+            timestampString = "469485622.83879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBPlayerNode.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "attack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBPlayerNode.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "attack()"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBMenuController.swift"
-            timestampString = "469133763.158066"
+            timestampString = "469485622.83879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469287546.015363"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
             landmarkName = "spawnMonstros()"
             landmarkType = "5">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
             landmarkName = "setUpLevel()"
             landmarkType = "5">
             <Locations>
@@ -650,93 +650,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
-            landmarkName = "setUpLevel()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheBuggger.GameScene.setUpLevel (TheBuggger.GameScene)() -&gt; ()"
-                  moduleName = "TheBuggger"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
-                  timestampString = "469390043.86824"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "603"
-                  endingLineNumber = "603"
-                  offsetFromSymbolStart = "3152">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheBuggger.GameScene.(setUpLevel (TheBuggger.GameScene) -&gt; () -&gt; ()).(closure #14)"
-                  moduleName = "TheBuggger"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
-                  timestampString = "469390043.869277"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "605"
-                  endingLineNumber = "605"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "614"
             endingLineNumber = "614"
             landmarkName = "setUpLevel()"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheBuggger.GameScene.setUpLevel (TheBuggger.GameScene)() -&gt; ()"
-                  moduleName = "TheBuggger"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
-                  timestampString = "469390043.892337"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "614"
-                  endingLineNumber = "614"
-                  offsetFromSymbolStart = "3388">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheBuggger.GameScene.(setUpLevel (TheBuggger.GameScene) -&gt; () -&gt; ()).(closure #15)"
-                  moduleName = "TheBuggger"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
-                  timestampString = "469390043.892669"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "617"
-                  endingLineNumber = "617"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -746,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "625"
+            endingLineNumber = "625"
             landmarkName = "setUpLevel()"
             landmarkType = "5">
             <Locations>
@@ -762,27 +682,27 @@
                   moduleName = "TheBuggger"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
-                  timestampString = "469390043.894177"
+                  timestampString = "469487431.911963"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "590"
-                  endingLineNumber = "590"
-                  offsetFromSymbolStart = "2884">
+                  startingLineNumber = "616"
+                  endingLineNumber = "616"
+                  offsetFromSymbolStart = "4172">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TheBuggger.GameScene.(setUpLevel (TheBuggger.GameScene) -&gt; () -&gt; ()).(closure #13)"
+                  symbolName = "TheBuggger.GameScene.(setUpLevel (TheBuggger.GameScene) -&gt; () -&gt; ()).(closure #18)"
                   moduleName = "TheBuggger"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
-                  timestampString = "469390043.894409"
+                  timestampString = "469487431.912286"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "593"
-                  endingLineNumber = "593"
-                  offsetFromSymbolStart = "28">
+                  startingLineNumber = "616"
+                  endingLineNumber = "616"
+                  offsetFromSymbolStart = "324">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -794,60 +714,172 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "573"
-            endingLineNumber = "573"
-            landmarkName = "setUpLevel()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheBuggger.GameScene.setUpLevel (TheBuggger.GameScene)() -&gt; ()"
-                  moduleName = "TheBuggger"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
-                  timestampString = "469390043.907577"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "573"
-                  endingLineNumber = "573"
-                  offsetFromSymbolStart = "2648">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheBuggger.GameScene.(setUpLevel (TheBuggger.GameScene) -&gt; () -&gt; ()).(closure #12)"
-                  moduleName = "TheBuggger"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
-                  timestampString = "469390043.907857"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "576"
-                  endingLineNumber = "576"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBuggger/GameScene.swift"
-            timestampString = "469390043.740765"
+            timestampString = "469487818.585466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "601"
             endingLineNumber = "601"
             landmarkName = "setUpLevel()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheBuggger.GameScene.setUpLevel (TheBuggger.GameScene)() -&gt; ()"
+                  moduleName = "TheBuggger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
+                  timestampString = "469487431.913935"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "593"
+                  endingLineNumber = "593"
+                  offsetFromSymbolStart = "3632">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheBuggger.GameScene.(setUpLevel (TheBuggger.GameScene) -&gt; () -&gt; ()).(closure #16)"
+                  moduleName = "TheBuggger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
+                  timestampString = "469487431.914168"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "596"
+                  endingLineNumber = "596"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBuggger/GameScene.swift"
+            timestampString = "469487818.585466"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "584"
+            endingLineNumber = "584"
+            landmarkName = "setUpLevel()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBuggger/GameScene.swift"
+            timestampString = "469487818.585466"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
+            landmarkName = "setUpLevel()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheBuggger.GameScene.setUpLevel (TheBuggger.GameScene)() -&gt; ()"
+                  moduleName = "TheBuggger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
+                  timestampString = "469487431.915221"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "604"
+                  endingLineNumber = "604"
+                  offsetFromSymbolStart = "3872">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheBuggger.GameScene.(setUpLevel (TheBuggger.GameScene) -&gt; () -&gt; ()).(closure #17)"
+                  moduleName = "TheBuggger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rafaelgouveia/Workspace/temp/TheBugger/TheBuggger/GameScene.swift"
+                  timestampString = "469487431.91542"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "607"
+                  endingLineNumber = "607"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBuggger/GameScene.swift"
+            timestampString = "469487818.585466"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
+            landmarkName = "setUpLevel()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBuggger/TBChangeSpeedGround.swift"
+            timestampString = "469487430.874469"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "init(type:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBuggger/TBChangeSpeedGround.swift"
+            timestampString = "469487430.874469"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "setUPChao()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBuggger/TBPlayerNode.swift"
+            timestampString = "469487399.175387"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
+            landmarkName = "quickFloorCollision(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

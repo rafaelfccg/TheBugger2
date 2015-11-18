@@ -97,8 +97,6 @@ class GameSceneTestEnemy: SKScene {
         checkBotAttack()
         checkBotFly()
         
-        
-        
         // O tempo para o tiro é a cada 5 segundos
         let delta: CFTimeInterval = currentTime - self.lastShot
         

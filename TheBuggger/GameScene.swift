@@ -314,6 +314,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.removeFromParent()
             
         })
+        self.enumerateChildNodesWithName("changeSpeedNode", usingBlock: {
+            (node, ponter)->Void in
+            if let nodeI = node as? TBChangeSpeedGround{
+                nodeI.hadEffect = false
+            }
+            
+        })
         
         let method = hero.method
 
@@ -451,20 +458,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.enumerateChildNodesWithName("chao_quick", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-            node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
-            self.setObstacleTypeHit(node)
-            node.physicsBody?.pinned = true
-            node.physicsBody!.categoryBitMask = GameScene.CHAO_QUICK_NODE
-            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            
+            let chaoQuick = TBChangeSpeedGround(type:0);// 0 == rapido
+            chaoQuick.position = node.position;
+            chaoQuick.size = node.frame.size
+            chaoQuick.setUPChao()
+            chaoQuick.name = "changeSpeedNode"
+            self.setObstacleTypeHit(chaoQuick)
+            node.removeFromParent()
+            self.addChild(chaoQuick)
+          
         })
         
         self.enumerateChildNodesWithName("chao_slow", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-            node.physicsBody = SKPhysicsBody(rectangleOfSize: node.frame.size)
-            self.setObstacleTypeHit(node)
-            node.physicsBody?.pinned = true
-            node.physicsBody!.categoryBitMask = GameScene.CHAO_SLOW_NODE
-            node.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+            let chaoSlow = TBChangeSpeedGround(type: 1);// 0 == rapido
+            chaoSlow.position = node.position;
+            chaoSlow.size = node.frame.size
+            chaoSlow.setUPChao()
+            chaoSlow.name = "changeSpeedNode"
+            self.setObstacleTypeHit(chaoSlow)
+            node.removeFromParent()
+            self.addChild(chaoSlow)
         })
         
         self.enumerateChildNodesWithName("plataforma", usingBlock: {
@@ -897,29 +912,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    // Checa se o personagem passou no range do bot
-//    func checkBotShot() {
-//        
-//        self.enumerateChildNodesWithName("shooterBot") { (node, ponter) -> Void in
-//            
-//            let myBot:TBShotBotNode   = node as! TBShotBotNode
-//            
-//            print("hero")
-//            print(self.hero.position)
-//            print("myBot")
-//            print(myBot.position)
-//            //            print("\(myBot.position.x)  -- player \(self.player.position.x)\n")
-//            if(((myBot.position.x - 800) < (self.hero.position.x)) && myBot.jaAtacou == false) {
-//                myBot.shooting()
-//                myBot.jaAtacou = true
-//               // self.createAShotNode(myBot.position, currentTime: currentTime)
-//            
-//            }
-//            
-//            
-//        }
-//        
-//    }
+
     
     //MARK -- CONTACT
     func didBeginContact(contact: SKPhysicsContact) {
