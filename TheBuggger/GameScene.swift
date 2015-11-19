@@ -148,20 +148,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tapToStartLabel = SKLabelNode(text: "TAP TO START")
         self.camera!.addChild(tapToStartLabel!)
         
-        if(backgroundMusicPlayer == nil){
-        
-            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
-            
-            do {
-              try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-              backgroundMusicPlayer!.numberOfLoops  = -1
-                if(!backgroundMusicPlayer!.playing){
-                    self.backgroundMusicPlayer?.play()
-                }
-            }catch {
-                print("MUSIC NOT FOUND")
-            }
-        }
+//        if(backgroundMusicPlayer == nil){
+//        
+//            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
+//            
+//            do {
+//              try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
+//              backgroundMusicPlayer!.numberOfLoops  = -1
+//                if(!backgroundMusicPlayer!.playing){
+//                    self.backgroundMusicPlayer?.play()
+//                }
+//            }catch {
+//                print("MUSIC NOT FOUND")
+//            }
+//        }
         
 
     }
@@ -954,6 +954,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if(!flagTrocou) {norm = -norm}
             
+            if hero.actionForKey("attack") == nil && hero.actionForKey("defence") == nil{
+                self.hero.runWalkingAction()
+            }
+            
+                    
             if(contact.contactNormal.dy/norm > 0.5){
                 self.hero.jumpState = JumpState.CanJump
             }
@@ -981,6 +986,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if  let bit = bodyB.node as? TBBitNode {
                 hero.score += 100
                 self.coinsMark[bit.num!] = true
+                self.runAction(SKAction.playSoundFileNamed("SPECIAL_COIN", waitForCompletion: true))
                
             }else{
                 hero.qtdMoedas++
