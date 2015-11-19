@@ -80,11 +80,14 @@ class SelectLevelScene: SKScene {
                 level = (name?.substringFromIndex((name?.startIndex.advancedBy(11))!))!
             }
             if level != "-1" {
-                touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
-                    if inLevel >= Int(level) {
-                        self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: 1)
-                    }
-                })])]))
+                if inLevel >= Int(level) {
+                    touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
+                    
+                        let levelInt = Int(level);
+                        self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
+                   
+                    })])]))
+                }
             }
         }
         
