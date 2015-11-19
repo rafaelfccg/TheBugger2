@@ -151,6 +151,7 @@
 		52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52EF6EE11BF51FF600780377 /* ShooterBot2.atlas */; };
 		52EF6EE41BF52F4700780377 /* TBMonsterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */; };
 		52FDE2DE1BF29285003D9A1D /* DieShooterBot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */; };
+		AF069D661BFD672300AC81EC /* FlyingMonster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF069D651BFD672300AC81EC /* FlyingMonster.atlas */; };
 		AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27231BE00EC80027965B /* ENDZONE.atlas */; };
 		AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27241BE00EC80027965B /* EndzoneBack.atlas */; };
 		AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A27291BE010E20027965B /* TBFinalNode.swift */; };
@@ -347,6 +348,7 @@
 		52EF6EE11BF51FF600780377 /* ShooterBot2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShooterBot2.atlas; sourceTree = "<group>"; };
 		52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMonsterProtocol.swift; sourceTree = "<group>"; };
 		52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DieShooterBot.atlas; sourceTree = "<group>"; };
+		AF069D651BFD672300AC81EC /* FlyingMonster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = FlyingMonster.atlas; sourceTree = "<group>"; };
 		AF0A27231BE00EC80027965B /* ENDZONE.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ENDZONE.atlas; sourceTree = "<group>"; };
 		AF0A27241BE00EC80027965B /* EndzoneBack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EndzoneBack.atlas; sourceTree = "<group>"; };
 		AF0A27291BE010E20027965B /* TBFinalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFinalNode.swift; sourceTree = "<group>"; };
@@ -1078,6 +1080,7 @@
 				0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 				003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */,
+				AF069D661BFD672300AC81EC /* FlyingMonster.atlas in Resources */,
 				AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */,
 				0002CE711BF3D0CD00FDE20A /* heroDashPhysicsBody.png in Resources */,
 				001E55D21BD8221600B80833 /* roofend2.png in Resources */,

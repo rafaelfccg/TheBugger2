@@ -26,7 +26,7 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         // self.anchorPoint = CGPointMake(0, 20)
         self.size = CGSizeMake(154, 110)
         self.anchorPoint = CGPointMake(0.5, 0.36)
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width-80, self.size.height-38))
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width-60, self.size.height-30))
         self.physicsBody?.friction = CGFloat(0)
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
