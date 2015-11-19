@@ -144,6 +144,7 @@
 		52FDE2DE1BF29285003D9A1D /* DieShooterBot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */; };
 		AF069D681BFE450D00AC81EC /* FlyingMonster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF069D671BFE450D00AC81EC /* FlyingMonster.atlas */; };
 		AF069D6A1BFE5A9F00AC81EC /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF069D691BFE5A9F00AC81EC /* Level4Scene.sks */; };
+		AF069D6C1BFE604700AC81EC /* FlyingMonsterDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF069D6B1BFE604700AC81EC /* FlyingMonsterDeath.atlas */; };
 		AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27231BE00EC80027965B /* ENDZONE.atlas */; };
 		AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27241BE00EC80027965B /* EndzoneBack.atlas */; };
 		AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A27291BE010E20027965B /* TBFinalNode.swift */; };
@@ -333,6 +334,7 @@
 		52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DieShooterBot.atlas; sourceTree = "<group>"; };
 		AF069D671BFE450D00AC81EC /* FlyingMonster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = FlyingMonster.atlas; sourceTree = "<group>"; };
 		AF069D691BFE5A9F00AC81EC /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
+		AF069D6B1BFE604700AC81EC /* FlyingMonsterDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = FlyingMonsterDeath.atlas; sourceTree = "<group>"; };
 		AF0A27231BE00EC80027965B /* ENDZONE.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ENDZONE.atlas; sourceTree = "<group>"; };
 		AF0A27241BE00EC80027965B /* EndzoneBack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EndzoneBack.atlas; sourceTree = "<group>"; };
 		AF0A27291BE010E20027965B /* TBFinalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFinalNode.swift; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 				009221601BF1269F007C7DDC /* Squares Bold Free.otf */,
 				0092211D1BF11333007C7DDC /* Infertace */,
 				AF069D671BFE450D00AC81EC /* FlyingMonster.atlas */,
+				AF069D6B1BFE604700AC81EC /* FlyingMonsterDeath.atlas */,
 				AFCCF2FC1BFBC93900645850 /* BopperMonsterStand.atlas */,
 				AFCCF2F71BFBC8C200645850 /* BopperMonsterAttack.atlas */,
 				AFCCF2F81BFBC8C200645850 /* BopperMonsterDeath.atlas */,
@@ -967,6 +970,7 @@
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
 				009221581BF1187E007C7DDC /* enfeiteBaixo-1.png in Resources */,
 				AF36E0631BFA5DAD004A4560 /* Level3Scene.sks in Resources */,
+				AF069D6C1BFE604700AC81EC /* FlyingMonsterDeath.atlas in Resources */,
 				52E75DC01BDEAC5700F91E00 /* Moedas.Atlas in Resources */,
 				0092215B1BF1187E007C7DDC /* enfeiteBaixo-4.png in Resources */,
 				0002CE921BF5171000FDE20A /* set-3.png in Resources */,

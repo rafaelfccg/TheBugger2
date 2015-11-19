@@ -15,7 +15,7 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
     
     static let name = "SpawnFlyingBot"
     static var animation: SKAction?
-//    static var deathAnimation: SKAction?
+    static var deathAnimation: SKAction?
     static var attackAnimation: SKAction?
 
     
@@ -74,15 +74,12 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
         let monsterArray = TBUtils().getSprites("FlyingMonster", nomeImagens: "bug-")
         TBFlyingBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.05);
         
-//        let deathArray = TBUtils().getSprites("", nomeImagens: "")
-//        TBFlyingBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
-        
-//        let attackArray = TBUtils().getSprites("", nomeImagens: "")
-//        let attack = SKAction.animateWithTextures(attackArray, timePerFrame: 0.05)
+        let deathArray = TBUtils().getSprites("FlyingMonsterDeath", nomeImagens: "bug-exp-")
+        TBFlyingBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
 
         //melhorar movimento
         let moveUp = SKAction.moveBy(CGVector(dx: -20, dy: 75), duration: 0.6)
-        let moveDown = SKAction.moveBy(CGVector(dx: -70, dy: -95), duration: 0.40)
+        let moveDown = SKAction.moveBy(CGVector(dx: -70, dy: -75), duration: 0.40)
         //sem animação, apenas movimento
         TBFlyingBotNode.attackAnimation = SKAction.repeatActionForever(SKAction.sequence([moveUp, moveDown]))
     }
@@ -97,12 +94,9 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.pinned = true
         self.removeAllChildren()
-//        runAction(SKAction.sequence([TBFlyingBotNode.deathAnimation!, SKAction.runBlock({
-//            self.removeFromParent()
-//        })]), withKey: "dieMonster")
-        runAction(SKAction.runBlock({
+        runAction(SKAction.sequence([TBFlyingBotNode.deathAnimation!, SKAction.runBlock({
             self.removeFromParent()
-        }), withKey: "dieMonster")
+        })]), withKey: "dieMonster")
     }
     
     func startAttack() {
