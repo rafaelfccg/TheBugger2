@@ -148,20 +148,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tapToStartLabel = SKLabelNode(text: "TAP TO START")
         self.camera!.addChild(tapToStartLabel!)
         
-//        if(backgroundMusicPlayer == nil){
-//        
-//            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
-//            
-//            do {
-//              try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-//              backgroundMusicPlayer!.numberOfLoops  = -1
-//                if(!backgroundMusicPlayer!.playing){
-//                    self.backgroundMusicPlayer?.play()
-//                }
-//            }catch {
-//                print("MUSIC NOT FOUND")
-//            }
-//        }
+        if(backgroundMusicPlayer == nil){
+        
+            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
+            
+            do {
+              try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
+              backgroundMusicPlayer!.numberOfLoops  = -1
+                if(!backgroundMusicPlayer!.playing){
+                    self.backgroundMusicPlayer?.play()
+                }
+            }catch {
+                print("MUSIC NOT FOUND")
+            }
+        }
         
 
     }
@@ -672,7 +672,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.enumerateChildNodesWithName("secondGestureTutorialLabel", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-            //            let spriteNode
+            // let spriteNode
             if(self.isMethodOne! == 2 ){
                 let newNode = SKSpriteNode(imageNamed: "taptxt")
                 newNode.position = node.position
@@ -692,8 +692,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
-        
-        
+   
         self.touchStartedAt  = CACurrentMediaTime()
         for touch in touches {
             //let location = touch.locationInNode(self)
@@ -716,9 +715,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.hero.state = States.FAIL
                 }
             }
-
         }
-               
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -734,8 +731,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //Find movement direction
                 let direc = findDirection(Double(dx), y: Double(dy))
                 self.hero.state = nextStatefor(self.hero.state, andInput: direc)
-                //print(self.hero.state)
-                // gambiarra pra ver movimento
             }
         }
     }
@@ -802,6 +797,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 self.hero.state = States.Initial
             }
+        }else{
+            hero.runStandingAction()
         }
     }
     

@@ -196,8 +196,10 @@ class TBPlayerNode: SKSpriteNode {
         }
     }
     func runStandingAction(){
-        removeActionWalk() 
-        self.runAction(TBPlayerNode.standActionAnimation!, withKey:"stand")
+        removeActionWalk()
+        if actionForKey("stand") == nil{
+            self.runAction(TBPlayerNode.standActionAnimation!, withKey:"stand")
+        }
     }
     func removeActionWalk(){
         if(self.actionForKey("walk") != nil){
