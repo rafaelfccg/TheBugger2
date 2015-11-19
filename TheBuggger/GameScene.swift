@@ -672,7 +672,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.enumerateChildNodesWithName("secondGestureTutorialLabel", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-            //            let spriteNode
+            // let spriteNode
             if(self.isMethodOne! == 2 ){
                 let newNode = SKSpriteNode(imageNamed: "taptxt")
                 newNode.position = node.position
@@ -692,8 +692,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
-        
-        
+   
         self.touchStartedAt  = CACurrentMediaTime()
         for touch in touches {
             //let location = touch.locationInNode(self)
@@ -716,9 +715,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.hero.state = States.FAIL
                 }
             }
-
         }
-               
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -734,8 +731,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //Find movement direction
                 let direc = findDirection(Double(dx), y: Double(dy))
                 self.hero.state = nextStatefor(self.hero.state, andInput: direc)
-                //print(self.hero.state)
-                // gambiarra pra ver movimento
             }
         }
     }
@@ -802,6 +797,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 self.hero.state = States.Initial
             }
+        }else{
+            hero.runStandingAction()
         }
     }
     
@@ -967,6 +964,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if(!flagTrocou) {norm = -norm}
             
+            if hero.actionForKey("attack") == nil && hero.actionForKey("defence") == nil{
+                self.hero.runWalkingAction()
+            }
+            
+                    
             if(contact.contactNormal.dy/norm > 0.5){
                 self.hero.jumpState = JumpState.CanJump
             }
@@ -994,6 +996,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if  let bit = bodyB.node as? TBBitNode {
                 hero.score += 100
                 self.coinsMark[bit.num!] = true
+                self.runAction(SKAction.playSoundFileNamed("SPECIAL_COIN", waitForCompletion: true))
                
             }else{
                 hero.qtdMoedas++

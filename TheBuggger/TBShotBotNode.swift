@@ -77,10 +77,10 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
         TBShotBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.15);
         
         let deathArray = TBUtils().getSprites("DieShooterBot", nomeImagens: "dieShooterBot-")
-        TBShotBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
+        TBShotBotNode.deathAnimation = SKAction.group([SKAction.animateWithTextures(deathArray, timePerFrame: 0.1), SKAction.playSoundFileNamed("robotExplosion.mp3", waitForCompletion: true)]);
         
         let shootingArray = TBUtils().getSprites("ShooterBot", nomeImagens: "shooterBot-")
-        TBShotBotNode.shootingAnimation = SKAction.animateWithTextures(shootingArray, timePerFrame: 0.05)
+        TBShotBotNode.shootingAnimation = SKAction.group([SKAction.animateWithTextures(shootingArray, timePerFrame: 0.05), SKAction.playSoundFileNamed("shot.mp3", waitForCompletion: false)])
         
         let shootingArray2 = TBUtils().getSprites("ShooterBot2", nomeImagens: "shooterBot2-")
         TBShotBotNode.shootingAnimation2 = SKAction.animateWithTextures(shootingArray2, timePerFrame: 0.15)
@@ -91,6 +91,7 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
     func dieAnimation(hero: TBPlayerNode)
     {
         //adicionando score ao heroi
+        stopShotMode()
         hero.score += 10
         hero.monstersKilled++
         //tirando corpo fisico e contato
@@ -105,7 +106,7 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
     
     // Cria um tiro a partir do bot
     func startAttack() {
-        self.runAction(SKAction.repeatActionForever((SKAction.sequence([TBShotBotNode.shootingAnimation!, SKAction.runBlock({self.createShot()}), TBShotBotNode.shootingAnimation2!, SKAction.waitForDuration(1.5)]))))
+        self.runAction(SKAction.repeatActionForever((SKAction.sequence([TBShotBotNode.shootingAnimation!, SKAction.runBlock({self.createShot()}), TBShotBotNode.shootingAnimation2!, SKAction.waitForDuration(1.5)]))), withKey: "attack")
         
     }
     
@@ -120,6 +121,7 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
     // o shooter bot para de atirar
     func stopShotMode() {
             if(self.shootedStopped == false) {
+                self.removeActionForKey("attack")
                 runAction(TBShotBotNode.animation!)
                 self.shootedStopped = true
                 print("stopped")

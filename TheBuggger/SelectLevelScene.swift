@@ -12,9 +12,11 @@ import SpriteKit
 
 class SelectLevelScene: SKScene {
     
-    let numberOfLevels:Int = 3
+    let numberOfLevels:Int = 4
     var delegateChanger: SceneChangesDelegate?
     var stageSelect:SKAction?
+    var minX:CGFloat?
+    var maxX:CGFloat?
     
     override func didMoveToView(view: SKView) {
         //self.size = self.view!.frame.size
@@ -31,6 +33,9 @@ class SelectLevelScene: SKScene {
     func setUpLevelSelect(){
         let startCameraNode = self.childNodeWithName("cameraStartCenter")
         self.camera?.position = startCameraNode!.position
+        minX = startCameraNode!.position.x
+        maxX = startCameraNode!.position.x
+
         
         self.enumerateChildNodesWithName("levelLabel", usingBlock: {
             (node:SKNode?, stop:UnsafeMutablePointer <ObjCBool>) in
@@ -64,7 +69,7 @@ class SelectLevelScene: SKScene {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
             let name = touchedNode.name
-            var level = ""
+            var level = "-1"
             let defaults = NSUserDefaults.standardUserDefaults()
             let method = defaults.integerForKey("method")
             let inLevel =  defaults.integerForKey("level")
@@ -74,33 +79,30 @@ class SelectLevelScene: SKScene {
             }else if name!.containsString("select") {
                 level = (name?.substringFromIndex((name?.startIndex.advancedBy(11))!))!
             }
-            
-            if( level == "1" ){
-                //touchedNode.runAction(stageSelect!)
+            if level != "-1" {
                 touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
-                    
-                    self.delegateChanger?.mudaScene("Level4Scene", withMethod: method, andLevel: 1)
+                    if inLevel >= Int(level) {
+                        self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: 1)
+                    }
                 })])]))
-                
-            }else if ( level == "2" && inLevel>=2) {
-                
-                touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
-                    
-                    self.delegateChanger?.mudaScene("Level2Scene", withMethod: method, andLevel: 2)
-                })])]))
-            }else if( level == "3" && inLevel>=3){
-
-                touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
-                    
-                    self.delegateChanger?.mudaScene("Level3Scene", withMethod: method, andLevel: 3)
-                })])]))
-                
             }
-            
-            
         }
         
         
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            let location = touch.locationInView(self.view)
+            let locationPrevious = touch.previousLocationInView(self.view)
+            //Calculate movement
+            let dx = -(location.x - locationPrevious.x)
+            //Movement Threshold
+            if (abs(dx) > 2){
+                //Find movement direction
+                self.camera!.position = CGPointMake(min(max(camera!.position.x + dx,minX!), maxX! ),camera!.position.y)
+            }
+        }
     }
     override func update(currentTime: CFTimeInterval) {
     
