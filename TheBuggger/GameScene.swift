@@ -357,7 +357,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBoti.physicsBody?.allowsRotation = false
             node.physicsBody?.pinned = false
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE
+            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
@@ -373,7 +373,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBotj.physicsBody?.allowsRotation = false
             node.physicsBody?.pinned = false
             groundBotj.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBotj.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE
+            groundBotj.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE
             groundBotj.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBotj.zPosition = 100
             self.addChild(groundBotj)
@@ -386,7 +386,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBoti.physicsBody?.allowsRotation = false
             node.physicsBody?.pinned = false
             groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE
+            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE
+            groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
+            groundBoti.zPosition = 100
+            self.addChild(groundBoti)
+        })
+        self.enumerateChildNodesWithName(TBFlyingBotNode.name , usingBlock: {(node, ponter)->Void in
+            
+            let groundBoti = TBFlyingBotNode()
+            groundBoti.position = node.position
+            groundBoti.name = self.removable
+            groundBoti.physicsBody?.allowsRotation = false
+            node.physicsBody?.pinned = false
+            groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
+            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE
             groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
@@ -1028,10 +1041,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 else if let bot = bodyB.node!.parent as? TBBopperBotNode {
                     bot.startAttack()
                 }
+                else if let flyBot = bodyB.node!.parent as? TBFlyingBotNode {
+                    flyBot.startAttack()
+                }
             }
             else {
                 if let myBot = bodyB.node!.parent as? TBShotBotNode {
                     myBot.stopShotMode()
+                }
+                else if let flyBot = bodyB.node!.parent as? TBFlyingBotNode {
+                    flyBot.stopAttack()
                 }
             }
         }

@@ -7,38 +7,116 @@
 //
 
 import UIKit
+import Foundation
 import SpriteKit
 
-class TBFlyingBotNode: SKSpriteNode {
 
-    static var name = "SpawnFlyingBot"
-    var jaVoou = false
+class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
+    
+    static let name = "SpawnFlyingBot"
+    static var animation: SKAction?
+//    static var deathAnimation: SKAction?
+    static var attackAnimation: SKAction?
+
     
     init() {
-        super.init(texture: nil, color: UIColor.blackColor(), size: CGSizeMake(50, 50))
         
-        self.color = UIColor.whiteColor()
-        self.size = CGSizeMake(50, 50)
-        self.position = position
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
+        super.init(texture:SKTexture(), color: UIColor.clearColor(), size: CGSizeMake(0, 0))
+        
+        //self.color = UIColor.whiteColor()
+        //self.size = CGSizeMake(80, 80)
+        // self.anchorPoint = CGPointMake(0, 20)
+        self.size = CGSizeMake(74, 72)
+        self.anchorPoint = CGPointMake(0.5, 0.5)
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width, self.size.height))
         self.physicsBody?.friction = CGFloat(0)
         self.physicsBody?.linearDamping = 0
-        self.physicsBody?.allowsRotation = false
+        //não pode ser afetado pela gravidade pois está voando
         self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
+        //estava movendo ao colidir com o player, não sei se é a melhor solução
+        self.physicsBody?.dynamic = false
+        self.physicsBody?.friction = 0.8
+        self.runAction(SKAction.repeatActionForever(TBFlyingBotNode.animation!))
+        
+        // adicionando referencia, dá pra otimizar
+        let referencia:SKSpriteNode! = SKSpriteNode()
+        referencia?.name = "referencia"
+        referencia?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
+        referencia?.position = CGPointMake(-450, 0)
+        referencia.physicsBody?.pinned = true
+        referencia.physicsBody?.affectedByGravity = false
+        referencia.physicsBody?.allowsRotation = false
+        referencia.physicsBody?.friction = 0
+        referencia.physicsBody?.dynamic = false
+        referencia.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
+        referencia.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        self.addChild(referencia!)
+        
+        let referencia2:SKSpriteNode! = SKSpriteNode()
+        referencia2?.name = "referencia2"
+        referencia2?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
+        //depois que passa o bot a animação de ataque para, distacia pode ser ajustada
+        referencia2?.position = CGPointMake(self.size.width/2, 0)
+        referencia2.physicsBody?.pinned = true
+        referencia2.physicsBody?.affectedByGravity = false
+        referencia2.physicsBody?.allowsRotation = false
+        referencia2.physicsBody?.friction = 0
+        referencia2.physicsBody?.dynamic = false
+        referencia2.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
+        referencia2.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        self.addChild(referencia2!)
+        
+    }
+    
+    static func createSKActionAnimation()
+    {
+        let monsterArray = TBUtils().getSprites("FlyingMonster", nomeImagens: "bug-")
+        TBFlyingBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.15);
+        
+//        let deathArray = TBUtils().getSprites("", nomeImagens: "")
+//        TBFlyingBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
+        
+//        let attackArray = TBUtils().getSprites("", nomeImagens: "")
+//        let attack = SKAction.animateWithTextures(attackArray, timePerFrame: 0.05)
+
+        //melhorar movimento
+        let moveUp = SKAction.moveBy(CGVector(dx: 0, dy: 60), duration: 0.6)
+        let moveDown = SKAction.moveBy(CGVector(dx: 0, dy: -60), duration: 0.6)
+        //sem animação, apenas movimento
+        TBFlyingBotNode.attackAnimation = SKAction.repeatActionForever(SKAction.sequence([moveUp, moveDown]))
+    }
+    
+    func dieAnimation(hero: TBPlayerNode)
+    {
+        //adicionando score ao heroi
+        hero.score += 10
+        hero.monstersKilled++
+        //tirando corpo fisico e contato
+        self.physicsBody?.categoryBitMask = 0
+        self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.pinned = true
+        self.removeAllChildren()
+//        runAction(SKAction.sequence([TBFlyingBotNode.deathAnimation!, SKAction.runBlock({
+//            self.removeFromParent()
+//        })]), withKey: "dieMonster")
+        runAction(SKAction.runBlock({
+            self.removeFromParent()
+        }), withKey: "dieMonster")
+    }
+    
+    func startAttack() {
+        
+        self.runAction(TBFlyingBotNode.attackAnimation!, withKey: "botAttack")
+    }
+    
+    func stopAttack() {
+        
+        self.removeActionForKey("botAttack")
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func flying() {
-        let tempoDecida = CGVectorMake(-20, -200)
-        let decida = SKAction.moveBy(tempoDecida, duration: 0.5)
-        
-        let tempoSubida = CGVectorMake(-20, 200)
-        let subida = SKAction.moveBy(tempoSubida, duration: 0.5)
-        
-        let group = SKAction.sequence([decida, subida, decida, subida, decida, subida, decida, subida, decida, subida, decida, subida])
-        self.runAction(group)
-    }
 }

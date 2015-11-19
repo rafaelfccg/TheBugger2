@@ -95,7 +95,7 @@ class GameSceneTestEnemy: SKScene {
         self.camera!.runAction(action)
         
         checkBotAttack()
-        checkBotFly()
+//        checkBotFly()
         
         // O tempo para o tiro é a cada 5 segundos
         let delta: CFTimeInterval = currentTime - self.lastShot
@@ -123,19 +123,19 @@ class GameSceneTestEnemy: SKScene {
         
     }
     
-    func checkBotFly() {
-        self.enumerateChildNodesWithName("FlyingMonster") { (node, ponter) -> Void in
-            
-            let myBot:TBFlyingBotNode   = node as! TBFlyingBotNode
-//            print("\(myBot.position.x)  -- player \(self.player.position.x)\n")
-            if(((myBot.position.x)-600 < (self.player.position.x)) && myBot.jaVoou == false) {
-                myBot.flying()
-                myBot.jaVoou = true
-            }
-            
-            
-        }
-    }
+//    func checkBotFly() {
+//        self.enumerateChildNodesWithName("FlyingMonster") { (node, ponter) -> Void in
+//            
+//            let myBot:TBFlyingBotNode   = node as! TBFlyingBotNode
+////            print("\(myBot.position.x)  -- player \(self.player.position.x)\n")
+//            if(((myBot.position.x)-600 < (self.player.position.x)) && myBot.jaVoou == false) {
+//                myBot.flying()
+//                myBot.jaVoou = true
+//            }
+//            
+//            
+//        }
+//    }
     
 //    func shooting() {
 //        self.enumerateChildNodesWithName(TBShotGroundBotNode.name , usingBlock: {(node, ponter)->Void in
