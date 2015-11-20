@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon app.png" translatesAutoresizingMaskIntoConstraints="NO" id="0bc-Ct-Rhl">
-                                <rect key="frame" x="27" y="204.5" width="234" height="191"/>
+                                <rect key="frame" x="27" y="164.5" width="330" height="270"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="191" id="8fs-p6-sVR"/>
@@ -67,7 +67,7 @@
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPk-d8-x15">
-                                <rect key="frame" x="289" y="245" width="272" height="50"/>
+                                <rect key="frame" x="382" y="245" width="179" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="FcV-2r-cTQ"/>
@@ -96,7 +96,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3k-xd-aA3">
-                                <rect key="frame" x="289" y="315" width="272" height="50"/>
+                                <rect key="frame" x="382" y="315" width="179" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="VGB-J8-ra7"/>
@@ -115,6 +115,7 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="VGB-J8-ra7"/>
+                                        <exclude reference="w11-7l-fpD"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -129,7 +130,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="0bc-Ct-Rhl" secondAttribute="leading" constant="-7" id="5Qi-cA-Iws"/>
                             <constraint firstItem="aPk-d8-x15" firstAttribute="centerY" secondItem="0bc-Ct-Rhl" secondAttribute="centerY" constant="-30" id="Fnt-60-EJu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="G3k-xd-aA3" secondAttribute="trailing" constant="19" id="HLS-Ue-lR8"/>
-                            <constraint firstItem="aPk-d8-x15" firstAttribute="leading" secondItem="0bc-Ct-Rhl" secondAttribute="trailing" constant="28" id="J4k-7i-2GT"/>
+                            <constraint firstItem="aPk-d8-x15" firstAttribute="leading" secondItem="0bc-Ct-Rhl" secondAttribute="trailing" constant="25" id="J4k-7i-2GT"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="leading" secondItem="aPk-d8-x15" secondAttribute="leading" id="TPV-fQ-bU6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aPk-d8-x15" secondAttribute="trailing" constant="19" id="Web-on-ckc"/>
                             <constraint firstItem="5FJ-Qh-b27" firstAttribute="leading" secondItem="2r9-zy-bB4" secondAttribute="leadingMargin" constant="-26" id="bzU-0i-wfM"/>
@@ -137,9 +138,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="5FJ-Qh-b27" secondAttribute="trailing" constant="-34" id="hbK-V5-Zj7"/>
                             <constraint firstItem="0bc-Ct-Rhl" firstAttribute="centerY" secondItem="2r9-zy-bB4" secondAttribute="centerY" id="hxA-b6-MLl"/>
                             <constraint firstItem="r8C-Fd-5PR" firstAttribute="leading" secondItem="2r9-zy-bB4" secondAttribute="leadingMargin" constant="-29" id="kRD-Oc-UZy"/>
-                            <constraint firstItem="aPk-d8-x15" firstAttribute="centerX" secondItem="2r9-zy-bB4" secondAttribute="centerX" constant="125" id="lQu-fA-SSy"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="height" secondItem="aPk-d8-x15" secondAttribute="height" id="mdp-Ww-7KI"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="centerY" secondItem="0bc-Ct-Rhl" secondAttribute="centerY" constant="40" id="neE-DE-qxr"/>
+                            <constraint firstItem="0bc-Ct-Rhl" firstAttribute="width" secondItem="2r9-zy-bB4" secondAttribute="width" multiplier="0.55" id="nwd-42-dwy"/>
                             <constraint firstItem="5FJ-Qh-b27" firstAttribute="leading" secondItem="2r9-zy-bB4" secondAttribute="leadingMargin" constant="-25" id="paP-Sx-NzR"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="top" secondItem="aPk-d8-x15" secondAttribute="bottom" constant="20" id="tOn-V5-1YS"/>
                             <constraint firstItem="79L-3u-emM" firstAttribute="top" secondItem="5FJ-Qh-b27" secondAttribute="bottom" constant="-2" id="yg4-Q0-Vuk"/>

@@ -28,6 +28,9 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.friction = 0.8
+        self.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
+        self.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.TIRO_NODE
+        self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
         self.runAction(SKAction.repeatActionForever(TBGroundBotNode.animation!))
         
     }

@@ -34,6 +34,9 @@ class TBShotNode: SKSpriteNode {
         
         self.runAction(SKAction.repeatActionForever(TBShotNode.shotAnimation!))
         self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.waitForDuration(3), SKAction.removeFromParent()])))
+        self.physicsBody?.categoryBitMask = GameScene.TIRO_NODE
+        self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE
+        self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
     }
     
     static func createSKActionAnimation()

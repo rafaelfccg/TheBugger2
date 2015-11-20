@@ -96,8 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        
-        
+
         
         hero.method = isMethodOne
         self.addChild(hero)
@@ -299,6 +298,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         self.numberOfDeath++
         self.stopParalax = false
+        stateCamera = "normal"
         background1?.texture = TBUtils.getNextBackground()
         background2?.texture = TBUtils.getNextBackground()
         self.enumerateChildNodesWithName(self.removable, usingBlock: {
@@ -354,11 +354,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             groundBoti.position = node.position
             groundBoti.name = self.removable
-            groundBoti.physicsBody?.allowsRotation = false
-            node.physicsBody?.pinned = false
-            groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE
-            groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
             
@@ -370,11 +365,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             groundBotj.position = node.position
             groundBotj.name = self.removable
-            groundBotj.physicsBody?.allowsRotation = false
-            node.physicsBody?.pinned = false
-            groundBotj.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBotj.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE
-            groundBotj.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBotj.zPosition = 100
             self.addChild(groundBotj)
         })
@@ -383,11 +373,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let groundBoti = TBBopperBotNode()
             groundBoti.position = node.position
             groundBoti.name = self.removable
-            groundBoti.physicsBody?.allowsRotation = false
-            node.physicsBody?.pinned = false
-            groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE
-            groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
         })
@@ -396,11 +381,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let groundBoti = TBFlyingBotNode()
             groundBoti.position = node.position
             groundBoti.name = self.removable
-            groundBoti.physicsBody?.allowsRotation = false
-            node.physicsBody?.pinned = false
-            groundBoti.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
-            groundBoti.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE
-            groundBoti.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
         })
@@ -750,20 +730,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
-        //let heroy = self.hero.position.y
-        
-        // O tempo para o tiro é a cada 5 segundos
-//        let delta: CFTimeInterval = currentTime - self.lastShot
-//        
-//        if(delta>5.0) {
-//            self.lastShot = currentTime
-//            self.shooting()
-//        }
-//        
-       
-        
-        //checkBotShot()
-       // checkCurrentShots(currentTime)
         updateScore()
         
         if(stateCamera != "final")
@@ -772,19 +738,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if(hasBegan) {
-            self.hero.updateVelocity()
+            
             //PARRALLAX SETTING
             if(lastFrameTime == 0) {
                 lastFrameTime = currentTime
             }
             deltaTime = currentTime - lastFrameTime
             lastFrameTime = currentTime
-            if(stopParalax == false)
+            if(stopParalax == false && hero.physicsBody?.velocity.dx > 1)
             {
                 self.moveSprite(skyNode!, nextSprite: skyNodeNext!, speed: self.skyspeed,isParalaxSky: true)
                 self.moveSprite(background1!, nextSprite: background2!, speed: self.parallaxSpeed,isParalaxSky: false)
                 
             }
+            self.hero.updateVelocity()
             
             self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
             updatePercentageLabel()

@@ -151,7 +151,7 @@ class TBPlayerNode: SKSpriteNode {
         self.runStandingAction()
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
-        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.TOCO_NODE
+        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.TOCO_NODE
         
         self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE
         
@@ -296,6 +296,8 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.pinned = false
         self.zRotation = 0
         self.score = 0
+        self.removeStandingNode()
+        self.addStandingJoint()
         self.addAttackJoint()
         self.runStandingAction()
     }
@@ -413,7 +415,7 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func defence(){
-        if( self.actionForKey("defence") == nil){
+        if( self.actionForKey("defence") == nil && self.actionForKey("die") == nil){
             self.attackState = AttackState.Defending
             runAction(SKAction.sequence([defenceActionChangeState!, SKAction.runBlock({self.runWalkingAction()})]), withKey:"defence")
             
@@ -453,7 +455,7 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func dash(){
-        if self.actionForKey("defence") == nil && self.actionForKey("attack") == nil && self.actionForKey("dash") == nil {
+        if self.actionForKey("defence") == nil && self.actionForKey("attack") == nil && self.actionForKey("dash") == nil  && self.actionForKey("die") == nil{
             self.removeStandingNode()
             self.runAction(self.dashActionModifier!,withKey: "dash")
         }
