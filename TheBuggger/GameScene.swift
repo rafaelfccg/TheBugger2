@@ -562,9 +562,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         })
         
-        self.enumerateChildNodesWithName("redlight", usingBlock: {
+        self.enumerateChildNodesWithName("espinhoSolto", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-           node.runAction(TBRedLightEffect.redLight!)
+           node.runAction(TBEspinhoSoltoNode.animation!)
            node.zPosition = 10
             
         })
