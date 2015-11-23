@@ -26,6 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var touchStartedAt:Double?
     var delegateChanger: SceneChangesDelegate?
     var labelScore:SKLabelNode?
+    var contadorNode:SKSpriteNode?
     var finalNode: SKNode?
     var finalBackNode: SKNode?
     var percentage:SKLabelNode?
@@ -68,9 +69,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var stagePercentage:Double?
     
     var firstHeroPosition:CGPoint = CGPoint()
-    var firstCameraPos:CGPoint = CGPointMake(0, 220)
+    var firstCameraPos:CGPoint? = CGPointMake(0 , 220)
     var upDone = false
     var stateCamera = "normal"
+    let HUDz:CGFloat = 10000
     //musica
     var backgroundMusicPlayer:AVAudioPlayer?
     var lastShot:CFTimeInterval = 0 // Variavel auxiliar para dar o tiro no tempo correto
@@ -101,8 +103,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hero.method = isMethodOne
         self.addChild(hero)
         hero.setUpPlayer()
+        //1000.5 562.5
+        //let height:CGFloat = 1000.5
+        //let width = (height / self.size.height) * self.size.width
+        //self.size = CGSizeMake(width, height)
         self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
-//        print(size)
+        //self.firstCameraPos = CGPointMake(0 , 0.22 * height)
+        
+        print(size)
         let camera = SKCameraNode();
         self.addChild(camera)
         self.camera = camera
@@ -121,7 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background2?.size = self.size
         
         setUpLevel()
-        camera.position = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
+        camera.position = CGPointMake(self.hero.position.x+360, self.firstCameraPos!.y)
         
         camera.addChild(skyNode!)
         camera.addChild(skyNodeNext!)
@@ -254,7 +262,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.camera!.addChild(labelScore!)
         labelScore?.fontSize = 25
         labelScore?.position = CGPointMake(self.size.width/2 - (labelScore?.frame.size.width)! + 20, back.position.y - 15)
-        labelScore?.zPosition = 1000
+        labelScore?.zPosition = self.HUDz
         let backScore = SKSpriteNode(imageNamed: "pt-hud")
         backScore.size = CGSizeMake(280,50)
         backScore.position = CGPointMake(0, 10)
@@ -265,9 +273,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         percentage = SKLabelNode(text: "0%")
         percentage?.fontName = "Squares Bold"
         self.camera!.addChild(percentage!)
-        percentage?.zPosition = 1000
-        percentage?.position = CGPointMake(0, labelScore!.position.y )
+        percentage?.zPosition = self.HUDz
+        percentage?.position = CGPointMake(0, labelScore!.position.y + 3)
         
+        let contTexture = SKTexture(imageNamed: "contador-0");
+        self.contadorNode = SKSpriteNode(texture:contTexture, size: CGSizeMake(140,70))
+        self.camera!.addChild(contadorNode!);
+        self.contadorNode!.position = CGPointMake(0, percentage!.position.y + 6);
+        self.contadorNode!.zPosition = self.HUDz - 4;
+//        contadorNode = SKSprit
 //        self.numberDeathLabel = SKLabelNode(text: "Tentativas: 000")
 //        self.camera!.addChild(numberDeathLabel!)
 //        numberDeathLabel?.zPosition = 1000
@@ -303,10 +317,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background2?.texture = TBUtils.getNextBackground()
         self.enumerateChildNodesWithName(self.removable, usingBlock: {
             (node, ponter)->Void in
-            
+                node.removeFromParent()
+        })
+        camera?.enumerateChildNodesWithName(self.removable, usingBlock: {
+            (node, ponter)->Void in
             node.removeFromParent()
-
-            })
+        })
         // removendo tb o monstro que atira
         self.enumerateChildNodesWithName("shot", usingBlock: {
             (node, ponter)->Void in
@@ -342,6 +358,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         spawnMoedas()
         spawnMonstros()
+        spawnPowerUp()
         updateNumberOfTries()
      
     }
@@ -386,6 +403,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         
+    }
+    
+    func spawnPowerUp(){
+        self.enumerateChildNodesWithName("frenesi", usingBlock:{(node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            let frenezy  = TBPowerUpNode(texture: nil, color: UIColor.clearColor(), size: CGSizeMake(40, 100))
+            frenezy.setUP(TBPowerUpsStates.Frenezy)
+            frenezy.position = node.position
+            frenezy.name = self.removable
+            self.addChild(frenezy)
+            
+        })
     }
     
     func spawnMoedas(){
@@ -666,6 +694,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.addChild(newNode)
             }
         })
+        
+       spawnPowerUp()
+        
         finalNode = childNodeWithName(TBFinalNode.name)
         finalBackNode = self.childNodeWithName(TBFinalNode.nameBack)
     }
@@ -770,29 +801,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func cameraState() {
+        let height = 0.15 * self.size.height
         if(self.hero.position.y < self.topLimit.y) {
             stateCamera = "normal"
-        } else if(self.hero.position.y > self.topLimit.y && self.hero.position.y < self.topLimit.y+150) {
+        } else if(self.hero.position.y > self.topLimit.y && self.hero.position.y < self.topLimit.y+1*height) {
             stateCamera = "up1"
-        } else if(self.hero.position.y > self.topLimit.y+100 && self.hero.position.y < self.topLimit.y+300) {
+        } else if(self.hero.position.y > self.topLimit.y+100 && self.hero.position.y < self.topLimit.y+2*height) {
             stateCamera = "up2"
-        } else if(self.hero.position.y > self.topLimit.y+200 && self.hero.position.y < self.topLimit.y+450) {
+        } else if(self.hero.position.y > self.topLimit.y+200 && self.hero.position.y < self.topLimit.y+3*height) {
             stateCamera = "up3"
-        } else if(self.hero.position.y > self.topLimit.y+300 && self.hero.position.y < self.topLimit.y+600) {
+        } else if(self.hero.position.y > self.topLimit.y+300 && self.hero.position.y < self.topLimit.y+4*height) {
             stateCamera = "up4"
-        } else if(self.hero.position.y > self.topLimit.y+400 && self.hero.position.y < self.topLimit.y+750) {
+        } else if(self.hero.position.y > self.topLimit.y+400 && self.hero.position.y < self.topLimit.y+5*height) {
             stateCamera = "up5"
-        } else if(self.hero.position.y > self.topLimit.y+500 && self.hero.position.y < self.topLimit.y+900) {
+        } else if(self.hero.position.y > self.topLimit.y+500 && self.hero.position.y < self.topLimit.y+6*height) {
             stateCamera = "up6"
         }
         changeCamera()
     }
     
     func changeCamera() {
-          switch(stateCamera) {
+        let height = 0.15 * self.size.height
+        let width = 0.36 * self.size.width + self.hero.position.x
+        switch(stateCamera) {
             
         case "normal":
-            self.cameraPosition = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y)
+            self.cameraPosition = CGPointMake(width, self.firstCameraPos!.y)
             self.cameraAction = SKAction.moveToX(self.cameraPosition.x, duration: 0)
             self.cameraActionUp = SKAction.moveToY(self.cameraPosition.y, duration: 0.5)
             let actionBlocks = SKAction.group([self.cameraActionUp, self.cameraAction])
@@ -801,7 +835,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case "up1":
             
-            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+150)
+            self.cameraPostionUp = CGPointMake(width , self.firstCameraPos!.y + height)
            
             self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
             
@@ -815,7 +849,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case "up2":
             
-            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+300)
+            self.cameraPostionUp = CGPointMake(width , self.firstCameraPos!.y + 2 * height)
             
             self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
             
@@ -829,7 +863,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case "up3":
             
-            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+450)
+            self.cameraPostionUp = CGPointMake(width , self.firstCameraPos!.y + 3 * height)
             
             self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
             
@@ -843,7 +877,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case "up4":
             
-            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+600)
+            self.cameraPostionUp = CGPointMake(width, self.firstCameraPos!.y + 4 * height)
             
             self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
             
@@ -857,7 +891,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case "up5":
             
-            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+750)
+            self.cameraPostionUp = CGPointMake(width , self.firstCameraPos!.y + 5 * height)
             
             self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
             
@@ -871,7 +905,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case "up6":
             
-            self.cameraPostionUp = CGPointMake(self.hero.position.x+360, self.firstCameraPos.y+900)
+            self.cameraPostionUp = CGPointMake(width , self.firstCameraPos!.y + 6 * height)
             
             self.cameraAction = SKAction.moveToX(self.cameraPostionUp.x, duration: 0)
             
@@ -909,6 +943,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
             bodyB.categoryBitMask == GameScene.POWERUP_NODE {
                 
+                
+                if let node = bodyB.node as? TBPowerUpNode  {
+                    if !node.hadEffect {
+                        node.hadEffect = true
+                        node.removeFromParent()
+                        hero.activatePowerUp(node.powerUP!)
+                    }
+                }
                 
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
           (bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||
@@ -964,9 +1006,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 hero.score += 100
                 self.coinsMark[bit.num!] = true
                 self.runAction(SKAction.playSoundFileNamed("SPECIAL_COIN", waitForCompletion: true))
+                bit.gotMe(self)
                
             }else{
                 hero.qtdMoedas++
+                self.runAction(SKAction.playSoundFileNamed("moeda.mp3", waitForCompletion: true))
                 hero.score += 10
             }
             bodyB.node?.removeFromParent()

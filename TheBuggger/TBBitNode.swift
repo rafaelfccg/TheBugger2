@@ -37,5 +37,13 @@ class TBBitNode: SKSpriteNode {
         let coinsArray = TBUtils().getSprites("bits", nomeImagens: "bit-")
         TBBitNode.animation = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.15);
     }
+    func gotMe(sender:GameScene){
+        let myTexture = SKTexture(imageNamed: "contador-\(num! + 1)");
+        let sprite = SKSpriteNode(texture: myTexture)
+        sprite.size = sender.contadorNode!.size
+        sprite.position = sender.contadorNode!.position
+        sprite.name = sender.removable
+        sender.camera?.addChild(sprite)
+    }
     
 }

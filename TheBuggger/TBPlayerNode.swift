@@ -18,11 +18,13 @@ class TBPlayerNode: SKSpriteNode {
     //AJUSTAR HIGH E LOW
     let highSpeed = 12*30 + 430 // use multiples of 12 for diff
     let slowSpeed = 430 - 12*20
+    static let frenezyTime:NSTimeInterval = 10
     
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
     var standJoint:SKSpriteNode?
     static var deathAnimation: SKAction?
+    static var frenezyAnimation: SKAction?
     
     static var defenceAction:SKAction?
     static var attackActionAnimation1:SKAction?
@@ -48,8 +50,24 @@ class TBPlayerNode: SKSpriteNode {
     var jumpState:JumpState
     var attackState:AttackState
     
-    //PlayTesting
+    
     var method:Int?
+    
+    static func createFrenezyAnimation(){
+        let frenezy = TBUtils().getSprites("FrenezyAnimation", nomeImagens: "powerup-")
+        let action = SKAction.animateWithTextures(frenezy, timePerFrame: 0.15);
+        
+        let startFrenezy = TBUtils().getSprites("FrenezyStart", nomeImagens: "powerupstart-")
+        let start =  SKAction.animateWithTextures(startFrenezy, timePerFrame: 0.09);
+        
+        let endFrenezy = TBUtils().getSprites("FrenezyEnd", nomeImagens: "powerupend-")
+        let end =  SKAction.animateWithTextures(endFrenezy, timePerFrame: 0.09);
+        
+        let time = TBPlayerNode.frenezyTime  - (start.duration + end.duration)
+        let frenezyRepetition = Int(floor(time / action.duration))
+        
+        TBPlayerNode.frenezyAnimation = SKAction.sequence([start,SKAction.repeatAction(action, count: frenezyRepetition ),end])
+    }
     
     static func createPlayerStandAnimation(){
         let walkArray = TBUtils().getSprites("PlayerStop", nomeImagens: "stop")
@@ -301,11 +319,47 @@ class TBPlayerNode: SKSpriteNode {
         self.addAttackJoint()
         self.runStandingAction()
     }
+    func activatePowerUp(type:TBPowerUpsStates){
+        switch type{
+            case TBPowerUpsStates.Frenezy:
+                self.enterFrenezy()
+            break;
+            default:
+                break
+        }
+    }
+    
+    func enterFrenezy(){
+        self.powerUP = TBPowerUpsStates.Frenezy
+        
+        let powerUPnode = SKSpriteNode(imageNamed: "powerupstart-1")
+        powerUPnode.size = CGSizeMake(self.size.width*4, self.size.height*4)
+        self.addChild(powerUPnode)
+        powerUPnode.zPosition = 1
+        powerUPnode.position = CGPointMake(0, 110)
+        let stateAction = SKAction.sequence([SKAction.waitForDuration(TBPlayerNode.frenezyTime), SKAction.runBlock({
+            self.powerUP  = TBPowerUpsStates.Normal
+            
+        })])
+        
+        powerUPnode.runAction(SKAction.sequence([TBPlayerNode.frenezyAnimation!, SKAction.runBlock({
+            powerUPnode.removeFromParent()
+        })]))
+        self.runAction(stateAction)
+        
+    }
+    
     func dangerCollision(bodyB:SKPhysicsBody, sender:GameScene){
         
         if(self.powerUP == TBPowerUpsStates.Frenezy){
-            //Dont die
-            //kill?
+            if let gbotmonste = bodyB.node as? TBMonsterProtocol{
+                gbotmonste.dieAnimation(self)
+                if ((gbotmonste as? TBGroundBotNode) != nil){
+                    score+=5
+                } else if ((gbotmonste as? TBShotBotNode) != nil) {
+                    score+=10
+                }
+            }
             
         }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.attackState == AttackState.Defending {
             bodyB.applyImpulse(CGVectorMake(100, 30))

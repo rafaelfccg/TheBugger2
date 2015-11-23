@@ -27,9 +27,6 @@ class TBMenuViewController :UIViewController {
     
     override func viewDidLoad() {
         self.navigationController?.navigationBarHidden = true
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         
         TBEspinhosNode.createSKActionAnimation()
         TBGroundBotNode.createSKActionAnimation()
@@ -59,6 +56,7 @@ class TBMenuViewController :UIViewController {
         TBChangeSpeedGround.createSlowAnimation()
         TBBopperBotNode.createSKActionAnimation()
         TBFlyingBotNode.createSKActionAnimation()
+        TBPlayerNode.createFrenezyAnimation()
     
         self.efeitoCima.animationImages = [UIImage(named:"enfeiteCima-1")!,
                                           UIImage(named: "enfeiteCima-2")!,
