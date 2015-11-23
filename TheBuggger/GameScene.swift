@@ -514,6 +514,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         })
         
+        self.enumerateChildNodesWithName("espinhoSolto", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
+            node.zPosition = 1
+            self.setObstacleTypeHit(node)
+            node.runAction(TBEspinhoSoltoNode.animation!)
+            
+        })
+        
         self.enumerateChildNodesWithName(TBEspinhosNode.name, usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
         
@@ -569,14 +580,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             sprite.texture = nil
             
         })
-        
-        self.enumerateChildNodesWithName("redlight", usingBlock: {
-            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-           node.runAction(TBRedLightEffect.redLight!)
-           node.zPosition = 10
-            
-        })
-        
+
         self.enumerateChildNodesWithName("alert", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.runAction(TBAlertNode.alertAnimation!)

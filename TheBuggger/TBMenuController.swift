@@ -47,7 +47,7 @@ class TBMenuViewController :UIViewController {
         TBAlertNode.createAlertAnimation()
         TBSignalNode.createSignalAnimation()
         TBMachineFrontNode.createMachineFrontAnimation()
-        TBRedLightEffect.createRedLightAnimation()
+        TBEspinhoSoltoNode.createSKActionAnimation()
         TBPlayerNode.createDeathAnimation()
         TBShotBotNode.createSKActionAnimation()
         TBShotNode.createSKActionAnimation()
