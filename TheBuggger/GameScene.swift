@@ -1054,16 +1054,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE)  {
 
-//otimizar aqui
             if(bodyB.node?.name == "referencia") {
-                if let myBot = bodyB.node!.parent as? TBShotBotNode {
-                    myBot.activeShotMode()
-                }
-                else if let bot = bodyB.node!.parent as? TBBopperBotNode {
-                    bot.startAttack()
-                }
-                else if let flyBot = bodyB.node!.parent as? TBFlyingBotNode {
-                    flyBot.startAttack()
+                if let myBot = bodyB.node!.parent as? TBMonsterProtocol {
+                    myBot.startAttack()
                 }
             }
             else {

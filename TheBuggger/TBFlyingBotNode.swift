@@ -13,7 +13,7 @@ import SpriteKit
 
 class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
     
-    static let name = "SpawnFlyingBot"
+    static let name = "SpawnMonsterType4"
     static var animation: SKAction?
     static var deathAnimation: SKAction?
     static var attackAnimation: SKAction?
