@@ -108,6 +108,7 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
         self.removeAllChildren()
         runAction(SKAction.sequence([TBShotBotNode.deathAnimation!, SKAction.runBlock({
             self.removeFromParent()
+            self.removeAllActions()
         })]), withKey: "dieMonster")
     }
     
