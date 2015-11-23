@@ -28,9 +28,9 @@ func nextStatefor(state:States,andInput:Directions)->States{
         }else if(andInput == Directions.SE){
             return States.ZSlideFront2
         }else if(andInput == Directions.SO){
-            return States.FAIL
+            return States.SL
         }else if(andInput == Directions.NO){
-            return States.FAIL
+            return States.SL
         }else if(andInput == Directions.NE){
             return States.ZSlideFront2
         }else {
