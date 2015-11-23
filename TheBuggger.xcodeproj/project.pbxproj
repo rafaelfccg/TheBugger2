@@ -61,6 +61,10 @@
 		003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */; };
 		003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */; };
 		00622BD01C03470E00155DB9 /* contador-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00622BCF1C03470E00155DB9 /* contador-1.png */; };
+		00622BD51C03949C00155DB9 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00622BD11C03949C00155DB9 /* Level1Scene.sks */; };
+		00622BD61C03949C00155DB9 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00622BD21C03949C00155DB9 /* Level2Scene.sks */; };
+		00622BD71C03949C00155DB9 /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00622BD31C03949C00155DB9 /* Level3Scene.sks */; };
+		00622BD81C03949C00155DB9 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00622BD41C03949C00155DB9 /* Level4Scene.sks */; };
 		00648CAC1BF27BB600C1F906 /* TBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */; };
 		00648CAF1BF27CE900C1F906 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00648CAD1BF27CE900C1F906 /* selected.png */; };
 		00648CB01BF27CE900C1F906 /* unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00648CAE1BF27CE900C1F906 /* unselected.png */; };
@@ -257,6 +261,10 @@
 		003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Paralax2.atlas; path = ../Paralax2.atlas; sourceTree = "<group>"; };
 		003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = redlight2.atlas; path = ../redlight2.atlas; sourceTree = "<group>"; };
 		00622BCF1C03470E00155DB9 /* contador-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contador-1.png"; sourceTree = "<group>"; };
+		00622BD11C03949C00155DB9 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		00622BD21C03949C00155DB9 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
+		00622BD31C03949C00155DB9 /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
+		00622BD41C03949C00155DB9 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
 		00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRadioButton.swift; sourceTree = "<group>"; };
 		00648CAD1BF27CE900C1F906 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
 		00648CAE1BF27CE900C1F906 /* unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unselected.png; sourceTree = "<group>"; };
@@ -867,6 +875,10 @@
 		00CDBECA1BBD9FD100BC0517 /* Level 1 */ = {
 			isa = PBXGroup;
 			children = (
+				00622BD11C03949C00155DB9 /* Level1Scene.sks */,
+				00622BD21C03949C00155DB9 /* Level2Scene.sks */,
+				00622BD31C03949C00155DB9 /* Level3Scene.sks */,
+				00622BD41C03949C00155DB9 /* Level4Scene.sks */,
 			);
 			name = "Level 1";
 			sourceTree = "<group>";
@@ -994,6 +1006,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				008203481BFD0EF300534647 /* Run.mp3 in Resources */,
+				00622BD51C03949C00155DB9 /* Level1Scene.sks in Resources */,
 				009221611BF128CE007C7DDC /* Squares Bold Free.otf in Resources */,
 				009221591BF1187E007C7DDC /* enfeiteBaixo-2.png in Resources */,
 				008349B61BFFA1BE00012C22 /* contador-3.png in Resources */,
@@ -1010,9 +1023,11 @@
 				00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */,
 				0082035D1BFE406D00534647 /* robotExplosion.mp3 in Resources */,
 				0092214F1BF11863007C7DDC /* enfeiteCima-1.png in Resources */,
+				00622BD81C03949C00155DB9 /* Level4Scene.sks in Resources */,
 				009221501BF11863007C7DDC /* enfeiteCima-2.png in Resources */,
 				009221511BF11863007C7DDC /* enfeiteCima-3.png in Resources */,
 				002FD8141BF661B3003514A4 /* bits.atlas in Resources */,
+				00622BD71C03949C00155DB9 /* Level3Scene.sks in Resources */,
 				009221521BF11863007C7DDC /* enfeiteCima-4.png in Resources */,
 				AFB85FA01BFF9DF100490AC4 /* EspinhoSolto.atlas in Resources */,
 				009221681BF12EFE007C7DDC /* cabos-1.png in Resources */,
@@ -1028,7 +1043,6 @@
 				AFCCF2FA1BFBC8C200645850 /* BopperMonsterAttack.atlas in Resources */,
 				008203591BFE3D0400534647 /* attack_1.mp3 in Resources */,
 				0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */,
-				00256BA71BFE68A30056724C /* Level4Scene.sks in Resources */,
 				00622BD01C03470E00155DB9 /* contador-1.png in Resources */,
 				009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */,
 				52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */,
@@ -1060,6 +1074,7 @@
 				AFE7EF781BF3C7BC00C99A94 /* PlayerAir.atlas in Resources */,
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
 				AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */,
+				00622BD61C03949C00155DB9 /* Level2Scene.sks in Resources */,
 				008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */,
 				0002CE931BF5171000FDE20A /* set-4.png in Resources */,
 				008698B41BE94DA900EE80F2 /* speedBooster.atlas in Resources */,

@@ -12,6 +12,7 @@ import SpriteKit
 class TBMoedasNode: SKSpriteNode {
     static let name = "Moeda"
     static var animation: SKAction?
+    var picked = false
     
     init() {
         

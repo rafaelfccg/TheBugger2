@@ -1012,10 +1012,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.runAction(SKAction.playSoundFileNamed("SPECIAL_COIN", waitForCompletion: true))
                 bit.gotMe(self)
                
-            }else{
-                hero.qtdMoedas++
-                self.runAction(SKAction.playSoundFileNamed("moeda.mp3", waitForCompletion: true))
-                hero.score += 10
+            }else if let moeda = bodyB.node as? TBMoedasNode {
+                if !moeda.picked {
+                    hero.qtdMoedas++
+                    moeda.picked = true
+                    self.runAction(SKAction.playSoundFileNamed("moeda.mp3", waitForCompletion: true))
+                    hero.score += 10
+                }
             }
             bodyB.node?.removeFromParent()
             
