@@ -172,13 +172,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
     }
-    
+
     func startGame(){
         
         hero.realSpeed = hero.defaultSpeed
         hero.runWalkingAction()
         self.scene?.view?.paused = false
         tapToStartLabel?.removeFromParent()
+        Flurry.logEvent("User Player \(levelSelected)")
     }
     
     
@@ -360,7 +361,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spawnMonstros()
         spawnPowerUp()
         updateNumberOfTries()
-     
+        let dies = ["Porcentagem": Int(stagePercentage!), "Stage": levelSelected!]
+        Flurry.logEvent("Died", withParameters: dies)
     }
     
     func spawnMonstros(){
