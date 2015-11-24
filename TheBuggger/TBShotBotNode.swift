@@ -112,18 +112,12 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
         })]), withKey: "dieMonster")
     }
     
-    // Cria um tiro a partir do bot
+    // Cria um tiro a partir do bot e o shooterBot comeca a tirar
     func startAttack() {
-        self.runAction(SKAction.repeatActionForever((SKAction.sequence([TBShotBotNode.shootingAnimation!, SKAction.runBlock({self.createShot()}), TBShotBotNode.shootingAnimation2!, SKAction.waitForDuration(1.5)]))), withKey: "attack")
-        
-    }
-    
-    // o shooterBot comeca a tirar
-    func activeShotMode() {
-            if(self.shooted == false) {
-                self.shooted = true
-                self.startAttack()
-            }
+        if(self.shooted == false) {
+            self.shooted = true
+            self.runAction(SKAction.repeatActionForever((SKAction.sequence([TBShotBotNode.shootingAnimation!, SKAction.runBlock({self.createShot()}), TBShotBotNode.shootingAnimation2!, SKAction.waitForDuration(1.5)]))), withKey: "attack")
+        }
     }
     
     // o shooter bot para de atirar

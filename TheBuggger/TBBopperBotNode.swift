@@ -12,7 +12,7 @@ import GameplayKit
 
 class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
     
-    static let name = "monsterPinoteiro"
+    static let name = "SpawnMonsterType3"
     static var animation: SKAction?
     static var deathAnimation: SKAction?
     static var attackAnimation: SKAction?
