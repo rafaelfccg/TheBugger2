@@ -23,7 +23,7 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
         
         //self.color = UIColor.whiteColor()
         self.size = CGSizeMake(80, 80)
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width, self.size.height - 4))
+        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.height/2.5, center: CGPointMake(-12, -8))
         self.physicsBody?.friction = CGFloat(0)
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
