@@ -262,6 +262,7 @@
                                     <constraint firstItem="SsU-zI-Mxx" firstAttribute="leading" secondItem="L87-0n-jbE" secondAttribute="leading" id="IVv-Pz-MIS"/>
                                     <constraint firstAttribute="bottom" secondItem="SsU-zI-Mxx" secondAttribute="bottom" id="Lg6-Vb-6AA"/>
                                     <constraint firstAttribute="trailing" secondItem="yDH-Af-m9h" secondAttribute="trailing" constant="32" id="PwQ-Ov-wyt"/>
+                                    <constraint firstItem="Kp4-Ml-bme" firstAttribute="height" secondItem="DLK-qU-dom" secondAttribute="height" id="Qms-xX-mQx"/>
                                     <constraint firstItem="SsU-zI-Mxx" firstAttribute="leading" secondItem="DLK-qU-dom" secondAttribute="trailing" constant="-72" id="Rht-aW-K4n"/>
                                     <constraint firstItem="chw-98-FLY" firstAttribute="height" secondItem="SsU-zI-Mxx" secondAttribute="height" multiplier="0.092" id="Rt1-6J-GIj"/>
                                     <constraint firstItem="L8j-sE-bkN" firstAttribute="leading" secondItem="SsU-zI-Mxx" secondAttribute="trailing" constant="-381" id="SKG-Yj-OX1"/>

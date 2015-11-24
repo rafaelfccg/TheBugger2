@@ -394,7 +394,10 @@ class TBPlayerNode: SKSpriteNode {
                     self.removeFromParent()
                     
                     sender.restartLevel()
+                    
                 })])), withKey: "die")
+                
+                sender.checkAd()
             }
         }
     }

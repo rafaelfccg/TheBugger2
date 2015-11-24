@@ -31,7 +31,7 @@ class TBChangeSpeedGround: SKSpriteNode {
         self.type = type
         self.hadEffect = false
         if(type == 0){
-            texture = SKTexture(imageNamed: "speedBoster-1")
+            texture = SKTexture(imageNamed: "speedBooster-1")
         }else{
             texture = SKTexture(imageNamed: "slow-1")
         }
