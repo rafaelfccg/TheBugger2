@@ -17,14 +17,28 @@ class SelectLevelScene: SKScene {
     var stageSelect:SKAction?
     var minX:CGFloat?
     var maxX:CGFloat?
+    let spaceBot = 0.03645
+    
     
     override func didMoveToView(view: SKView) {
-        //self.size = self.view!.frame.size
+//        switch UIDevice.currentDevice().userInterfaceIdiom {
+//        case .Phone:
+//            //self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.size.height * 1.5)
+//            break
+//        default :
+//            break
+//        }
+        
+        
+        //self.size = self.frame.size
         let camera = SKCameraNode();
         self.addChild(camera)
-        self.camera = camera
-        setUpLevelSelect()
         
+        self.camera = camera
+        
+        setUpLevelSelect()
+        print(self.size)
+        print(self.view!.frame.size)
         let selectionArray = TBUtils().getSprites("estagioSelect", nomeImagens: "estagio-")
         stageSelect = SKAction.animateWithTextures(selectionArray, timePerFrame: 0.1)
         
@@ -35,7 +49,32 @@ class SelectLevelScene: SKScene {
         self.camera?.position = startCameraNode!.position
         minX = startCameraNode!.position.x
         maxX = startCameraNode!.position.x
+        
+        let efeitoBaixo = self.childNodeWithName("efeitoBaixo")
+                //let offset = CGRectGetMinY(self.frame)
+        
+        if max(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height) < 568 {
+            efeitoBaixo?.removeFromParent();
+            camera?.addChild(efeitoBaixo!);
+            
+            efeitoBaixo?.position = CGPointMake(0 , (-self.size.height/2) + CGFloat(0.145) * self.size.height )
+        }
+        
+        switch UIDevice.currentDevice().userInterfaceIdiom {
+        case .Phone:
+            
+            break
+        default :
+            efeitoBaixo?.removeFromParent();
+            camera?.addChild(efeitoBaixo!);
 
+            efeitoBaixo?.position = CGPointMake(0 , (-self.view!.frame.size.height/2) + CGFloat(self.spaceBot) * self.view!.frame.size.height )
+            break
+        }
+        
+        
+        
+        //efeitoBaixo?.position = CGPointMake(0,)
         
         self.enumerateChildNodesWithName("levelLabel", usingBlock: {
             (node:SKNode?, stop:UnsafeMutablePointer <ObjCBool>) in

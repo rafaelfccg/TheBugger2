@@ -104,11 +104,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(hero)
         hero.setUpPlayer()
         //1000.5 562.5
-        //let height:CGFloat = 1000.5
-        //let width = (height / self.size.height) * self.size.width
-        //self.size = CGSizeMake(width, height)
-        self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
-        //self.firstCameraPos = CGPointMake(0 , 0.22 * height)
+        let width:CGFloat = 1000.5
+        let height = (width / self.view!.frame.size.width) * self.view!.frame.size.height
+        self.size = CGSizeMake(width, height)
+        //self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.height * 1.5)
+        switch UIDevice.currentDevice().userInterfaceIdiom {
+            case .Phone:
+                self.firstCameraPos = CGPointMake(0 , 0.40 * height)
+                break
+            default :
+                self.firstCameraPos = CGPointMake(0 , 0.43 * height)
+                break
+        }
         
         print(size)
         let camera = SKCameraNode();
