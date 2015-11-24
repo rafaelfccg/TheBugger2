@@ -12,7 +12,7 @@ import SpriteKit
 
 class SelectLevelScene: SKScene {
     
-    let numberOfLevels:Int = 4
+    let numberOfLevels:Int = 5
     var delegateChanger: SceneChangesDelegate?
     var stageSelect:SKAction?
     var minX:CGFloat?

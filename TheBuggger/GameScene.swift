@@ -14,6 +14,7 @@ protocol SceneChangesDelegate{
     func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     func backToMenu()
     func selectLevel(nomeSKS: String)
+    func gameOver()
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -31,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var finalBackNode: SKNode?
     var percentage:SKLabelNode?
     var numberDeathLabel:SKLabelNode?
+    var deathSinceLastAd:Int?
     
     var tapToStartLabel:SKLabelNode?
     var hasBegan:Bool = false
@@ -98,7 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-
+        self.deathSinceLastAd  = 0
         
         hero.method = isMethodOne
         self.addChild(hero)
@@ -160,6 +162,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupHUD()
         
         tapToStartLabel = SKLabelNode(text: "TAP TO START")
+        tapToStartLabel?.fontName = "Squares Bold"
+        tapToStartLabel?.zPosition  = self.HUDz
+        tapToStartLabel?.fontColor = UIColor(red: 0.16, green: 0.95, blue: 0.835, alpha: 1)
         self.camera!.addChild(tapToStartLabel!)
         
         if(backgroundMusicPlayer == nil){
@@ -810,6 +815,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hero.runStandingAction()
         }
     }
+    func checkAd(){
+        self.deathSinceLastAd = deathSinceLastAd! + 1
+        let a = Int(arc4random_uniform(4)+8)
+        if deathSinceLastAd > a {
+            delegateChanger?.gameOver()
+            deathSinceLastAd = 0
+        }
+    }
     
     func cameraState() {
         let height = 0.15 * self.size.height
@@ -1057,7 +1070,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             })])
             
-          finalNode!.runAction(action)
+        finalNode!.runAction(action)
+//            let clearedArr = TBUtils().getSprites("AreaCleared", nomeImagens: "ac")
+//            let areaCleared = SKSpriteNode( texture: clearedArr[0])
+//            let actionClear = SKAction.animateWithTextures(clearedArr, timePerFrame: 0.1)
+//            areaCleared.runAction(actionClear)
             
         } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE)  {
 

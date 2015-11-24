@@ -8,20 +8,39 @@
 
 import UIKit
 import SpriteKit
+import GoogleMobileAds
 
-class GameViewController: UIViewController, SceneChangesDelegate {
+
+class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitialDelegate{
     
     var gameMethod:Int?
     var level:String?
+    var interstitial:GADInterstitial?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.hidden = true
-//        self.navigationController.
-
-        //mudaScene(level! ,withMethod: 1)
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
+        let request = GADRequest()
+        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb"];
+        interstitial!.loadRequest(request)
+        
         selectLevel(self.level!)
+    }
+    
+    func gameOver(){
+        if interstitial!.isReady {
+            interstitial!.presentFromRootViewController(self)
+        }
+        createAndLoadInterstitial()
+    }
+    func createAndLoadInterstitial() {
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
+        interstitial!.delegate = self
+        let request = GADRequest()
+        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb"];
+        interstitial!.loadRequest(request)
     }
     
     func selectLevel(nomeSKS: String){
@@ -51,13 +70,14 @@ class GameViewController: UIViewController, SceneChangesDelegate {
     {
         if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
+//            gameOver()
             scene.delegateChanger = self
             scene.levelSelected = andLevel
             
             let skView = self.view as! SKView
             //skView.showsFPS = true
             //skView.showsNodeCount = true
-            //skView.showsPhysics = true;
+//            skView.showsPhysics = true;
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
