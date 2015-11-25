@@ -81,7 +81,7 @@
 		007BE1A11C04DF6F008A2C02 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007BE1A01C04DF6F008A2C02 /* StoreKit.framework */; };
 		007BE1AD1C04E2FF008A2C02 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 007BE1AC1C04E2FF008A2C02 /* README.txt */; };
 		008203411BFD0EF300534647 /* attack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 008203381BFD0EF300534647 /* attack.mp3 */; };
-		008203441BFD0EF300534647 /* INTRO(MENU).wav in Resources */ = {isa = PBXBuildFile; fileRef = 0082033B1BFD0EF300534647 /* INTRO(MENU).wav */; };
+		008203441BFD0EF300534647 /* introMenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0082033B1BFD0EF300534647 /* introMenu.wav */; };
 		008203461BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0082033D1BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 */; };
 		008203481BFD0EF300534647 /* Run.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0082033F1BFD0EF300534647 /* Run.mp3 */; };
 		008203571BFE3B8D00534647 /* attack_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 008203561BFE3B8D00534647 /* attack_2.mp3 */; };
@@ -301,7 +301,7 @@
 		007BE1AB1C04E2FF008A2C02 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
 		007BE1AC1C04E2FF008A2C02 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		008203381BFD0EF300534647 /* attack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = attack.mp3; sourceTree = "<group>"; };
-		0082033B1BFD0EF300534647 /* INTRO(MENU).wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "INTRO(MENU).wav"; sourceTree = "<group>"; };
+		0082033B1BFD0EF300534647 /* introMenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = introMenu.wav; sourceTree = "<group>"; };
 		0082033D1BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MUSICA_IN_GAME_Never_Sleep_1_30.mp3; sourceTree = "<group>"; };
 		0082033F1BFD0EF300534647 /* Run.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Run.mp3; sourceTree = "<group>"; };
 		008203561BFE3B8D00534647 /* attack_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = attack_2.mp3; sourceTree = "<group>"; };
@@ -653,7 +653,7 @@
 				008203621BFE463E00534647 /* Player */,
 				008203381BFD0EF300534647 /* attack.mp3 */,
 				008349A81BFF999100012C22 /* moeda.mp3 */,
-				0082033B1BFD0EF300534647 /* INTRO(MENU).wav */,
+				0082033B1BFD0EF300534647 /* introMenu.wav */,
 				008349A41BFF98EC00012C22 /* SPECIAL_COIN.mp3 */,
 				0082033D1BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 */,
 				52E75DC31BDEAD0300F91E00 /* Move_Ya.mp3 */,
@@ -1138,7 +1138,7 @@
 				009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */,
 				52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */,
 				0022C0321BE2A44300A184D5 /* taptxt.png in Resources */,
-				008203441BFD0EF300534647 /* INTRO(MENU).wav in Resources */,
+				008203441BFD0EF300534647 /* introMenu.wav in Resources */,
 				008203611BFE45CA00534647 /* defence.mp3 in Resources */,
 				00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */,
 				AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */,
