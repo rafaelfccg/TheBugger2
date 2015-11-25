@@ -49,11 +49,6 @@
 		00200B611C0634760094FFBD /* fio solto2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B5F1C0634760094FFBD /* fio solto2.png */; };
 		00200B631C0634AB0094FFBD /* GreenLeds.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B621C0634AB0094FFBD /* GreenLeds.atlas */; };
 		00200B651C0634DF0094FFBD /* smoke2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B641C0634DF0094FFBD /* smoke2.png */; };
-		00200B671C063B560094FFBD /* AreaCleared.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B661C063B560094FFBD /* AreaCleared.atlas */; };
-		00200B6C1C064BDF0094FFBD /* quina1-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B681C064BDF0094FFBD /* quina1-01.png */; };
-		00200B6D1C064BDF0094FFBD /* toten1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B691C064BDF0094FFBD /* toten1.png */; };
-		00200B6E1C064BDF0094FFBD /* toten2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B6A1C064BDF0094FFBD /* toten2.png */; };
-		00200B6F1C064BDF0094FFBD /* viga.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B6B1C064BDF0094FFBD /* viga.png */; };
 		0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */; };
 		0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0201BE2A44200A184D5 /* attacktxt.png */; };
 		0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */; };
@@ -183,6 +178,7 @@
 		52E7AEB91BBF06D2008FE672 /* TBGroundBotAtack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */; };
 		52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52EF6EE11BF51FF600780377 /* ShooterBot2.atlas */; };
 		52EF6EE41BF52F4700780377 /* TBMonsterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */; };
+		52F3B0CC1C065169004E5B20 /* toten1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F3B0CB1C065169004E5B20 /* toten1.png */; };
 		52FDE2DE1BF29285003D9A1D /* DieShooterBot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */; };
 		AF069D681BFE450D00AC81EC /* FlyingMonster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF069D671BFE450D00AC81EC /* FlyingMonster.atlas */; };
 		AF069D6C1BFE604700AC81EC /* FlyingMonsterDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF069D6B1BFE604700AC81EC /* FlyingMonsterDeath.atlas */; };
@@ -271,10 +267,6 @@
 		00200B621C0634AB0094FFBD /* GreenLeds.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenLeds.atlas; sourceTree = "<group>"; };
 		00200B641C0634DF0094FFBD /* smoke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke2.png; sourceTree = "<group>"; };
 		00200B661C063B560094FFBD /* AreaCleared.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AreaCleared.atlas; sourceTree = "<group>"; };
-		00200B681C064BDF0094FFBD /* quina1-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "quina1-01.png"; path = "../quina1-01.png"; sourceTree = "<group>"; };
-		00200B691C064BDF0094FFBD /* toten1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toten1.png; path = ../toten1.png; sourceTree = "<group>"; };
-		00200B6A1C064BDF0094FFBD /* toten2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toten2.png; path = ../toten2.png; sourceTree = "<group>"; };
-		00200B6B1C064BDF0094FFBD /* viga.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = viga.png; path = ../viga.png; sourceTree = "<group>"; };
 		0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AttackTutorial.atlas; sourceTree = "<group>"; };
 		0022C0201BE2A44200A184D5 /* attacktxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attacktxt.png; sourceTree = "<group>"; };
 		0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpTutorial.atlas; sourceTree = "<group>"; };
@@ -416,6 +408,7 @@
 		52E7AEB81BBF06D2008FE672 /* TBGroundBotAtack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGroundBotAtack.swift; sourceTree = "<group>"; };
 		52EF6EE11BF51FF600780377 /* ShooterBot2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShooterBot2.atlas; sourceTree = "<group>"; };
 		52EF6EE31BF52F4700780377 /* TBMonsterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMonsterProtocol.swift; sourceTree = "<group>"; };
+		52F3B0CB1C065169004E5B20 /* toten1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toten1.png; path = ../toten1.png; sourceTree = "<group>"; };
 		52FDE2DD1BF29284003D9A1D /* DieShooterBot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = DieShooterBot.atlas; sourceTree = "<group>"; };
 		AF069D671BFE450D00AC81EC /* FlyingMonster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = FlyingMonster.atlas; sourceTree = "<group>"; };
 		AF069D6B1BFE604700AC81EC /* FlyingMonsterDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = FlyingMonsterDeath.atlas; sourceTree = "<group>"; };
@@ -516,6 +509,7 @@
 		001E557D1BD8221600B80833 /* Cenario */ = {
 			isa = PBXGroup;
 			children = (
+				52F3B0CB1C065169004E5B20 /* toten1.png */,
 				52443F5C1C063ADC00033633 /* viga.png */,
 				52443F5A1C063AC800033633 /* quina1-01.png */,
 				00AC3ABE1BEA7EAB00323B6D /* smoke1.png */,
@@ -1196,13 +1190,13 @@
 				003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */,
 				001E55D81BD8221600B80833 /* sky.png in Resources */,
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
-				00200B6F1C064BDF0094FFBD /* viga.png in Resources */,
 				AFE7EF901BF3D59A00C99A94 /* SelectLevelScene.sks in Resources */,
 				001E55C71BD8221600B80833 /* plataforma-01.png in Resources */,
 				002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */,
 				0002CE871BF50B1A00FDE20A /* back-1.png in Resources */,
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
+				52F3B0CC1C065169004E5B20 /* toten1.png in Resources */,
 				AFCCF2FD1BFBC93900645850 /* BopperMonsterStand.atlas in Resources */,
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
 				008349BD1BFFAEAD00012C22 /* FrenezyStart.atlas in Resources */,
@@ -1214,7 +1208,6 @@
 				0002CE921BF5171000FDE20A /* set-3.png in Resources */,
 				52714B731BDE787C006200A1 /* metalblocksm-1.png in Resources */,
 				0092215F1BF11AAE007C7DDC /* efeitoCima.atlas in Resources */,
-				00200B6D1C064BDF0094FFBD /* toten1.png in Resources */,
 				00200B631C0634AB0094FFBD /* GreenLeds.atlas in Resources */,
 				0002CE901BF5171000FDE20A /* set-1.png in Resources */,
 				008698B31BE94DA900EE80F2 /* signal.atlas in Resources */,
@@ -1234,7 +1227,6 @@
 				00200B611C0634760094FFBD /* fio solto2.png in Resources */,
 				0022C0301BE2A44300A184D5 /* SlideUpTutorial.atlas in Resources */,
 				008349AE1BFF9ACD00012C22 /* contador-0.png in Resources */,
-				00200B6E1C064BDF0094FFBD /* toten2.png in Resources */,
 				008203571BFE3B8D00534647 /* attack_2.mp3 in Resources */,
 				0002CE911BF5171000FDE20A /* set-2.png in Resources */,
 				00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */,
@@ -1246,7 +1238,6 @@
 				009221691BF12EFE007C7DDC /* cabos-2.png in Resources */,
 				AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */,
 				001E55D11BD8221600B80833 /* roofend1.png in Resources */,
-				00200B6C1C064BDF0094FFBD /* quina1-01.png in Resources */,
 				0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 				52443F5D1C063ADC00033633 /* viga.png in Resources */,
