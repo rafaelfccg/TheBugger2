@@ -51,6 +51,11 @@
 		00200B611C0634760094FFBD /* fio solto2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B5F1C0634760094FFBD /* fio solto2.png */; };
 		00200B631C0634AB0094FFBD /* GreenLeds.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B621C0634AB0094FFBD /* GreenLeds.atlas */; };
 		00200B651C0634DF0094FFBD /* smoke2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B641C0634DF0094FFBD /* smoke2.png */; };
+		00200B671C063B560094FFBD /* AreaCleared.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B661C063B560094FFBD /* AreaCleared.atlas */; };
+		00200B6C1C064BDF0094FFBD /* quina1-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B681C064BDF0094FFBD /* quina1-01.png */; };
+		00200B6D1C064BDF0094FFBD /* toten1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B691C064BDF0094FFBD /* toten1.png */; };
+		00200B6E1C064BDF0094FFBD /* toten2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B6A1C064BDF0094FFBD /* toten2.png */; };
+		00200B6F1C064BDF0094FFBD /* viga.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B6B1C064BDF0094FFBD /* viga.png */; };
 		0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */; };
 		0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0201BE2A44200A184D5 /* attacktxt.png */; };
 		0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */; };
@@ -270,6 +275,11 @@
 		00200B5F1C0634760094FFBD /* fio solto2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fio solto2.png"; sourceTree = "<group>"; };
 		00200B621C0634AB0094FFBD /* GreenLeds.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenLeds.atlas; sourceTree = "<group>"; };
 		00200B641C0634DF0094FFBD /* smoke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke2.png; sourceTree = "<group>"; };
+		00200B661C063B560094FFBD /* AreaCleared.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AreaCleared.atlas; sourceTree = "<group>"; };
+		00200B681C064BDF0094FFBD /* quina1-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "quina1-01.png"; path = "../quina1-01.png"; sourceTree = "<group>"; };
+		00200B691C064BDF0094FFBD /* toten1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toten1.png; path = ../toten1.png; sourceTree = "<group>"; };
+		00200B6A1C064BDF0094FFBD /* toten2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toten2.png; path = ../toten2.png; sourceTree = "<group>"; };
+		00200B6B1C064BDF0094FFBD /* viga.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = viga.png; path = ../viga.png; sourceTree = "<group>"; };
 		0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AttackTutorial.atlas; sourceTree = "<group>"; };
 		0022C0201BE2A44200A184D5 /* attacktxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attacktxt.png; sourceTree = "<group>"; };
 		0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpTutorial.atlas; sourceTree = "<group>"; };
@@ -512,6 +522,10 @@
 		001E557D1BD8221600B80833 /* Cenario */ = {
 			isa = PBXGroup;
 			children = (
+				00200B681C064BDF0094FFBD /* quina1-01.png */,
+				00200B691C064BDF0094FFBD /* toten1.png */,
+				00200B6A1C064BDF0094FFBD /* toten2.png */,
+				00200B6B1C064BDF0094FFBD /* viga.png */,
 				00AC3ABE1BEA7EAB00323B6D /* smoke1.png */,
 				00200B641C0634DF0094FFBD /* smoke2.png */,
 				00200B621C0634AB0094FFBD /* GreenLeds.atlas */,
@@ -935,6 +949,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				00200B661C063B560094FFBD /* AreaCleared.atlas */,
 				008349B71BFFADA600012C22 /* PowerUps */,
 				008349AA1BFF9AC400012C22 /* HUD */,
 				008203371BFD0EAD00534647 /* Font */,
@@ -1181,6 +1196,7 @@
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
 				AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */,
 				00622BD61C03949C00155DB9 /* Level2Scene.sks in Resources */,
+				00200B671C063B560094FFBD /* AreaCleared.atlas in Resources */,
 				008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */,
 				0002CE931BF5171000FDE20A /* set-4.png in Resources */,
 				008698B41BE94DA900EE80F2 /* speedBooster.atlas in Resources */,
@@ -1198,6 +1214,7 @@
 				003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */,
 				001E55D81BD8221600B80833 /* sky.png in Resources */,
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
+				00200B6F1C064BDF0094FFBD /* viga.png in Resources */,
 				AFE7EF901BF3D59A00C99A94 /* SelectLevelScene.sks in Resources */,
 				001E55C71BD8221600B80833 /* plataforma-01.png in Resources */,
 				002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */,
@@ -1216,6 +1233,7 @@
 				0002CE921BF5171000FDE20A /* set-3.png in Resources */,
 				52714B731BDE787C006200A1 /* metalblocksm-1.png in Resources */,
 				0092215F1BF11AAE007C7DDC /* efeitoCima.atlas in Resources */,
+				00200B6D1C064BDF0094FFBD /* toten1.png in Resources */,
 				00200B631C0634AB0094FFBD /* GreenLeds.atlas in Resources */,
 				0002CE901BF5171000FDE20A /* set-1.png in Resources */,
 				008698B31BE94DA900EE80F2 /* signal.atlas in Resources */,
@@ -1234,6 +1252,7 @@
 				00200B611C0634760094FFBD /* fio solto2.png in Resources */,
 				0022C0301BE2A44300A184D5 /* SlideUpTutorial.atlas in Resources */,
 				008349AE1BFF9ACD00012C22 /* contador-0.png in Resources */,
+				00200B6E1C064BDF0094FFBD /* toten2.png in Resources */,
 				008203571BFE3B8D00534647 /* attack_2.mp3 in Resources */,
 				0002CE911BF5171000FDE20A /* set-2.png in Resources */,
 				00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */,
@@ -1245,6 +1264,7 @@
 				009221691BF12EFE007C7DDC /* cabos-2.png in Resources */,
 				AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */,
 				001E55D11BD8221600B80833 /* roofend1.png in Resources */,
+				00200B6C1C064BDF0094FFBD /* quina1-01.png in Resources */,
 				0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 				003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */,
