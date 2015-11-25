@@ -23,7 +23,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         self.navigationController?.navigationBar.hidden = true
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
         let request = GADRequest()
-        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb"];
+        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb","efa04c216ac1cdf43763e139720b8045"];
         interstitial!.loadRequest(request)
         
         selectLevel(self.level!)
@@ -39,7 +39,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
         interstitial!.delegate = self
         let request = GADRequest()
-        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb"];
+        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb","efa04c216ac1cdf43763e139720b8045"];
         interstitial!.loadRequest(request)
     }
     
