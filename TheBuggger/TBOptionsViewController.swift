@@ -34,6 +34,14 @@ class TBOptionsViewController: UIViewController {
         radioButtonMethod1.hidden = true
         radioButtonMethod2.hidden = true
         
+        let tapDesc1 = UITapGestureRecognizer(target: self, action: Selector("selector1"))
+        let tapDesc2 = UITapGestureRecognizer(target: self, action: Selector("selector2"))
+        
+        methodLabel.addGestureRecognizer(tapDesc1)
+        methodLabel.userInteractionEnabled  = true
+        method2Label.addGestureRecognizer(tapDesc2)
+        method2Label.userInteractionEnabled  = true
+        
         animatedBack.animationImages = [UIImage(named: "set-1")!,
             UIImage(named: "set-2")!,
             UIImage(named: "set-3")!,
@@ -72,9 +80,26 @@ class TBOptionsViewController: UIViewController {
         
     }
     func change(){
+        
         radioButtonMethod1.isChecked = !radioButtonMethod1.isChecked
         radioButtonMethod2.isChecked = !radioButtonMethod2.isChecked
-
+    }
+    func selector1(){
+        if method != 1{
+            method = 1
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setInteger(method!, forKey: "method")
+            change()
+        }
+    }
+    
+    func selector2(){
+        if method != 2{
+            method = 2
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setInteger(method!, forKey: "method")
+            change()
+        }
     }
     
     func back(){
@@ -91,21 +116,11 @@ class TBOptionsViewController: UIViewController {
     }
     
     @IBAction func selectMethod1(sender: AnyObject) {
-        if method != 1{
-            method = 1
-             let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setInteger(method!, forKey: "method")
-            change()
-        }
+        selector1()
     }
     
     @IBAction func selectMethod2(sender: AnyObject) {
-        if method != 2 {
-            method = 2
-            let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setInteger(method!, forKey: "method")
-            change()
-        }
+        selector2()
     }
     
     override func viewDidAppear(animated: Bool) {
