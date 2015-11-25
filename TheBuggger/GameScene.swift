@@ -601,6 +601,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.zPosition = 10
             
         })
+        
+        self.enumerateChildNodesWithName("machine", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.runAction(TBMachineFrontNode.machineFrontAnimation!)
+            node.zPosition = 10
+            
+        })
+        
+        self.enumerateChildNodesWithName("greenLeds", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            node.runAction(TBGreenLedsNode.greenLedsAnimation!)
+            node.zPosition = 10
+            
+        })
 
         self.enumerateChildNodesWithName("cicloChoque", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
@@ -1093,6 +1107,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     flyBot.stopAttack()
                 }
             }
+        }
+    }
+    func didEndContact(contact: SKPhysicsContact) {
+        var bodyA = contact.bodyA
+        var bodyB = contact.bodyB
+        var flagTrocou = false
+        
+        //ordena para que bodyA tenha sempre a categoria "menor"
+        if(bodyA.categoryBitMask > bodyB.categoryBitMask){
+            let aux = bodyB
+            bodyB = bodyA
+            bodyA = aux
+            flagTrocou = true
+        }
+        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
+            self.hero.quickFloorCollisionOff(bodyB, sender: self)
+        } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE) {
+            
         }
     }
 }

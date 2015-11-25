@@ -16,7 +16,7 @@ class TBPlayerNode: SKSpriteNode {
     
     let defaultSpeed = 430 // era 250
     //AJUSTAR HIGH E LOW
-    let highSpeed = 12*30 + 430 // use multiples of 12 for diff
+    let highSpeed = 790 // use multiples of 12 for diff
     let slowSpeed = 430 - 12*20
     static let frenezyTime:NSTimeInterval = 10
     
@@ -402,31 +402,38 @@ class TBPlayerNode: SKSpriteNode {
         }
     }
     
+    func quickFloorCollisionOff(bodyB: SKPhysicsBody, sender: GameScene) {    // Desliga o speed
+        self.realSpeed = self.defaultSpeed
+    }
+    func slowFloorCollisionOff(bodyB: SKPhysicsBody, sender: GameScene) {      // Desliga o slow
+        self.realSpeed = self.defaultSpeed
+    }
     func quickFloorCollision(bodyB:SKPhysicsBody, sender:GameScene){
-        if let node  = bodyB.node as? TBChangeSpeedGround{
-            if node.hadEffect! {
-                return;
-            }else{
-                node.hadEffect = true
-            }
-        }
-        realSpeed = max(realSpeed, defaultSpeed)
-        let diff = (self.highSpeed - defaultSpeed)
-        let acc = diff/12
-        let accSpeed = SKAction.repeatAction( SKAction.sequence(
-            [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                self.realSpeed = min(self.highSpeed, self.realSpeed + acc)
-                }
-                )]), count: 12)
-        
-        let deacc = diff/120
-        let actSlow = SKAction.repeatAction( SKAction.sequence(
-            [SKAction.waitForDuration(0.02), SKAction.runBlock({
-                self.realSpeed = max(self.defaultSpeed, self.realSpeed-deacc)}
-                )]), count: 120)
-        runAction(SKAction.sequence([accSpeed, actSlow, SKAction.runBlock({
-            self.realSpeed =  self.defaultSpeed
-        })]))
+//        if let node  = bodyB.node as? TBChangeSpeedGround{
+//            if node.hadEffect! {
+//                return;
+//            }else{
+//                node.hadEffect = true
+//            }
+//        }
+        self.realSpeed = self.highSpeed
+//        realSpeed = max(realSpeed, defaultSpeed)
+//        let diff = (self.highSpeed - defaultSpeed)
+//        let acc = diff/12
+//        let accSpeed = SKAction.repeatAction( SKAction.sequence(
+//            [SKAction.waitForDuration(0.02), SKAction.runBlock({
+//                self.realSpeed = min(self.highSpeed, self.realSpeed + acc)
+//                }
+//                )]), count: 12)
+//        
+//        let deacc = diff/120
+//        let actSlow = SKAction.repeatAction( SKAction.sequence(
+//            [SKAction.waitForDuration(0.02), SKAction.runBlock({
+//                self.realSpeed = max(self.defaultSpeed, self.realSpeed-deacc)}
+//                )]), count: 120)
+//        runAction(SKAction.sequence([accSpeed, actSlow, SKAction.runBlock({
+//            self.realSpeed =  self.defaultSpeed
+//        })]))
     }
     
     func slowFloorCollision(bodyB:SKPhysicsBody, sender:GameScene){

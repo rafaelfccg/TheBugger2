@@ -57,7 +57,8 @@ class TBMenuViewController :UIViewController {
         TBBopperBotNode.createSKActionAnimation()
         TBFlyingBotNode.createSKActionAnimation()
         TBPlayerNode.createFrenezyAnimation()
-    
+        TBGreenLedsNode.createGreenLedsAnimation()
+        
         self.efeitoCima.animationImages = [UIImage(named:"enfeiteCima-1")!,
                                           UIImage(named: "enfeiteCima-2")!,
                                           UIImage(named: "enfeiteCima-3")!,
