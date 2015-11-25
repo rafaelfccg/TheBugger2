@@ -42,7 +42,7 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
         TBGroundBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.1);
         
         let deathArray = TBUtils().getSprites("MonsterDeath", nomeImagens: "explosao-")
-        TBGroundBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.07);
+        TBGroundBotNode.deathAnimation = SKAction.group([SKAction.animateWithTextures(deathArray, timePerFrame: 0.07), SKAction.playSoundFileNamed("bolha.mp3", waitForCompletion: true)]);
     }
     
     func dieAnimation(hero: TBPlayerNode)
