@@ -49,7 +49,6 @@
 		00200B611C0634760094FFBD /* fio solto2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B5F1C0634760094FFBD /* fio solto2.png */; };
 		00200B631C0634AB0094FFBD /* GreenLeds.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B621C0634AB0094FFBD /* GreenLeds.atlas */; };
 		00200B651C0634DF0094FFBD /* smoke2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B641C0634DF0094FFBD /* smoke2.png */; };
-		00200B7E1C0675700094FFBD /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00200B7D1C0675700094FFBD /* GoogleMobileAds.framework */; };
 		00200B7F1C0675D40094FFBD /* AreaCleared.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B661C063B560094FFBD /* AreaCleared.atlas */; };
 		00200B811C067E150094FFBD /* SlideBackTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B801C067E150094FFBD /* SlideBackTutorial.atlas */; };
 		00200B831C067E500094FFBD /* BlockTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B821C067E500094FFBD /* BlockTutorial.atlas */; };
@@ -196,11 +195,6 @@
 		AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */; };
 		AF680E031C0633B500CC865C /* bolha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AF680E021C0633B500CC865C /* bolha.mp3 */; };
 		AF680E0D1C06447C00CC865C /* pinote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AF680E0C1C06447C00CC865C /* pinote.mp3 */; };
-		AF680E171C06571E00CC865C /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF680E121C06571E00CC865C /* Level1Scene.sks */; };
-		AF680E181C06571E00CC865C /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF680E131C06571E00CC865C /* Level2Scene.sks */; };
-		AF680E191C06571E00CC865C /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF680E141C06571E00CC865C /* Level3Scene.sks */; };
-		AF680E1A1C06571E00CC865C /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF680E151C06571E00CC865C /* Level4Scene.sks */; };
-		AF680E1B1C06571E00CC865C /* Level5Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF680E161C06571E00CC865C /* Level5Scene.sks */; };
 		AF9061221BE290AE00C61746 /* PlayerDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF9061211BE290AE00C61746 /* PlayerDeath.atlas */; };
 		AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF9061231BE291C400C61746 /* MonsterDeath.atlas */; };
 		AFB85FA01BFF9DF100490AC4 /* EspinhoSolto.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFB85F9F1BFF9DF100490AC4 /* EspinhoSolto.atlas */; };
@@ -281,7 +275,6 @@
 		00200B621C0634AB0094FFBD /* GreenLeds.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenLeds.atlas; sourceTree = "<group>"; };
 		00200B641C0634DF0094FFBD /* smoke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke2.png; sourceTree = "<group>"; };
 		00200B661C063B560094FFBD /* AreaCleared.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AreaCleared.atlas; sourceTree = "<group>"; };
-		00200B7D1C0675700094FFBD /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		00200B801C067E150094FFBD /* SlideBackTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlideBackTutorial.atlas; sourceTree = "<group>"; };
 		00200B821C067E500094FFBD /* BlockTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BlockTutorial.atlas; sourceTree = "<group>"; };
 		0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AttackTutorial.atlas; sourceTree = "<group>"; };
@@ -439,11 +432,6 @@
 		AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhosNode.swift; sourceTree = "<group>"; };
 		AF680E021C0633B500CC865C /* bolha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bolha.mp3; sourceTree = "<group>"; };
 		AF680E0C1C06447C00CC865C /* pinote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pinote.mp3; sourceTree = "<group>"; };
-		AF680E121C06571E00CC865C /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
-		AF680E131C06571E00CC865C /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
-		AF680E141C06571E00CC865C /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
-		AF680E151C06571E00CC865C /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
-		AF680E161C06571E00CC865C /* Level5Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level5Scene.sks; sourceTree = "<group>"; };
 		AF9061211BE290AE00C61746 /* PlayerDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDeath.atlas; sourceTree = "<group>"; };
 		AF9061231BE291C400C61746 /* MonsterDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MonsterDeath.atlas; sourceTree = "<group>"; };
 		AFB85F9F1BFF9DF100490AC4 /* EspinhoSolto.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EspinhoSolto.atlas; sourceTree = "<group>"; };
@@ -1009,11 +997,6 @@
 		00CDBECA1BBD9FD100BC0517 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				AF680E121C06571E00CC865C /* Level1Scene.sks */,
-				AF680E131C06571E00CC865C /* Level2Scene.sks */,
-				AF680E141C06571E00CC865C /* Level3Scene.sks */,
-				AF680E151C06571E00CC865C /* Level4Scene.sks */,
-				AF680E161C06571E00CC865C /* Level5Scene.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1174,7 +1157,6 @@
 				00622BD01C03470E00155DB9 /* contador-1.png in Resources */,
 				009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */,
 				52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */,
-				AF680E181C06571E00CC865C /* Level2Scene.sks in Resources */,
 				0022C0321BE2A44300A184D5 /* taptxt.png in Resources */,
 				008203441BFD0EF300534647 /* introMenu.wav in Resources */,
 				008203611BFE45CA00534647 /* defence.mp3 in Resources */,
@@ -1185,11 +1167,9 @@
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
 				001E55CD1BD8221600B80833 /* plataformsm.png in Resources */,
 				52FDE2DE1BF29285003D9A1D /* DieShooterBot.atlas in Resources */,
-				AF680E191C06571E00CC865C /* Level3Scene.sks in Resources */,
 				00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */,
 				AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */,
 				5279DD261BF3C75500E61727 /* Shot.atlas in Resources */,
-				AF680E1A1C06571E00CC865C /* Level4Scene.sks in Resources */,
 				001E55CA1BD8221600B80833 /* BaseD.png in Resources */,
 				0082035F1BFE425A00534647 /* shot.mp3 in Resources */,
 				008349BF1BFFAF4300012C22 /* FrenezyUpItem.atlas in Resources */,
@@ -1214,7 +1194,6 @@
 				0002CE951BF5171000FDE20A /* set-6.png in Resources */,
 				52714B711BDE7875006200A1 /* metalbolcklg-1.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
-				AF680E171C06571E00CC865C /* Level1Scene.sks in Resources */,
 				002FD8101BF650D0003514A4 /* pt-hud.png in Resources */,
 				5289B84E1BE0068600CA6C2D /* darkness.png in Resources */,
 				521269441BDACCE100B5FB2E /* edge1.png in Resources */,
@@ -1250,7 +1229,6 @@
 				008698B31BE94DA900EE80F2 /* signal.atlas in Resources */,
 				001E55C81BD8221600B80833 /* BaseA.png in Resources */,
 				AFCCF2FB1BFBC8C200645850 /* BopperMonsterDeath.atlas in Resources */,
-				AF680E1B1C06571E00CC865C /* Level5Scene.sks in Resources */,
 				00648CAF1BF27CE900C1F906 /* selected.png in Resources */,
 				0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */,
 				52443F5B1C063AC800033633 /* quina1-01.png in Resources */,
