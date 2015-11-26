@@ -166,7 +166,6 @@
 		52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */; };
 		52C376FC1BC44E7E0012BC96 /* TBFlying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376FB1BC44E7E0012BC96 /* TBFlying.swift */; };
 		52CABF6E1BF13171008670B9 /* TBShotBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */; };
-		52D4828C1C0637A5009ADA36 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D4828B1C0637A5009ADA36 /* GoogleMobileAds.framework */; };
 		52E75DBC1BDEAC3200F91E00 /* TBMoedasNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */; };
 		52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */; };
 		52E75DC01BDEAC5700F91E00 /* Moedas.Atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E75DBF1BDEAC5700F91E00 /* Moedas.Atlas */; };
@@ -396,7 +395,6 @@
 		52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotEntity.swift; sourceTree = "<group>"; };
 		52C376FB1BC44E7E0012BC96 /* TBFlying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlying.swift; sourceTree = "<group>"; };
 		52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotBotNode.swift; sourceTree = "<group>"; };
-		52D4828B1C0637A5009ADA36 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMoedasNode.swift; sourceTree = "<group>"; };
 		52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDefence.atlas; sourceTree = "<group>"; };
 		52E75DBF1BDEAC5700F91E00 /* Moedas.Atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Moedas.Atlas; sourceTree = "<group>"; };
@@ -455,7 +453,6 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				52D4828C1C0637A5009ADA36 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,7 +629,6 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				52D4828B1C0637A5009ADA36 /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
