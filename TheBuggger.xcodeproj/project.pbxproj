@@ -879,8 +879,7 @@
 			children = (
 				00CDBE8F1BB9B39000BC0517 /* GameScene.swift */,
 				009CAFE11BF10C2D003BA434 /* selectLevel */,
-				00CDBECA1BBD9FD100BC0517 /* Level 1 */,
-				52E7AEAD1BBEF81D008FE672 /* Level 2 */,
+				00CDBECA1BBD9FD100BC0517 /* Levels */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -974,18 +973,11 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		00CDBECA1BBD9FD100BC0517 /* Level 1 */ = {
+		00CDBECA1BBD9FD100BC0517 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = "Level 1";
-			sourceTree = "<group>";
-		};
-		52E7AEAD1BBEF81D008FE672 /* Level 2 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Level 2";
+			name = Levels;
 			sourceTree = "<group>";
 		};
 		AFE7EF681BF3B0AE00C99A94 /* Analytics */ = {
