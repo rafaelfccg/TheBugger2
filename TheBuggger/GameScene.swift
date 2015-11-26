@@ -805,6 +805,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func backToForeground(){
+        lastFrameTime = CACurrentMediaTime()
+        deltaTime = 0
+    }
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
@@ -1046,14 +1050,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didEndContact(contact: SKPhysicsContact) {
         var bodyA = contact.bodyA
         var bodyB = contact.bodyB
-        var flagTrocou = false
+        //var flagTrocou = false
         
         //ordena para que bodyA tenha sempre a categoria "menor"
         if(bodyA.categoryBitMask > bodyB.categoryBitMask){
             let aux = bodyB
             bodyB = bodyA
             bodyA = aux
-            flagTrocou = true
+            //flagTrocou = true
         }
         if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
             self.hero.quickFloorCollisionOff(bodyB, sender: self)

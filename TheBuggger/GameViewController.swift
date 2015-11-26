@@ -86,7 +86,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
             //skView.showsFPS = true
             //skView.showsNodeCount = true
 //            skView.showsPhysics = true;
-            
+            NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
             
