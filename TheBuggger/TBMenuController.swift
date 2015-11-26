@@ -6,7 +6,7 @@
 //  Copyright © 2015 rfccg. All rights reserved.
 //
 
-import Foundation
+import AVFoundation
 import UIKit
 
 class TBMenuViewController :UIViewController {
@@ -24,6 +24,7 @@ class TBMenuViewController :UIViewController {
     
     var isMethodOne:Int?
     var stringLevel:String?
+    var backgroundMusicPlayer:AVAudioPlayer?
     
     override func viewDidLoad() {
         self.navigationController?.navigationBarHidden = true
@@ -42,6 +43,8 @@ class TBMenuViewController :UIViewController {
         TBTutorialNodes.createSlideUpTutorialAction()
         TBTutorialNodes.createSlideRightTutorialAction()
         TBTutorialNodes.createAttackTutorialAction()
+        TBTutorialNodes.createBlockTutorialAction()
+        TBTutorialNodes.createSlideBackTutorialAction()
         TBFinalNode.createSKActionAnimation()
         TBBrilhoNode.createBrilhoAnimation()
         TBAlertNode.createAlertAnimation()
@@ -92,6 +95,25 @@ class TBMenuViewController :UIViewController {
             defaults.setInteger(1, forKey: "level")
         }
         
+        if(backgroundMusicPlayer == nil){
+            
+            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("introMenu", withExtension: ".wav")
+            
+            do {
+                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
+                backgroundMusicPlayer!.numberOfLoops  = -1
+                if(!backgroundMusicPlayer!.playing){
+                    backgroundMusicPlayer?.play()
+                }
+            }catch {
+                print("MUSIC NOT FOUND")
+            }
+        }else{
+            if(!backgroundMusicPlayer!.playing){
+                backgroundMusicPlayer?.play()
+            }
+        }
+        
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {
@@ -119,6 +141,7 @@ class TBMenuViewController :UIViewController {
             let gameView = segue.destinationViewController as! GameViewController
             gameView.gameMethod = isMethodOne
             gameView.level = "SelectLevelScene"
+            gameView.backgroundMusicPlayer = self.backgroundMusicPlayer
         }else if segue.identifier == "ToOptionsSegue"{
             let options = segue.destinationViewController as! TBOptionsViewController
             options.imageBack = screenShotMethod()

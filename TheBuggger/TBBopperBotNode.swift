@@ -58,32 +58,38 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         TBBopperBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.15);
         
         let deathArray = TBUtils().getSprites("BopperMonsterDeath", nomeImagens: "enemy2dead-")
-        TBBopperBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
+        TBBopperBotNode.deathAnimation = SKAction.group([SKAction.animateWithTextures(deathArray, timePerFrame: 0.1), SKAction.playSoundFileNamed("robotExplosion.mp3", waitForCompletion: true)]);
         
         let attackArray = TBUtils().getSprites("BopperMonsterAttack", nomeImagens: "enemyatk-")
         let attack = SKAction.animateWithTextures(attackArray, timePerFrame: 0.05)
         let move = SKAction.moveBy(CGVector(dx: -90, dy: 0), duration: 0.45)
-        TBBopperBotNode.attackAnimation = SKAction.group([attack, move])
+        TBBopperBotNode.attackAnimation = SKAction.group([attack, move, SKAction.playSoundFileNamed("pinote.mp3", waitForCompletion: true)]);
     }
     
     func dieAnimation(hero: TBPlayerNode)
     {
-        //adicionando score ao heroi
-        hero.score += 10
-        hero.monstersKilled++
-        //tirando corpo fisico e contato
-        self.physicsBody?.categoryBitMask = 0
-        self.physicsBody?.collisionBitMask = 0
-        self.physicsBody?.pinned = true
-        self.removeAllChildren()
-        runAction(SKAction.sequence([TBBopperBotNode.deathAnimation!, SKAction.runBlock({
-            self.removeFromParent()
-        })]), withKey: "dieMonster")
+        
+        if(actionForKey("attack") != nil)
+        {
+            removeActionForKey("attack")
+        }
+            //adicionando score ao heroi
+            hero.score += 10
+            hero.monstersKilled++
+            //tirando corpo fisico e contato
+            self.physicsBody?.categoryBitMask = 0
+            self.physicsBody?.collisionBitMask = 0
+            self.physicsBody?.pinned = true
+            self.removeAllChildren()
+            runAction(SKAction.sequence([TBBopperBotNode.deathAnimation!, SKAction.runBlock({
+                self.removeFromParent()
+            })]), withKey: "dieMonster")
+        
     }
     
     func startAttack() {
     
-        self.runAction(TBBopperBotNode.attackAnimation!)
+        self.runAction(TBBopperBotNode.attackAnimation!, withKey: "attack")
     }
     
     required init?(coder aDecoder: NSCoder) {

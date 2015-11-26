@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import GoogleMobileAds
+import AVFoundation
 
 
 class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitialDelegate{
@@ -16,6 +17,8 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     var gameMethod:Int?
     var level:String?
     var interstitial:GADInterstitial?
+    var backgroundMusicPlayer:AVAudioPlayer?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +26,11 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         self.navigationController?.navigationBar.hidden = true
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
         let request = GADRequest()
-        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb"];
+        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb","efa04c216ac1cdf43763e139720b8045"];
         interstitial!.loadRequest(request)
         
         selectLevel(self.level!)
+        
     }
     
     func gameOver(){
@@ -39,7 +43,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
         interstitial!.delegate = self
         let request = GADRequest()
-        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb"];
+        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb","efa04c216ac1cdf43763e139720b8045"];
         interstitial!.loadRequest(request)
     }
     
@@ -63,6 +67,10 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
             //scene.isMethodOne = 1
             
             skView.presentScene(scene)
+            
+            if(!backgroundMusicPlayer!.playing){
+                backgroundMusicPlayer?.play()
+            }
         }
     }
     
@@ -70,7 +78,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     {
         if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
-//            gameOver()
+            backgroundMusicPlayer?.stop()
             scene.delegateChanger = self
             scene.levelSelected = andLevel
             
@@ -78,7 +86,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
             //skView.showsFPS = true
             //skView.showsNodeCount = true
 //            skView.showsPhysics = true;
-            
+            NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
             
@@ -119,5 +127,15 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if(segue.identifier == "backToMenuSegue"){
+            let mainView = segue.destinationViewController as! UINavigationController
+            let arr = mainView.viewControllers
+            let menu =  arr[0] as! TBMenuViewController ;
+            menu.backgroundMusicPlayer = backgroundMusicPlayer
+            //mainView.backgroundMusicPlayer = self.backgroundMusicPlayer
+        }
     }
 }

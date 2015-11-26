@@ -37,6 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var tapToStartLabel:SKLabelNode?
     var hasBegan:Bool = false
     var stopParalax:Bool = false
+    var completionNode:TBCompletionLevelNode?
     
     let removable = "removable"
     
@@ -271,7 +272,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         back.zPosition =  1000
         labelScore = SKLabelNode(fontNamed: "Squares Bold")
         labelScore!.text = self.numFormatter.stringFromNumber(0)
-        labelScore?.name  = "scoreLabel"
+        labelScore?.name  = "hud"
         self.camera!.addChild(labelScore!)
         labelScore?.fontSize = 25
         labelScore?.position = CGPointMake(self.size.width/2 - (labelScore?.frame.size.width)! + 20, back.position.y - 15)
@@ -280,6 +281,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backScore.size = CGSizeMake(280,50)
         backScore.position = CGPointMake(0, 10)
         backScore.zPosition = -1
+        backScore.name = "hud"
+        
         labelScore?.addChild(backScore)
         
         
@@ -288,26 +291,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.camera!.addChild(percentage!)
         percentage?.zPosition = self.HUDz
         percentage?.position = CGPointMake(0, labelScore!.position.y + 3)
+        percentage!.name = "hud"
         
         let contTexture = SKTexture(imageNamed: "contador-0");
         self.contadorNode = SKSpriteNode(texture:contTexture, size: CGSizeMake(140,70))
         self.camera!.addChild(contadorNode!);
         self.contadorNode!.position = CGPointMake(0, percentage!.position.y + 6);
         self.contadorNode!.zPosition = self.HUDz - 4;
-//        contadorNode = SKSprit
-//        self.numberDeathLabel = SKLabelNode(text: "Tentativas: 000")
-//        self.camera!.addChild(numberDeathLabel!)
-//        numberDeathLabel?.zPosition = 1000
-//        numberDeathLabel?.position = CGPointMake(CGRectGetMidX(self.frame) - self.numberDeathLabel!.frame.width/2 - 10, back.position.y)
-        
-        //como não funciona tirei do primeiro playtesting
-        
-//        let powerTexture = SKTexture(imageNamed: "power1")
-//        let powerNode = SKSpriteNode(texture: powerTexture, size: CGSizeMake( 85, 85) )
-//        powerNode.name = "powerNode"
-//        self.camera!.addChild(powerNode)
-//        powerNode.position = CGPoint(x: self.size.width/2 - powerNode.size.width/2 - 15, y: -self.size.height/2 + powerNode.size.height/2 + 10)
-//        powerNode.zPosition = CGFloat(1000)
+        self.contadorNode!.name="hud"
+
     }
 
     
@@ -460,7 +452,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func backtToMenu(){
-        delegateChanger?.backToMenu()   
+        backgroundMusicPlayer?.stop()
+        delegateChanger?.backToMenu()
+        
     }
     
     func setHeroPosition(){
@@ -678,6 +672,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         })
         
+        self.enumerateChildNodesWithName("thirdGestureTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            node.runAction(SKAction.repeatActionForever(TBTutorialNodes.slideBackTutorialAction!))
+            
+        })
         self.enumerateChildNodesWithName("firstActionTutorial", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             //            let spriteNode
@@ -689,6 +689,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             //            let spriteNode
             node.runAction(SKAction.repeatActionForever(TBTutorialNodes.attackTutorialAction!))
+            
+        })
+        
+        self.enumerateChildNodesWithName("thirdActionTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            node.runAction(SKAction.repeatActionForever(TBTutorialNodes.blockTutorialAction!))
             
         })
         
@@ -746,6 +753,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (name == "restartButton"){
                 self.backgroundMusicPlayer?.pause()
                 self.backtToMenu()
+            }else if (name == "Continue"){
+                self.delegateChanger?.selectLevel("SelectLevelScene")
+                self.backgroundMusicPlayer?.stop()
             }else{
                 
                 if(hasBegan){
@@ -790,6 +800,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func backToForeground(){
+        lastFrameTime = CACurrentMediaTime()
+        deltaTime = 0
+    }
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
@@ -993,7 +1007,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         if max < self.levelSelected! + 1 {
                              defaults.setInteger(self.levelSelected! + 1, forKey: "level")
                         } 
-                        self.delegateChanger!.selectLevel("SelectLevelScene")
+                        //self.delegateChanger!.selectLevel("SelectLevelScene")
+                        self.completionNode = TBCompletionLevelNode.unarchiveFromFile("TBCompleteLevelNode")
+                        
+                        self.completionNode?.zPosition = self.HUDz
+                        self.completionNode?.setUP(self.numberOfDeath, bits:self.coinsMark , coins: self.hero.qtdMoedas, monsters: self.hero.monstersKilled, pontos: self.hero.score)
+                        self.camera?.enumerateChildNodesWithName("hud", usingBlock: {(node,pointer) in
+                                node.removeFromParent()
+                        })
+                        self.camera?.enumerateChildNodesWithName(self.removable, usingBlock: {(node,pointer) in
+                            node.removeFromParent()
+                        })
+                        self.completionNode?.name = "endLevel"
+                        self.completionNode?.delegateChanger = self.delegateChanger
+                        self.camera?.addChild(self.completionNode!)
                     })])
                 )
             
@@ -1030,14 +1057,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didEndContact(contact: SKPhysicsContact) {
         var bodyA = contact.bodyA
         var bodyB = contact.bodyB
-        var flagTrocou = false
+        //var flagTrocou = false
         
         //ordena para que bodyA tenha sempre a categoria "menor"
         if(bodyA.categoryBitMask > bodyB.categoryBitMask){
             let aux = bodyB
             bodyB = bodyA
             bodyA = aux
-            flagTrocou = true
+            //flagTrocou = true
         }
         if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
             self.hero.quickFloorCollisionOff(bodyB, sender: self)

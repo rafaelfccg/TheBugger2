@@ -22,8 +22,9 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
         super.init(texture:SKTexture(), color: UIColor.clearColor(), size: CGSizeMake(0, 0))
         
         //self.color = UIColor.whiteColor()
-        self.size = CGSizeMake(80, 80)
-        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.height/2.5, center: CGPointMake(-12, -8))
+        self.size = CGSizeMake(100, 100)
+
+        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.height/3.2, center: CGPointMake(-5, -10))
         self.physicsBody?.friction = CGFloat(0)
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
@@ -41,7 +42,7 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
         TBGroundBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.1);
         
         let deathArray = TBUtils().getSprites("MonsterDeath", nomeImagens: "explosao-")
-        TBGroundBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.07);
+        TBGroundBotNode.deathAnimation = SKAction.group([SKAction.animateWithTextures(deathArray, timePerFrame: 0.07), SKAction.playSoundFileNamed("bolha.mp3", waitForCompletion: true)]);
     }
     
     func dieAnimation(hero: TBPlayerNode)
