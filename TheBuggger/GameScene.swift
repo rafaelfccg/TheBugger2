@@ -460,7 +460,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func backtToMenu(){
-        delegateChanger?.backToMenu()   
+        backgroundMusicPlayer?.stop()
+        delegateChanger?.backToMenu()
+        
     }
     
     func setHeroPosition(){
@@ -678,6 +680,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         })
         
+        self.enumerateChildNodesWithName("thirdGestureTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            node.runAction(SKAction.repeatActionForever(TBTutorialNodes.slideBackTutorialAction!))
+            
+        })
         self.enumerateChildNodesWithName("firstActionTutorial", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             //            let spriteNode
@@ -689,6 +697,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             //            let spriteNode
             node.runAction(SKAction.repeatActionForever(TBTutorialNodes.attackTutorialAction!))
+            
+        })
+        
+        self.enumerateChildNodesWithName("thirdActionTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            node.runAction(SKAction.repeatActionForever(TBTutorialNodes.blockTutorialAction!))
             
         })
         
@@ -994,6 +1009,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                              defaults.setInteger(self.levelSelected! + 1, forKey: "level")
                         } 
                         self.delegateChanger!.selectLevel("SelectLevelScene")
+                        self.backgroundMusicPlayer?.stop()
                     })])
                 )
             

@@ -43,6 +43,8 @@ class TBMenuViewController :UIViewController {
         TBTutorialNodes.createSlideUpTutorialAction()
         TBTutorialNodes.createSlideRightTutorialAction()
         TBTutorialNodes.createAttackTutorialAction()
+        TBTutorialNodes.createBlockTutorialAction()
+        TBTutorialNodes.createSlideBackTutorialAction()
         TBFinalNode.createSKActionAnimation()
         TBBrilhoNode.createBrilhoAnimation()
         TBAlertNode.createAlertAnimation()

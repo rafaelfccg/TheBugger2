@@ -49,6 +49,10 @@
 		00200B611C0634760094FFBD /* fio solto2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B5F1C0634760094FFBD /* fio solto2.png */; };
 		00200B631C0634AB0094FFBD /* GreenLeds.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B621C0634AB0094FFBD /* GreenLeds.atlas */; };
 		00200B651C0634DF0094FFBD /* smoke2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B641C0634DF0094FFBD /* smoke2.png */; };
+		00200B7E1C0675700094FFBD /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00200B7D1C0675700094FFBD /* GoogleMobileAds.framework */; };
+		00200B7F1C0675D40094FFBD /* AreaCleared.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B661C063B560094FFBD /* AreaCleared.atlas */; };
+		00200B811C067E150094FFBD /* SlideBackTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B801C067E150094FFBD /* SlideBackTutorial.atlas */; };
+		00200B831C067E500094FFBD /* BlockTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00200B821C067E500094FFBD /* BlockTutorial.atlas */; };
 		0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */; };
 		0022C02A1BE2A44300A184D5 /* attacktxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0201BE2A44200A184D5 /* attacktxt.png */; };
 		0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */; };
@@ -188,7 +192,6 @@
 		AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */; };
 		AF680E031C0633B500CC865C /* bolha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AF680E021C0633B500CC865C /* bolha.mp3 */; };
 		AF680E0D1C06447C00CC865C /* pinote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AF680E0C1C06447C00CC865C /* pinote.mp3 */; };
-		AF680E111C0655CD00CC865C /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF680E101C0655CD00CC865C /* GoogleMobileAds.framework */; };
 		AF680E171C06571E00CC865C /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF680E121C06571E00CC865C /* Level1Scene.sks */; };
 		AF680E181C06571E00CC865C /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF680E131C06571E00CC865C /* Level2Scene.sks */; };
 		AF680E191C06571E00CC865C /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AF680E141C06571E00CC865C /* Level3Scene.sks */; };
@@ -274,6 +277,9 @@
 		00200B621C0634AB0094FFBD /* GreenLeds.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenLeds.atlas; sourceTree = "<group>"; };
 		00200B641C0634DF0094FFBD /* smoke2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke2.png; sourceTree = "<group>"; };
 		00200B661C063B560094FFBD /* AreaCleared.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AreaCleared.atlas; sourceTree = "<group>"; };
+		00200B7D1C0675700094FFBD /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		00200B801C067E150094FFBD /* SlideBackTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlideBackTutorial.atlas; sourceTree = "<group>"; };
+		00200B821C067E500094FFBD /* BlockTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BlockTutorial.atlas; sourceTree = "<group>"; };
 		0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AttackTutorial.atlas; sourceTree = "<group>"; };
 		0022C0201BE2A44200A184D5 /* attacktxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attacktxt.png; sourceTree = "<group>"; };
 		0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = JumpTutorial.atlas; sourceTree = "<group>"; };
@@ -425,7 +431,6 @@
 		AF2A3E461BD85D47001DA3DB /* TBEspinhosNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhosNode.swift; sourceTree = "<group>"; };
 		AF680E021C0633B500CC865C /* bolha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bolha.mp3; sourceTree = "<group>"; };
 		AF680E0C1C06447C00CC865C /* pinote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pinote.mp3; sourceTree = "<group>"; };
-		AF680E101C0655CD00CC865C /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		AF680E121C06571E00CC865C /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		AF680E131C06571E00CC865C /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
 		AF680E141C06571E00CC865C /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
@@ -469,7 +474,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				AF680E111C0655CD00CC865C /* GoogleMobileAds.framework in Frameworks */,
+				00200B7E1C0675700094FFBD /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,10 +628,12 @@
 			children = (
 				0022C01F1BE2A44200A184D5 /* AttackTutorial.atlas */,
 				0022C0201BE2A44200A184D5 /* attacktxt.png */,
+				00200B801C067E150094FFBD /* SlideBackTutorial.atlas */,
 				0022C0221BE2A44200A184D5 /* JumpTutorial.atlas */,
 				0022C0231BE2A44200A184D5 /* jumptxt.png */,
 				0022C0241BE2A44300A184D5 /* SlideFrontTutorial.atlas */,
 				0022C0251BE2A44300A184D5 /* slidetxt.png */,
+				00200B821C067E500094FFBD /* BlockTutorial.atlas */,
 				0022C0261BE2A44300A184D5 /* SlideUpTutorial.atlas */,
 				0022C0271BE2A44300A184D5 /* TapTutorial.atlas */,
 				0022C0281BE2A44300A184D5 /* taptxt.png */,
@@ -646,8 +653,8 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
+				00200B7D1C0675700094FFBD /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
-				AF680E101C0655CD00CC865C /* GoogleMobileAds.framework */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
 				007BE19A1C04DF5F008A2C02 /* EventKit.framework */,
@@ -1170,6 +1177,7 @@
 				008203441BFD0EF300534647 /* introMenu.wav in Resources */,
 				008203611BFE45CA00534647 /* defence.mp3 in Resources */,
 				00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */,
+				00200B7F1C0675D40094FFBD /* AreaCleared.atlas in Resources */,
 				AF9061241BE291C400C61746 /* MonsterDeath.atlas in Resources */,
 				008349A91BFF999100012C22 /* moeda.mp3 in Resources */,
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
@@ -1223,6 +1231,7 @@
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
 				52F3B0CC1C065169004E5B20 /* toten1.png in Resources */,
+				00200B831C067E500094FFBD /* BlockTutorial.atlas in Resources */,
 				AFCCF2FD1BFBC93900645850 /* BopperMonsterStand.atlas in Resources */,
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
 				008349BD1BFFAEAD00012C22 /* FrenezyStart.atlas in Resources */,
@@ -1258,6 +1267,7 @@
 				0002CE911BF5171000FDE20A /* set-2.png in Resources */,
 				00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */,
 				008698BE1BE9519200EE80F2 /* Espinhos.atlas in Resources */,
+				00200B811C067E150094FFBD /* SlideBackTutorial.atlas in Resources */,
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
 				001E55CF1BD8221600B80833 /* prataformlg.png in Resources */,
 				001E55C51BD8221600B80833 /* structure2.png in Resources */,
@@ -1491,7 +1501,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TheBugger-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1516,7 +1526,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TheBugger-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

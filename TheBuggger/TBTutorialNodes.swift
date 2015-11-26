@@ -13,8 +13,10 @@ class TBTutorialNodes: NSObject {
     static var tapTutorialAction:SKAction?
     static var jumpTutorialAction:SKAction?
     static var slideRightTutorialAction:SKAction?
+    static var slideBackTutorialAction:SKAction?
     static var slideUpTutorialAction:SKAction?
     static var attackTutorialAction:SKAction?
+    static var blockTutorialAction:SKAction?
     
     static func createTapTutorialAction(){
         let coinsArray = TBUtils().getSprites("TapTutorial", nomeImagens: "tap")
@@ -28,10 +30,22 @@ class TBTutorialNodes: NSObject {
         let coinsArray = TBUtils().getSprites("SlideFrontTutorial", nomeImagens: "slidefront")
         TBTutorialNodes.slideRightTutorialAction = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.5);
     }
+    
+    static func createSlideBackTutorialAction(){
+        let coinsArray = TBUtils().getSprites("SlideBackTutorial", nomeImagens: "slideback-")
+        TBTutorialNodes.slideBackTutorialAction = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.5);
+    }
+    
     static func createAttackTutorialAction(){
         let coinsArray = TBUtils().getSprites("AttackTutorial", nomeImagens: "attak")
         TBTutorialNodes.attackTutorialAction = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.5);
     }
+    
+    static func createBlockTutorialAction(){
+        let coinsArray = TBUtils().getSprites("BlockTutorial", nomeImagens: "block")
+        TBTutorialNodes.blockTutorialAction = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.5);
+    }
+    
     static func createSlideUpTutorialAction(){
         let coinsArray = TBUtils().getSprites("SlideUpTutorial", nomeImagens: "slideup")
         TBTutorialNodes.slideUpTutorialAction = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.5);
