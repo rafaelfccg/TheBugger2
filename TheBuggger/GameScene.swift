@@ -999,9 +999,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let action = SKAction.sequence([TBFinalNode.animation!, SKAction.runBlock({
                 if self.completionNode?.parent == nil {
-                    self.completionNode = TBCompletionLevelNode.unarchiveFromFile("TBCompletionLevelNode")
-                    self.completionNode?.zPosition = self.HUDz
-                    self.completionNode?.setUP(self.numberOfDeath, bits:self.coinsMark , coins: self.hero.qtdMoedas, monsters: self.hero.monstersKilled, pontos: self.hero.score)
+                    
                 }
             self.childNodeWithName(TBFinalNode.nameBack)!.runAction(
                     
@@ -1012,9 +1010,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         if max < self.levelSelected! + 1 {
                              defaults.setInteger(self.levelSelected! + 1, forKey: "level")
                         }
+                    if self.completionNode == nil{
+                        self.completionNode = TBCompletionLevelNode.unarchiveFromFile("TBCompletionLevelNode")
+                    }
+                    self.completionNode!.zPosition = self.HUDz
+                    self.completionNode!.setUP(self.numberOfDeath,bits:self.coinsMark , coins: self.hero.qtdMoedas, monsters: self.hero.monstersKilled, pontos: self.hero.score)
                         if (self.completionNode?.parent == nil){
                             self.camera!.addChild(self.completionNode!)
-                            self.completionNode!.animateBackground()
                         }
                     
                 })])
@@ -1033,11 +1035,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let areaCleared = SKSpriteNode( texture: clearedArr[0])
         let actionClear = SKAction.animateWithTextures(clearedArr, timePerFrame: 0.1)
         self.camera?.addChild(areaCleared)
-            let groupFinal2 = SKAction.group([SKAction.playSoundFileNamed("Complete.wav", waitForCompletion: true), actionClear])
+        
+        let groupFinal2 = SKAction.group([SKAction.playSoundFileNamed("Complete.wav", waitForCompletion: false), actionClear])
+            
             areaCleared.runAction(SKAction.sequence([groupFinal2, SKAction.runBlock({
-                areaCleared.removeFromParent() 
+                //if areaCleared.parent != nil{
+                 areaCleared.removeFromParent()
+                //}
             })]))
-            let groupFinal = SKAction.group([SKAction.playSoundFileNamed("GateClosed", waitForCompletion: true), action])
+        let groupFinal = SKAction.group([SKAction.playSoundFileNamed("GateClosed", waitForCompletion: true), action])
             finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
         
             
