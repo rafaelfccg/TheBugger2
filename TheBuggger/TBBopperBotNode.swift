@@ -62,7 +62,7 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         
         let attackArray = TBUtils().getSprites("BopperMonsterAttack", nomeImagens: "enemyatk-")
         let attack = SKAction.animateWithTextures(attackArray, timePerFrame: 0.05)
-        let move = SKAction.moveBy(CGVector(dx: -90, dy: 0), duration: 0.45)
+        let move = SKAction.moveBy(CGVector(dx: -210, dy: 0), duration: 0.45)
         TBBopperBotNode.attackAnimation = SKAction.group([attack, move, SKAction.playSoundFileNamed("pinote.mp3", waitForCompletion: true)]);
     }
     

@@ -123,7 +123,7 @@ class SelectLevelScene: SKScene {
                     touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
                     
                         let levelInt = Int(level);
-                        //self.delegateChanger?.mudaScene("Level5Scene", withMethod: method, andLevel: levelInt!)
+                        //self.delegateChanger?.mudaScene("Level1Scene", withMethod: method, andLevel: levelInt!)
                         self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                    
                     })])]))
