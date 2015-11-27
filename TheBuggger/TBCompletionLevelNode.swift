@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class TBCompletionLevelNode: SKSpriteNode {
+class TBCompletionLevelNode: SKNode {
     
     
     var animate:SKAction?
@@ -39,7 +39,7 @@ class TBCompletionLevelNode: SKSpriteNode {
     
     func setUP(attempts:Int, bits:[Bool], coins:Int, monsters:Int, pontos:Int){
         let arr = TBUtils().getSprites("FinalScreen", nomeImagens: "final_screen-")
-        let animateBack = SKAction.animateWithTextures(arr, timePerFrame: 0.1)
+        let animateBack = SKAction.animateWithTextures(arr, timePerFrame: 1)
         
         var bitCount = 0
         if bits[0]{ bitCount++}
@@ -65,8 +65,8 @@ class TBCompletionLevelNode: SKSpriteNode {
     
     }
     
-    func animateBack(){
-        let back = childNodeWithName("Back")
+    func animateBackground(){
+        let back = self.childNodeWithName("Back")
         back!.runAction(animate!)
     }
     
