@@ -19,10 +19,10 @@
 		0002CE951BF5171000FDE20A /* set-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE8F1BF5171000FDE20A /* set-6.png */; };
 		000538381C08D35F00496CB5 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538331C08D35F00496CB5 /* Level1Scene.sks */; };
 		000538391C08D35F00496CB5 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538341C08D35F00496CB5 /* Level2Scene.sks */; };
-		0005383A1C08D35F00496CB5 /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538351C08D35F00496CB5 /* Level3Scene.sks */; };
 		0005383B1C08D35F00496CB5 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538361C08D35F00496CB5 /* Level4Scene.sks */; };
 		0005383C1C08D35F00496CB5 /* Level5Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538371C08D35F00496CB5 /* Level5Scene.sks */; };
 		000538421C08D77600496CB5 /* EXPLOSION_HERO.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 000538411C08D77600496CB5 /* EXPLOSION_HERO.mp3 */; };
+		000538441C08E4D900496CB5 /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538431C08E4D900496CB5 /* Level3Scene.sks */; };
 		000AA8291BFBC20200EC4E20 /* slow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 000AA8281BFBC20200EC4E20 /* slow.atlas */; };
 		000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000D09D81BBEF31100631559 /* TBPlayerNode.swift */; };
 		001E557A1BD6DA0C00B80833 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55791BD6DA0C00B80833 /* power1.png */; };
@@ -253,10 +253,10 @@
 		0002CE8F1BF5171000FDE20A /* set-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set-6.png"; sourceTree = "<group>"; };
 		000538331C08D35F00496CB5 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		000538341C08D35F00496CB5 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
-		000538351C08D35F00496CB5 /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
 		000538361C08D35F00496CB5 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
 		000538371C08D35F00496CB5 /* Level5Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level5Scene.sks; sourceTree = "<group>"; };
 		000538411C08D77600496CB5 /* EXPLOSION_HERO.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EXPLOSION_HERO.mp3; sourceTree = "<group>"; };
+		000538431C08E4D900496CB5 /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
 		000AA8281BFBC20200EC4E20 /* slow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = slow.atlas; sourceTree = "<group>"; };
 		000D09D81BBEF31100631559 /* TBPlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPlayerNode.swift; sourceTree = "<group>"; };
 		001E55791BD6DA0C00B80833 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
@@ -1022,7 +1022,7 @@
 			children = (
 				000538331C08D35F00496CB5 /* Level1Scene.sks */,
 				000538341C08D35F00496CB5 /* Level2Scene.sks */,
-				000538351C08D35F00496CB5 /* Level3Scene.sks */,
+				000538431C08E4D900496CB5 /* Level3Scene.sks */,
 				000538361C08D35F00496CB5 /* Level4Scene.sks */,
 				000538371C08D35F00496CB5 /* Level5Scene.sks */,
 			);
@@ -1252,7 +1252,6 @@
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
 				008349BD1BFFAEAD00012C22 /* FrenezyStart.atlas in Resources */,
 				009221581BF1187E007C7DDC /* enfeiteBaixo-1.png in Resources */,
-				0005383A1C08D35F00496CB5 /* Level3Scene.sks in Resources */,
 				AF069D6C1BFE604700AC81EC /* FlyingMonsterDeath.atlas in Resources */,
 				52E75DC01BDEAC5700F91E00 /* Moedas.Atlas in Resources */,
 				0092215B1BF1187E007C7DDC /* enfeiteBaixo-4.png in Resources */,
@@ -1272,6 +1271,7 @@
 				0092215A1BF1187E007C7DDC /* enfeiteBaixo-3.png in Resources */,
 				52E75DC41BDEAD0300F91E00 /* Move_Ya.mp3 in Resources */,
 				001E55D41BD8221600B80833 /* estructure2.png in Resources */,
+				000538441C08E4D900496CB5 /* Level3Scene.sks in Resources */,
 				AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */,
 				009221631BF12D10007C7DDC /* estagioSelect.atlas in Resources */,
 				001E55C61BD8221600B80833 /* base floor.png in Resources */,

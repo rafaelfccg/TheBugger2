@@ -38,9 +38,9 @@ class TBCompletionLevelNode: SKNode {
     }
     
     func setUP(attempts:Int, bits:[Bool], coins:Int, monsters:Int, pontos:Int){
-        let arr = TBUtils().getSprites("FinalScreen", nomeImagens: "final_screen-")
-        let animateBack = SKAction.animateWithTextures(arr, timePerFrame: 1)
-        
+//        let arr = TBUtils().getSprites("FinalScreen", nomeImagens: "final_screen-")
+//        let animateBack = SKAction.animateWithTextures(arr, timePerFrame: 1)
+//        
         var bitCount = 0
         if bits[0]{ bitCount++}
         if bits[1]{ bitCount++}
@@ -61,13 +61,13 @@ class TBCompletionLevelNode: SKNode {
         let pontuacao = self.childNodeWithName("Pontos") as! SKLabelNode
         pontuacao.text = "\(pontos) pts"
         
-        self.animate = animateBack
+//        self.animate = animateBack
     
     }
     
     func animateBackground(){
-        let back = self.childNodeWithName("Back")
-        back!.runAction(animate!)
+        //let back = self.childNodeWithName("Back")
+        //back!.runAction(animate!)
     }
     
 }
