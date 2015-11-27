@@ -1293,6 +1293,7 @@
 				0092215A1BF1187E007C7DDC /* enfeiteBaixo-3.png in Resources */,
 				52E75DC41BDEAD0300F91E00 /* Move_Ya.mp3 in Resources */,
 				001E55D41BD8221600B80833 /* estructure2.png in Resources */,
+				000538441C08E4D900496CB5 /* Level3Scene.sks in Resources */,
 				AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */,
 				009221631BF12D10007C7DDC /* estagioSelect.atlas in Resources */,
 				001E55C61BD8221600B80833 /* base floor.png in Resources */,
