@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class TBOptionsViewController: UIViewController {
     @IBOutlet weak var SettingsLabel: UILabel!
@@ -23,7 +24,9 @@ class TBOptionsViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var animatedBack: UIImageView!
     var imageBack:UIImage?
-    
+    var backgroundMusicPlayer:AVAudioPlayer?
+    var effectMusicPlayer:AVAudioPlayer?
+    let clickedButton = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("NormalButton", ofType: "wav")!)
     var method:Int?
     
     override func viewDidLoad() {
@@ -116,10 +119,22 @@ class TBOptionsViewController: UIViewController {
     }
     
     @IBAction func selectMethod1(sender: AnyObject) {
+        do {
+            try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: self.clickedButton)
+                backgroundMusicPlayer!.play()
+        }catch {
+            print("MUSIC NOT FOUND")
+        }
         selector1()
     }
     
     @IBAction func selectMethod2(sender: AnyObject) {
+        do {
+            try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: self.clickedButton)
+            backgroundMusicPlayer!.play()
+        }catch {
+            print("MUSIC NOT FOUND")
+        }
         selector2()
     }
     

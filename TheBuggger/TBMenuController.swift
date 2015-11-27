@@ -22,10 +22,13 @@ class TBMenuViewController :UIViewController {
     @IBOutlet weak var efeitoCima: UIImageView!
     @IBOutlet weak var efeitoBaixo: UIImageView!
     
+    var backgroundMusicPlayer2:AVAudioPlayer?
+    let clickedButton = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("NormalButton", ofType: "wav")!)
     var isMethodOne:Int?
     var stringLevel:String?
     var backgroundMusicPlayer:AVAudioPlayer?
     
+    @IBOutlet weak var theBuggerBoard: UIImageView!
     override func viewDidLoad() {
         self.navigationController?.navigationBarHidden = true
         
@@ -61,6 +64,17 @@ class TBMenuViewController :UIViewController {
         TBFlyingBotNode.createSKActionAnimation()
         TBPlayerNode.createFrenezyAnimation()
         TBGreenLedsNode.createGreenLedsAnimation()
+        
+        self.theBuggerBoard.animationImages = [UIImage(named:"logo_1")!,
+            UIImage(named: "logo_2")!,
+            UIImage(named: "logo_3")!,
+            UIImage(named: "logo_4")!,
+            UIImage(named: "logo_5")!]
+        self.theBuggerBoard.animationRepeatCount = -1
+        self.theBuggerBoard.animationDuration   = 0.9
+        self.theBuggerBoard.startAnimating()
+        
+        
         
         self.efeitoCima.animationImages = [UIImage(named:"enfeiteCima-1")!,
                                           UIImage(named: "enfeiteCima-2")!,
@@ -118,10 +132,22 @@ class TBMenuViewController :UIViewController {
     
     @IBAction func actionButMet1(sender: AnyObject) {
         //isMethodOne = 1
+        do {
+            try  backgroundMusicPlayer2 = AVAudioPlayer(contentsOfURL: self.clickedButton)
+            backgroundMusicPlayer2!.play()
+        }catch {
+            print("MUSIC NOT FOUND")
+        }
         self.performSegueWithIdentifier("ToGameSegue", sender: self)
     }
     
     @IBAction func actionButMet2(sender: AnyObject) {
+        do {
+            try  backgroundMusicPlayer2 = AVAudioPlayer(contentsOfURL: self.clickedButton)
+            backgroundMusicPlayer2!.play()
+        }catch {
+            print("MUSIC NOT FOUND")
+        }
         self.performSegueWithIdentifier("ToOptionsSegue", sender: self)
         
         

@@ -31,7 +31,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon app.png" translatesAutoresizingMaskIntoConstraints="NO" id="0bc-Ct-Rhl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="promoinprogress-final.png" translatesAutoresizingMaskIntoConstraints="NO" id="0bc-Ct-Rhl">
                                 <rect key="frame" x="27" y="164.5" width="330" height="270"/>
                                 <animations/>
                                 <constraints>
@@ -45,6 +45,9 @@
                                         <exclude reference="nBL-ki-4yb"/>
                                     </mask>
                                 </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="YgI-mK-HBt">
+                                <rect key="frame" x="27" y="149" width="330" height="132"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleAspectFit" image="enfeiteCima-1" translatesAutoresizingMaskIntoConstraints="NO" id="r8C-Fd-5PR">
                                 <rect key="frame" x="-9" y="0.0" width="610" height="34"/>
@@ -124,23 +127,31 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.0" green="0.054901960784313725" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="5FJ-Qh-b27" firstAttribute="centerX" secondItem="2r9-zy-bB4" secondAttribute="centerX" id="0IN-Fg-BdE"/>
+                            <constraint firstItem="YgI-mK-HBt" firstAttribute="height" secondItem="0bc-Ct-Rhl" secondAttribute="height" id="3ZA-Ff-Lcy"/>
+                            <constraint firstItem="YgI-mK-HBt" firstAttribute="height" secondItem="0bc-Ct-Rhl" secondAttribute="height" multiplier="0.5" constant="-3" id="4tH-Bb-Bdh"/>
+                            <constraint firstItem="YgI-mK-HBt" firstAttribute="top" secondItem="0bc-Ct-Rhl" secondAttribute="top" constant="-15.5" id="56F-ht-xef"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0bc-Ct-Rhl" secondAttribute="leading" constant="-7" id="5Qi-cA-Iws"/>
+                            <constraint firstItem="YgI-mK-HBt" firstAttribute="leading" secondItem="0bc-Ct-Rhl" secondAttribute="trailing" constant="-330" id="7ds-mS-R7V"/>
                             <constraint firstItem="aPk-d8-x15" firstAttribute="centerY" secondItem="0bc-Ct-Rhl" secondAttribute="centerY" constant="-30" id="Fnt-60-EJu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="G3k-xd-aA3" secondAttribute="trailing" constant="19" id="HLS-Ue-lR8"/>
                             <constraint firstItem="aPk-d8-x15" firstAttribute="leading" secondItem="0bc-Ct-Rhl" secondAttribute="trailing" constant="25" id="J4k-7i-2GT"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="leading" secondItem="aPk-d8-x15" secondAttribute="leading" id="TPV-fQ-bU6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aPk-d8-x15" secondAttribute="trailing" constant="19" id="Web-on-ckc"/>
+                            <constraint firstItem="YgI-mK-HBt" firstAttribute="width" secondItem="0bc-Ct-Rhl" secondAttribute="width" id="YFj-cy-wp1"/>
                             <constraint firstItem="5FJ-Qh-b27" firstAttribute="leading" secondItem="2r9-zy-bB4" secondAttribute="leadingMargin" constant="-26" id="bzU-0i-wfM"/>
                             <constraint firstItem="r8C-Fd-5PR" firstAttribute="top" secondItem="2r9-zy-bB4" secondAttribute="topMargin" id="cmT-jr-xCG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5FJ-Qh-b27" secondAttribute="trailing" constant="-34" id="hbK-V5-Zj7"/>
                             <constraint firstItem="0bc-Ct-Rhl" firstAttribute="centerY" secondItem="2r9-zy-bB4" secondAttribute="centerY" id="hxA-b6-MLl"/>
                             <constraint firstItem="r8C-Fd-5PR" firstAttribute="leading" secondItem="2r9-zy-bB4" secondAttribute="leadingMargin" constant="-29" id="kRD-Oc-UZy"/>
+                            <constraint firstItem="YgI-mK-HBt" firstAttribute="centerX" secondItem="0bc-Ct-Rhl" secondAttribute="centerX" id="kuF-yg-TR0"/>
+                            <constraint firstItem="YgI-mK-HBt" firstAttribute="trailing" secondItem="0bc-Ct-Rhl" secondAttribute="trailing" id="l8G-UA-qob"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="height" secondItem="aPk-d8-x15" secondAttribute="height" id="mdp-Ww-7KI"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="centerY" secondItem="0bc-Ct-Rhl" secondAttribute="centerY" constant="40" id="neE-DE-qxr"/>
                             <constraint firstItem="0bc-Ct-Rhl" firstAttribute="width" secondItem="2r9-zy-bB4" secondAttribute="width" multiplier="0.55" id="nwd-42-dwy"/>
+                            <constraint firstItem="0bc-Ct-Rhl" firstAttribute="top" secondItem="YgI-mK-HBt" secondAttribute="bottom" constant="-116.5" id="oPw-6e-svZ"/>
                             <constraint firstItem="5FJ-Qh-b27" firstAttribute="leading" secondItem="2r9-zy-bB4" secondAttribute="leadingMargin" constant="-25" id="paP-Sx-NzR"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="top" secondItem="aPk-d8-x15" secondAttribute="bottom" constant="20" id="tOn-V5-1YS"/>
                             <constraint firstItem="79L-3u-emM" firstAttribute="top" secondItem="5FJ-Qh-b27" secondAttribute="bottom" constant="-2" id="yg4-Q0-Vuk"/>
@@ -148,6 +159,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="3ZA-Ff-Lcy"/>
+                                <exclude reference="7ds-mS-R7V"/>
+                                <exclude reference="l8G-UA-qob"/>
+                                <exclude reference="oPw-6e-svZ"/>
                                 <exclude reference="bzU-0i-wfM"/>
                                 <exclude reference="hbK-V5-Zj7"/>
                             </mask>
@@ -160,6 +175,7 @@
                         <outlet property="butMet2" destination="G3k-xd-aA3" id="WT9-uA-1xh"/>
                         <outlet property="efeitoBaixo" destination="5FJ-Qh-b27" id="lvW-Gb-Q1G"/>
                         <outlet property="efeitoCima" destination="r8C-Fd-5PR" id="VA1-i9-h5O"/>
+                        <outlet property="theBuggerBoard" destination="YgI-mK-HBt" id="Z2B-gd-xnS"/>
                         <segue destination="BV1-FR-VrT" kind="presentation" identifier="ToGameSegue" animates="NO" id="ARi-gf-Zb0"/>
                         <segue destination="fQM-Zk-OLa" kind="show" identifier="ToOptionsSegue" animates="NO" id="t6p-Yn-45w"/>
                     </connections>
@@ -393,16 +409,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="321"/>
+            <point key="canvasLocation" x="710" y="223"/>
         </scene>
     </scenes>
     <resources>
         <image name="back-1.png" width="301" height="228"/>
         <image name="enfeiteBaixo-1" width="420" height="22.799999237060547"/>
         <image name="enfeiteCima-1" width="419.760009765625" height="22.799999237060547"/>
-        <image name="icon app.png" width="2141" height="2098"/>
+        <image name="logo_1.png" width="1000" height="512"/>
         <image name="play_off.png" width="679" height="149"/>
         <image name="play_on.png" width="679" height="149"/>
+        <image name="promoinprogress-final.png" width="2141" height="2098"/>
         <image name="selected.png" width="196" height="196"/>
         <image name="set-6.png" width="1773" height="1132"/>
     </resources>

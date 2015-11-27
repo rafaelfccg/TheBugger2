@@ -498,6 +498,7 @@ class TBPlayerNode: SKSpriteNode {
     func jumpImpulse(){
         
         self.physicsBody?.applyImpulse(CGVectorMake(0.0, 130.0))
+        runAction(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: true))
         
     }
     func jump(){

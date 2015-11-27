@@ -8,7 +8,7 @@
 
 import UIKit
 import SpriteKit
-
+import AVFoundation
 
 class SelectLevelScene: SKScene {
     
@@ -118,6 +118,10 @@ class SelectLevelScene: SKScene {
             }else if name!.containsString("select") {
                 level = (name?.substringFromIndex((name?.startIndex.advancedBy(11))!))!
             }
+            
+            let clickedPhaseButton = SKAction.playSoundFileNamed("NormalButton.wav", waitForCompletion: true)
+            runAction(clickedPhaseButton)
+            
             if level != "-1" {
                 if inLevel >= Int(level) {
                     touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({

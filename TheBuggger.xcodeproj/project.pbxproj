@@ -170,6 +170,16 @@
 		521269461BDACCEC00B5FB2E /* edge2.png in Resources */ = {isa = PBXBuildFile; fileRef = 521269451BDACCEC00B5FB2E /* edge2.png */; };
 		52443F5B1C063AC800033633 /* quina1-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 52443F5A1C063AC800033633 /* quina1-01.png */; };
 		52443F5D1C063ADC00033633 /* viga.png in Resources */ = {isa = PBXBuildFile; fileRef = 52443F5C1C063ADC00033633 /* viga.png */; };
+		52700FE11C08C8AD006DEDB3 /* NormalButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52700FE01C08C8AD006DEDB3 /* NormalButton.wav */; };
+		52700FE31C08D06C006DEDB3 /* SelectePhaseButton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 52700FE21C08D06C006DEDB3 /* SelectePhaseButton.mp3 */; };
+		52700FE51C08D1CF006DEDB3 /* EXPLOSION_HERO.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52700FE41C08D1CF006DEDB3 /* EXPLOSION_HERO.wav */; };
+		52700FE91C08D81F006DEDB3 /* promoinprogress.png in Resources */ = {isa = PBXBuildFile; fileRef = 52700FE81C08D81F006DEDB3 /* promoinprogress.png */; };
+		52700FF91C08DD99006DEDB3 /* logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52700FF41C08DD99006DEDB3 /* logo_1.png */; };
+		52700FFA1C08DD99006DEDB3 /* logo_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 52700FF51C08DD99006DEDB3 /* logo_2.png */; };
+		52700FFB1C08DD99006DEDB3 /* logo_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 52700FF61C08DD99006DEDB3 /* logo_3.png */; };
+		52700FFC1C08DD99006DEDB3 /* logo_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 52700FF71C08DD99006DEDB3 /* logo_4.png */; };
+		52700FFD1C08DD99006DEDB3 /* logo_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 52700FF81C08DD99006DEDB3 /* logo_5.png */; };
+		52700FFF1C08E106006DEDB3 /* promoinprogress-final.png in Resources */ = {isa = PBXBuildFile; fileRef = 52700FFE1C08E106006DEDB3 /* promoinprogress-final.png */; };
 		52714B711BDE7875006200A1 /* metalbolcklg-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52714B701BDE7875006200A1 /* metalbolcklg-1.png */; };
 		52714B731BDE787C006200A1 /* metalblocksm-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52714B721BDE787C006200A1 /* metalblocksm-1.png */; };
 		5279DD261BF3C75500E61727 /* Shot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5279DD251BF3C75500E61727 /* Shot.atlas */; };
@@ -181,6 +191,9 @@
 		52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */; };
 		52C376FA1BC44E4B0012BC96 /* TBFlyingBotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */; };
 		52C376FC1BC44E7E0012BC96 /* TBFlying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376FB1BC44E7E0012BC96 /* TBFlying.swift */; };
+		52C8E9ED1C07A2A200F84C87 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52C8E9EC1C07A2A200F84C87 /* jump.wav */; };
+		52C8E9EF1C07A65400F84C87 /* GateClosed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52C8E9EE1C07A65400F84C87 /* GateClosed.wav */; };
+		52C8E9F11C07A66300F84C87 /* Complete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52C8E9F01C07A66300F84C87 /* Complete.wav */; };
 		52CABF6E1BF13171008670B9 /* TBShotBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */; };
 		52E75DBC1BDEAC3200F91E00 /* TBMoedasNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */; };
 		52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */; };
@@ -416,6 +429,16 @@
 		521269451BDACCEC00B5FB2E /* edge2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edge2.png; sourceTree = "<group>"; };
 		52443F5A1C063AC800033633 /* quina1-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quina1-01.png"; sourceTree = "<group>"; };
 		52443F5C1C063ADC00033633 /* viga.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viga.png; sourceTree = "<group>"; };
+		52700FE01C08C8AD006DEDB3 /* NormalButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = NormalButton.wav; sourceTree = "<group>"; };
+		52700FE21C08D06C006DEDB3 /* SelectePhaseButton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SelectePhaseButton.mp3; sourceTree = "<group>"; };
+		52700FE41C08D1CF006DEDB3 /* EXPLOSION_HERO.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = EXPLOSION_HERO.wav; sourceTree = "<group>"; };
+		52700FE81C08D81F006DEDB3 /* promoinprogress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promoinprogress.png; sourceTree = "<group>"; };
+		52700FF41C08DD99006DEDB3 /* logo_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_1.png; sourceTree = "<group>"; };
+		52700FF51C08DD99006DEDB3 /* logo_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_2.png; sourceTree = "<group>"; };
+		52700FF61C08DD99006DEDB3 /* logo_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_3.png; sourceTree = "<group>"; };
+		52700FF71C08DD99006DEDB3 /* logo_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_4.png; sourceTree = "<group>"; };
+		52700FF81C08DD99006DEDB3 /* logo_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_5.png; sourceTree = "<group>"; };
+		52700FFE1C08E106006DEDB3 /* promoinprogress-final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "promoinprogress-final.png"; sourceTree = "<group>"; };
 		52714B701BDE7875006200A1 /* metalbolcklg-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metalbolcklg-1.png"; sourceTree = "<group>"; };
 		52714B721BDE787C006200A1 /* metalblocksm-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metalblocksm-1.png"; sourceTree = "<group>"; };
 		5279DD251BF3C75500E61727 /* Shot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Shot.atlas; sourceTree = "<group>"; };
@@ -427,6 +450,9 @@
 		52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotNode.swift; sourceTree = "<group>"; };
 		52C376F91BC44E4B0012BC96 /* TBFlyingBotEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotEntity.swift; sourceTree = "<group>"; };
 		52C376FB1BC44E7E0012BC96 /* TBFlying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlying.swift; sourceTree = "<group>"; };
+		52C8E9EC1C07A2A200F84C87 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
+		52C8E9EE1C07A65400F84C87 /* GateClosed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GateClosed.wav; sourceTree = "<group>"; };
+		52C8E9F01C07A66300F84C87 /* Complete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Complete.wav; sourceTree = "<group>"; };
 		52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotBotNode.swift; sourceTree = "<group>"; };
 		52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMoedasNode.swift; sourceTree = "<group>"; };
 		52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDefence.atlas; sourceTree = "<group>"; };
@@ -702,7 +728,10 @@
 				008203631BFE464E00534647 /* monster */,
 				008203621BFE463E00534647 /* Player */,
 				008203381BFD0EF300534647 /* attack.mp3 */,
+				52700FE21C08D06C006DEDB3 /* SelectePhaseButton.mp3 */,
 				008349A81BFF999100012C22 /* moeda.mp3 */,
+				52C8E9F01C07A66300F84C87 /* Complete.wav */,
+				52C8E9EE1C07A65400F84C87 /* GateClosed.wav */,
 				0082033B1BFD0EF300534647 /* introMenu.wav */,
 				008349A41BFF98EC00012C22 /* SPECIAL_COIN.mp3 */,
 				0082033D1BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 */,
@@ -760,12 +789,13 @@
 		008203621BFE463E00534647 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				000538411C08D77600496CB5 /* EXPLOSION_HERO.mp3 */,
-				00A8CE571C08CA5000AAD430 /* dash.mp3 */,
+				52700FE41C08D1CF006DEDB3 /* EXPLOSION_HERO.wav */,
+				52C8E9EC1C07A2A200F84C87 /* jump.wav */,
 				0082033F1BFD0EF300534647 /* Run.mp3 */,
 				008203581BFE3D0400534647 /* attack_1.mp3 */,
 				008203561BFE3B8D00534647 /* attack_2.mp3 */,
 				008203601BFE45CA00534647 /* defence.mp3 */,
+				52700FE01C08C8AD006DEDB3 /* NormalButton.wav */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -975,8 +1005,14 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				00A8CE4B1C089AFC00AAD430 /* promoart2-01.png */,
+				52700FF41C08DD99006DEDB3 /* logo_1.png */,
+				52700FF51C08DD99006DEDB3 /* logo_2.png */,
+				52700FF61C08DD99006DEDB3 /* logo_3.png */,
+				52700FF71C08DD99006DEDB3 /* logo_4.png */,
+				52700FF81C08DD99006DEDB3 /* logo_5.png */,
 				0064D69F1C07668900BC0B2F /* continue.png */,
+				52700FFE1C08E106006DEDB3 /* promoinprogress-final.png */,
+				52700FE81C08D81F006DEDB3 /* promoinprogress.png */,
 				0064D69D1C07667B00BC0B2F /* FinalScreen.atlas */,
 				00200B661C063B560094FFBD /* AreaCleared.atlas */,
 				008349B71BFFADA600012C22 /* PowerUps */,
@@ -1160,6 +1196,7 @@
 				008203411BFD0EF300534647 /* attack.mp3 in Resources */,
 				5279DD2C1BF3DBC800E61727 /* ShooterBot.atlas in Resources */,
 				00F6CFE21BDEBF6A006F0302 /* play_off.png in Resources */,
+				52700FFD1C08DD99006DEDB3 /* logo_5.png in Resources */,
 				00200B601C0634760094FFBD /* fio solto1.png in Resources */,
 				00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */,
 				0082035D1BFE406D00534647 /* robotExplosion.mp3 in Resources */,
@@ -1170,6 +1207,7 @@
 				002FD8141BF661B3003514A4 /* bits.atlas in Resources */,
 				009221521BF11863007C7DDC /* enfeiteCima-4.png in Resources */,
 				AFB85FA01BFF9DF100490AC4 /* EspinhoSolto.atlas in Resources */,
+				52700FE51C08D1CF006DEDB3 /* EXPLOSION_HERO.wav in Resources */,
 				AF680E0D1C06447C00CC865C /* pinote.mp3 in Resources */,
 				009221681BF12EFE007C7DDC /* cabos-1.png in Resources */,
 				008349B51BFFA1BE00012C22 /* contador-2.png in Resources */,
@@ -1179,7 +1217,9 @@
 				AF680E031C0633B500CC865C /* bolha.mp3 in Resources */,
 				0092215D1BF11A88007C7DDC /* efeitoBaixo.atlas in Resources */,
 				0002CE941BF5171000FDE20A /* set-5.png in Resources */,
+				52700FE31C08D06C006DEDB3 /* SelectePhaseButton.mp3 in Resources */,
 				001E557A1BD6DA0C00B80833 /* power1.png in Resources */,
+				52700FFC1C08DD99006DEDB3 /* logo_4.png in Resources */,
 				00CDBE971BB9B39000BC0517 /* Assets.xcassets in Resources */,
 				5279DD301BF3DF5400E61727 /* ShotDefended.atlas in Resources */,
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
@@ -1189,6 +1229,7 @@
 				0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */,
 				00622BD01C03470E00155DB9 /* contador-1.png in Resources */,
 				009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */,
+				52C8E9F11C07A66300F84C87 /* Complete.wav in Resources */,
 				52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */,
 				0022C0321BE2A44300A184D5 /* taptxt.png in Resources */,
 				008203441BFD0EF300534647 /* introMenu.wav in Resources */,
@@ -1242,9 +1283,12 @@
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
 				AFE7EF901BF3D59A00C99A94 /* SelectLevelScene.sks in Resources */,
 				001E55C71BD8221600B80833 /* plataforma-01.png in Resources */,
+				52C8E9ED1C07A2A200F84C87 /* jump.wav in Resources */,
 				002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */,
 				0002CE871BF50B1A00FDE20A /* back-1.png in Resources */,
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
+				52700FFA1C08DD99006DEDB3 /* logo_2.png in Resources */,
+				52700FFB1C08DD99006DEDB3 /* logo_3.png in Resources */,
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
 				52F3B0CC1C065169004E5B20 /* toten1.png in Resources */,
 				00200B831C067E500094FFBD /* BlockTutorial.atlas in Resources */,
@@ -1262,7 +1306,9 @@
 				00200B631C0634AB0094FFBD /* GreenLeds.atlas in Resources */,
 				0002CE901BF5171000FDE20A /* set-1.png in Resources */,
 				008698B31BE94DA900EE80F2 /* signal.atlas in Resources */,
+				52700FFF1C08E106006DEDB3 /* promoinprogress-final.png in Resources */,
 				001E55C81BD8221600B80833 /* BaseA.png in Resources */,
+				52700FE91C08D81F006DEDB3 /* promoinprogress.png in Resources */,
 				AFCCF2FB1BFBC8C200645850 /* BopperMonsterDeath.atlas in Resources */,
 				00648CAF1BF27CE900C1F906 /* selected.png in Resources */,
 				0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */,
@@ -1286,17 +1332,19 @@
 				00200B811C067E150094FFBD /* SlideBackTutorial.atlas in Resources */,
 				001E55D61BD8221600B80833 /* redlight-01.png in Resources */,
 				0064D6A01C07668900BC0B2F /* continue.png in Resources */,
+				52700FE11C08C8AD006DEDB3 /* NormalButton.wav in Resources */,
 				001E55CF1BD8221600B80833 /* prataformlg.png in Resources */,
 				001E55C51BD8221600B80833 /* structure2.png in Resources */,
 				00CDBE951BB9B39000BC0517 /* Main.storyboard in Resources */,
 				0064D69E1C07667B00BC0B2F /* FinalScreen.atlas in Resources */,
-				0064D6A61C08927C00BC0B2F /* TBCompletionLevelNode.sks in Resources */,
+				52700FF91C08DD99006DEDB3 /* logo_1.png in Resources */,
 				009221691BF12EFE007C7DDC /* cabos-2.png in Resources */,
 				AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */,
 				001E55D11BD8221600B80833 /* roofend1.png in Resources */,
 				0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 				52443F5D1C063ADC00033633 /* viga.png in Resources */,
+				52C8E9EF1C07A65400F84C87 /* GateClosed.wav in Resources */,
 				003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */,
 				000538421C08D77600496CB5 /* EXPLOSION_HERO.mp3 in Resources */,
 				AF069D681BFE450D00AC81EC /* FlyingMonster.atlas in Resources */,

@@ -18,7 +18,8 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     var level:String?
     var interstitial:GADInterstitial?
     var backgroundMusicPlayer:AVAudioPlayer?
-    
+    var backgroundMusicPlayer2:AVAudioPlayer?
+    let clickedButton = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("NormalButton", ofType: "wav")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +132,12 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
         if(segue.identifier == "backToMenuSegue"){
+            do {
+                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: self.clickedButton)
+                backgroundMusicPlayer!.play()
+            }catch {
+                print("MUSIC NOT FOUND")
+            }
             let mainView = segue.destinationViewController as! UINavigationController
             let arr = mainView.viewControllers
             let menu =  arr[0] as! TBMenuViewController ;
