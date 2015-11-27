@@ -136,6 +136,14 @@
 		0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */ = {isa = PBXBuildFile; fileRef = 0092216C1BF138E6007C7DDC /* back-estagio.png */; };
 		009CAFD11BED305E003BA434 /* PlayerAttack2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */; };
 		009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */; };
+		00A8CE3E1C08988200AAD430 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A8CE3D1C08988200AAD430 /* GoogleMobileAds.framework */; };
+		00A8CE441C0898E500AAD430 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00A8CE3F1C0898E500AAD430 /* Level1Scene.sks */; };
+		00A8CE451C0898E500AAD430 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00A8CE401C0898E500AAD430 /* Level2Scene.sks */; };
+		00A8CE461C0898E500AAD430 /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00A8CE411C0898E500AAD430 /* Level3Scene.sks */; };
+		00A8CE471C0898E500AAD430 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00A8CE421C0898E500AAD430 /* Level4Scene.sks */; };
+		00A8CE481C0898E500AAD430 /* Level5Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00A8CE431C0898E500AAD430 /* Level5Scene.sks */; };
+		00A8CE4C1C089AFC00AAD430 /* promoart2-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 00A8CE4B1C089AFC00AAD430 /* promoart2-01.png */; };
+		00A8CE581C08CA5000AAD430 /* dash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 00A8CE571C08CA5000AAD430 /* dash.mp3 */; };
 		00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ABE1BEA7EAB00323B6D /* smoke1.png */; };
 		00AC3AC11BEA83EA00323B6D /* TBEspinhoSoltoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC3AC01BEA83EA00323B6D /* TBEspinhoSoltoNode.swift */; };
 		00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */; };
@@ -367,6 +375,14 @@
 		0092216C1BF138E6007C7DDC /* back-estagio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-estagio.png"; sourceTree = "<group>"; };
 		009CAFD01BED305E003BA434 /* PlayerAttack2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack2.atlas; sourceTree = "<group>"; };
 		009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLevelScene.swift; sourceTree = "<group>"; };
+		00A8CE3D1C08988200AAD430 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		00A8CE3F1C0898E500AAD430 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		00A8CE401C0898E500AAD430 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
+		00A8CE411C0898E500AAD430 /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
+		00A8CE421C0898E500AAD430 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
+		00A8CE431C0898E500AAD430 /* Level5Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level5Scene.sks; sourceTree = "<group>"; };
+		00A8CE4B1C089AFC00AAD430 /* promoart2-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "promoart2-01.png"; sourceTree = "<group>"; };
+		00A8CE571C08CA5000AAD430 /* dash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dash.mp3; sourceTree = "<group>"; };
 		00AC3ABE1BEA7EAB00323B6D /* smoke1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smoke1.png; path = ../smoke1.png; sourceTree = "<group>"; };
 		00AC3AC01BEA83EA00323B6D /* TBEspinhoSoltoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhoSoltoNode.swift; sourceTree = "<group>"; };
 		00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerStop.atlas; sourceTree = "<group>"; };
@@ -470,6 +486,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
+				00A8CE3E1C08988200AAD430 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,6 +665,7 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
+				00A8CE3D1C08988200AAD430 /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
@@ -740,6 +758,7 @@
 		008203621BFE463E00534647 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				00A8CE571C08CA5000AAD430 /* dash.mp3 */,
 				0082033F1BFD0EF300534647 /* Run.mp3 */,
 				008203581BFE3D0400534647 /* attack_1.mp3 */,
 				008203561BFE3B8D00534647 /* attack_2.mp3 */,
@@ -953,6 +972,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				00A8CE4B1C089AFC00AAD430 /* promoart2-01.png */,
 				0064D69F1C07668900BC0B2F /* continue.png */,
 				0064D69D1C07667B00BC0B2F /* FinalScreen.atlas */,
 				00200B661C063B560094FFBD /* AreaCleared.atlas */,
@@ -997,6 +1017,11 @@
 		00CDBECA1BBD9FD100BC0517 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				00A8CE3F1C0898E500AAD430 /* Level1Scene.sks */,
+				00A8CE401C0898E500AAD430 /* Level2Scene.sks */,
+				00A8CE411C0898E500AAD430 /* Level3Scene.sks */,
+				00A8CE421C0898E500AAD430 /* Level4Scene.sks */,
+				00A8CE431C0898E500AAD430 /* Level5Scene.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1120,6 +1145,7 @@
 				009221611BF128CE007C7DDC /* Squares Bold Free.otf in Resources */,
 				00200B5D1C0634670094FFBD /* baseInicio.png in Resources */,
 				009221591BF1187E007C7DDC /* enfeiteBaixo-2.png in Resources */,
+				00A8CE441C0898E500AAD430 /* Level1Scene.sks in Resources */,
 				008349B61BFFA1BE00012C22 /* contador-3.png in Resources */,
 				008349BB1BFFAEAD00012C22 /* FrenezyAnimation.atlas in Resources */,
 				008698B11BE94DA900EE80F2 /* Alert.atlas in Resources */,
@@ -1131,9 +1157,11 @@
 				008203411BFD0EF300534647 /* attack.mp3 in Resources */,
 				5279DD2C1BF3DBC800E61727 /* ShooterBot.atlas in Resources */,
 				00F6CFE21BDEBF6A006F0302 /* play_off.png in Resources */,
+				00A8CE471C0898E500AAD430 /* Level4Scene.sks in Resources */,
 				00200B601C0634760094FFBD /* fio solto1.png in Resources */,
 				00CDBE9A1BB9B39000BC0517 /* LaunchScreen.storyboard in Resources */,
 				0082035D1BFE406D00534647 /* robotExplosion.mp3 in Resources */,
+				00A8CE581C08CA5000AAD430 /* dash.mp3 in Resources */,
 				0092214F1BF11863007C7DDC /* enfeiteCima-1.png in Resources */,
 				009221501BF11863007C7DDC /* enfeiteCima-2.png in Resources */,
 				009221511BF11863007C7DDC /* enfeiteCima-3.png in Resources */,
@@ -1167,6 +1195,7 @@
 				008349A91BFF999100012C22 /* moeda.mp3 in Resources */,
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
 				001E55CD1BD8221600B80833 /* plataformsm.png in Resources */,
+				00A8CE481C0898E500AAD430 /* Level5Scene.sks in Resources */,
 				52FDE2DE1BF29285003D9A1D /* DieShooterBot.atlas in Resources */,
 				00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */,
 				AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */,
@@ -1193,12 +1222,14 @@
 				0002CE931BF5171000FDE20A /* set-4.png in Resources */,
 				008698B41BE94DA900EE80F2 /* speedBooster.atlas in Resources */,
 				0002CE951BF5171000FDE20A /* set-6.png in Resources */,
+				00A8CE451C0898E500AAD430 /* Level2Scene.sks in Resources */,
 				52714B711BDE7875006200A1 /* metalbolcklg-1.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
 				002FD8101BF650D0003514A4 /* pt-hud.png in Resources */,
 				5289B84E1BE0068600CA6C2D /* darkness.png in Resources */,
 				521269441BDACCE100B5FB2E /* edge1.png in Resources */,
 				AFF489F41BD56D8700463411 /* PlayerRun.atlas in Resources */,
+				00A8CE4C1C089AFC00AAD430 /* promoart2-01.png in Resources */,
 				0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */,
 				0022C02D1BE2A44300A184D5 /* jumptxt.png in Resources */,
 				008203461BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 in Resources */,
@@ -1269,6 +1300,7 @@
 				001E55D21BD8221600B80833 /* roofend2.png in Resources */,
 				52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */,
 				0022C02E1BE2A44300A184D5 /* SlideFrontTutorial.atlas in Resources */,
+				00A8CE461C0898E500AAD430 /* Level3Scene.sks in Resources */,
 				0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
