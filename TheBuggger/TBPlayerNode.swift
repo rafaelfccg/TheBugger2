@@ -396,14 +396,14 @@ class TBPlayerNode: SKSpriteNode {
                 self.removeActionForKey("attack")
             }
             if self.actionForKey("die") == nil{
-                self.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
+                self.runAction(SKAction.group([(SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.removeAttackJoint()
                     self.removeFromParent()
                     
                     sender.restartLevel()
                     sender.checkAd()
                     
-                })])), withKey: "die")
+                })])), SKAction.playSoundFileNamed("EXPLOSION_HERO", waitForCompletion: false)]), withKey: "die")
                 
                 
             }
