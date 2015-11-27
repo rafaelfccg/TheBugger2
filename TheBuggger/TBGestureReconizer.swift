@@ -181,7 +181,7 @@ func findDirection (x:Double, y:Double) -> Directions{ //45 graus para cada dire
     }else{
         if(sin < referenceSin - 1){
             return Directions.S
-        }else if (sin <     -referenceSin){
+        }else if (sin < -referenceSin){
             return Directions.SE
         }else{
             return Directions.L

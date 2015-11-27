@@ -259,8 +259,11 @@ class TBPlayerNode: SKSpriteNode {
         self.standJoint?.name = "standNode"
     }
     func addStandingJoint(){
+        
         standJoint?.zRotation = 0
-        self.addChild(standJoint!)
+        if standJoint?.parent == nil{
+            self.addChild(standJoint!)
+        }
         standJoint?.position = CGPointMake(0, 145)
     }
     func removeStandingNode(){
@@ -300,12 +303,14 @@ class TBPlayerNode: SKSpriteNode {
             physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
         }
         //subindo
-        if(self.physicsBody?.velocity.dy > 1){
-            self.runAirAction()
-        }
-        //caindo
-        if(self.physicsBody?.velocity.dy < -1){
-            self.runFallAction()
+        if self.actionForKey("dash") == nil  && actionForKey("defence") == nil && self.actionForKey("attack") == nil{
+            if(self.physicsBody?.velocity.dy > 1){
+                self.runAirAction()
+            }
+            //caindo
+            if(self.physicsBody?.velocity.dy < -1){
+                self.runFallAction()
+            }
         }
     }
     func resetHero(){
@@ -314,6 +319,8 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.pinned = false
         self.zRotation = 0
         self.score = 0
+        self.qtdMoedas = 0
+        self.monstersKilled = 0
         self.removeStandingNode()
         self.addStandingJoint()
         self.addAttackJoint()
@@ -389,15 +396,16 @@ class TBPlayerNode: SKSpriteNode {
                 self.removeActionForKey("attack")
             }
             if self.actionForKey("die") == nil{
-                self.runAction((SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
+                self.runAction(SKAction.group([(SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.removeAttackJoint()
                     self.removeFromParent()
                     
                     sender.restartLevel()
+                    sender.checkAd()
                     
-                })])), withKey: "die")
+                })])), SKAction.playSoundFileNamed("EXPLOSION_HERO", waitForCompletion: false)]), withKey: "die")
                 
-                sender.checkAd()
+                
             }
         }
     }
@@ -522,7 +530,11 @@ class TBPlayerNode: SKSpriteNode {
     func dash(){
         if self.actionForKey("defence") == nil && self.actionForKey("attack") == nil && self.actionForKey("dash") == nil  && self.actionForKey("die") == nil{
             self.removeStandingNode()
-            self.runAction(self.dashActionModifier!,withKey: "dash")
+            if jumpState == JumpState.CanJump{
+                self.runAction(SKAction.group([self.dashActionModifier!, SKAction.playSoundFileNamed("dash", waitForCompletion: true)]),withKey: "dash")
+            }else {
+                self.runAction(self.dashActionModifier! ,withKey: "dash")
+            }
         }
     }
     

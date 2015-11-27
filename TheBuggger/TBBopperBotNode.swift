@@ -68,22 +68,19 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
     
     func dieAnimation(hero: TBPlayerNode)
     {
-        
-        if(actionForKey("attack") != nil)
-        {
-            removeActionForKey("attack")
-        }
+
+        self.removeAllActions()
             //adicionando score ao heroi
-            hero.score += 10
-            hero.monstersKilled++
+        hero.score += 10
+        hero.monstersKilled++
             //tirando corpo fisico e contato
-            self.physicsBody?.categoryBitMask = 0
-            self.physicsBody?.collisionBitMask = 0
-            self.physicsBody?.pinned = true
-            self.removeAllChildren()
-            runAction(SKAction.sequence([TBBopperBotNode.deathAnimation!, SKAction.runBlock({
+        self.physicsBody?.categoryBitMask = 0
+        self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.pinned = true
+        self.removeAllChildren()
+        runAction(SKAction.sequence([TBBopperBotNode.deathAnimation!, SKAction.runBlock({
                 self.removeFromParent()
-            })]), withKey: "dieMonster")
+        })]), withKey: "dieMonster")
         
     }
     

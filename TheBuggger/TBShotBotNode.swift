@@ -99,6 +99,7 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
     {
         //adicionando score ao heroi
         stopShotMode()
+        self.removeAllActions()
         hero.score += 10
         hero.monstersKilled++
         //tirando corpo fisico e contato

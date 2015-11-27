@@ -754,6 +754,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.backgroundMusicPlayer?.pause()
                 self.backtToMenu()
             }else if (name == "Continue"){
+                //self.completionNode?.animateBackground()
                 self.delegateChanger?.selectLevel("SelectLevelScene")
                 self.backgroundMusicPlayer?.stop()
             }else{
@@ -997,34 +998,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hero.realSpeed = 0
             
             let action = SKAction.sequence([TBFinalNode.animation!, SKAction.runBlock({
-
-                self.childNodeWithName(TBFinalNode.nameBack)!.runAction(
+                if self.completionNode?.parent == nil {
+                    self.completionNode = TBCompletionLevelNode.unarchiveFromFile("TBCompletionLevelNode")
+                    self.completionNode?.zPosition = self.HUDz
+                    self.completionNode?.setUP(self.numberOfDeath, bits:self.coinsMark , coins: self.hero.qtdMoedas, monsters: self.hero.monstersKilled, pontos: self.hero.score)
+                }
+            self.childNodeWithName(TBFinalNode.nameBack)!.runAction(
                     
-                    SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
+                SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
                         self.scene?.view?.paused = true
                         let defaults = NSUserDefaults.standardUserDefaults()
                         let max = defaults.integerForKey("level")
                         if max < self.levelSelected! + 1 {
                              defaults.setInteger(self.levelSelected! + 1, forKey: "level")
-                        } 
-                        //self.delegateChanger!.selectLevel("SelectLevelScene")
-                        self.completionNode = TBCompletionLevelNode.unarchiveFromFile("TBCompleteLevelNode")
-                        
-                        self.completionNode?.zPosition = self.HUDz
-                        self.completionNode?.setUP(self.numberOfDeath, bits:self.coinsMark , coins: self.hero.qtdMoedas, monsters: self.hero.monstersKilled, pontos: self.hero.score)
-                        self.camera?.enumerateChildNodesWithName("hud", usingBlock: {(node,pointer) in
-                                node.removeFromParent()
-                        })
-                        self.camera?.enumerateChildNodesWithName(self.removable, usingBlock: {(node,pointer) in
-                            node.removeFromParent()
-                        })
-                        self.completionNode?.name = "endLevel"
-                        self.completionNode?.delegateChanger = self.delegateChanger
-                        self.camera?.addChild(self.completionNode!)
-                    })])
-                )
+                        }
+                        if (self.completionNode?.parent == nil){
+                            self.camera!.addChild(self.completionNode!)
+                            self.completionNode!.animateBackground()
+                        }
+                    
+                })])
+            )
             
             })])
+            
+        self.camera?.enumerateChildNodesWithName("hud", usingBlock: {(node,pointer) in
+                node.removeFromParent()
+            })
+        self.camera?.enumerateChildNodesWithName(self.removable, usingBlock: {(node,pointer) in
+                node.removeFromParent()
+        })
         
         let clearedArr = TBUtils().getSprites("AreaCleared", nomeImagens: "AC-")
         let areaCleared = SKSpriteNode( texture: clearedArr[0])
