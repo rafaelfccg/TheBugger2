@@ -47,7 +47,7 @@ class TBCompletionLevelNode: SKNode {
         if bits[2]{ bitCount++}
         
         let attempt  = self.childNodeWithName("Attempts") as! SKLabelNode
-        attempt.text =  "Attempts: \(attempts)"
+        attempt.text =  "Attempts: \(attempts + 1)"
         
         let bit  = self.childNodeWithName("Bits") as! SKLabelNode
         bit.text =  "Bits: \(bitCount)/3"
