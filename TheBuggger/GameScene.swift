@@ -1030,11 +1030,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let areaCleared = SKSpriteNode( texture: clearedArr[0])
         let actionClear = SKAction.animateWithTextures(clearedArr, timePerFrame: 0.1)
         self.camera?.addChild(areaCleared)
-            areaCleared.runAction(SKAction.sequence([actionClear, SKAction.runBlock({
+            let groupFinal2 = SKAction.group([SKAction.playSoundFileNamed("Complete.wav", waitForCompletion: true), actionClear])
+            areaCleared.runAction(SKAction.sequence([groupFinal2, SKAction.runBlock({
                 areaCleared.removeFromParent() 
             })]))
-    
-            finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,action]))
+            let groupFinal = SKAction.group([SKAction.playSoundFileNamed("GateClosed", waitForCompletion: true), action])
+            finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
         
             
         } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE)  {
