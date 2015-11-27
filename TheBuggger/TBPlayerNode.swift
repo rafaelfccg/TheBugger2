@@ -319,6 +319,8 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.pinned = false
         self.zRotation = 0
         self.score = 0
+        self.qtdMoedas = 0
+        self.monstersKilled = 0
         self.removeStandingNode()
         self.addStandingJoint()
         self.addAttackJoint()
