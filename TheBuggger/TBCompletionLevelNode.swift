@@ -20,7 +20,7 @@ class TBCompletionLevelNode: SKNode {
     }
     
     class func unarchiveFromFile(file : String) -> TBCompletionLevelNode? {
-        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
+        if let path = NSBundle.mainBundle().pathForResource(file, ofType: ".sks") {
             do{
                 let sceneData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
