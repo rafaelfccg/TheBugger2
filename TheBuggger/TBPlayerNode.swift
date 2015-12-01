@@ -86,7 +86,7 @@ class TBPlayerNode: SKSpriteNode {
     
     static func createPlayerAttack(){
         let atackArray = TBUtils().getSprites("PlayerAttack", nomeImagens: "attack-")
-        let atackArray2 = TBUtils().getSprites("PlayerAttack2", nomeImagens: "attack-")
+        let atackArray2 = TBUtils().getSprites("PlayerAttack22", nomeImagens: "attack-")
         TBPlayerNode.attackActionAnimation1  = SKAction.group([SKAction.animateWithTextures(atackArray2, timePerFrame: 0.07), SKAction.playSoundFileNamed("attack_2.mp3", waitForCompletion: false)])
         
         
@@ -272,7 +272,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func createAttackJoint()
     {
-        let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(570, 150))
+        let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(570, 290))
         
         atackJointSquare.physicsBody = SKPhysicsBody(rectangleOfSize: atackJointSquare.size)
         atackJointSquare.physicsBody?.affectedByGravity = false;
@@ -392,6 +392,7 @@ class TBPlayerNode: SKSpriteNode {
             self.physicsBody?.pinned = true
             sender.stopParalax = true
             // para a animação do ataque caso ele morra
+            
             if((self.actionForKey("attack")) != nil) {
                 self.removeActionForKey("attack")
             }
@@ -536,6 +537,11 @@ class TBPlayerNode: SKSpriteNode {
                 self.runAction(self.dashActionModifier! ,withKey: "dash")
             }
         }
+    }
+    
+    func stopWalk() {
+        self.removeActionWalk()
+        self.runStandingAction()
     }
     
     func actionCall(){
