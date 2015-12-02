@@ -68,10 +68,6 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
             //scene.isMethodOne = 1
             
             skView.presentScene(scene)
-            
-            if(!backgroundMusicPlayer!.playing){
-                backgroundMusicPlayer?.play()
-            }
         }
     }
     

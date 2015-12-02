@@ -176,10 +176,9 @@
 		5279DD2E1BF3DBFE00E61727 /* RepousoShotBot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5279DD2D1BF3DBFE00E61727 /* RepousoShotBot.atlas */; };
 		5279DD301BF3DF5400E61727 /* ShotDefended.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5279DD2F1BF3DF5400E61727 /* ShotDefended.atlas */; };
 		527B78871C0E205600F68B0E /* PlayerAttack22.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 527B78861C0E205600F68B0E /* PlayerAttack22.atlas */; };
-		527B788F1C0E346E00F68B0E /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 527B788E1C0E346E00F68B0E /* GoogleMobileAds.framework */; };
-		527B78911C0E34BF00F68B0E /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 527B78901C0E34BF00F68B0E /* Level1Scene.sks */; };
-		527B78931C0E357400F68B0E /* PlayerAttack22.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 527B78921C0E357400F68B0E /* PlayerAttack22.atlas */; };
 		5282629D1C0CD94900F8D122 /* parado.png in Resources */ = {isa = PBXBuildFile; fileRef = 5282629C1C0CD94900F8D122 /* parado.png */; };
+		52870C151C0F6B6E00F56231 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52870C141C0F6B6E00F56231 /* GoogleMobileAds.framework */; };
+		52870C171C0F6B8C00F56231 /* PlayerAttack22.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52870C161C0F6B8C00F56231 /* PlayerAttack22.atlas */; };
 		5289B84E1BE0068600CA6C2D /* darkness.png in Resources */ = {isa = PBXBuildFile; fileRef = 5289B84D1BE0068600CA6C2D /* darkness.png */; };
 		52C376F61BC441190012BC96 /* TBShotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F51BC441190012BC96 /* TBShotNode.swift */; };
 		52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */; };
@@ -429,10 +428,9 @@
 		5279DD2D1BF3DBFE00E61727 /* RepousoShotBot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RepousoShotBot.atlas; sourceTree = "<group>"; };
 		5279DD2F1BF3DF5400E61727 /* ShotDefended.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShotDefended.atlas; sourceTree = "<group>"; };
 		527B78861C0E205600F68B0E /* PlayerAttack22.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack22.atlas; sourceTree = "<group>"; };
-		527B788E1C0E346E00F68B0E /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		527B78901C0E34BF00F68B0E /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
-		527B78921C0E357400F68B0E /* PlayerAttack22.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack22.atlas; sourceTree = "<group>"; };
 		5282629C1C0CD94900F8D122 /* parado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parado.png; sourceTree = "<group>"; };
+		52870C141C0F6B6E00F56231 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		52870C161C0F6B8C00F56231 /* PlayerAttack22.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack22.atlas; sourceTree = "<group>"; };
 		5289B84D1BE0068600CA6C2D /* darkness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = darkness.png; sourceTree = "<group>"; };
 		52C376F51BC441190012BC96 /* TBShotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotNode.swift; sourceTree = "<group>"; };
 		52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotNode.swift; sourceTree = "<group>"; };
@@ -502,7 +500,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				527B788F1C0E346E00F68B0E /* GoogleMobileAds.framework in Frameworks */,
+				52870C151C0F6B6E00F56231 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,7 +679,7 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				527B788E1C0E346E00F68B0E /* GoogleMobileAds.framework */,
+				52870C141C0F6B6E00F56231 /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
@@ -992,7 +990,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				527B78921C0E357400F68B0E /* PlayerAttack22.atlas */,
+				52870C161C0F6B8C00F56231 /* PlayerAttack22.atlas */,
 				5282629C1C0CD94900F8D122 /* parado.png */,
 				52700FF41C08DD99006DEDB3 /* logo_1.png */,
 				52700FF51C08DD99006DEDB3 /* logo_2.png */,
@@ -1045,7 +1043,6 @@
 		00CDBECA1BBD9FD100BC0517 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				527B78901C0E34BF00F68B0E /* Level1Scene.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1210,7 +1207,6 @@
 				00622BD01C03470E00155DB9 /* contador-1.png in Resources */,
 				52C8E9F11C07A66300F84C87 /* Complete.wav in Resources */,
 				52EF6EE21BF51FF600780377 /* ShooterBot2.atlas in Resources */,
-				527B78911C0E34BF00F68B0E /* Level1Scene.sks in Resources */,
 				0022C0321BE2A44300A184D5 /* taptxt.png in Resources */,
 				008203441BFD0EF300534647 /* introMenu.wav in Resources */,
 				008203611BFE45CA00534647 /* defence.mp3 in Resources */,
@@ -1254,7 +1250,7 @@
 				521269441BDACCE100B5FB2E /* edge1.png in Resources */,
 				AFF489F41BD56D8700463411 /* PlayerRun.atlas in Resources */,
 				0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */,
-				527B78931C0E357400F68B0E /* PlayerAttack22.atlas in Resources */,
+				52870C171C0F6B8C00F56231 /* PlayerAttack22.atlas in Resources */,
 				0022C02D1BE2A44300A184D5 /* jumptxt.png in Resources */,
 				008203461BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 in Resources */,
 				001E55D01BD8221600B80833 /* roof.png in Resources */,

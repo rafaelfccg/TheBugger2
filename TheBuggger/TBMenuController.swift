@@ -121,18 +121,11 @@ class TBMenuViewController :UIViewController {
                 print("MUSIC NOT FOUND")
             }
         }else{
-            do {
-                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-                backgroundMusicPlayer!.numberOfLoops  = -1
+            
                 if(!backgroundMusicPlayer!.playing){
                     backgroundMusicPlayer?.play()
                 }
-            }catch {
-                print("MUSIC NOT FOUND")
-            }
-//            if(!backgroundMusicPlayer!.playing){
-//                backgroundMusicPlayer?.play()
-//            }
+            
         }
         
         

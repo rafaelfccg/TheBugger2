@@ -219,6 +219,13 @@ class TBPlayerNode: SKSpriteNode {
             self.runAction(TBPlayerNode.standActionAnimation!, withKey:"stand")
         }
     }
+    
+    func removeStandingAction(){
+        if(self.actionForKey("stand") != nil){
+            self.removeActionForKey("stand")
+        }
+    }
+    
     func removeActionWalk(){
         if(self.actionForKey("walk") != nil){
             self.removeActionForKey("walk")
@@ -532,7 +539,9 @@ class TBPlayerNode: SKSpriteNode {
         if self.actionForKey("defence") == nil && self.actionForKey("attack") == nil && self.actionForKey("dash") == nil  && self.actionForKey("die") == nil{
             self.removeStandingNode()
             if jumpState == JumpState.CanJump{
-                self.runAction(SKAction.group([self.dashActionModifier!, SKAction.playSoundFileNamed("dash", waitForCompletion: true)]),withKey: "dash")
+                let dashGroup = SKAction.group([self.dashActionModifier!, SKAction.playSoundFileNamed("dash", waitForCompletion: true)])
+                runAction(dashGroup)
+                self.runAction(SKAction.sequence([dashGroup, SKAction.runBlock({self.runWalkingAction()})]) ,withKey: "dash")
             }else {
                 self.runAction(self.dashActionModifier! ,withKey: "dash")
             }
