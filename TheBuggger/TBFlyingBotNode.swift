@@ -34,16 +34,20 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
         //não pode ser afetado pela gravidade pois está voando
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
-        //estava movendo ao colidir com o player, não sei se é a melhor solução
-        self.physicsBody?.dynamic = false
+        // deixei a massa como 5 para ele n andar para trás quando colidir com o heroi
+        self.physicsBody?.mass = 5
+        self.physicsBody?.dynamic = true
         self.physicsBody?.friction = 0.8
+        self.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
+        self.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.TIRO_NODE
+        self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
         self.runAction(SKAction.repeatActionForever(TBFlyingBotNode.animation!))
         
         // adicionando referencia, dá pra otimizar
         let referencia:SKSpriteNode! = SKSpriteNode()
         referencia?.name = "referencia"
         referencia?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(10, 1000))
-        referencia?.position = CGPointMake(-500, 0)
+        referencia?.position = CGPointMake(-800, 0)
         referencia.physicsBody?.pinned = true
         referencia.physicsBody?.affectedByGravity = false
         referencia.physicsBody?.allowsRotation = false
@@ -81,7 +85,7 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
         let moveUp = SKAction.moveBy(CGVector(dx: -20, dy: 75), duration: 0.6)
         let moveDown = SKAction.moveBy(CGVector(dx: -70, dy: -75), duration: 0.40)
         //sem animação, apenas movimento
-        TBFlyingBotNode.attackAnimation = SKAction.repeatActionForever(SKAction.sequence([moveUp, moveDown]))
+        TBFlyingBotNode.attackAnimation = SKAction.repeatActionForever(SKAction.sequence([moveDown, moveUp]))
     }
     
     func dieAnimation(hero: TBPlayerNode)
