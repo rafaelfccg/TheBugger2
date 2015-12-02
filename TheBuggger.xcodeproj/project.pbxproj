@@ -210,7 +210,6 @@
 		AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27241BE00EC80027965B /* EndzoneBack.atlas */; };
 		AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A27291BE010E20027965B /* TBFinalNode.swift */; };
 		AF2134421C0CD230006BB9D8 /* Moeda.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF2134411C0CD230006BB9D8 /* Moeda.atlas */; };
-		AF2134441C0CD2BB006BB9D8 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2134431C0CD2BB006BB9D8 /* GoogleMobileAds.framework */; };
 		AF2134471C0CD4A7006BB9D8 /* TBCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF2134451C0CD4A7006BB9D8 /* TBCoreDataModel.xcdatamodeld */; };
 		AF21344D1C0CD66D006BB9D8 /* TBDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21344C1C0CD66D006BB9D8 /* TBDataController.swift */; };
 		AF2134901C0CE888006BB9D8 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21348E1C0CE888006BB9D8 /* Statistics.swift */; };
@@ -231,6 +230,7 @@
 		AFE7EF781BF3C7BC00C99A94 /* PlayerAir.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */; };
 		AFE7EF901BF3D59A00C99A94 /* SelectLevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF8F1BF3D59A00C99A94 /* SelectLevelScene.sks */; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; };
+		AFEFA2B81C0F5CB5007E216C /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEFA2B71C0F5CB5007E216C /* GoogleMobileAds.framework */; };
 		AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */; };
 		AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489EE1BD56D8700463411 /* PlayerDash.atlas */; };
 		AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489EF1BD56D8700463411 /* PlayerJump.atlas */; };
@@ -470,7 +470,6 @@
 		AF0A27241BE00EC80027965B /* EndzoneBack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EndzoneBack.atlas; sourceTree = "<group>"; };
 		AF0A27291BE010E20027965B /* TBFinalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFinalNode.swift; sourceTree = "<group>"; };
 		AF2134411C0CD230006BB9D8 /* Moeda.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Moeda.atlas; sourceTree = "<group>"; };
-		AF2134431C0CD2BB006BB9D8 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		AF2134461C0CD4A7006BB9D8 /* TBCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TBCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		AF21344C1C0CD66D006BB9D8 /* TBDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBDataController.swift; sourceTree = "<group>"; };
 		AF21348E1C0CE888006BB9D8 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
@@ -493,6 +492,7 @@
 		AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAir.atlas; sourceTree = "<group>"; };
 		AFE7EF8F1BF3D59A00C99A94 /* SelectLevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectLevelScene.sks; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
+		AFEFA2B71C0F5CB5007E216C /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack.atlas; sourceTree = "<group>"; };
 		AFF489EE1BD56D8700463411 /* PlayerDash.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDash.atlas; sourceTree = "<group>"; };
 		AFF489EF1BD56D8700463411 /* PlayerJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerJump.atlas; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				AF2134441C0CD2BB006BB9D8 /* GoogleMobileAds.framework in Frameworks */,
+				AFEFA2B81C0F5CB5007E216C /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -696,7 +696,7 @@
 			isa = PBXGroup;
 			children = (
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
-				AF2134431C0CD2BB006BB9D8 /* GoogleMobileAds.framework */,
+				AFEFA2B71C0F5CB5007E216C /* GoogleMobileAds.framework */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
 				007BE19A1C04DF5F008A2C02 /* EventKit.framework */,

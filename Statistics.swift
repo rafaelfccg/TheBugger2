@@ -26,8 +26,8 @@ class Statistics: NSManagedObject {
 }
 
 /* salva os dados do nivel que o usuário jogou criando uma nova entrada na tabela/entidade */
-func saveLogData(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentativas: Int) {
-    
+func createLogData(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentativas: Int)
+{
     // create an instance of our managedObjectContext
     let moc = TBDataController().managedObjectContext
     
@@ -56,25 +56,47 @@ func saveLogData(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentat
 
 
 /* busca todas as entradas da tabela/entidade */
-func fetchLogs(/*levelSelected: Int*/) {
-    
+func fetchLogs() -> [Statistics]!
+{
+    var statisticsArray: [Statistics]! = nil
     let moc = TBDataController().managedObjectContext
     let fetchRequest = NSFetchRequest(entityName: "Statistics")
-//    fetchRequest.predicate = NSPredicate(format: "level == %d", levelSelected)
     
     do {
         let fetched = try moc.executeFetchRequest(fetchRequest) as! [Statistics]
-        for (var i = 0; i < fetched.count; i++)
+       if(fetched.count > 0)
         {
-            print("score: \(fetched[i].score), qtdMoedas: \(fetched[i].moedas), level: \(fetched[i].level)")
+            statisticsArray = fetched
         }
     } catch {
         fatalError("Failed to fetch person: \(error)")
     }
+    
+    return statisticsArray
+}
+
+/* busca valores salvos pelo nível */
+func fetchLogsByLevel(levelSelected: Int) -> Statistics!
+{
+    var levelStatistics: Statistics! = nil
+    let moc = TBDataController().managedObjectContext
+    let fetchRequest = NSFetchRequest(entityName: "Statistics")
+    fetchRequest.predicate = NSPredicate(format: "level == %d", levelSelected)
+    
+    do {
+        let fetched = try moc.executeFetchRequest(fetchRequest) as! [Statistics]
+        if(fetched.count > 0){
+            levelStatistics = fetched[0]
+        }
+    } catch {
+        fatalError("Failed to fetch person: \(error)")
+    }
+    
+    return levelStatistics
 }
 
 /* salva os dados do nivel que o usuário jogou, se já passou aquele nível atualiza, se não cria uma nova entrada na tabela/entidade */
-func updateLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentativas: Int)
+func saveLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentativas: Int)
 {
     let context:NSManagedObjectContext =  TBDataController().managedObjectContext
     
@@ -82,11 +104,7 @@ func updateLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, 
     // seta a busca pelo nível
     fetchRequest.predicate = NSPredicate(format: "level == %d", levelSelected)
     
-    // conta bits, se pegou soma 1, se não soma 0
-    var bitCount: Int = 0
-    bitCount += bitMark[0] ? 1: 0
-    bitCount += bitMark[1] ? 1: 0
-    bitCount += bitMark[2] ? 1: 0
+    let bitCount: Int = countBits(bitMark)
     
     do {
         let fetchResults = try context.executeFetchRequest(fetchRequest) as! [Statistics]
@@ -98,10 +116,7 @@ func updateLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, 
             
             /* conta quantos bits o usuário já pegou em uma partida anterior
             salva se ele pegar mesma quantidade ou mais */
-            var bitSaved: Int = 0
-            bitSaved += managedObject.bit0 ? 1: 0
-            bitSaved += managedObject.bit1 ? 1: 0
-            bitSaved += managedObject.bit2 ? 1: 0
+            let bitSaved: Int = countBits([managedObject.bit0, managedObject.bit1, managedObject.bit2])
             
             if(bitCount >= bitSaved)
             {
@@ -131,9 +146,8 @@ func updateLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, 
                 managedObject.setValue(hero.score, forKey: "score")
             }
             
-            //soma a nova quantidade a o que já tinha
-            valorAnterior = Int(managedObject.tentativas)
-            managedObject.setValue(tentativas + valorAnterior, forKey: "tentativas")
+            //salva só o valor atualizado
+            managedObject.setValue(tentativas, forKey: "tentativas")
             
             //salva
             do {
@@ -145,12 +159,78 @@ func updateLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, 
         }
         else
         {
-            saveLogData(hero, bitMark: bitMark, levelSelected: levelSelected, tentativas: tentativas)
+            createLogData(hero, bitMark: bitMark, levelSelected: levelSelected, tentativas: tentativas)
         }
     } catch {
         fatalError("Failure to save context: \(error)")
     }
     
+}
+
+
+func saveAttempts(levelSelected: Int, tentativas: Int)
+{
+    let context:NSManagedObjectContext =  TBDataController().managedObjectContext
+    
+    let fetchRequest = NSFetchRequest(entityName: "Statistics")
+    // seta a busca pelo nível
+    fetchRequest.predicate = NSPredicate(format: "level == %d", levelSelected)
+    
+    do {
+        let fetchResults = try context.executeFetchRequest(fetchRequest) as! [Statistics]
+        if (fetchResults.count > 0)
+        {
+            let managedObject = fetchResults[0]
+            
+            //atualiza apenas o número de tentativas
+            managedObject.setValue(tentativas, forKey: "tentativas")
+            
+            //salva
+            do {
+                try context.save()
+                print("AttemptsUpdated")
+            } catch {
+                fatalError("Failure to save context: \(error)")
+            }
+        }
+        else
+        {
+            // se não existe registro salva as tentativas e setas os outros valores como 0/false
+            let entity = NSEntityDescription.insertNewObjectForEntityForName("Statistics", inManagedObjectContext: context) as! Statistics
+
+            entity.setValue(false, forKey: "bit0")
+            entity.setValue(false, forKey: "bit1")
+            entity.setValue(false, forKey: "bit2")
+            entity.setValue(0, forKey: "moedas")
+            entity.setValue(0, forKey: "monstersKilled")
+            entity.setValue(0, forKey: "monstersTotalKilled")
+            entity.setValue(0, forKey: "score")
+            entity.setValue(tentativas, forKey: "tentativas")
+            entity.setValue(levelSelected, forKey: "level")
+            
+            do {
+                try context.save()
+                print("AttemptsSaved")
+            } catch {
+                fatalError("Failure to save context: \(error)")
+            }
+
+        }
+    } catch {
+        fatalError("Failure to save context: \(error)")
+    }
+    
+}
+
+/* retorna o numero de bits que o usuário pegou (converte de Bool pra Int) */
+func countBits(bitMark: [Bool]) -> Int
+{
+    var bitCount: Int = 0
+    bitCount += bitMark[0] ? 1: 0
+    bitCount += bitMark[1] ? 1: 0
+    bitCount += bitMark[2] ? 1: 0
+    
+    return bitCount
 }
 
 
