@@ -7,10 +7,11 @@
         <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="moedas" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="monstersKilled" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="score" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="monstersTotalKilled" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="tentativas" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Statistics" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Statistics" positionX="-63" positionY="-18" width="128" height="180"/>
     </elements>
 </model>

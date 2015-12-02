@@ -16,8 +16,9 @@ class Statistics: NSManagedObject {
     @NSManaged var bit1: Bool
     @NSManaged var bit2: Bool
     @NSManaged var moedas: Int32
-    @NSManaged var score: Int64
+    @NSManaged var score: Int32
     @NSManaged var monstersKilled: Int32
+    @NSManaged var monstersTotalKilled: Int32
     @NSManaged var level: Int32
     @NSManaged var tentativas: Int32
 // Insert code here to add functionality to your managed object subclass
@@ -39,6 +40,7 @@ func saveLogData(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentat
     entity.setValue(bitMark[2], forKey: "bit2")
     entity.setValue(hero.qtdMoedas, forKey: "moedas")
     entity.setValue(hero.monstersKilled, forKey: "monstersKilled")
+    entity.setValue(hero.monstersKilled, forKey: "monstersTotalKilled")
     entity.setValue(hero.score, forKey: "score")
     entity.setValue(tentativas, forKey: "tentativas")
     entity.setValue(levelSelected, forKey: "level")
@@ -77,7 +79,7 @@ func updateLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, 
     let context:NSManagedObjectContext =  TBDataController().managedObjectContext
     
     let fetchRequest = NSFetchRequest(entityName: "Statistics")
-    // faz a busca pelo nível
+    // seta a busca pelo nível
     fetchRequest.predicate = NSPredicate(format: "level == %d", levelSelected)
     
     // conta bits, se pegou soma 1, se não soma 0
@@ -110,19 +112,30 @@ func updateLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, 
             //soma a nova quantidade a o que já tinha
             valorAnterior = Int(managedObject.moedas)
             managedObject.setValue(hero.qtdMoedas + valorAnterior, forKey: "moedas")
+            
             //soma a nova quantidade a o que já tinha
+            valorAnterior = Int(managedObject.monstersTotalKilled)
+            managedObject.setValue(hero.monstersKilled + valorAnterior, forKey: "monstersTotalKilled")
+            
+            //só salva se for maior que o anterior
             valorAnterior = Int(managedObject.monstersKilled)
-            managedObject.setValue(hero.monstersKilled, forKey: "monstersKilled")
+            if(hero.monstersKilled > valorAnterior)
+            {
+                managedObject.setValue(hero.monstersKilled, forKey: "monstersKilled")
+            }
+            
             //só salva o score se for maior que o anterior
             valorAnterior = Int(managedObject.score)
             if(hero.score > valorAnterior)
             {
-                managedObject.setValue(hero.score, forKey: "score")// >
+                managedObject.setValue(hero.score, forKey: "score")
             }
+            
             //soma a nova quantidade a o que já tinha
             valorAnterior = Int(managedObject.tentativas)
             managedObject.setValue(tentativas + valorAnterior, forKey: "tentativas")
             
+            //salva
             do {
                 try context.save()
                 print("LogUpdated")
