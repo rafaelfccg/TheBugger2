@@ -25,11 +25,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.hidden = true
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
-        let request = GADRequest()
-        request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb","efa04c216ac1cdf43763e139720b8045"];
-        interstitial!.loadRequest(request)
-        
+        createAndLoadInterstitial()
         selectLevel(self.level!)
         
     }
@@ -77,36 +73,39 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     
     func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     {
+        
         if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
-            backgroundMusicPlayer?.stop()
+            self.backgroundMusicPlayer?.stop()
             scene.delegateChanger = self
             scene.levelSelected = andLevel
             
             let skView = self.view as! SKView
             //skView.showsFPS = true
             //skView.showsNodeCount = true
-//            skView.showsPhysics = true;
+            //            skView.showsPhysics = true;
             NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
             
-            /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .AspectFill
             
             scene.isMethodOne = withMethod
             
             skView.presentScene(scene)
         }
+        
     }
     func backToMenu() {
-        let skView = self.view as! SKView
+        var skView = self.view as? SKView
         
-        skView.paused = true
-        skView.scene?.removeAllActions()
-        skView.scene?.removeAllChildren()
-        //self.navigationController?.popViewControllerAnimated(true)
-        self.performSegueWithIdentifier("backToMenuSegue", sender: self)
+        skView?.paused = true
+        skView?.scene?.removeAllActions()
+        skView?.scene?.removeAllChildren()
+        skView?.presentScene(nil)
+        skView = nil
+        
+        self.presentingViewController?.dismissViewControllerAnimated(false, completion: {})
+        
     }
 
     override func shouldAutorotate() -> Bool {

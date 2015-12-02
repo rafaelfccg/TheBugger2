@@ -22,10 +22,10 @@
 		0005383B1C08D35F00496CB5 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538361C08D35F00496CB5 /* Level4Scene.sks */; };
 		0005383C1C08D35F00496CB5 /* Level5Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538371C08D35F00496CB5 /* Level5Scene.sks */; };
 		000538441C08E4D900496CB5 /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000538431C08E4D900496CB5 /* Level3Scene.sks */; };
-		000538461C08E86E00496CB5 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000538451C08E86E00496CB5 /* GoogleMobileAds.framework */; };
 		000538481C08E8EF00496CB5 /* dash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 000538471C08E8EF00496CB5 /* dash.mp3 */; };
 		0005384A1C08E94300496CB5 /* EXPLOSION_HERO.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 000538491C08E94300496CB5 /* EXPLOSION_HERO.mp3 */; };
 		0005384C1C09020400496CB5 /* TBCompletionLevelNode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0005384B1C09020400496CB5 /* TBCompletionLevelNode.sks */; };
+		000538531C0E3D3700496CB5 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000538521C0E3D3700496CB5 /* GoogleMobileAds.framework */; };
 		000AA8291BFBC20200EC4E20 /* slow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 000AA8281BFBC20200EC4E20 /* slow.atlas */; };
 		000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000D09D81BBEF31100631559 /* TBPlayerNode.swift */; };
 		001E557A1BD6DA0C00B80833 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55791BD6DA0C00B80833 /* power1.png */; };
@@ -70,7 +70,6 @@
 		0022C0301BE2A44300A184D5 /* SlideUpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0261BE2A44300A184D5 /* SlideUpTutorial.atlas */; };
 		0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0271BE2A44300A184D5 /* TapTutorial.atlas */; };
 		0022C0321BE2A44300A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0281BE2A44300A184D5 /* taptxt.png */; };
-		0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C04D1BE2A95800A184D5 /* pixels.atlas */; };
 		002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80D1BF6508A003514A4 /* startCount.atlas */; };
 		002FD8101BF650D0003514A4 /* pt-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80F1BF650D0003514A4 /* pt-hud.png */; };
 		002FD8121BF6597D003514A4 /* back-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD8111BF6597D003514A4 /* back-hud.png */; };
@@ -267,10 +266,10 @@
 		000538361C08D35F00496CB5 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
 		000538371C08D35F00496CB5 /* Level5Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level5Scene.sks; sourceTree = "<group>"; };
 		000538431C08E4D900496CB5 /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
-		000538451C08E86E00496CB5 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		000538471C08E8EF00496CB5 /* dash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dash.mp3; sourceTree = "<group>"; };
 		000538491C08E94300496CB5 /* EXPLOSION_HERO.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EXPLOSION_HERO.mp3; sourceTree = "<group>"; };
 		0005384B1C09020400496CB5 /* TBCompletionLevelNode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBCompletionLevelNode.sks; sourceTree = "<group>"; };
+		000538521C0E3D3700496CB5 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		000AA8281BFBC20200EC4E20 /* slow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = slow.atlas; sourceTree = "<group>"; };
 		000D09D81BBEF31100631559 /* TBPlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPlayerNode.swift; sourceTree = "<group>"; };
 		001E55791BD6DA0C00B80833 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
@@ -315,7 +314,6 @@
 		0022C0261BE2A44300A184D5 /* SlideUpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlideUpTutorial.atlas; sourceTree = "<group>"; };
 		0022C0271BE2A44300A184D5 /* TapTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = TapTutorial.atlas; sourceTree = "<group>"; };
 		0022C0281BE2A44300A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
-		0022C04D1BE2A95800A184D5 /* pixels.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pixels.atlas; sourceTree = "<group>"; };
 		002FD80D1BF6508A003514A4 /* startCount.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = startCount.atlas; sourceTree = "<group>"; };
 		002FD80F1BF650D0003514A4 /* pt-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pt-hud.png"; sourceTree = "<group>"; };
 		002FD8111BF6597D003514A4 /* back-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-hud.png"; sourceTree = "<group>"; };
@@ -510,7 +508,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				000538461C08E86E00496CB5 /* GoogleMobileAds.framework in Frameworks */,
+				000538531C0E3D3700496CB5 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,7 +578,6 @@
 				002FD8131BF661B3003514A4 /* bits.atlas */,
 				AF0A27231BE00EC80027965B /* ENDZONE.atlas */,
 				AF0A27241BE00EC80027965B /* EndzoneBack.atlas */,
-				0022C04D1BE2A95800A184D5 /* pixels.atlas */,
 				5289B84D1BE0068600CA6C2D /* darkness.png */,
 				001E557E1BD8221600B80833 /* Animateds */,
 				001E55951BD8221600B80833 /* Paralax0 */,
@@ -689,7 +686,7 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				000538451C08E86E00496CB5 /* GoogleMobileAds.framework */,
+				000538521C0E3D3700496CB5 /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
@@ -1243,7 +1240,6 @@
 				001E55CA1BD8221600B80833 /* BaseD.png in Resources */,
 				0082035F1BFE425A00534647 /* shot.mp3 in Resources */,
 				008349BF1BFFAF4300012C22 /* FrenezyUpItem.atlas in Resources */,
-				0022C04E1BE2A95800A184D5 /* pixels.atlas in Resources */,
 				000AA8291BFBC20200EC4E20 /* slow.atlas in Resources */,
 				000538481C08E8EF00496CB5 /* dash.mp3 in Resources */,
 				001E55C41BD8221600B80833 /* structure1.png in Resources */,

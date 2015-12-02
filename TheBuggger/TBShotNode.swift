@@ -16,6 +16,8 @@ class TBShotNode: SKSpriteNode {
     var initialTime: CFTimeInterval = 0
     static var shotAnimation: SKAction?
     static var defendedAnimation: SKAction?
+    static var shotAtlas:SKTextureAtlas = SKTextureAtlas(named: "shot")
+    static var shotDefendedAtlas:SKTextureAtlas = SKTextureAtlas(named: "ShotDefended")
     
     init(shotPosition: CGPoint) {
         super.init(texture: nil, color: UIColor.whiteColor(), size: CGSizeMake(50, 50))
@@ -41,10 +43,10 @@ class TBShotNode: SKSpriteNode {
     
     static func createSKActionAnimation()
     {
-        let shotArray = TBUtils().getSprites("Shot", nomeImagens: "shot-")
+        let shotArray = TBUtils().getSprites(shotAtlas, nomeImagens: "shot-")
         TBShotNode.shotAnimation = SKAction.animateWithTextures(shotArray, timePerFrame: 0.5);
         
-        let defendedShotArray = TBUtils().getSprites("ShotDefended", nomeImagens: "shotDefended-")
+        let defendedShotArray = TBUtils().getSprites(shotDefendedAtlas, nomeImagens: "shotDefended-")
         TBShotNode.defendedAnimation = SKAction.animateWithTextures(defendedShotArray, timePerFrame: 0.05);
     }
     

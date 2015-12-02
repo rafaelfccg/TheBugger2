@@ -50,17 +50,20 @@ class TBPlayerNode: SKSpriteNode {
     var jumpState:JumpState
     var attackState:AttackState
     
-    
     var method:Int?
     
+    static let frenezyAnimationAtlas = SKTextureAtlas(named: "FrenezyAnimation")
+    static let playerRunAtlas = SKTextureAtlas(named: "PlayerRun")
+    static let playerDashAtlas = SKTextureAtlas(named: "PlayerDash")
+    
     static func createFrenezyAnimation(){
-        let frenezy = TBUtils().getSprites("FrenezyAnimation", nomeImagens: "powerup-")
+        let frenezy = TBUtils().getSprites(frenezyAnimationAtlas, nomeImagens: "powerup-")
         let action = SKAction.animateWithTextures(frenezy, timePerFrame: 0.15);
         
-        let startFrenezy = TBUtils().getSprites("FrenezyStart", nomeImagens: "powerupstart-")
+        let startFrenezy = TBUtils().getSprites(SKTextureAtlas(named: "FrenezyStart"), nomeImagens: "powerupstart-")
         let start =  SKAction.animateWithTextures(startFrenezy, timePerFrame: 0.09);
         
-        let endFrenezy = TBUtils().getSprites("FrenezyEnd", nomeImagens: "powerupend-")
+        let endFrenezy = TBUtils().getSprites(SKTextureAtlas(named: "FrenezyEnd"), nomeImagens: "powerupend-")
         let end =  SKAction.animateWithTextures(endFrenezy, timePerFrame: 0.09);
         
         let time = TBPlayerNode.frenezyTime  - (start.duration + end.duration)
@@ -70,14 +73,14 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     static func createPlayerStandAnimation(){
-        let walkArray = TBUtils().getSprites("PlayerStop", nomeImagens: "stop")
+        let walkArray = TBUtils().getSprites(SKTextureAtlas(named: "PlayerStop"), nomeImagens: "stop")
         let action = SKAction.animateWithTextures(walkArray, timePerFrame: 0.15);
         
         TBPlayerNode.standActionAnimation = SKAction.repeatActionForever(action)
     }
     
     static func createPlayerWalkAnimation(){
-        let walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
+        let walkArray = TBUtils().getSprites(TBPlayerNode.playerRunAtlas, nomeImagens: "run-")
         let action = SKAction.animateWithTextures(walkArray, timePerFrame: 0.05);
 
         TBPlayerNode.walkAction = SKAction.group([SKAction.repeatActionForever(action)])
@@ -85,8 +88,8 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     static func createPlayerAttack(){
-        let atackArray = TBUtils().getSprites("PlayerAttack", nomeImagens: "attack-")
-        let atackArray2 = TBUtils().getSprites("PlayerAttack2", nomeImagens: "attack-")
+        let atackArray = TBUtils().getSprites(SKTextureAtlas(named: "PlayerAttack"), nomeImagens: "attack-")
+        let atackArray2 = TBUtils().getSprites(SKTextureAtlas(named:"PlayerAttack2"), nomeImagens: "attack-")
         TBPlayerNode.attackActionAnimation1  = SKAction.group([SKAction.animateWithTextures(atackArray2, timePerFrame: 0.07), SKAction.playSoundFileNamed("attack_2.mp3", waitForCompletion: false)])
         
         
@@ -94,22 +97,22 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     static func createPlayerDefense(){
-        let defenceArray = TBUtils().getSprites("PlayerDefence", nomeImagens: "defend-")
+        let defenceArray = TBUtils().getSprites(SKTextureAtlas(named:"PlayerDefence"), nomeImagens: "defend-")
          TBPlayerNode.defenceAction =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.065);
     }
     
     static func createPlayerAirAnimation(){
-        let defenceArray = TBUtils().getSprites("PlayerAir", nomeImagens: "air-")
+        let defenceArray = TBUtils().getSprites(SKTextureAtlas(named: "PlayerAir"), nomeImagens: "air-")
         TBPlayerNode.airActionAnimation =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.12);
     }
     static func createPlayerFallingAnimation(){
-        let defenceArray = TBUtils().getSprites("PlayerFall", nomeImagens: "fall-")
+        let defenceArray = TBUtils().getSprites(SKTextureAtlas(named: "PlayerFall"), nomeImagens: "fall-")
         TBPlayerNode.fallActionAnimation =  SKAction.animateWithTextures(defenceArray, timePerFrame: 0.03);
     }
     
     static func createDeathAnimation()
     {
-        let deathArray = TBUtils().getSprites("PlayerDeath", nomeImagens: "death")
+        let deathArray = TBUtils().getSprites(SKTextureAtlas(named: "PlayerDeath"), nomeImagens: "death")
         TBPlayerNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
     }
     
@@ -141,7 +144,7 @@ class TBPlayerNode: SKSpriteNode {
         realSpeed = 0
         jumpState = JumpState.CanJump
         attackState = AttackState.Idle
-        var walkArray = TBUtils().getSprites("PlayerRun", nomeImagens: "run-")
+        var walkArray = TBUtils().getSprites(TBPlayerNode.playerRunAtlas, nomeImagens: "run-")
         
         self.texture = walkArray[0];
         
@@ -200,7 +203,7 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func configDash(){
-        let dashArray = TBUtils().getSprites("PlayerDash", nomeImagens: "dash-")
+        let dashArray = TBUtils().getSprites(TBPlayerNode.playerDashAtlas, nomeImagens: "dash-")
         let action = SKAction.animateWithTextures(dashArray, timePerFrame: 0.09);
         self.dashActionModifier = SKAction.sequence([action, SKAction.runBlock({
             self.addStandingJoint()
