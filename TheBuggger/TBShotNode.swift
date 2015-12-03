@@ -16,7 +16,7 @@ class TBShotNode: SKSpriteNode {
     var initialTime: CFTimeInterval = 0
     static var shotAnimation: SKAction?
     static var defendedAnimation: SKAction?
-    static var shotAtlas:SKTextureAtlas = SKTextureAtlas(named: "shot")
+    static var shotAtlas:SKTextureAtlas = SKTextureAtlas(named: "Shot")
     static var shotDefendedAtlas:SKTextureAtlas = SKTextureAtlas(named: "ShotDefended")
     
     init(shotPosition: CGPoint) {
