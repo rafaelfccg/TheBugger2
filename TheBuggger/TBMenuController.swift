@@ -22,6 +22,7 @@ class TBMenuViewController :UIViewController, DissmissViewControllerModal {
     @IBOutlet weak var efeitoCima: UIImageView!
     @IBOutlet weak var efeitoBaixo: UIImageView!
     
+    let backgroundMusicURL = NSBundle.mainBundle().URLForResource("introMenu", withExtension: ".wav")
     var backgroundMusicPlayer2:AVAudioPlayer?
     let clickedButton = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("NormalButton", ofType: "wav")!)
     var isMethodOne:Int?
@@ -117,9 +118,6 @@ class TBMenuViewController :UIViewController, DissmissViewControllerModal {
         }
         
         if(backgroundMusicPlayer == nil){
-            
-            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("introMenu", withExtension: ".wav")
-            
             do {
                 try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
                 backgroundMusicPlayer!.numberOfLoops  = -1
@@ -130,10 +128,13 @@ class TBMenuViewController :UIViewController, DissmissViewControllerModal {
                 print("MUSIC NOT FOUND")
             }
         }else{
-            if(!backgroundMusicPlayer!.playing){
-                backgroundMusicPlayer?.play()
-            }
+            
+                if(!backgroundMusicPlayer!.playing){
+                    backgroundMusicPlayer?.play()
+                }
+            
         }
+        
         
     }
     

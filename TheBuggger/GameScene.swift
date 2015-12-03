@@ -41,6 +41,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let removable = "removable"
     
+    var finalStage: Bool = false
+    
     //coins
     var coinsMark:[Bool] = [false,false,false]
     
@@ -66,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var topLimit:CGPoint = CGPointMake(0, 390)
     // count number of deaths
-    var numberOfDeath:Int = 0
+    var numberOfDeath:Int = 1
     // death node
     var deathNodeReference:SKNode?
     var stagePercentage:Double?
@@ -102,6 +104,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.deathSinceLastAd  = 0
+        
+        if let statisticsLogs = fetchLogsByLevel(levelSelected!)
+        {
+            numberOfDeath = Int(statisticsLogs.tentativas) + 1
+        }
         
         hero.method = isMethodOne
         self.addChild(hero)
@@ -452,6 +459,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func backtToMenu(){
+        saveAttempts(levelSelected!, tentativas: self.numberOfDeath)
         backgroundMusicPlayer?.stop()
         delegateChanger?.backToMenu()
         
@@ -569,6 +577,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.setObstacleTypeHit(node)
             
         })
+        
         self.enumerateChildNodesWithName("Teto", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
@@ -957,9 +966,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }else if bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE{
                 
                 hero.slowFloorCollision(bodyB, sender: self)
+            } else if bodyB.categoryBitMask == GameScene.TOCO_NODE {
+                if(bodyA.node?.position.x < bodyB.node?.position.x) {
+                    print("Hero parado")
+                    hero.stopWalk()
+                }
             }
-            
-            
         }else if((bodyA.categoryBitMask == GameScene.MONSTER_NODE)  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
             if(hero.attackState == AttackState.Attacking){
                 if let gbotmonste = bodyA.node as? TBMonsterProtocol{
@@ -995,31 +1007,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.END_LEVEL_NODE )){
             //terminou
+            if(!finalStage)
+            {
+                finalStage = true
+                
+                //Salvando os dados com persistencia
+                saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
+                
+                hero.realSpeed = 0
             
-            hero.realSpeed = 0
-            
-            let action = SKAction.sequence([TBFinalNode.animation!, SKAction.runBlock({
-                if self.completionNode?.parent == nil {
-                    
-                }
-            self.childNodeWithName(TBFinalNode.nameBack)!.runAction(
-                    
-                SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
-                        self.scene?.view?.paused = true
-                        let defaults = NSUserDefaults.standardUserDefaults()
-                        let max = defaults.integerForKey("level")
-                        if max < self.levelSelected! + 1 {
-                             defaults.setInteger(self.levelSelected! + 1, forKey: "level")
-                        }
-                    if self.completionNode == nil{
-                        self.completionNode = TBCompletionLevelNode.unarchiveFromFile("TBCompletionLevelNode")
+                let action = SKAction.sequence([TBFinalNode.animation!, SKAction.runBlock({
+                    if self.completionNode?.parent == nil {
+                        
                     }
-                    self.completionNode!.zPosition = self.HUDz
-                    self.completionNode!.setUP(self.numberOfDeath,bits:self.coinsMark , coins: self.hero.qtdMoedas, monsters: self.hero.monstersKilled, pontos: self.hero.score)
-                        if (self.completionNode?.parent == nil){
-                            self.camera!.addChild(self.completionNode!)
+                self.childNodeWithName(TBFinalNode.nameBack)!.runAction(
+                        
+                    SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
+                            self.scene?.view?.paused = true
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            let max = defaults.integerForKey("level")
+                            if max < self.levelSelected! + 1 {
+                                 defaults.setInteger(self.levelSelected! + 1, forKey: "level")
+                            }
+                        if self.completionNode == nil{
+                            self.completionNode = TBCompletionLevelNode.unarchiveFromFile("TBCompletionLevelNode")
                         }
-                    
+                        self.completionNode!.zPosition = self.HUDz
+                        self.completionNode!.setUP(self.numberOfDeath,bits:self.coinsMark , coins: self.hero.qtdMoedas, monsters: self.hero.monstersKilled, pontos: self.hero.score)
+                            if (self.completionNode?.parent == nil){
+                                self.camera!.addChild(self.completionNode!)
+                            }
+                        
+                    })])
+                )
+                
                 })])
             )
             
