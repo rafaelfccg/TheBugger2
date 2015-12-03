@@ -14,9 +14,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "508"
-            endingLineNumber = "508"
-            landmarkName = "jump()"
-            landmarkType = "5">
+            endingLineNumber = "508">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,9 +44,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "511"
-            endingLineNumber = "511"
-            landmarkName = "jump()"
-            landmarkType = "5">
+            endingLineNumber = "511">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,9 +90,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "470"
-            endingLineNumber = "470"
-            landmarkName = "attack()"
-            landmarkType = "5">
+            endingLineNumber = "470">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,9 +104,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "431"
-            endingLineNumber = "431"
-            landmarkName = "quickFloorCollision(_:sender:)"
-            landmarkType = "5">
+            endingLineNumber = "431">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -238,9 +230,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "setUpPlayer()"
-            landmarkType = "5">
+            endingLineNumber = "160">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -286,9 +276,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "setUpPlayer()"
-            landmarkType = "5">
+            endingLineNumber = "159">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -334,9 +322,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "477"
-            endingLineNumber = "477"
-            landmarkName = "attack()"
-            landmarkType = "5">
+            endingLineNumber = "477">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -350,9 +336,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "474"
-            endingLineNumber = "474"
-            landmarkName = "attack()"
-            landmarkType = "5">
+            endingLineNumber = "474">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -575,7 +559,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "461"
             endingLineNumber = "461"
-            landmarkName = "setHeroPosition()"
+            landmarkName = "backtToMenu()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -638,9 +622,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "enterFrenezy()"
-            landmarkType = "5">
+            endingLineNumber = "345">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -655,7 +637,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "883"
             endingLineNumber = "883"
-            landmarkName = "changeCamera()"
+            landmarkName = "cameraState()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -671,8 +653,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "800"
             endingLineNumber = "800"
-            landmarkName = "updateScore()"
-            landmarkType = "5">
+            landmarkName = "GameScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -719,7 +701,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "851"
             endingLineNumber = "851"
-            landmarkName = "checkAd()"
+            landmarkName = "update(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -735,7 +717,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "853"
             endingLineNumber = "853"
-            landmarkName = "checkAd()"
+            landmarkName = "update(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -846,9 +828,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "535"
-            endingLineNumber = "535"
-            landmarkName = "dash()"
-            landmarkType = "5">
+            endingLineNumber = "535">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

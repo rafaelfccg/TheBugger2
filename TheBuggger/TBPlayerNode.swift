@@ -89,7 +89,7 @@ class TBPlayerNode: SKSpriteNode {
     
     static func createPlayerAttack(){
         let atackArray = TBUtils().getSprites(SKTextureAtlas(named: "PlayerAttack"), nomeImagens: "attack-")
-        let atackArray2 = TBUtils().getSprites(SKTextureAtlas(named:"PlayerAttack2"), nomeImagens: "attack-")
+        let atackArray2 = TBUtils().getSprites(SKTextureAtlas(named:"PlayerAttack22"), nomeImagens: "attack-")
         TBPlayerNode.attackActionAnimation1  = SKAction.group([SKAction.animateWithTextures(atackArray2, timePerFrame: 0.07), SKAction.playSoundFileNamed("attack_2.mp3", waitForCompletion: false)])
         
         

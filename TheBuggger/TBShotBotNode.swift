@@ -21,7 +21,7 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
     var shootedStopped = false
     var startShootingTime: NSTimeInterval?
     
-    static let deathAtlas = SKTextureAtlas(named:"RepousoShotBot")
+    static let deathAtlas = SKTextureAtlas(named:"DieShooterBot")
     
     var jaAtacou = false // Variavel auxiliar para o bot atacar apenas uma vez
     

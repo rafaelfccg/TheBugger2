@@ -1042,33 +1042,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 )
                 
                 })])
-            )
-            
-            })])
-            
-        self.camera?.enumerateChildNodesWithName("hud", usingBlock: {(node,pointer) in
-                node.removeFromParent()
-            })
-        self.camera?.enumerateChildNodesWithName(self.removable, usingBlock: {(node,pointer) in
-                node.removeFromParent()
-        })
-        
-        let clearedArr = TBUtils().getSprites(SKTextureAtlas(named:"AreaCleared"), nomeImagens: "AC-")
-        let areaCleared = SKSpriteNode( texture: clearedArr[0])
-        let actionClear = SKAction.animateWithTextures(clearedArr, timePerFrame: 0.1)
-        self.camera?.addChild(areaCleared)
-        
-        let groupFinal2 = SKAction.group([SKAction.playSoundFileNamed("Complete.wav", waitForCompletion: false), actionClear])
-            
-            areaCleared.runAction(SKAction.sequence([groupFinal2, SKAction.runBlock({
-                //if areaCleared.parent != nil{
-                 areaCleared.removeFromParent()
-                //}
-            })]))
-        let groupFinal = SKAction.group([SKAction.playSoundFileNamed("GateClosed", waitForCompletion: true), action])
-            finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
-        
-            
+                
+                self.camera?.enumerateChildNodesWithName("hud", usingBlock: {(node,pointer) in
+                        node.removeFromParent()
+                    })
+                self.camera?.enumerateChildNodesWithName(self.removable, usingBlock: {(node,pointer) in
+                        node.removeFromParent()
+                })
+                
+                let clearedArr = TBUtils().getSprites(SKTextureAtlas(named:"AreaCleared"), nomeImagens: "AC-")
+                let areaCleared = SKSpriteNode( texture: clearedArr[0])
+                let actionClear = SKAction.animateWithTextures(clearedArr, timePerFrame: 0.1)
+                self.camera?.addChild(areaCleared)
+                
+                let groupFinal2 = SKAction.group([SKAction.playSoundFileNamed("Complete.wav", waitForCompletion: false), actionClear])
+                    
+                    areaCleared.runAction(SKAction.sequence([groupFinal2, SKAction.runBlock({
+                        //if areaCleared.parent != nil{
+                         areaCleared.removeFromParent()
+                        //}
+                    })]))
+                let groupFinal = SKAction.group([SKAction.playSoundFileNamed("GateClosed", waitForCompletion: true), action])
+                    finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
+                
+            }
         } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE)  {
 
             if(bodyB.node?.name == "referencia") {

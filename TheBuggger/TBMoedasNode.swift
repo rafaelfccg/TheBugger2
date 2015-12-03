@@ -13,7 +13,7 @@ class TBMoedasNode: SKSpriteNode {
     static let name = "Moeda"
     static var animation: SKAction?
     var picked = false
-    static var moedaAtlas = SKTextureAtlas(named: "Moedas")
+    static var moedaAtlas = SKTextureAtlas(named: "Moeda")
     
     init() {
         
@@ -35,7 +35,7 @@ class TBMoedasNode: SKSpriteNode {
     static func createSKActionAnimation()
     {
         let coinsArray = TBUtils().getSprites(moedaAtlas, nomeImagens: "coins-")
-        TBMoedasNode.animation = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.05);
+        TBMoedasNode.animation = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.3);
     }
     
 }
