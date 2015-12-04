@@ -18,7 +18,7 @@ class SelectLevelScene: SKScene {
     var minX:CGFloat?
     var maxX:CGFloat?
     let spaceBot = 0.03645
-    
+    var choosed:Bool = false
     
     override func didMoveToView(view: SKView) {
 //        switch UIDevice.currentDevice().userInterfaceIdiom {
@@ -39,7 +39,7 @@ class SelectLevelScene: SKScene {
         setUpLevelSelect()
         print(self.size)
         print(self.view!.frame.size)
-        let selectionArray = TBUtils().getSprites("estagioSelect", nomeImagens: "estagio-")
+        let selectionArray = TBUtils().getSprites(SKTextureAtlas(named: "estagioSelect"), nomeImagens: "estagio-")
         stageSelect = SKAction.animateWithTextures(selectionArray, timePerFrame: 0.1)
         
     }
@@ -144,8 +144,9 @@ class SelectLevelScene: SKScene {
             let clickedPhaseButton = SKAction.playSoundFileNamed("NormalButton.wav", waitForCompletion: true)
             runAction(clickedPhaseButton)
             
-            if level != "-1" {
+            if level != "-1"  && !choosed{
                 if inLevel >= Int(level) {
+                    choosed = true
                     touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
                     
                         let levelInt = Int(level);

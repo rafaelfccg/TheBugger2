@@ -8,16 +8,16 @@
 
 import AVFoundation
 import UIKit
+import SpriteKit
 
-class TBMenuViewController :UIViewController {
+protocol DissmissViewControllerModal{
+    func dismiss()
+}
+
+class TBMenuViewController :UIViewController, DissmissViewControllerModal {
     
     @IBOutlet weak var butMet1: UIButton!
-    @IBOutlet weak var butMet3: UIButton!
     @IBOutlet weak var butMet2: UIButton!
-    
-    @IBOutlet weak var veryEasyBut: UIButton!
-    @IBOutlet weak var normalBut: UIButton!
-    @IBOutlet weak var veryHardBut: UIButton!
     
     @IBOutlet weak var efeitoCima: UIImageView!
     @IBOutlet weak var efeitoBaixo: UIImageView!
@@ -28,10 +28,20 @@ class TBMenuViewController :UIViewController {
     var isMethodOne:Int?
     var stringLevel:String?
     var backgroundMusicPlayer:AVAudioPlayer?
+    static var loadedAtlas = false
+    
+    func dismiss() {
+        self.dismissViewControllerAnimated(false, completion: {
+        
+        })
+    }
     
     @IBOutlet weak var theBuggerBoard: UIImageView!
     override func viewDidLoad() {
         self.navigationController?.navigationBarHidden = true
+        if(!TBMenuViewController.loadedAtlas){
+             SKTextureAtlas.preloadTextureAtlases([TBEspinhosNode.espinhosAtlas, TBBitNode.bitAtlas, TBGroundBotNode.monsterDeathAtlas, TBMoedasNode.moedaAtlas,TBPlayerNode.playerRunAtlas, TBPlayerNode.playerDashAtlas,TBEspinhoSoltoNode.espinhoAtlas, TBGroundBotNode.groundMonsterAtlas, TBShotBotNode.deathAtlas], withCompletionHandler: {TBMenuViewController.loadedAtlas = true})
+        }
         
         TBEspinhosNode.createSKActionAnimation()
         TBGroundBotNode.createSKActionAnimation()
@@ -50,7 +60,6 @@ class TBMenuViewController :UIViewController {
         TBTutorialNodes.createBlockTutorialAction()
         TBTutorialNodes.createSlideBackTutorialAction()
         TBFinalNode.createSKActionAnimation()
-        TBBrilhoNode.createBrilhoAnimation()
         TBAlertNode.createAlertAnimation()
         TBSignalNode.createSignalAnimation()
         TBMachineFrontNode.createMachineFrontAnimation()
@@ -74,8 +83,6 @@ class TBMenuViewController :UIViewController {
         self.theBuggerBoard.animationRepeatCount = -1
         self.theBuggerBoard.animationDuration   = 0.9
         self.theBuggerBoard.startAnimating()
-        
-        
         
         self.efeitoCima.animationImages = [UIImage(named:"enfeiteCima-1")!,
                                           UIImage(named: "enfeiteCima-2")!,
@@ -139,7 +146,10 @@ class TBMenuViewController :UIViewController {
         }catch {
             print("MUSIC NOT FOUND")
         }
+        
         self.performSegueWithIdentifier("ToGameSegue", sender: self)
+        
+        
     }
     
     @IBAction func actionButMet2(sender: AnyObject) {
