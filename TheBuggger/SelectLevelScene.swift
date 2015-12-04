@@ -109,6 +109,7 @@ class SelectLevelScene: SKScene {
                 let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
                 
                 let numBits = countBits([statisticLogs[i].bit0, statisticLogs[i].bit1, statisticLogs[i].bit2])
+                print("\(numBits), \(statisticLogs[i].level)")
 
                 for(var j = 1; j <= numBits; j++)
                 {
