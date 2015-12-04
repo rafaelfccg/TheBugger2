@@ -116,6 +116,7 @@ class SelectLevelScene: SKScene {
                     bitNode.size = node.size
 //                    bitNode.xScale = 0.24
 //                    bitNode.yScale = 0.24
+                    bitNode.zPosition = 2
                     node.addChild(bitNode)
                 }
             }
