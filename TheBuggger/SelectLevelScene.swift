@@ -100,6 +100,28 @@ class SelectLevelScene: SKScene {
             self.addChild(backgroundNode)
             node.zPosition = 10
         }
+        if let statisticLogs = fetchLogs()
+        {
+            // adicionando os bit
+            for (var i = 0; i < statisticLogs.count ; i++)
+            {
+                let name = "estagioMark\(i+1)"
+                let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
+                
+                let numBits = countBits([statisticLogs[i].bit0, statisticLogs[i].bit1, statisticLogs[i].bit2])
+
+                for(var j = 1; j <= numBits; j++)
+                {
+                    let bitNode = SKSpriteNode(imageNamed: "mark\(j)")
+                    bitNode.size = node.size
+//                    bitNode.xScale = 0.24
+//                    bitNode.yScale = 0.24
+                    node.addChild(bitNode)
+                }
+            }
+            
+        }
+        
         
     }
     
