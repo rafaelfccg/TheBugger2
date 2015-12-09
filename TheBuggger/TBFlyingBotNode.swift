@@ -76,14 +76,14 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
     static func createSKActionAnimation()
     {
         let monsterArray = TBUtils().getSprites("FlyingMonster", nomeImagens: "bug-")
-        TBFlyingBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.05);
+        TBFlyingBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.03);
         
         let deathArray = TBUtils().getSprites("FlyingMonsterDeath", nomeImagens: "bug-exp-")
         TBFlyingBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
 
         //melhorar movimento
         let moveUp = SKAction.moveBy(CGVector(dx: -20, dy: 75), duration: 0.6)
-        let moveDown = SKAction.moveBy(CGVector(dx: -70, dy: -75), duration: 0.40)
+        let moveDown = SKAction.moveBy(CGVector(dx: -70, dy: -75), duration: 0.4)
         //sem animação, apenas movimento
         TBFlyingBotNode.attackAnimation = SKAction.repeatActionForever(SKAction.sequence([moveDown, moveUp]))
     }
