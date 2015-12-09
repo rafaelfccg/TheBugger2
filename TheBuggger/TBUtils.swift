@@ -11,9 +11,9 @@ import SpriteKit
 
 class TBUtils {
     
-    func getSprites(textureAtlasName: String, nomeImagens: String) -> Array<SKTexture>
+    func getSprites(textureAtlas: SKTextureAtlas, nomeImagens: String) -> Array<SKTexture>
     {
-        let textureAtlas = SKTextureAtlas(named: textureAtlasName)
+        //let textureAtlas = SKTextureAtlas(named: textureAtlasName)
         var spriteArray = Array<SKTexture>();
         
         let numImages = textureAtlas.textureNames.count

@@ -54,13 +54,13 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
     
     static func createSKActionAnimation()
     {
-        let monsterArray = TBUtils().getSprites("BopperMonsterStand", nomeImagens: "enemy2stop-")
+        let monsterArray = TBUtils().getSprites(SKTextureAtlas(named: "BopperMonsterStand"), nomeImagens: "enemy2stop-")
         TBBopperBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.15);
         
-        let deathArray = TBUtils().getSprites("BopperMonsterDeath", nomeImagens: "enemy2dead-")
+        let deathArray = TBUtils().getSprites(SKTextureAtlas(named: "BopperMonsterDeath"), nomeImagens: "enemy2dead-")
         TBBopperBotNode.deathAnimation = SKAction.group([SKAction.animateWithTextures(deathArray, timePerFrame: 0.1), SKAction.playSoundFileNamed("robotExplosion.mp3", waitForCompletion: true)]);
         
-        let attackArray = TBUtils().getSprites("BopperMonsterAttack", nomeImagens: "enemyatk-")
+        let attackArray = TBUtils().getSprites(SKTextureAtlas(named: "BopperMonsterAttack"), nomeImagens: "enemyatk-")
         let attack = SKAction.animateWithTextures(attackArray, timePerFrame: 0.05)
         let move = SKAction.moveBy(CGVector(dx: -210, dy: 0), duration: 0.45)
         TBBopperBotNode.attackAnimation = SKAction.group([attack, move, SKAction.playSoundFileNamed("pinote.mp3", waitForCompletion: true)]);

@@ -78,7 +78,7 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
         let monsterArray = TBUtils().getSprites("FlyingMonster", nomeImagens: "bug-")
         TBFlyingBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.03);
         
-        let deathArray = TBUtils().getSprites("FlyingMonsterDeath", nomeImagens: "bug-exp-")
+        let deathArray = TBUtils().getSprites(SKTextureAtlas(named: "FlyingMonsterDeath"), nomeImagens: "bug-exp-")
         TBFlyingBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
 
         //melhorar movimento

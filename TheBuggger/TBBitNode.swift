@@ -12,6 +12,7 @@ import SpriteKit
 class TBBitNode: SKSpriteNode {
     static let name = "bit"
     static var animation: SKAction?
+    static var bitAtlas:SKTextureAtlas = SKTextureAtlas(named: "bits")
     
     var num:Int? //index 0
     
@@ -34,7 +35,7 @@ class TBBitNode: SKSpriteNode {
     
     static func createSKActionAnimation()
     {
-        let coinsArray = TBUtils().getSprites("bits", nomeImagens: "bit-")
+        let coinsArray = TBUtils().getSprites(bitAtlas, nomeImagens: "bit-")
         TBBitNode.animation = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.15);
     }
     func gotMe(sender:GameScene){

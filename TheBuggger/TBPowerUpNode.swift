@@ -13,12 +13,13 @@ class TBPowerUpNode: SKSpriteNode {
     var powerUP:TBPowerUpsStates?
     var hadEffect = false
     static var frenesi:SKAction? = nil
+    static var frenezyItem:SKTextureAtlas = SKTextureAtlas(named: "FrenezyUpItem")
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
         self.size = CGSizeMake(40, 100)
         if(TBPowerUpNode.frenesi == nil){
-            let arr = TBUtils().getSprites("FrenezyUpItem", nomeImagens: "PowerUpItem-")
+            let arr = TBUtils().getSprites(TBPowerUpNode.frenezyItem, nomeImagens: "PowerUpItem-")
             TBPowerUpNode.frenesi = SKAction.repeatActionForever(SKAction.animateWithTextures(arr, timePerFrame: 0.1))
         }
     }
