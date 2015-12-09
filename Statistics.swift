@@ -71,8 +71,9 @@ func fetchLogs() -> [Statistics]!
     } catch {
         fatalError("Failed to fetch person: \(error)")
     }
-    statisticsArray.sortInPlace({ $0.level < $1.level })
-    
+    if statisticsArray != nil {
+        statisticsArray.sortInPlace({ $0.level < $1.level })
+    }
     return statisticsArray
 }
 
