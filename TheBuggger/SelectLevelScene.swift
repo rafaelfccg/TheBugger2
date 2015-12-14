@@ -12,7 +12,7 @@ import AVFoundation
 
 class SelectLevelScene: SKScene {
     
-    let numberOfLevels:Int = 5
+    let numberOfLevels:Int = 6
     var delegateChanger: SceneChangesDelegate?
     var stageSelect:SKAction?
     var minX:CGFloat?
