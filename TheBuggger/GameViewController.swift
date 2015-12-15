@@ -44,7 +44,17 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         interstitial!.loadRequest(request)
     }
     
+    func clearScene(){
+        let skView = self.view as? SKView
+        if skView?.scene != nil {
+            skView?.scene?.removeAllActions()
+            skView?.scene?.removeAllChildren()
+            skView?.presentScene(nil)
+        }
+    }
+    
     func selectLevel(nomeSKS: String){
+        clearScene()
         if let scene = SelectLevelScene(fileNamed: nomeSKS) {
             // Configure the view.
             //scene.delegateChanger = self
@@ -69,7 +79,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     
     func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     {
-        
+        clearScene()
         if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
             self.backgroundMusicPlayer?.stop()

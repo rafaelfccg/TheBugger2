@@ -379,7 +379,8 @@ class TBPlayerNode: SKSpriteNode {
             }
             
         }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.attackState == AttackState.Defending {
-            bodyB.applyImpulse(CGVectorMake(100, 30))
+            bodyB.applyImpulse(CGVectorMake(70, 30))
+            print("\(bodyB.mass)")
             self.runAction(SKAction.playSoundFileNamed("defence", waitForCompletion: false))
             
         }else if (bodyB.categoryBitMask == GameScene.TIRO_NODE && self.attackState == AttackState.Defending) {
