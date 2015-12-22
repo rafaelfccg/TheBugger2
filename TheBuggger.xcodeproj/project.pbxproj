@@ -18,6 +18,12 @@
 		0002CE941BF5171000FDE20A /* set-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE8E1BF5171000FDE20A /* set-5.png */; };
 		0002CE951BF5171000FDE20A /* set-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0002CE8F1BF5171000FDE20A /* set-6.png */; };
 		000AA8291BFBC20200EC4E20 /* slow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 000AA8281BFBC20200EC4E20 /* slow.atlas */; };
+		000B96371C2A073E00D12DB0 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000B96311C2A073E00D12DB0 /* Level1Scene.sks */; };
+		000B96381C2A073E00D12DB0 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000B96321C2A073E00D12DB0 /* Level2Scene.sks */; };
+		000B96391C2A073E00D12DB0 /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000B96331C2A073E00D12DB0 /* Level3Scene.sks */; };
+		000B963A1C2A073E00D12DB0 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000B96341C2A073E00D12DB0 /* Level4Scene.sks */; };
+		000B963B1C2A073E00D12DB0 /* Level5Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000B96351C2A073E00D12DB0 /* Level5Scene.sks */; };
+		000B963C1C2A073E00D12DB0 /* Level6Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 000B96361C2A073E00D12DB0 /* Level6Scene.sks */; };
 		000D09D91BBEF31100631559 /* TBPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000D09D81BBEF31100631559 /* TBPlayerNode.swift */; };
 		001E557A1BD6DA0C00B80833 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55791BD6DA0C00B80833 /* power1.png */; };
 		001E55C21BD8221600B80833 /* cable.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55961BD8221600B80833 /* cable.png */; };
@@ -68,7 +74,7 @@
 		002FD8161BF66235003514A4 /* TBBitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002FD8151BF66235003514A4 /* TBBitNode.swift */; };
 		003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */; };
 		003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */; };
-		0049C3311C20906900617EC9 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0049C3301C20906900617EC9 /* GoogleMobileAds.framework */; };
+		00499B191C22D93300814466 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00499B181C22D93300814466 /* GoogleMobileAds.framework */; };
 		00622BD01C03470E00155DB9 /* contador-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00622BCF1C03470E00155DB9 /* contador-1.png */; };
 		00648CAC1BF27BB600C1F906 /* TBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */; };
 		00648CAF1BF27CE900C1F906 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00648CAD1BF27CE900C1F906 /* selected.png */; };
@@ -133,7 +139,6 @@
 		0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 009221661BF12EFE007C7DDC /* cabos-3.png */; };
 		0092216B1BF12EFE007C7DDC /* cabos-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 009221671BF12EFE007C7DDC /* cabos-4.png */; };
 		0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */ = {isa = PBXBuildFile; fileRef = 0092216C1BF138E6007C7DDC /* back-estagio.png */; };
-		0099D77F1C1CF6D4005E0A80 /* Level6Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0099D77E1C1CF6D4005E0A80 /* Level6Scene.sks */; };
 		009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */; };
 		00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ABE1BEA7EAB00323B6D /* smoke1.png */; };
 		00AC3AC11BEA83EA00323B6D /* TBEspinhoSoltoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC3AC01BEA83EA00323B6D /* TBEspinhoSoltoNode.swift */; };
@@ -226,11 +231,6 @@
 		AFE7EF6F1BF3B67000C99A94 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF6E1BF3B67000C99A94 /* SystemConfiguration.framework */; };
 		AFE7EF781BF3C7BC00C99A94 /* PlayerAir.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */; };
 		AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */; };
-		AFEFA2BE1C0FE970007E216C /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFEFA2B91C0FE970007E216C /* Level1Scene.sks */; };
-		AFEFA2BF1C0FE970007E216C /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFEFA2BA1C0FE970007E216C /* Level2Scene.sks */; };
-		AFEFA2C01C0FE970007E216C /* Level3Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFEFA2BB1C0FE970007E216C /* Level3Scene.sks */; };
-		AFEFA2C11C0FE970007E216C /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFEFA2BC1C0FE970007E216C /* Level4Scene.sks */; };
-		AFEFA2C21C0FE970007E216C /* Level5Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFEFA2BD1C0FE970007E216C /* Level5Scene.sks */; };
 		AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */; };
 		AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489EE1BD56D8700463411 /* PlayerDash.atlas */; };
 		AFF489F31BD56D8700463411 /* PlayerJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFF489EF1BD56D8700463411 /* PlayerJump.atlas */; };
@@ -266,6 +266,12 @@
 		0002CE8E1BF5171000FDE20A /* set-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set-5.png"; sourceTree = "<group>"; };
 		0002CE8F1BF5171000FDE20A /* set-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "set-6.png"; sourceTree = "<group>"; };
 		000AA8281BFBC20200EC4E20 /* slow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = slow.atlas; sourceTree = "<group>"; };
+		000B96311C2A073E00D12DB0 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
+		000B96321C2A073E00D12DB0 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
+		000B96331C2A073E00D12DB0 /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
+		000B96341C2A073E00D12DB0 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
+		000B96351C2A073E00D12DB0 /* Level5Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level5Scene.sks; sourceTree = "<group>"; };
+		000B96361C2A073E00D12DB0 /* Level6Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level6Scene.sks; sourceTree = "<group>"; };
 		000D09D81BBEF31100631559 /* TBPlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPlayerNode.swift; sourceTree = "<group>"; };
 		001E55791BD6DA0C00B80833 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
 		001E55961BD8221600B80833 /* cable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cable.png; sourceTree = "<group>"; };
@@ -316,7 +322,7 @@
 		002FD8151BF66235003514A4 /* TBBitNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBBitNode.swift; sourceTree = "<group>"; };
 		003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Paralax2.atlas; path = ../Paralax2.atlas; sourceTree = "<group>"; };
 		003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = redlight2.atlas; path = ../redlight2.atlas; sourceTree = "<group>"; };
-		0049C3301C20906900617EC9 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		00499B181C22D93300814466 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		00622BCF1C03470E00155DB9 /* contador-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contador-1.png"; sourceTree = "<group>"; };
 		00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRadioButton.swift; sourceTree = "<group>"; };
 		00648CAD1BF27CE900C1F906 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
@@ -387,7 +393,6 @@
 		009221661BF12EFE007C7DDC /* cabos-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cabos-3.png"; sourceTree = "<group>"; };
 		009221671BF12EFE007C7DDC /* cabos-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cabos-4.png"; sourceTree = "<group>"; };
 		0092216C1BF138E6007C7DDC /* back-estagio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-estagio.png"; sourceTree = "<group>"; };
-		0099D77E1C1CF6D4005E0A80 /* Level6Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level6Scene.sks; sourceTree = "<group>"; };
 		009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLevelScene.swift; sourceTree = "<group>"; };
 		00AC3ABE1BEA7EAB00323B6D /* smoke1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smoke1.png; path = ../smoke1.png; sourceTree = "<group>"; };
 		00AC3AC01BEA83EA00323B6D /* TBEspinhoSoltoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhoSoltoNode.swift; sourceTree = "<group>"; };
@@ -488,11 +493,6 @@
 		AFE7EF701BF3B6DC00C99A94 /* TheBugger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheBugger-Bridging-Header.h"; sourceTree = "<group>"; };
 		AFE7EF771BF3C7BC00C99A94 /* PlayerAir.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAir.atlas; sourceTree = "<group>"; };
 		AFEF5C401BC44E3B003273FF /* PlayerFall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerFall.atlas; sourceTree = "<group>"; };
-		AFEFA2B91C0FE970007E216C /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
-		AFEFA2BA1C0FE970007E216C /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
-		AFEFA2BB1C0FE970007E216C /* Level3Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3Scene.sks; sourceTree = "<group>"; };
-		AFEFA2BC1C0FE970007E216C /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
-		AFEFA2BD1C0FE970007E216C /* Level5Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level5Scene.sks; sourceTree = "<group>"; };
 		AFF489ED1BD56D8700463411 /* PlayerAttack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerAttack.atlas; sourceTree = "<group>"; };
 		AFF489EE1BD56D8700463411 /* PlayerDash.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDash.atlas; sourceTree = "<group>"; };
 		AFF489EF1BD56D8700463411 /* PlayerJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerJump.atlas; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				0049C3311C20906900617EC9 /* GoogleMobileAds.framework in Frameworks */,
+				00499B191C22D93300814466 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,7 +694,7 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				0049C3301C20906900617EC9 /* GoogleMobileAds.framework */,
+				00499B181C22D93300814466 /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
@@ -1037,12 +1037,12 @@
 		00CDBECA1BBD9FD100BC0517 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				0099D77E1C1CF6D4005E0A80 /* Level6Scene.sks */,
-				AFEFA2B91C0FE970007E216C /* Level1Scene.sks */,
-				AFEFA2BA1C0FE970007E216C /* Level2Scene.sks */,
-				AFEFA2BB1C0FE970007E216C /* Level3Scene.sks */,
-				AFEFA2BC1C0FE970007E216C /* Level4Scene.sks */,
-				AFEFA2BD1C0FE970007E216C /* Level5Scene.sks */,
+				000B96311C2A073E00D12DB0 /* Level1Scene.sks */,
+				000B96321C2A073E00D12DB0 /* Level2Scene.sks */,
+				000B96331C2A073E00D12DB0 /* Level3Scene.sks */,
+				000B96341C2A073E00D12DB0 /* Level4Scene.sks */,
+				000B96351C2A073E00D12DB0 /* Level5Scene.sks */,
+				000B96361C2A073E00D12DB0 /* Level6Scene.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1170,12 +1170,12 @@
 				008349B61BFFA1BE00012C22 /* contador-3.png in Resources */,
 				008349BB1BFFAEAD00012C22 /* FrenezyAnimation.atlas in Resources */,
 				008698B11BE94DA900EE80F2 /* Alert.atlas in Resources */,
+				000B963A1C2A073E00D12DB0 /* Level4Scene.sks in Resources */,
 				001E55C21BD8221600B80833 /* cable.png in Resources */,
 				521269461BDACCEC00B5FB2E /* edge2.png in Resources */,
 				0002CE881BF50B1A00FDE20A /* back-2.png in Resources */,
 				0092216B1BF12EFE007C7DDC /* cabos-4.png in Resources */,
 				001E55D31BD8221600B80833 /* estructure1.png in Resources */,
-				AFEFA2BF1C0FE970007E216C /* Level2Scene.sks in Resources */,
 				008203411BFD0EF300534647 /* attack.mp3 in Resources */,
 				5279DD2C1BF3DBC800E61727 /* ShooterBot.atlas in Resources */,
 				00F6CFE21BDEBF6A006F0302 /* play_off.png in Resources */,
@@ -1204,6 +1204,7 @@
 				5279DD301BF3DF5400E61727 /* ShotDefended.atlas in Resources */,
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
 				AFCCF2FA1BFBC8C200645850 /* BopperMonsterAttack.atlas in Resources */,
+				000B96371C2A073E00D12DB0 /* Level1Scene.sks in Resources */,
 				008203591BFE3D0400534647 /* attack_1.mp3 in Resources */,
 				0022C0291BE2A44300A184D5 /* AttackTutorial.atlas in Resources */,
 				00622BD01C03470E00155DB9 /* contador-1.png in Resources */,
@@ -1213,6 +1214,7 @@
 				008203441BFD0EF300534647 /* introMenu.wav in Resources */,
 				AF9414F31C10B0DB00A81D83 /* PlayerAttack22.atlas in Resources */,
 				008203611BFE45CA00534647 /* defence.mp3 in Resources */,
+				000B96391C2A073E00D12DB0 /* Level3Scene.sks in Resources */,
 				AF2134421C0CD230006BB9D8 /* Moeda.atlas in Resources */,
 				00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */,
 				00200B7F1C0675D40094FFBD /* AreaCleared.atlas in Resources */,
@@ -1243,12 +1245,12 @@
 				527010031C08E6D7006DEDB3 /* dash.mp3 in Resources */,
 				00200B651C0634DF0094FFBD /* smoke2.png in Resources */,
 				001E55C31BD8221600B80833 /* estrutura2.png in Resources */,
+				000B963B1C2A073E00D12DB0 /* Level5Scene.sks in Resources */,
 				AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */,
 				008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */,
 				0002CE931BF5171000FDE20A /* set-4.png in Resources */,
 				008698B41BE94DA900EE80F2 /* speedBooster.atlas in Resources */,
 				0002CE951BF5171000FDE20A /* set-6.png in Resources */,
-				AFEFA2C21C0FE970007E216C /* Level5Scene.sks in Resources */,
 				52714B711BDE7875006200A1 /* metalbolcklg-1.png in Resources */,
 				00F6CFE41BDEBF74006F0302 /* play_on.png in Resources */,
 				002FD8101BF650D0003514A4 /* pt-hud.png in Resources */,
@@ -1260,14 +1262,14 @@
 				008203461BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 in Resources */,
 				001E55D01BD8221600B80833 /* roof.png in Resources */,
 				003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */,
+				000B963C1C2A073E00D12DB0 /* Level6Scene.sks in Resources */,
 				001E55D81BD8221600B80833 /* sky.png in Resources */,
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
-				0099D77F1C1CF6D4005E0A80 /* Level6Scene.sks in Resources */,
 				001E55C71BD8221600B80833 /* plataforma-01.png in Resources */,
 				AF9415061C10DD9F00A81D83 /* mark2.png in Resources */,
 				52C8E9ED1C07A2A200F84C87 /* jump.wav in Resources */,
+				000B96381C2A073E00D12DB0 /* Level2Scene.sks in Resources */,
 				AF9415071C10DD9F00A81D83 /* mark3.png in Resources */,
-				AFEFA2C01C0FE970007E216C /* Level3Scene.sks in Resources */,
 				002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */,
 				0002CE871BF50B1A00FDE20A /* back-1.png in Resources */,
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
@@ -1295,7 +1297,6 @@
 				52700FE91C08D81F006DEDB3 /* promoinprogress.png in Resources */,
 				AFCCF2FB1BFBC8C200645850 /* BopperMonsterDeath.atlas in Resources */,
 				00648CAF1BF27CE900C1F906 /* selected.png in Resources */,
-				AFEFA2BE1C0FE970007E216C /* Level1Scene.sks in Resources */,
 				0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */,
 				52443F5B1C063AC800033633 /* quina1-01.png in Resources */,
 				008349BC1BFFAEAD00012C22 /* FrenezyEnd.atlas in Resources */,
@@ -1331,7 +1332,6 @@
 				52443F5D1C063ADC00033633 /* viga.png in Resources */,
 				52C8E9EF1C07A65400F84C87 /* GateClosed.wav in Resources */,
 				003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */,
-				AFEFA2C11C0FE970007E216C /* Level4Scene.sks in Resources */,
 				AF069D681BFE450D00AC81EC /* FlyingMonster.atlas in Resources */,
 				AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */,
 				AF9414F71C10B2BF00A81D83 /* TBCompletionLevelNode.sks in Resources */,

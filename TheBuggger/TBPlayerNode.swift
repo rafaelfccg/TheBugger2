@@ -282,7 +282,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func createAttackJoint()
     {
-        let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(570, 290))
+        let atackJointSquare = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(550, 290))
         
         atackJointSquare.physicsBody = SKPhysicsBody(rectangleOfSize: atackJointSquare.size)
         atackJointSquare.physicsBody?.affectedByGravity = false;
@@ -299,7 +299,7 @@ class TBPlayerNode: SKSpriteNode {
         
     }
     func addAttackJoint(){
-        self.attackJoint?.position = CGPointMake(120 , 70)
+        self.attackJoint?.position = CGPointMake(140 , 120)
         self.addChild(self.attackJoint!)
         self.attackJoint?.zRotation = 0
 

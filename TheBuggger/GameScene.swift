@@ -858,7 +858,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func checkAd(){
         self.deathSinceLastAd = deathSinceLastAd! + 1
-        let a = Int(arc4random_uniform(4)+8)
+        let a = Int(arc4random_uniform(3) + 6)
         if deathSinceLastAd > a {
             delegateChanger?.gameOver()
             deathSinceLastAd = 0
