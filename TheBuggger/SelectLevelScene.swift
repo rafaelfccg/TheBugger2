@@ -19,16 +19,9 @@ class SelectLevelScene: SKScene {
     var maxX:CGFloat?
     let spaceBot = 0.03645
     var choosed:Bool = false
+    let levelsAtlas:[Int:[SKTextureAtlas]] = [1:[],2:[],3:[],4:[],5:[],6:[TBFlyingBotNode.animationAtlas,TBFlyingBotNode.deathAtlas]]
     
     override func didMoveToView(view: SKView) {
-//        switch UIDevice.currentDevice().userInterfaceIdiom {
-//        case .Phone:
-//            //self.size = CGSizeMake(self.view!.frame.size.width * 1.5, self.view!.frame.size.height * 1.5)
-//            break
-//        default :
-//            break
-//        }
-        
         
         //self.size = self.frame.size
         let camera = SKCameraNode();
@@ -39,7 +32,7 @@ class SelectLevelScene: SKScene {
         setUpLevelSelect()
         print(self.size)
         print(self.view!.frame.size)
-        let selectionArray = TBUtils().getSprites(SKTextureAtlas(named: "estagioSelect"), nomeImagens: "estagio-")
+        let selectionArray = TBUtils.getSprites(SKTextureAtlas(named: "estagioSelect"), nomeImagens: "estagio-")
         stageSelect = SKAction.animateWithTextures(selectionArray, timePerFrame: 0.1)
         
     }
@@ -71,10 +64,6 @@ class SelectLevelScene: SKScene {
             efeitoBaixo?.position = CGPointMake(0 , (-self.view!.frame.size.height/2) + CGFloat(self.spaceBot) * self.view!.frame.size.height )
             break
         }
-        
-        
-        
-        //efeitoBaixo?.position = CGPointMake(0,)
         
         self.enumerateChildNodesWithName("levelLabel", usingBlock: {
             (node:SKNode?, stop:UnsafeMutablePointer <ObjCBool>) in
@@ -152,9 +141,9 @@ class SelectLevelScene: SKScene {
                     touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
                     
                         let levelInt = Int(level);
-                        //self.delegateChanger?.mudaScene("Level6Scene", withMethod: method, andLevel: levelInt!)
+                        preLoadSprites(self.levelsAtlas[levelInt!]!)
                         self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
-                   
+                        
                     })])]))
                 }
             }

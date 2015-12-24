@@ -9,7 +9,7 @@ class TBAlertNode :SKSpriteNode{
     static var alertAnimation:SKAction?
     
     static func createAlertAnimation(){
-        let pixelsArray = TBUtils().getSprites(SKTextureAtlas(named: "Alert"), nomeImagens: "alert-")
+        let pixelsArray = TBUtils.getSprites(SKTextureAtlas(named: "Alert"), nomeImagens: "alert-")
         TBAlertNode.alertAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.2));
         
     }

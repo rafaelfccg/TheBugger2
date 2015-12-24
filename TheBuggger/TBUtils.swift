@@ -11,7 +11,7 @@ import SpriteKit
 
 class TBUtils {
     
-    func getSprites(textureAtlas: SKTextureAtlas, nomeImagens: String) -> Array<SKTexture>
+    static func getSprites(textureAtlas: SKTextureAtlas, nomeImagens: String) -> Array<SKTexture>
     {
         //let textureAtlas = SKTextureAtlas(named: textureAtlasName)
         var spriteArray = Array<SKTexture>();
@@ -27,6 +27,7 @@ class TBUtils {
         return spriteArray;
     }
     
+    
     static func getNextBackground()->SKTexture?{
         let textureAtlas = SKTextureAtlas(named:"Paralax2")
         let numImages = textureAtlas.textureNames.count
@@ -34,4 +35,16 @@ class TBUtils {
         if rand == numImages{return nil}
         return textureAtlas.textureNamed(textureAtlas.textureNames[rand])
     }
+}
+//THIS IS A WORKARROUND FOR A BUG ON PRELOAD ALREADY IMPLEMENTED ON SPRITEKIT
+func preLoadSprites(textureAtlas: [SKTextureAtlas]){
+    for (var i=0; i < textureAtlas.count; i++)
+    {
+        
+        let textNames = textureAtlas[i].textureNames
+        for name in textNames {
+            textureAtlas[i].textureNamed(name).size()
+        }
+    }
+    
 }

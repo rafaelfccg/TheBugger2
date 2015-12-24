@@ -1050,7 +1050,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         node.removeFromParent()
                 })
                 
-                let clearedArr = TBUtils().getSprites(SKTextureAtlas(named:"AreaCleared"), nomeImagens: "AC-")
+                let clearedArr = TBUtils.getSprites(SKTextureAtlas(named:"AreaCleared"), nomeImagens: "AC-")
                 let areaCleared = SKSpriteNode( texture: clearedArr[0])
                 let actionClear = SKAction.animateWithTextures(clearedArr, timePerFrame: 0.1)
                 self.camera?.addChild(areaCleared)

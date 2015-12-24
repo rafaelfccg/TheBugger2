@@ -39,10 +39,10 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
     
     static func createSKActionAnimation()
     {
-        let monsterArray = TBUtils().getSprites(TBGroundBotNode.groundMonsterAtlas, nomeImagens: "groundMonster-")
+        let monsterArray = TBUtils.getSprites(TBGroundBotNode.groundMonsterAtlas, nomeImagens: "groundMonster-")
         TBGroundBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.1);
         
-        let deathArray = TBUtils().getSprites(TBGroundBotNode.monsterDeathAtlas, nomeImagens: "explosao-")
+        let deathArray = TBUtils.getSprites(TBGroundBotNode.monsterDeathAtlas, nomeImagens: "explosao-")
         TBGroundBotNode.deathAnimation = SKAction.group([SKAction.animateWithTextures(deathArray, timePerFrame: 0.07), SKAction.playSoundFileNamed("bolha.mp3", waitForCompletion: true)]);
     }
     

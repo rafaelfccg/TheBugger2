@@ -110,8 +110,8 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         skView?.presentScene(nil)
         skView = nil
         
-        self.presentingViewController?.dismissViewControllerAnimated(false, completion: {})
-        
+        self.navigationController?.popViewControllerAnimated(false)
+    
     }
 
     override func shouldAutorotate() -> Bool {

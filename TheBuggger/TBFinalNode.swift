@@ -28,10 +28,10 @@ class TBFinalNode: SKSpriteNode {
     
     static func createSKActionAnimation()
     {
-        let finalArray = TBUtils().getSprites(SKTextureAtlas(named:"ENDZONE"), nomeImagens: "endzone-")
+        let finalArray = TBUtils.getSprites(SKTextureAtlas(named:"ENDZONE"), nomeImagens: "endzone-")
         TBFinalNode.animation = SKAction.animateWithTextures(finalArray, timePerFrame: 0.08);
         
-        let finalBackArray = TBUtils().getSprites(SKTextureAtlas(named: "EndzoneBack"), nomeImagens: "endzoneback-")
+        let finalBackArray = TBUtils.getSprites(SKTextureAtlas(named: "EndzoneBack"), nomeImagens: "endzoneback-")
         TBFinalNode.animationBack = SKAction.animateWithTextures(finalBackArray, timePerFrame: 0.08);
     }
     

@@ -43,10 +43,10 @@ class TBShotNode: SKSpriteNode {
     
     static func createSKActionAnimation()
     {
-        let shotArray = TBUtils().getSprites(shotAtlas, nomeImagens: "shot-")
+        let shotArray = TBUtils.getSprites(shotAtlas, nomeImagens: "shot-")
         TBShotNode.shotAnimation = SKAction.animateWithTextures(shotArray, timePerFrame: 0.5);
         
-        let defendedShotArray = TBUtils().getSprites(shotDefendedAtlas, nomeImagens: "shotDefended-")
+        let defendedShotArray = TBUtils.getSprites(shotDefendedAtlas, nomeImagens: "shotDefended-")
         TBShotNode.defendedAnimation = SKAction.animateWithTextures(defendedShotArray, timePerFrame: 0.05);
     }
     

@@ -34,7 +34,7 @@ class TBEspinhosNode: SKSpriteNode {
     
     static func createSKActionAnimation()
     {
-        let espinhosArray = TBUtils().getSprites(TBEspinhosNode.espinhosAtlas, nomeImagens: "espinho-")
+        let espinhosArray = TBUtils.getSprites(TBEspinhosNode.espinhosAtlas, nomeImagens: "espinho-")
         //self.texture = espinhosArray[0]
         TBEspinhosNode.animation = SKAction.animateWithTextures(espinhosArray, timePerFrame: 0.1);
     }

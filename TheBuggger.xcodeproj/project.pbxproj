@@ -924,7 +924,6 @@
 				00CDBEC91BBD9F8800BC0517 /* Controllers */,
 				00CDBEC11BB9FE3700BC0517 /* Scenes */,
 				00CDBEC61BBD9EE600BC0517 /* Nodes */,
-				00CDBEC41BBD9ECA00BC0517 /* Rules */,
 				00CDBEC81BBD9F4900BC0517 /* Utils */,
 				00CDBEC71BBD9EEC00BC0517 /* Assets */,
 			);
@@ -957,13 +956,6 @@
 				00CDBECA1BBD9FD100BC0517 /* Levels */,
 			);
 			name = Scenes;
-			sourceTree = "<group>";
-		};
-		00CDBEC41BBD9ECA00BC0517 /* Rules */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Rules;
 			sourceTree = "<group>";
 		};
 		00CDBEC61BBD9EE600BC0517 /* Nodes */ = {
