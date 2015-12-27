@@ -33,9 +33,9 @@ class TBBitNode: SKSpriteNode {
     }
     
     
-    static func createSKActionAnimation()
-    {
-        let coinsArray = TBUtils().getSprites(bitAtlas, nomeImagens: "bit-")
+    static func createSKActionAnimation(){
+    
+        let coinsArray = TBUtils.getSprites(bitAtlas, nomeImagens: "bit-")
         TBBitNode.animation = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.15);
     }
     func gotMe(sender:GameScene){

@@ -79,19 +79,19 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
     
     static func createSKActionAnimation()
     {
-        //        let monsterArray = TBUtils().getSprites("GroundMonster", nomeImagens: "groundMonster-")
+        //        let monsterArray = TBUtils.getSprites("GroundMonster", nomeImagens: "groundMonster-")
         //        TBGroundBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.1);
         
-        let monsterArray = TBUtils().getSprites(SKTextureAtlas(named:"RepousoShotBot"), nomeImagens: "repousoShotBot-")
+        let monsterArray = TBUtils.getSprites(SKTextureAtlas(named:"RepousoShotBot"), nomeImagens: "repousoShotBot-")
         TBShotBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.15);
         
-        let deathArray = TBUtils().getSprites(TBShotBotNode.deathAtlas, nomeImagens: "dieShooterBot-")
+        let deathArray = TBUtils.getSprites(TBShotBotNode.deathAtlas, nomeImagens: "dieShooterBot-")
         TBShotBotNode.deathAnimation = SKAction.group([SKAction.animateWithTextures(deathArray, timePerFrame: 0.1), SKAction.playSoundFileNamed("robotExplosion.mp3", waitForCompletion: true)]);
         
-        let shootingArray = TBUtils().getSprites(SKTextureAtlas(named:"ShooterBot"), nomeImagens: "shooterBot-")
+        let shootingArray = TBUtils.getSprites(SKTextureAtlas(named:"ShooterBot"), nomeImagens: "shooterBot-")
         TBShotBotNode.shootingAnimation = SKAction.group([SKAction.animateWithTextures(shootingArray, timePerFrame: 0.05), SKAction.playSoundFileNamed("shot.mp3", waitForCompletion: false)])
         
-        let shootingArray2 = TBUtils().getSprites(SKTextureAtlas(named:"ShooterBot2"), nomeImagens: "shooterBot2-")
+        let shootingArray2 = TBUtils.getSprites(SKTextureAtlas(named:"ShooterBot2"), nomeImagens: "shooterBot2-")
         TBShotBotNode.shootingAnimation2 = SKAction.animateWithTextures(shootingArray2, timePerFrame: 0.15)
         
         

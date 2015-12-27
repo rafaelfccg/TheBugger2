@@ -34,7 +34,7 @@ class TBMoedasNode: SKSpriteNode {
     
     static func createSKActionAnimation()
     {
-        let coinsArray = TBUtils().getSprites(moedaAtlas, nomeImagens: "coins-")
+        let coinsArray = TBUtils.getSprites(moedaAtlas, nomeImagens: "coins-")
         TBMoedasNode.animation = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.3);
     }
     

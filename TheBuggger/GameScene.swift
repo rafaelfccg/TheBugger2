@@ -858,7 +858,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func checkAd(){
         self.deathSinceLastAd = deathSinceLastAd! + 1
-        let a = Int(arc4random_uniform(4)+8)
+        let a = Int(arc4random_uniform(3) + 6)
         if deathSinceLastAd > a {
             delegateChanger?.gameOver()
             deathSinceLastAd = 0
@@ -1050,7 +1050,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         node.removeFromParent()
                 })
                 
-                let clearedArr = TBUtils().getSprites(SKTextureAtlas(named:"AreaCleared"), nomeImagens: "AC-")
+                let clearedArr = TBUtils.getSprites(SKTextureAtlas(named:"AreaCleared"), nomeImagens: "AC-")
                 let areaCleared = SKSpriteNode( texture: clearedArr[0])
                 let actionClear = SKAction.animateWithTextures(clearedArr, timePerFrame: 0.1)
                 self.camera?.addChild(areaCleared)

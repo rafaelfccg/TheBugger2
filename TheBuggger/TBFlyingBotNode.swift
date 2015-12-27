@@ -17,15 +17,13 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
     static var animation: SKAction?
     static var deathAnimation: SKAction?
     static var attackAnimation: SKAction?
-
+    static let animationAtlas = SKTextureAtlas(named: "FlyingMonster")
+    static let deathAtlas = SKTextureAtlas(named: "FlyingMonsterDeath")
     
     init() {
         
         super.init(texture:SKTexture(), color: UIColor.clearColor(), size: CGSizeMake(0, 0))
-        
-        //self.color = UIColor.whiteColor()
-        //self.size = CGSizeMake(80, 80)
-        // self.anchorPoint = CGPointMake(0, 20)
+    
         self.size = CGSizeMake(84, 82)
         self.anchorPoint = CGPointMake(0.5, 0.5)
         self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width, self.size.height))
@@ -78,7 +76,7 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
         let monsterArray = TBUtils().getSprites("FlyingMonster", nomeImagens: "bug-")
         TBFlyingBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.03);
         
-        let deathArray = TBUtils().getSprites(SKTextureAtlas(named: "FlyingMonsterDeath"), nomeImagens: "bug-exp-")
+        let deathArray = TBUtils.getSprites(TBFlyingBotNode.deathAtlas, nomeImagens: "bug-exp-")
         TBFlyingBotNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.1);
 
         //melhorar movimento

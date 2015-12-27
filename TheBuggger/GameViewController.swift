@@ -44,7 +44,17 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         interstitial!.loadRequest(request)
     }
     
+    func clearScene(){
+        let skView = self.view as? SKView
+        if skView?.scene != nil {
+            skView?.scene?.removeAllActions()
+            skView?.scene?.removeAllChildren()
+            skView?.presentScene(nil)
+        }
+    }
+    
     func selectLevel(nomeSKS: String){
+        clearScene()
         if let scene = SelectLevelScene(fileNamed: nomeSKS) {
             // Configure the view.
             //scene.delegateChanger = self
@@ -69,7 +79,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     
     func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
     {
-        
+        clearScene()
         if let scene = GameScene(fileNamed: nomeSKS) {
             // Configure the view.
             self.backgroundMusicPlayer?.stop()
@@ -77,9 +87,9 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
             scene.levelSelected = andLevel
             
             let skView = self.view as! SKView
-            //skView.showsFPS = true
+//            skView.showsFPS = true
             //skView.showsNodeCount = true
-            //            skView.showsPhysics = true;
+//            skView.showsPhysics = true;
             NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
             skView.ignoresSiblingOrder = true
             
@@ -100,8 +110,8 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         skView?.presentScene(nil)
         skView = nil
         
-        self.presentingViewController?.dismissViewControllerAnimated(false, completion: {})
-        
+        self.navigationController?.popViewControllerAnimated(false)
+    
     }
 
     override func shouldAutorotate() -> Bool {

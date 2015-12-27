@@ -14,7 +14,7 @@ class TBEspinhoSoltoNode :SKSpriteNode{
     static let espinhoAtlas = SKTextureAtlas(named: "EspinhoSolto")
     
     static func createSKActionAnimation(){
-        let pixelsArray = TBUtils().getSprites(espinhoAtlas, nomeImagens: "espinhosolto-")
+        let pixelsArray = TBUtils.getSprites(espinhoAtlas, nomeImagens: "espinhosolto-")
         TBEspinhoSoltoNode.animation = SKAction.repeatActionForever( SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.15));
         
     }

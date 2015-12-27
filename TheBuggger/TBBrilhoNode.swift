@@ -13,7 +13,7 @@ class TBBrilhoNode :SKSpriteNode{
 //    static var brilhoAnimation:SKAction?
 //    
 //    static func createBrilhoAnimation(){
-//        let pixelsArray = TBUtils().getSprites("pixels", nomeImagens: "pixels")
+//        let pixelsArray = TBUtils.getSprites("pixels", nomeImagens: "pixels")
 //        TBBrilhoNode.brilhoAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.35));
 //        
 //    }

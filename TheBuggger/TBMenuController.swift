@@ -10,11 +10,8 @@ import AVFoundation
 import UIKit
 import SpriteKit
 
-protocol DissmissViewControllerModal{
-    func dismiss()
-}
 
-class TBMenuViewController :UIViewController, DissmissViewControllerModal {
+class TBMenuViewController :UIViewController {
     
     @IBOutlet weak var butMet1: UIButton!
     @IBOutlet weak var butMet2: UIButton!
@@ -30,12 +27,7 @@ class TBMenuViewController :UIViewController, DissmissViewControllerModal {
     var backgroundMusicPlayer:AVAudioPlayer?
     static var loadedAtlas = false
     
-    func dismiss() {
-        self.dismissViewControllerAnimated(false, completion: {
-        
-        })
-    }
-    
+
     @IBOutlet weak var theBuggerBoard: UIImageView!
     override func viewDidLoad() {
         self.navigationController?.navigationBarHidden = true

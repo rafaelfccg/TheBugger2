@@ -19,11 +19,11 @@ class TBChangeSpeedGround: SKSpriteNode {
     static var slowAtlas:SKTextureAtlas = SKTextureAtlas(named: "slow")
     
     static func createAccelerateAnimation(){
-        let arr = TBUtils().getSprites(accelerateAtlas, nomeImagens: "speedBooster-")
+        let arr = TBUtils.getSprites(accelerateAtlas, nomeImagens: "speedBooster-")
         TBChangeSpeedGround.accelareteAnimation = SKAction.repeatActionForever( SKAction.animateWithTextures(arr, timePerFrame: 0.1))
     }
     static func createSlowAnimation(){
-        let arr = TBUtils().getSprites(slowAtlas, nomeImagens: "slow-")
+        let arr = TBUtils.getSprites(slowAtlas, nomeImagens: "slow-")
         TBChangeSpeedGround.slowAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(arr, timePerFrame: 0.1))
     }
     

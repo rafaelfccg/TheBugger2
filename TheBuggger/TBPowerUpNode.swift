@@ -19,7 +19,7 @@ class TBPowerUpNode: SKSpriteNode {
         super.init(texture: texture, color: color, size: size)
         self.size = CGSizeMake(40, 100)
         if(TBPowerUpNode.frenesi == nil){
-            let arr = TBUtils().getSprites(TBPowerUpNode.frenezyItem, nomeImagens: "PowerUpItem-")
+            let arr = TBUtils.getSprites(TBPowerUpNode.frenezyItem, nomeImagens: "PowerUpItem-")
             TBPowerUpNode.frenesi = SKAction.repeatActionForever(SKAction.animateWithTextures(arr, timePerFrame: 0.1))
         }
     }
