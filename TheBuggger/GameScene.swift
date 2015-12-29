@@ -84,22 +84,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isMethodOne:Int?
     
-    static let CHAO_NODE:UInt32             = 0b000000000000010
-    static let PLAYER_NODE:UInt32           = 0b000000000000001
-    static let MONSTER_NODE:UInt32          = 0b000000000000100
-    static let POWERUP_NODE:UInt32          = 0b000000000001000
-    static let ESPINHOS_NODE:UInt32         = 0b000000000010000
-    static let TIRO_NODE:UInt32             = 0b000000000100000
-    static let JOINT_ATTACK_NODE:UInt32     = 0b000000001000000
-    static let CHAO_QUICK_NODE:UInt32       = 0b000000010000000
-    static let CHAO_SLOW_NODE:UInt32        = 0b000000100000000
-    static let TOCO_NODE:UInt32             = 0b000001000000000
-    static let MOEDA_NODE:UInt32            = 0b000010000000000
-    static let OTHER_NODE:UInt32            = 0b000100000000000
-    static let STOP_CAMERA_NODE:UInt32      = 0b001000000000000
-    static let END_LEVEL_NODE:UInt32        = 0b010000000000000
-    static let REFERENCIA_NODE:UInt32       = 0b100000000000000
-
+    static let CHAO_NODE:UInt32             = 0b00000000000000010
+    static let PLAYER_NODE:UInt32           = 0b00000000000000001
+    static let MONSTER_NODE:UInt32          = 0b00000000000000100
+    static let POWERUP_NODE:UInt32          = 0b00000000000001000
+    static let ESPINHOS_NODE:UInt32         = 0b00000000000010000
+    static let TIRO_NODE:UInt32             = 0b00000000000100000
+    static let JOINT_ATTACK_NODE:UInt32     = 0b00000000001000000
+    static let CHAO_QUICK_NODE:UInt32       = 0b00000000010000000
+    static let CHAO_SLOW_NODE:UInt32        = 0b00000000100000000
+    static let TOCO_NODE:UInt32             = 0b00000001000000000
+    static let MOEDA_NODE:UInt32            = 0b00000010000000000
+    static let OTHER_NODE:UInt32            = 0b00000100000000000
+    static let STOP_CAMERA_NODE:UInt32      = 0b00001000000000000
+    static let END_LEVEL_NODE:UInt32        = 0b00010000000000000
+    static let REFERENCIA_NODE:UInt32       = 0b00100000000000000
+    static let MEGALASER_NODE:UInt32        = 0b01000000000000000
+    static let MEGALASERKILLER_NODE:UInt32  = 0b10000000000000000
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -195,13 +196,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func startGame(){
         
+        
         hero.realSpeed = hero.defaultSpeed
         hero.runWalkingAction()
+        checkBossVelocity()
         self.scene?.view?.paused = false
         tapToStartLabel?.removeFromParent()
         Flurry.logEvent("User Player \(levelSelected)")
     }
     
+    func checkBossVelocity() {      // Checa se existe algum boss, caso exista, aumenta sua velocidade
+        if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
+            firstBoss.updateVelocity()
+            firstBoss.startAttack()
+        }
+    }
     
     func moveSprite(sprite : SKSpriteNode,
         nextSprite : SKSpriteNode, speed : Float, isParalaxSky:Bool) -> Void {
@@ -331,6 +340,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (node, ponter)->Void in
                 node.removeFromParent()
         })
+        self.enumerateChildNodesWithName("firstBoss", usingBlock: { // adicionei aqui sem o removable, pois preciso alterar a velocidade dele quando o jogo iniciar
+            (node, ponter)->Void in
+            node.removeFromParent()
+        })
         camera?.enumerateChildNodesWithName(self.removable, usingBlock: {
             (node, ponter)->Void in
             node.removeFromParent()
@@ -398,6 +411,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBotj.zPosition = 100
             self.addChild(groundBotj)
         })
+        
         self.enumerateChildNodesWithName(TBBopperBotNode.name , usingBlock: {(node, ponter)->Void in
             
             let groundBoti = TBBopperBotNode()
@@ -406,6 +420,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
         })
+        
         self.enumerateChildNodesWithName(TBFlyingBotNode.name , usingBlock: {(node, ponter)->Void in
             
             let groundBoti = TBFlyingBotNode()
@@ -415,6 +430,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(groundBoti)
         })
         
+        self.enumerateChildNodesWithName(TBFirstBossNode.name , usingBlock: {(node, ponter)->Void in
+            
+            let groundBoti = TBFirstBossNode()
+            groundBoti.name = "firstBoss"
+            groundBoti.position = node.position
+            groundBoti.zPosition = 100
+            self.addChild(groundBoti)
+        })
         
     }
     
@@ -933,7 +956,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
           (bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||
           (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
-          (bodyB.categoryBitMask == GameScene.TIRO_NODE)){
+          (bodyB.categoryBitMask == GameScene.TIRO_NODE || bodyB.categoryBitMask == GameScene.MEGALASERKILLER_NODE)){
             
             if(bodyA.node?.name == hero.standJoint?.name){
                 bodyA = hero.physicsBody!
@@ -951,8 +974,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if(!flagTrocou) {norm = -norm}
             
-            if hero.actionForKey("attack") == nil && hero.actionForKey("defence") == nil{
+            if hero.actionForKey("attack") == nil && hero.actionForKey("defence") == nil && !hero.heroStopped{
+                        
                 self.hero.runWalkingAction()
+                
             }
             
                     
@@ -1079,6 +1104,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 else if let flyBot = bodyB.node!.parent as? TBFlyingBotNode {
                     flyBot.stopAttack()
+                }
+            }
+        } else if(bodyB.categoryBitMask == GameScene.TIRO_NODE && bodyA.categoryBitMask == GameScene.MONSTER_NODE) {
+            if let boss = bodyA.node as? TBFirstBossNode {
+                if let ball = bodyB.node as? TBBallFirstBossNode {
+                    boss.decreaseLife()
+                    ball.bossDamaged()
+                }
+            }
+        } else if(bodyB.categoryBitMask == GameScene.MEGALASER_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE) {
+            if let megaLaser = bodyB.node as? TBMegaLaserNode {
+                if(!megaLaser.entrouContato) {
+                    megaLaser.initFire(self)
                 }
             }
         }
