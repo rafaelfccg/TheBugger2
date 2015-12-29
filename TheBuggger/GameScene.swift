@@ -566,8 +566,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.enumerateChildNodesWithName(TBEspinhosNode.name, usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
-        
-            node.physicsBody  = SKPhysicsBody(rectangleOfSize: node.frame.size)
+            
+            let espinhoSize = CGSizeMake(node.frame.size.width*0.85, node.frame.size.height*0.85)
+            node.physicsBody  = SKPhysicsBody(rectangleOfSize: espinhoSize)
             node.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
             node.zPosition = 1
              self.setObstacleTypeHit(node)
