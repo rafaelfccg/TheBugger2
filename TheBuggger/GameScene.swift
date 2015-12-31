@@ -84,23 +84,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isMethodOne:Int?
     
-    static let CHAO_NODE:UInt32             = 0b00000000000000010
-    static let PLAYER_NODE:UInt32           = 0b00000000000000001
-    static let MONSTER_NODE:UInt32          = 0b00000000000000100
-    static let POWERUP_NODE:UInt32          = 0b00000000000001000
-    static let ESPINHOS_NODE:UInt32         = 0b00000000000010000
-    static let TIRO_NODE:UInt32             = 0b00000000000100000
-    static let JOINT_ATTACK_NODE:UInt32     = 0b00000000001000000
-    static let CHAO_QUICK_NODE:UInt32       = 0b00000000010000000
-    static let CHAO_SLOW_NODE:UInt32        = 0b00000000100000000
-    static let TOCO_NODE:UInt32             = 0b00000001000000000
-    static let MOEDA_NODE:UInt32            = 0b00000010000000000
-    static let OTHER_NODE:UInt32            = 0b00000100000000000
-    static let STOP_CAMERA_NODE:UInt32      = 0b00001000000000000
-    static let END_LEVEL_NODE:UInt32        = 0b00010000000000000
-    static let REFERENCIA_NODE:UInt32       = 0b00100000000000000
-    static let MEGALASER_NODE:UInt32        = 0b01000000000000000
-    static let MEGALASERKILLER_NODE:UInt32  = 0b10000000000000000
+    static let CHAO_NODE:UInt32             = 0b0000000000000000010
+    static let PLAYER_NODE:UInt32           = 0b0000000000000000001
+    static let MONSTER_NODE:UInt32          = 0b0000000000000000100
+    static let POWERUP_NODE:UInt32          = 0b0000000000000001000
+    static let ESPINHOS_NODE:UInt32         = 0b0000000000000010000
+    static let TIRO_NODE:UInt32             = 0b0000000000000100000
+    static let JOINT_ATTACK_NODE:UInt32     = 0b0000000000001000000
+    static let CHAO_QUICK_NODE:UInt32       = 0b0000000000010000000
+    static let CHAO_SLOW_NODE:UInt32        = 0b0000000000100000000
+    static let TOCO_NODE:UInt32             = 0b0000000001000000000
+    static let MOEDA_NODE:UInt32            = 0b0000000010000000000
+    static let OTHER_NODE:UInt32            = 0b0000000100000000000
+    static let STOP_CAMERA_NODE:UInt32      = 0b0000001000000000000
+    static let END_LEVEL_NODE:UInt32        = 0b0000010000000000000
+    static let REFERENCIA_NODE:UInt32       = 0b0000100000000000000
+    static let MEGALASER_NODE:UInt32        = 0b0001000000000000000
+    static let MEGALASERKILLER_NODE:UInt32  = 0b0010000000000000000
+    static let BOSSONE_NODE:UInt32          = 0b0100000000000000000
+    static let METALBALL_NODE:UInt32        = 0b1000000000000000000
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -208,7 +210,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func checkBossVelocity() {      // Checa se existe algum boss, caso exista, aumenta sua velocidade
         if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
             firstBoss.updateVelocity()
-            firstBoss.startAttack()
+            firstBoss.startBoss()
         }
     }
     
@@ -955,9 +957,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
-          (bodyB.categoryBitMask == GameScene.MONSTER_NODE) ||
-          (bodyB.categoryBitMask == GameScene.ESPINHOS_NODE) ||
-          (bodyB.categoryBitMask == GameScene.TIRO_NODE || bodyB.categoryBitMask == GameScene.MEGALASERKILLER_NODE)){
+          (bodyB.categoryBitMask == GameScene.MONSTER_NODE ||
+          bodyB.categoryBitMask == GameScene.ESPINHOS_NODE ||
+          bodyB.categoryBitMask == GameScene.TIRO_NODE || bodyB.categoryBitMask == GameScene.MEGALASERKILLER_NODE || bodyB.categoryBitMask == GameScene.METALBALL_NODE)){
             
             if(bodyA.node?.name == hero.standJoint?.name){
                 bodyA = hero.physicsBody!
@@ -1107,17 +1109,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     flyBot.stopAttack()
                 }
             }
-        } else if(bodyB.categoryBitMask == GameScene.TIRO_NODE && bodyA.categoryBitMask == GameScene.MONSTER_NODE) {
-            if let boss = bodyA.node as? TBFirstBossNode {
-                if let ball = bodyB.node as? TBBallFirstBossNode {
-                    boss.decreaseLife()
-                    ball.bossDamaged()
-                }
-            }
         } else if(bodyB.categoryBitMask == GameScene.MEGALASER_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE) {
             if let megaLaser = bodyB.node as? TBMegaLaserNode {
                 if(!megaLaser.entrouContato) {
                     megaLaser.initFire(self)
+                }
+            }
+        } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.BOSSONE_NODE) {
+            if let boss = bodyA.node as? TBFirstBossNode {
+                if let metalBall = bodyB.node as? TBBallFirstBossNode {
+                    boss.decreaseLifeMetalBall()
+                    metalBall.bossDamaged()
                 }
             }
         }

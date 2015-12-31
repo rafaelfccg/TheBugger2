@@ -1,5 +1,5 @@
 //
-//  TBShotFirstBossNode.swift
+//  TBBallFirstBossNode.swift
 //  TheBuggger
 //
 //  Created by Victor Augusto Pereira Porciúncula on 12/27/15.
@@ -9,36 +9,40 @@
 import UIKit
 import SpriteKit
 
-class TBShotFirstBossNode: SKSpriteNode {
+class TBBallFirstBossNode: SKSpriteNode {
     
-    static let name = "firstBossShot"
-    var jaAtirou = false
+    static let name = "metalBall"
     var initialTime: CFTimeInterval = 0
-    static var shotAnimation: SKAction?
-    static var defendedAnimation: SKAction?
     
-    init(shotPosition: CGPoint) {
+    init(ballPosition: CGPoint) {
         super.init(texture: nil, color: UIColor.whiteColor(), size: CGSizeMake(50, 50))
         
-        self.jaAtirou = false
-        self.position = CGPointMake(shotPosition.x, shotPosition.y+5)
-        self.color = UIColor.whiteColor()
-        self.size = CGSizeMake(30, 150)
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size);
-        self.physicsBody? = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width, self.size.height-132))
+        self.position = CGPointMake(ballPosition.x, ballPosition.y)
+        self.color = UIColor.blackColor()
+        self.size = CGSizeMake(35, 35)
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
+        self.physicsBody? = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width, self.size.height))
         self.physicsBody?.velocity = CGVectorMake(-200, 0)
         self.physicsBody?.friction = CGFloat(0)
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
         
-        self.physicsBody?.categoryBitMask = GameScene.TIRO_NODE
+        self.physicsBody?.categoryBitMask = GameScene.METALBALL_NODE
         self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE
-        self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.BOSSONE_NODE
     }
     
-    func defendeAnimation() {
-        runAction(SKAction.sequence([TBShotNode.defendedAnimation!, SKAction.removeFromParent()]))
+    func defendeAnimation() { //  Quando o heroi defender a bola, ela voltara contra o boss
+        self.physicsBody?.velocity = CGVectorMake(1000, 0)
+    }
+    
+    func bossDamaged() {  // Acao que remove o no metalBall quando acertar o boss
+        self.removeFromParent()
+    }
+    
+    func heroDamaged() {  // Acao que remove o no metalBall quando acertar o heroi
+        self.removeFromParent()
     }
     
     required init?(coder aDecoder: NSCoder) {

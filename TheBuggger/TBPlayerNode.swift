@@ -38,6 +38,7 @@ class TBPlayerNode: SKSpriteNode {
     var attackActionChangeState1:SKAction?
     var attackActionChangeState2:SKAction?
     var dashActionModifier:SKAction?
+    var heroStopped = false // checar se o heroi deve ficar parado ou nao
     
     var score: Int = 0
     var monstersKilled: Int = 0
@@ -172,9 +173,9 @@ class TBPlayerNode: SKSpriteNode {
         self.runStandingAction()
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
-        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.TOCO_NODE
+        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.TOCO_NODE & ~GameScene.MEGALASER_NODE & ~GameScene.MEGALASERKILLER_NODE
         
-        self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE
+        self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE | GameScene.MEGALASER_NODE | GameScene.MEGALASERKILLER_NODE | GameScene.METALBALL_NODE
         
         createAttackJoint()
         addAttackJoint()
@@ -390,13 +391,25 @@ class TBPlayerNode: SKSpriteNode {
                 gbotmonste.defendeAnimation()
                 
             }
-            //bodyB.node?.removeFromParent()
             
+            
+        } else if (bodyB.categoryBitMask == GameScene.METALBALL_NODE && self.attackState == AttackState.Defending){
+            
+            if let gbotmonste2 = bodyB.node as? TBBallFirstBossNode{
+                gbotmonste2.defendeAnimation()
+                
+            }
             
         } else{
             
             if(bodyB.categoryBitMask == GameScene.TIRO_NODE) {
                 bodyB.node?.removeFromParent()
+            }
+            
+            if(bodyB.categoryBitMask == GameScene.METALBALL_NODE) {
+                if let metalBall = bodyB.node as? TBBallFirstBossNode {
+                    metalBall.heroDamaged()
+                }
             }
             
             bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
@@ -514,29 +527,30 @@ class TBPlayerNode: SKSpriteNode {
         
     }
     func jump(){
+        self.heroStopped = false
         let dashAction = self.actionForKey("dash")
         if(dashAction != nil){
             self.removeActionForKey("dash")
             self.addStandingJoint()
         }
-            switch(jumpState){
-                case JumpState.CanJump:
-                    if (self.physicsBody?.velocity.dy)! > -10 {
-                        self.jumpImpulse()
-                        jumpState = JumpState.FirstJump
-                    }
-                break
-                case JumpState.FirstJump:
-                    if(powerUP == TBPowerUpsStates.DoubleJumper){
-                        self.jumpImpulse()
-                        jumpState = JumpState.SecondJump
-                    }
-                break
-                case JumpState.SecondJump:
-                    
-                break
+        switch(jumpState){
+        case JumpState.CanJump:
+            if (self.physicsBody?.velocity.dy)! > -10 {
+                self.jumpImpulse()
+                jumpState = JumpState.FirstJump
             }
-
+            break
+        case JumpState.FirstJump:
+            if(powerUP == TBPowerUpsStates.DoubleJumper){
+                self.jumpImpulse()
+                jumpState = JumpState.SecondJump
+            }
+            break
+        case JumpState.SecondJump:
+            
+            break
+        }
+        
     }
     
     func dash(){
@@ -558,6 +572,7 @@ class TBPlayerNode: SKSpriteNode {
     func stopWalk() {
         self.removeActionWalk()
         self.runStandingAction()
+        self.heroStopped = true
     }
     
     func actionCall(){
