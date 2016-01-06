@@ -63,7 +63,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
             let skView = self.view as! SKView
             //skView.showsFPS = true
             //skView.showsNodeCount = true
-            skView.showsPhysics = true;
+            //skView.showsPhysics = true;
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
@@ -89,7 +89,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
             let skView = self.view as! SKView
 //            skView.showsFPS = true
             //skView.showsNodeCount = true
-            skView.showsPhysics = true;
+            //skView.showsPhysics = true;
             NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
             skView.ignoresSiblingOrder = true
             
