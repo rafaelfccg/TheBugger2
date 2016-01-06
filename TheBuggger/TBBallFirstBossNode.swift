@@ -47,7 +47,7 @@ class TBBallFirstBossNode: SKSpriteNode {
         if(getSpecial()) {
             self.color = UIColor.blueColor()
         } else {
-            self.color = UIColor.blackColor()
+            self.color = UIColor.whiteColor()
         }
     }
     
