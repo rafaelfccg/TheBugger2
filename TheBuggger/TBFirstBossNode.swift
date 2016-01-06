@@ -28,6 +28,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.dynamic = true
         self.physicsBody?.restitution = 0
+        self.physicsBody?.affectedByGravity = false
         self.physicsBody?.velocity = CGVectorMake(0, 0)
         self.physicsBody?.mass = 100000
         self.physicsBody?.categoryBitMask = GameScene.BOSSONE_NODE
@@ -47,6 +48,11 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     
     func startBoss() {      // O boss comeca a se movimentar e realizar suas acoes
         runAction(SKAction.runBlock({self.startAttack()}))
+    }
+    
+    func waitTimeToAttack() {    // Espera algum tempo pra comecar a atacar, criei esta funcao pra nao comecar a atacar tao rapido depois da bola nao especial
+        let waitTimeAttack = SKAction.sequence([SKAction.waitForDuration(0.5), SKAction.runBlock({self.startAttack()})])
+        runAction(waitTimeAttack)
     }
     
     func startAttack() {       // O boss comeca a atacar
@@ -100,7 +106,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func decreaseLifeMetalBall() { // Diminui a vida do boss quando receber dano da metalBall
-        self.life--
+        self.life -= 5
         print(self.life)
         if(self.life == 0) {
             self.bossDie()
@@ -121,8 +127,22 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     
     func bossLowEnergy() {    // Chamada quando a energia do boss estiver baixa
         let slowDownAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = 0}), SKAction.waitForDuration(5)])
+        // Pode se reposicionar de duas maneiras, a primeira e apenas acelerando pra frente
         let accelerateAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed+600)}), SKAction.waitForDuration(0.8), SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed)}), SKAction.waitForDuration(0.5), SKAction.runBlock({self.startAttack()})])
-        runAction(SKAction.sequence([slowDownAction, accelerateAction]))
+        // A segunda e pulando
+        let up = SKAction.moveBy(CGVectorMake(405, 130), duration: 0.4)
+        let down = SKAction.moveBy(CGVectorMake(405, -130), duration: 0.4)
+        let jumpAction = SKAction.sequence([up, down, SKAction.waitForDuration(0), SKAction.runBlock({self.physicsBody?.velocity = CGVectorMake(CGFloat(self.defaultSpeed), CGFloat(0))}), SKAction.waitForDuration(0.5), SKAction.runBlock({self.startAttack()})])
+        
+        let diceRoll = Int(arc4random_uniform(2))
+        switch(diceRoll) {
+        case 0:
+            runAction(SKAction.sequence([slowDownAction, accelerateAction]))
+        case 1:
+            runAction(SKAction.sequence([slowDownAction, jumpAction]))
+        default:
+            print("Error")
+        }
     }
     
     func megaLaserAttackDown() {    // Ataque do megaLaser em baixo

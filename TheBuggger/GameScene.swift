@@ -1008,8 +1008,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         } else if(bodyB.categoryBitMask == GameScene.BOSSONE_NODE && bodyA.categoryBitMask == GameScene.JOINT_ATTACK_NODE) {
-            if let boss = bodyB.node as? TBFirstBossNode {
-                boss.decreaseLife()
+            if(hero.attackState == AttackState.Attacking) {
+                if let boss = bodyB.node as? TBFirstBossNode {
+                    boss.decreaseLife()
+                }
             }
         } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MOEDA_NODE )){
             //pegou a moeda
