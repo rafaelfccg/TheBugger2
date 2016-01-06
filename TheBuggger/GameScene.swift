@@ -1005,11 +1005,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if let gbotmonste = bodyA.node as? TBMonsterProtocol{
                     gbotmonste.dieAnimation(self.hero)
                 }
-               
             }
             
-        }
-        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MOEDA_NODE )){
+        } else if(bodyB.categoryBitMask == GameScene.BOSSONE_NODE && bodyA.categoryBitMask == GameScene.JOINT_ATTACK_NODE) {
+            if let boss = bodyB.node as? TBFirstBossNode {
+                boss.decreaseLife()
+            }
+        } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.MOEDA_NODE )){
             //pegou a moeda
             if  let bit = bodyB.node as? TBBitNode {
                 hero.score += 100
@@ -1121,6 +1123,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     boss.decreaseLifeMetalBall()
                     metalBall.bossDamaged()
                 }
+            }
+        } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.REFERENCIA_NODE) {
+            if let metalBall = bodyB.node as? TBBallFirstBossNode {
+                metalBall.ballMissed()
             }
         }
     }

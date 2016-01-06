@@ -23,6 +23,7 @@ class TBPlayerNode: SKSpriteNode {
     var speedBost:Bool
     var attackJoint:SKSpriteNode?
     var standJoint:SKSpriteNode?
+    var reference: SKSpriteNode?
     static var deathAnimation: SKAction?
     static var frenezyAnimation: SKAction?
     
@@ -127,7 +128,6 @@ class TBPlayerNode: SKSpriteNode {
         attackState = AttackState.Idle
         speedBost = false
         super.init(coder: aDecoder)
-       
     }
     
     init(){
@@ -165,7 +165,6 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), 0);
         self.position = CGPointMake(216, 375)
         self.physicsBody?.mass = 0.069672822603786
-      
         configDefence()
         configAttack()
         configDash()
@@ -173,7 +172,7 @@ class TBPlayerNode: SKSpriteNode {
         self.runStandingAction()
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
-        self.physicsBody!.collisionBitMask = GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.TOCO_NODE & ~GameScene.MEGALASER_NODE & ~GameScene.MEGALASERKILLER_NODE
+        self.physicsBody!.collisionBitMask = GameScene.BOSSONE_NODE | GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.TOCO_NODE & ~GameScene.MEGALASER_NODE & ~GameScene.MEGALASERKILLER_NODE
         
         self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE | GameScene.MEGALASER_NODE | GameScene.MEGALASERKILLER_NODE | GameScene.METALBALL_NODE
         
@@ -181,7 +180,35 @@ class TBPlayerNode: SKSpriteNode {
         addAttackJoint()
         createStandingJoint()
         addStandingJoint()
-
+        self.createPlayerReference()
+        self.addPlayerReference()
+    }
+    
+    func createPlayerReference() { // Criando uma referencia para que quando o player pule a bola de metal, ela continue fazendo as acoes
+        let referencia:SKSpriteNode! = SKSpriteNode()
+        referencia.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(40, 1000))
+        referencia.physicsBody?.affectedByGravity = false;
+        referencia.physicsBody?.linearDamping = 0;
+        referencia.physicsBody?.friction = 0;
+        referencia.physicsBody?.pinned = true
+        referencia.physicsBody?.allowsRotation = false
+        referencia.physicsBody?.restitution = 0
+        referencia.physicsBody?.mass = 0.0000001
+        referencia.physicsBody?.collisionBitMask = 0b0
+        referencia.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
+        referencia.physicsBody?.collisionBitMask = 0b0
+        referencia.physicsBody?.contactTestBitMask = GameScene.METALBALL_NODE
+        self.reference = referencia
+    }
+    
+    func addPlayerReference() {   // Adicionando a referencia
+        self.reference?.position = CGPointMake(-50 , 0)
+        self.reference?.zRotation = 0
+        self.addChild(self.reference!)
+    }
+    
+    func removePlayerReference() {   // Removendo a referencia
+        self.reference?.removeFromParent()
     }
     
     func configDefence(){
@@ -295,7 +322,7 @@ class TBPlayerNode: SKSpriteNode {
         atackJointSquare.physicsBody?.mass = 0.0000001
         atackJointSquare.physicsBody?.collisionBitMask = 0b0
         atackJointSquare.physicsBody?.categoryBitMask = GameScene.JOINT_ATTACK_NODE
-        atackJointSquare.physicsBody?.contactTestBitMask = GameScene.MONSTER_NODE
+        atackJointSquare.physicsBody?.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.BOSSONE_NODE
         self.attackJoint = atackJointSquare
         
     }
@@ -335,6 +362,7 @@ class TBPlayerNode: SKSpriteNode {
         self.removeStandingNode()
         self.addStandingJoint()
         self.addAttackJoint()
+        self.addPlayerReference()
         self.runStandingAction()
     }
     func activatePowerUp(type:TBPowerUpsStates){
@@ -423,6 +451,7 @@ class TBPlayerNode: SKSpriteNode {
             if self.actionForKey("die") == nil{
                 self.runAction(SKAction.group([(SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.removeAttackJoint()
+                    self.removePlayerReference()
                     self.removeFromParent()
                     
                     sender.restartLevel()
@@ -505,6 +534,9 @@ class TBPlayerNode: SKSpriteNode {
                 if body.categoryBitMask == GameScene.MONSTER_NODE {
                     let gbotmonste = body.node as? TBMonsterProtocol
                     gbotmonste!.dieAnimation(self)
+                } else if body.categoryBitMask == GameScene.BOSSONE_NODE {
+                    let boss = body.node as? TBFirstBossNode
+                    boss?.decreaseLife()
                 }
             }
         }
@@ -558,9 +590,7 @@ class TBPlayerNode: SKSpriteNode {
             self.removeStandingNode()
             if jumpState == JumpState.CanJump{
                 let dashGroup = SKAction.group([SKAction.sequence([self.dashActionModifier!,SKAction.runBlock({
-                        print("vai acabar DASH")
                         self.runWalkingAction()
-                        print("acabou DASH")
                 })]), SKAction.playSoundFileNamed("dash", waitForCompletion: false)])
                 self.runAction(dashGroup ,withKey: "dash")
             }else {

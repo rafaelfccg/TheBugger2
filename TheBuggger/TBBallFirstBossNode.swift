@@ -38,10 +38,20 @@ class TBBallFirstBossNode: SKSpriteNode {
     }
     
     func bossDamaged() {  // Acao que remove o no metalBall quando acertar o boss
+        if let boss = self.parent as? TBFirstBossNode {
+            boss.startAttack()
+        }
         self.removeFromParent()
     }
     
     func heroDamaged() {  // Acao que remove o no metalBall quando acertar o heroi
+        self.removeFromParent()
+    }
+    
+    func ballMissed() {    // Acao que remove o no metalBall quando o heroi desviar
+        if let boss = self.parent as? TBFirstBossNode {
+            boss.startAttack()
+        }
         self.removeFromParent()
     }
     

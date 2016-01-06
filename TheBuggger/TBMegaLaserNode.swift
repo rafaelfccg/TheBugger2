@@ -41,7 +41,10 @@ class TBMegaLaserNode: SKSpriteNode {
         let changeToFire = SKAction.sequence([SKAction.waitForDuration(0.5), SKAction.runBlock({self.color = UIColor.redColor(); self.setFireCategoryBitMask(); self.checkPlayerContact(sender);})])
         let backToBusy = SKAction.sequence([SKAction.waitForDuration(0.4), SKAction.runBlock({self.color = UIColor.yellowColor(); self.setNormalCategoryBitMask()})])
         let backToNormal = SKAction.sequence([SKAction.waitForDuration(0.5), SKAction.runBlock({self.color = UIColor.greenColor()})])
-        runAction(SKAction.sequence([changeToBusy, changeToFire, backToBusy, backToNormal]))
+        let bossChangeAttack = SKAction.runBlock({if let boss = self.parent as? TBFirstBossNode {
+            boss.startAttack(); self.removeFromParent()
+            }})
+        runAction(SKAction.sequence([changeToBusy, changeToFire, backToBusy, backToNormal, bossChangeAttack]))
     }
     
     func setNormalCategoryBitMask() {     // Categoria do laser que nao mata o player
