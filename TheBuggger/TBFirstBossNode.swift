@@ -16,6 +16,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     let attacksToLowEnergy = 8     // Numero de ataques necessarios pro boss descarregar
     var lastAttack = -1        // Variavel auxiliar para nao repetir o mesmo attack duas vezes
     var attacksHappened = 0
+    var totalAttacks = 0
+    var currentBit = 0
     
     init() {
         
@@ -57,28 +59,32 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     
     func startAttack() {       // O boss comeca a atacar
         if(!self.checkEnergy()) {   // Checa a energia antes de comecar a atacar
-            let diceRoll = Int(arc4random_uniform(3))
-            switch(diceRoll) {
-            case 0:
-                if(self.lastAttack != 0) {
-                    self.ballAttack()
-                } else {
-                    self.megaLaserAttackDown()
+            if(self.checkBitTime()) {     // Checa se e hora de atirar um bit
+                self.shotBit()
+            } else {
+                let diceRoll = Int(arc4random_uniform(3))
+                switch(diceRoll) {
+                case 0:
+                    if(self.lastAttack != 0) {
+                        self.ballAttack()
+                    } else {
+                        self.megaLaserAttackDown()
+                    }
+                case 1:
+                    if(self.lastAttack != 1) {
+                        self.megaLaserAttackDown()
+                    } else {
+                        self.megaLaserAttackUp()
+                    }
+                case 2:
+                    if(self.lastAttack != 2) {
+                        self.megaLaserAttackUp()
+                    } else {
+                        self.ballAttack()
+                    }
+                default:
+                    print("Error")
                 }
-            case 1:
-                if(self.lastAttack != 1) {
-                    self.megaLaserAttackDown()
-                } else {
-                    self.megaLaserAttackUp()
-                }
-            case 2:
-                if(self.lastAttack != 2) {
-                    self.megaLaserAttackUp()
-                } else {
-                    self.ballAttack()
-                }
-            default:
-                print("Error")
             }
         }
     }
@@ -94,7 +100,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func ballAttack() { // Ataque da bola de metal
-        self.attacksHappened +=  1
+        self.attacksHappened++
+        self.totalAttacks++
         self.lastAttack = 0
         self.createBall()
     }
@@ -107,16 +114,14 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     
     func decreaseLifeMetalBall() { // Diminui a vida do boss quando receber dano da metalBall
         self.life -= 5
-        print(self.life)
-        if(self.life == 0) {
+        if(self.life <= 0) {
             self.bossDie()
         }
     }
     
     func decreaseLife() {       // Diminui a vida do boss quando receber dano
         self.life--
-        print(self.life)
-        if(self.life == 0) {
+        if(self.life <= 0) {
             self.bossDie()
         }
     }
@@ -146,7 +151,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func megaLaserAttackDown() {    // Ataque do megaLaser em baixo
-        self.attacksHappened +=  1
+        self.attacksHappened++
+        self.totalAttacks++
         self.lastAttack = 1
         self.createMegaLaserDown()
     }
@@ -158,7 +164,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func megaLaserAttackUp() {           // Ataque do megaLaser em cima
-        self.attacksHappened +=  1
+        self.attacksHappened++
+        self.totalAttacks++
         self.lastAttack = 2
         self.createMegaLaserUp()
     }
@@ -167,6 +174,40 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         let megaLaser = TBMegaLaserNode(laserPosition: CGPointMake(-372, -60))
         megaLaser.name = TBMegaLaserNode.name
         self.addChild(megaLaser)
+    }
+    
+    func createBit() {     // Cria um bit
+        let bit = TBBitNode()
+        //bit.position = (node.position)
+        bit.physicsBody?.pinned = false
+        bit.position = CGPointMake(-95, 10)
+        bit.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
+        bit.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        bit.physicsBody?.velocity = CGVectorMake(-350, 0)
+        bit.name  = "removable"
+        bit.num = self.currentBit++
+        self.addChild(bit)
+        bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
+    }
+    
+    func shotBit() {       // Atira um bit
+        let shootingBit = SKAction.sequence([SKAction.waitForDuration(1), SKAction.runBlock({self.createBit()}), SKAction.waitForDuration(1.5), SKAction.runBlock({self.startAttack()})])
+        runAction(shootingBit)
+    }
+    
+    func checkBitTime() -> Bool {      // Funcao para saber se e o momento de atirar um bit
+        var itsTime = false
+        if(self.totalAttacks == 12) {
+            self.totalAttacks++
+            itsTime = true
+        } else if(self.totalAttacks == 22) {
+            self.totalAttacks++
+            itsTime = true
+        } else if(self.totalAttacks == 30) {
+            self.totalAttacks++
+            itsTime = true
+        }
+        return itsTime
     }
     
     func setParedeNode() {     // Funcao para que quando o boss pare se crie um no parede, para o player nao ficar indo sempre pra frente

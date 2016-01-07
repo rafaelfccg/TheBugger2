@@ -64,6 +64,10 @@ class TBMegaLaserNode: SKSpriteNode {
         for body : SKPhysicsBody in bodies! {
             if let player = body.node as? TBPlayerNode {
                 player.dangerCollision(self.physicsBody!, sender: sender)
+            } else if (body.node?.name == "standNode") {
+                if let player = body.node?.parent as? TBPlayerNode {
+                    player.dangerCollision(self.physicsBody!, sender: sender)
+                }
             }
         }
     }
