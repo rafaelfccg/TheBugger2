@@ -12,7 +12,7 @@ import SpriteKit
 class TBBallFirstBossNode: SKSpriteNode {
     
     static let name = "metalBall"
-    var specialChance = 30   // 30% de chance da bola ser especial
+    var specialChance = 15   // 30% de chance da bola ser especial
     var isSpecial = false
     var initialTime: CFTimeInterval = 0
     

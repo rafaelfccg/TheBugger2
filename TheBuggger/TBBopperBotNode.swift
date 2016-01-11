@@ -34,7 +34,8 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         self.physicsBody?.categoryBitMask = GameScene.MONSTER_NODE
         self.physicsBody?.collisionBitMask = ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.TIRO_NODE
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE
-        self.runAction(SKAction.repeatActionForever(TBBopperBotNode.animation!))
+        
+        self.runAnimationWithTime()
         
         // adicionando referencia, dá pra otimizar
         let referencia:SKSpriteNode! = SKSpriteNode()
@@ -50,6 +51,24 @@ class TBBopperBotNode: SKSpriteNode,TBMonsterProtocol {
         referencia.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         self.addChild(referencia!)
         
+    }
+    
+    func runAnimationWithTime() {   // Comeca a animacao depois de um delay aleatorio para os bots ficarem dessincronizados
+        let diceRoll = Int(arc4random_uniform(4))
+        var delay:Double = 0;
+        switch(diceRoll) {
+        case 0:
+            delay = 0.1
+        case 1:
+            delay = 0.2
+        case 2:
+            delay = 0.3
+        case 3:
+            delay = 0.4
+        default:
+            print("Error")
+        }
+        self.runAction(SKAction.sequence([SKAction.waitForDuration(delay), SKAction.repeatActionForever(TBBopperBotNode.animation!)]))
     }
     
     static func createSKActionAnimation()

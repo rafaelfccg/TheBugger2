@@ -464,8 +464,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             moeda.name  = self.removable
             self.addChild(moeda)
             
-            moeda.runAction(SKAction.repeatActionForever( TBMoedasNode.animation! ))
-            
         })
         
         for (var i = 0 ; i < 3 ;i++) {

@@ -66,7 +66,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
                 switch(diceRoll) {
                 case 0:
                     if(self.lastAttack != 0) {
-                        self.ballAttack()
+                        self.ballAttackDown()
                     } else {
                         self.megaLaserAttackDown()
                     }
@@ -80,7 +80,13 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
                     if(self.lastAttack != 2) {
                         self.megaLaserAttackUp()
                     } else {
-                        self.ballAttack()
+                        self.ballAttackUp()
+                    }
+                case 3:
+                    if(self.lastAttack != 3) {
+                        self.ballAttackUp()
+                    } else {
+                        self.ballAttackDown()
                     }
                 default:
                     print("Error")
@@ -99,15 +105,28 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         return energyIsSlow
     }
     
-    func ballAttack() { // Ataque da bola de metal
+    func ballAttackDown() { // Ataque da bola de metal em baixo
         self.attacksHappened++
         self.totalAttacks++
         self.lastAttack = 0
-        self.createBall()
+        self.createBallDown()
     }
     
-    func createBall() { // Cria a bola de metal
+    func createBallDown() { // Cria a bola de metal em baixo
         let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-95, -85))
+        ball.name = TBBallFirstBossNode.name
+        self.addChild(ball)
+    }
+    
+    func ballAttackUp() { // Ataque da bola de metal em cima
+        self.attacksHappened++
+        self.totalAttacks++
+        self.lastAttack = 3
+        self.createBallUp()
+    }
+    
+    func createBallUp() { // Cria a bola de metal em cima
+        let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-95, -60))
         ball.name = TBBallFirstBossNode.name
         self.addChild(ball)
     }
@@ -133,11 +152,11 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     func bossLowEnergy() {    // Chamada quando a energia do boss estiver baixa
         let slowDownAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = 0}), SKAction.waitForDuration(5)])
         // Pode se reposicionar de duas maneiras, a primeira e apenas acelerando pra frente
-        let accelerateAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed+600)}), SKAction.waitForDuration(0.8), SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed)}), SKAction.waitForDuration(0.5), SKAction.runBlock({self.startAttack()})])
+        let accelerateAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed+600)}), SKAction.waitForDuration(0.8), SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed)}), SKAction.waitForDuration(2), SKAction.runBlock({self.startAttack()})])
         // A segunda e pulando
         let up = SKAction.moveBy(CGVectorMake(405, 130), duration: 0.4)
         let down = SKAction.moveBy(CGVectorMake(405, -130), duration: 0.4)
-        let jumpAction = SKAction.sequence([up, down, SKAction.waitForDuration(0), SKAction.runBlock({self.physicsBody?.velocity = CGVectorMake(CGFloat(self.defaultSpeed), CGFloat(0))}), SKAction.waitForDuration(0.5), SKAction.runBlock({self.startAttack()})])
+        let jumpAction = SKAction.sequence([up, down, SKAction.waitForDuration(0), SKAction.runBlock({self.physicsBody?.velocity = CGVectorMake(CGFloat(self.defaultSpeed), CGFloat(0))}), SKAction.waitForDuration(2), SKAction.runBlock({self.startAttack()})])
         
         let diceRoll = Int(arc4random_uniform(2))
         switch(diceRoll) {

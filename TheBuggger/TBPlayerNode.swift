@@ -202,7 +202,7 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func addPlayerReference() {   // Adicionando a referencia
-        self.reference?.position = CGPointMake(-50 , 0)
+        self.reference?.position = CGPointMake(-250 , 0)
         self.reference?.zRotation = 0
         self.addChild(self.reference!)
     }

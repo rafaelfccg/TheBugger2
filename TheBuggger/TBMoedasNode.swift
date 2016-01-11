@@ -24,7 +24,7 @@ class TBMoedasNode: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.pinned = true
-        
+        self.runAction(SKAction.repeatActionForever(TBMoedasNode.animation!))
     }
     
     required init?(coder aDecoder: NSCoder) {

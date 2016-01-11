@@ -39,7 +39,7 @@ class TBMegaLaserNode: SKSpriteNode {
         self.entrouContato = true
         let changeToBusy = SKAction.sequence([SKAction.waitForDuration(1), SKAction.runBlock({self.color = UIColor.yellowColor()})])
         let changeToFire = SKAction.sequence([SKAction.waitForDuration(0.5), SKAction.runBlock({self.color = UIColor.redColor(); self.setFireCategoryBitMask(); self.checkPlayerContact(sender);})])
-        let backToBusy = SKAction.sequence([SKAction.waitForDuration(0.4), SKAction.runBlock({self.color = UIColor.yellowColor(); self.setNormalCategoryBitMask()})])
+        let backToBusy = SKAction.sequence([SKAction.waitForDuration(0.3), SKAction.runBlock({self.color = UIColor.yellowColor(); self.setNormalCategoryBitMask()})])
         let backToNormal = SKAction.sequence([SKAction.waitForDuration(0.6), SKAction.runBlock({self.color = UIColor.greenColor()})])
         let bossChangeAttack = SKAction.runBlock({if let boss = self.parent as? TBFirstBossNode {
             boss.startAttack(); self.removeFromParent()
