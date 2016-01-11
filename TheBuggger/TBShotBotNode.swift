@@ -22,7 +22,8 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
     var startShootingTime: NSTimeInterval?
     
     static let deathAtlas = SKTextureAtlas(named:"DieShooterBot")
-    
+    static let standAtlas = SKTextureAtlas(named:"RepousoShotBot")
+    static let attackAtlas = SKTextureAtlas(named:"ShooterBot")
     var jaAtacou = false // Variavel auxiliar para o bot atacar apenas uma vez
     
     init() {
@@ -82,13 +83,13 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
         //        let monsterArray = TBUtils.getSprites("GroundMonster", nomeImagens: "groundMonster-")
         //        TBGroundBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.1);
         
-        let monsterArray = TBUtils.getSprites(SKTextureAtlas(named:"RepousoShotBot"), nomeImagens: "repousoShotBot-")
+        let monsterArray = TBUtils.getSprites(TBShotBotNode.standAtlas, nomeImagens: "repousoShotBot-")
         TBShotBotNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.15);
         
         let deathArray = TBUtils.getSprites(TBShotBotNode.deathAtlas, nomeImagens: "dieShooterBot-")
         TBShotBotNode.deathAnimation = SKAction.group([SKAction.animateWithTextures(deathArray, timePerFrame: 0.1), SKAction.playSoundFileNamed("robotExplosion.mp3", waitForCompletion: true)]);
         
-        let shootingArray = TBUtils.getSprites(SKTextureAtlas(named:"ShooterBot"), nomeImagens: "shooterBot-")
+        let shootingArray = TBUtils.getSprites(TBShotBotNode.attackAtlas, nomeImagens: "shooterBot-")
         TBShotBotNode.shootingAnimation = SKAction.group([SKAction.animateWithTextures(shootingArray, timePerFrame: 0.05), SKAction.playSoundFileNamed("shot.mp3", waitForCompletion: false)])
         
         let shootingArray2 = TBUtils.getSprites(SKTextureAtlas(named:"ShooterBot2"), nomeImagens: "shooterBot2-")

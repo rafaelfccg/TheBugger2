@@ -977,7 +977,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if(!flagTrocou) {norm = -norm}
             
-            if hero.actionForKey("attack") == nil && hero.actionForKey("defence") == nil && !hero.heroStopped{
+            if hero.actionForKey("attack") == nil && hero.actionForKey("defence") == nil && hero.actionForKey("dash") == nil && !hero.heroStopped{
                         
                 self.hero.runWalkingAction()
                 
