@@ -994,7 +994,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 hero.slowFloorCollision(bodyB, sender: self)
             } else if bodyB.categoryBitMask == GameScene.TOCO_NODE {
                 if(bodyA.node?.position.x < bodyB.node?.position.x) {
-                    print("Hero parado")
                     hero.stopWalk()
                 }
             }

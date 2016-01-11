@@ -409,8 +409,10 @@ class TBPlayerNode: SKSpriteNode {
             }
             
         }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.attackState == AttackState.Defending {
-            bodyB.applyImpulse(CGVectorMake(70, 30))
-            print("\(bodyB.mass)")
+            if(bodyB.node?.physicsBody?.velocity.dx == 0 && bodyB.node?.physicsBody?.velocity.dy == 0) {
+                bodyB.applyImpulse(CGVectorMake(90, 75))
+                print("IMPULSO")
+            }
             self.runAction(SKAction.playSoundFileNamed("defence", waitForCompletion: false))
             
         }else if (bodyB.categoryBitMask == GameScene.TIRO_NODE && self.attackState == AttackState.Defending) {
@@ -525,9 +527,9 @@ class TBPlayerNode: SKSpriteNode {
             
             self.attackState = AttackState.Attacking
             if rand() % 2 == 0 {
-                self.runAction(SKAction.sequence([attackActionChangeState1! , SKAction.runBlock({self.runWalkingAction()})]),withKey: "attack")
+                self.runAction(SKAction.sequence([attackActionChangeState1! , SKAction.runBlock({self.checkPlayerTocoContact()})]),withKey: "attack")
             }else {
-                self.runAction(SKAction.sequence([attackActionChangeState2!, SKAction.runBlock({self.runWalkingAction()})]),withKey: "attack")
+                self.runAction(SKAction.sequence([attackActionChangeState2!, SKAction.runBlock({self.checkPlayerTocoContact()})]),withKey: "attack")
             }
             
             for body : SKPhysicsBody in bodies! {
@@ -544,10 +546,25 @@ class TBPlayerNode: SKSpriteNode {
      
     }
     
+    func checkPlayerTocoContact() {    // Checa se o player esta em contato com o toco_node, caso esteja, ele volta a ficar parado
+        var encontrouToco = false
+        let bodies = self.physicsBody?.allContactedBodies()
+        for body: SKPhysicsBody in bodies! {
+            if body.categoryBitMask == GameScene.TOCO_NODE {
+                encontrouToco = true
+            }
+        }
+        if(encontrouToco) {
+            self.stopWalk()
+        } else {
+            self.runWalkingAction()
+        }
+    }
+    
     func defence(){
         if( self.actionForKey("defence") == nil && self.actionForKey("die") == nil){
             self.attackState = AttackState.Defending
-            runAction(SKAction.sequence([defenceActionChangeState!, SKAction.runBlock({self.runWalkingAction()})]), withKey:"defence")
+            runAction(SKAction.sequence([defenceActionChangeState!, SKAction.runBlock({self.checkPlayerTocoContact()})]), withKey:"defence")
             
         }
     
