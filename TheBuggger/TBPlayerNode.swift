@@ -235,6 +235,7 @@ class TBPlayerNode: SKSpriteNode {
         let action = SKAction.animateWithTextures(dashArray, timePerFrame: 0.09);
         self.dashActionModifier = SKAction.sequence([action, SKAction.runBlock({
             self.addStandingJoint()
+            self.runWalkingAction()
         })])
     }
     

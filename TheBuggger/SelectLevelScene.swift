@@ -19,7 +19,13 @@ class SelectLevelScene: SKScene {
     var maxX:CGFloat?
     let spaceBot = 0.03645
     var choosed:Bool = false
-    let levelsAtlas:[Int:[SKTextureAtlas]] = [1:[],2:[],3:[],4:[],5:[],6:[TBFlyingBotNode.animationAtlas,TBFlyingBotNode.deathAtlas]]
+    let levelsAtlas:[Int:[SKTextureAtlas]] = [1:[],
+                                             2:[TBGroundBotNode.groundMonsterAtlas],
+                                             3:[TBGroundBotNode.groundMonsterAtlas],
+                                             4:[TBShotBotNode.standAtlas,TBShotBotNode.attackAtlas,TBShotBotNode.deathAtlas],
+                                            5:[TBBopperBotNode.deathAtlas, TBBopperBotNode.attackAtlas, TBBopperBotNode.standAtlas, TBPlayerNode.frenezyAnimationAtlas,
+                                                TBShotBotNode.attackAtlas],
+                                        6:[TBFlyingBotNode.animationAtlas,TBFlyingBotNode.deathAtlas,TBBopperBotNode.attackAtlas]]
     
     override func didMoveToView(view: SKView) {
         
@@ -142,7 +148,7 @@ class SelectLevelScene: SKScene {
                     
                         let levelInt = Int(level);
                         preLoadSprites(self.levelsAtlas[levelInt!]!)
-                        //self.delegateChanger?.mudaScene("BossTestScene", withMethod: method, andLevel: levelInt!)
+//                        self.delegateChanger?.mudaScene("BossTestScene", withMethod: method, andLevel: levelInt!)
                         self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                         
                     })])]))
