@@ -341,14 +341,15 @@ class TBPlayerNode: SKSpriteNode {
         if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
             physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
         }
-        //subindo
-        if self.actionForKey("dash") == nil  && actionForKey("defence") == nil && self.actionForKey("attack") == nil{
-            if(self.physicsBody?.velocity.dy > 1){
+        
+        if self.actionForKey("dash") == nil  && actionForKey("defence") == nil && self.actionForKey("attack") == nil && actionForKey("die") == nil{
+            //subindo
+            if(self.physicsBody?.velocity.dy > 3){
                 self.runAirAction()
-            }
-            //caindo
-            if(self.physicsBody?.velocity.dy < -1){
+            }else if(self.physicsBody?.velocity.dy < -3){ //caindo
                 self.runFallAction()
+            }else{
+                self.runWalkingAction()
             }
         }
     }
@@ -567,21 +568,30 @@ class TBPlayerNode: SKSpriteNode {
             self.addStandingJoint()
         }
         switch(jumpState){
-        case JumpState.CanJump:
-            if (self.physicsBody?.velocity.dy)! > -10 {
-                self.jumpImpulse()
-                jumpState = JumpState.FirstJump
-            }
-            break
-        case JumpState.FirstJump:
-            if(powerUP == TBPowerUpsStates.DoubleJumper){
-                self.jumpImpulse()
-                jumpState = JumpState.SecondJump
-            }
-            break
-        case JumpState.SecondJump:
-            
-            break
+            case JumpState.TryJump:
+//                self.physicsBody.al
+                print(self.physicsBody?.velocity.dy)
+                if abs((self.physicsBody?.velocity.dy)!) < 10 {
+                    self.jumpImpulse()
+                    jumpState = JumpState.TryJump
+                }
+
+                break
+            case JumpState.CanJump:
+                if (self.physicsBody?.velocity.dy)! > -10 {
+                    self.jumpImpulse()
+                    jumpState = JumpState.TryJump
+                }
+                break
+            case JumpState.FirstJump:
+                if(powerUP == TBPowerUpsStates.DoubleJumper){
+                    self.jumpImpulse()
+                    jumpState = JumpState.SecondJump
+                }
+                break
+            case JumpState.SecondJump:
+                
+                break
         }
         
     }
@@ -649,6 +659,7 @@ enum AttackState{
 }
 
 enum JumpState{
+    case TryJump
     case CanJump
     case FirstJump
     case SecondJump
