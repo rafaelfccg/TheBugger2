@@ -69,7 +69,6 @@
 		003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */; };
 		003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */; };
 		0050C43D1C40357D006676D0 /* BossTestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0050C43C1C40357D006676D0 /* BossTestScene.sks */; };
-		0050C43F1C4057D0006676D0 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0050C43E1C4057D0006676D0 /* GoogleMobileAds.framework */; };
 		00622BD01C03470E00155DB9 /* contador-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00622BCF1C03470E00155DB9 /* contador-1.png */; };
 		00648CAC1BF27BB600C1F906 /* TBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */; };
 		00648CAF1BF27CE900C1F906 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00648CAD1BF27CE900C1F906 /* selected.png */; };
@@ -196,6 +195,9 @@
 		52C8E9EF1C07A65400F84C87 /* GateClosed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52C8E9EE1C07A65400F84C87 /* GateClosed.wav */; };
 		52C8E9F11C07A66300F84C87 /* Complete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52C8E9F01C07A66300F84C87 /* Complete.wav */; };
 		52CABF6E1BF13171008670B9 /* TBShotBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */; };
+		52CE255F1C46CCDD00691BDF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CE255E1C46CCDD00691BDF /* GoogleMobileAds.framework */; };
+		52CE25621C46CDAA00691BDF /* Boss1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52CE25611C46CDAA00691BDF /* Boss1Scene.sks */; };
+		52CE25A41C46D50B00691BDF /* FirstBossGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE25A31C46D50B00691BDF /* FirstBossGameScene.swift */; };
 		52D857501C3218AC00E8D6BD /* TBMegaLaserNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8574F1C3218AC00E8D6BD /* TBMegaLaserNode.swift */; };
 		52E75DBC1BDEAC3200F91E00 /* TBMoedasNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */; };
 		52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */; };
@@ -325,7 +327,6 @@
 		003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Paralax2.atlas; path = ../Paralax2.atlas; sourceTree = "<group>"; };
 		003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = redlight2.atlas; path = ../redlight2.atlas; sourceTree = "<group>"; };
 		0050C43C1C40357D006676D0 /* BossTestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BossTestScene.sks; sourceTree = "<group>"; };
-		0050C43E1C4057D0006676D0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		00622BCF1C03470E00155DB9 /* contador-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contador-1.png"; sourceTree = "<group>"; };
 		00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRadioButton.swift; sourceTree = "<group>"; };
 		00648CAD1BF27CE900C1F906 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
@@ -464,6 +465,9 @@
 		52C8E9EE1C07A65400F84C87 /* GateClosed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GateClosed.wav; sourceTree = "<group>"; };
 		52C8E9F01C07A66300F84C87 /* Complete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Complete.wav; sourceTree = "<group>"; };
 		52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotBotNode.swift; sourceTree = "<group>"; };
+		52CE255E1C46CCDD00691BDF /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		52CE25611C46CDAA00691BDF /* Boss1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Boss1Scene.sks; sourceTree = "<group>"; };
+		52CE25A31C46D50B00691BDF /* FirstBossGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstBossGameScene.swift; sourceTree = "<group>"; };
 		52D8574F1C3218AC00E8D6BD /* TBMegaLaserNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMegaLaserNode.swift; sourceTree = "<group>"; };
 		52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMoedasNode.swift; sourceTree = "<group>"; };
 		52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDefence.atlas; sourceTree = "<group>"; };
@@ -532,7 +536,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				0050C43F1C4057D0006676D0 /* GoogleMobileAds.framework in Frameworks */,
+				52CE255F1C46CCDD00691BDF /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,7 +719,7 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				0050C43E1C4057D0006676D0 /* GoogleMobileAds.framework */,
+				52CE255E1C46CCDD00691BDF /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
@@ -973,6 +977,7 @@
 			isa = PBXGroup;
 			children = (
 				00CDBE8F1BB9B39000BC0517 /* GameScene.swift */,
+				52CE25A31C46D50B00691BDF /* FirstBossGameScene.swift */,
 				009CAFE11BF10C2D003BA434 /* selectLevel */,
 				00CDBECA1BBD9FD100BC0517 /* Levels */,
 			);
@@ -1059,6 +1064,7 @@
 				008551DC1C441C0100545567 /* Level5Scene.sks */,
 				008551DD1C441C0100545567 /* Level6Scene.sks */,
 				0050C43C1C40357D006676D0 /* BossTestScene.sks */,
+				52CE25611C46CDAA00691BDF /* Boss1Scene.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1205,6 +1211,7 @@
 				002FD8141BF661B3003514A4 /* bits.atlas in Resources */,
 				009221521BF11863007C7DDC /* enfeiteCima-4.png in Resources */,
 				AFB85FA01BFF9DF100490AC4 /* EspinhoSolto.atlas in Resources */,
+				52CE25621C46CDAA00691BDF /* Boss1Scene.sks in Resources */,
 				AF680E0D1C06447C00CC865C /* pinote.mp3 in Resources */,
 				009221681BF12EFE007C7DDC /* cabos-1.png in Resources */,
 				008349B51BFFA1BE00012C22 /* contador-2.png in Resources */,
@@ -1397,6 +1404,7 @@
 				AF2134471C0CD4A7006BB9D8 /* TBCoreDataModel.xcdatamodeld in Sources */,
 				00648CAC1BF27BB600C1F906 /* TBRadioButton.swift in Sources */,
 				52E75DBC1BDEAC3200F91E00 /* TBMoedasNode.swift in Sources */,
+				52CE25A41C46D50B00691BDF /* FirstBossGameScene.swift in Sources */,
 				00648CB21BF2849D00C1F906 /* TBOptionsViewController.swift in Sources */,
 				523C53F81C3099D4001E4C4E /* TBFirstBossNode.swift in Sources */,
 				52E7AEB51BBF0227008FE672 /* TBGroundBotNode.swift in Sources */,

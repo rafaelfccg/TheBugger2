@@ -12,7 +12,7 @@ import SpriteKit
 class TBBallFirstBossNode: SKSpriteNode {
     
     static let name = "metalBall"
-    var specialChance = 15   // 30% de chance da bola ser especial
+    var specialChance = 15   // Chance da bola ser especial
     var isSpecial = false
     var initialTime: CFTimeInterval = 0
     
@@ -23,15 +23,34 @@ class TBBallFirstBossNode: SKSpriteNode {
         self.size = CGSizeMake(35, 35)
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
         self.physicsBody? = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width, self.size.height))
-        self.physicsBody?.velocity = CGVectorMake(-200, 0)
         self.physicsBody?.friction = CGFloat(0)
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
+        self.setModeBall()
         self.setSpecialOrNot()
         self.physicsBody?.categoryBitMask = GameScene.METALBALL_NODE
         self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.BOSSONE_NODE
+    }
+    
+    func setModeBall() {   // Seta o modo que a bola esta de acordo com o modo do Boss
+        var velocityMode = -200
+        let boss = self.parent as? TBFirstBossNode
+        switch(boss?.bossMode) {
+        case "Normal"?:
+            velocityMode = -200
+            break
+        case "Hard"?:
+            velocityMode = -250
+            break
+        case "Insane"?:
+            velocityMode = -300
+            break
+        default:
+            print("Error setting velocity")
+        }
+        self.physicsBody?.velocity = CGVectorMake(CGFloat(velocityMode), 0)
     }
     
     func defendeAnimation() { //  Quando o heroi defender a bola, ela voltara contra o boss
