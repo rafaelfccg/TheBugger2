@@ -174,8 +174,12 @@ class TBMenuViewController :UIViewController {
         }else if segue.identifier == "ToOptionsSegue"{
             let options = segue.destinationViewController as! TBOptionsViewController
             options.imageBack = screenShotMethod()
-            
+            options.isCredit = false
 
+        }else if segue.identifier == "ToCreditsSegue"{
+            let options = segue.destinationViewController as! TBOptionsViewController
+            options.imageBack = screenShotMethod()
+            options.isCredit = true
         }
     }
 

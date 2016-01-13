@@ -69,7 +69,6 @@
 		003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */; };
 		003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */; };
 		0050C43D1C40357D006676D0 /* BossTestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0050C43C1C40357D006676D0 /* BossTestScene.sks */; };
-		0050C43F1C4057D0006676D0 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0050C43E1C4057D0006676D0 /* GoogleMobileAds.framework */; };
 		00622BD01C03470E00155DB9 /* contador-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00622BCF1C03470E00155DB9 /* contador-1.png */; };
 		00648CAC1BF27BB600C1F906 /* TBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */; };
 		00648CAF1BF27CE900C1F906 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00648CAD1BF27CE900C1F906 /* selected.png */; };
@@ -115,6 +114,8 @@
 		008551E11C441C0100545567 /* Level4Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551DB1C441C0100545567 /* Level4Scene.sks */; };
 		008551E21C441C0100545567 /* Level5Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551DC1C441C0100545567 /* Level5Scene.sks */; };
 		008551E31C441C0100545567 /* Level6Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551DD1C441C0100545567 /* Level6Scene.sks */; };
+		008551E51C4572CF00545567 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008551E41C4572CF00545567 /* GoogleMobileAds.framework */; };
+		008551E91C46C95900545567 /* credits-63.png in Resources */ = {isa = PBXBuildFile; fileRef = 008551E81C46C95900545567 /* credits-63.png */; };
 		008698B11BE94DA900EE80F2 /* Alert.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AD1BE94DA900EE80F2 /* Alert.atlas */; };
 		008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AE1BE94DA900EE80F2 /* Machine.atlas */; };
 		008698B31BE94DA900EE80F2 /* signal.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AF1BE94DA900EE80F2 /* signal.atlas */; };
@@ -325,7 +326,6 @@
 		003B72F21BEA71AA00CD8F0E /* Paralax2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Paralax2.atlas; path = ../Paralax2.atlas; sourceTree = "<group>"; };
 		003B72FC1BEA7BEF00CD8F0E /* redlight2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = redlight2.atlas; path = ../redlight2.atlas; sourceTree = "<group>"; };
 		0050C43C1C40357D006676D0 /* BossTestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BossTestScene.sks; sourceTree = "<group>"; };
-		0050C43E1C4057D0006676D0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		00622BCF1C03470E00155DB9 /* contador-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contador-1.png"; sourceTree = "<group>"; };
 		00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRadioButton.swift; sourceTree = "<group>"; };
 		00648CAD1BF27CE900C1F906 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
@@ -376,6 +376,8 @@
 		008551DB1C441C0100545567 /* Level4Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4Scene.sks; sourceTree = "<group>"; };
 		008551DC1C441C0100545567 /* Level5Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level5Scene.sks; sourceTree = "<group>"; };
 		008551DD1C441C0100545567 /* Level6Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level6Scene.sks; sourceTree = "<group>"; };
+		008551E41C4572CF00545567 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		008551E81C46C95900545567 /* credits-63.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credits-63.png"; sourceTree = "<group>"; };
 		008698AD1BE94DA900EE80F2 /* Alert.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Alert.atlas; sourceTree = "<group>"; };
 		008698AE1BE94DA900EE80F2 /* Machine.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Machine.atlas; sourceTree = "<group>"; };
 		008698AF1BE94DA900EE80F2 /* signal.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = signal.atlas; sourceTree = "<group>"; };
@@ -532,7 +534,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				0050C43F1C4057D0006676D0 /* GoogleMobileAds.framework in Frameworks */,
+				008551E51C4572CF00545567 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,7 +717,7 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				0050C43E1C4057D0006676D0 /* GoogleMobileAds.framework */,
+				008551E41C4572CF00545567 /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
@@ -859,6 +861,7 @@
 		0092211D1BF11333007C7DDC /* Infertace */ = {
 			isa = PBXGroup;
 			children = (
+				008551E81C46C95900545567 /* credits-63.png */,
 				002FD8111BF6597D003514A4 /* back-hud.png */,
 				002FD80F1BF650D0003514A4 /* pt-hud.png */,
 				00648CAD1BF27CE900C1F906 /* selected.png */,
@@ -1141,7 +1144,7 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = N4UKH6NFCZ;
+						DevelopmentTeam = 46HQV8ZA5C;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -1295,6 +1298,7 @@
 				001E55CE1BD8221600B80833 /* plataformsm2.png in Resources */,
 				52F3B0CC1C065169004E5B20 /* toten1.png in Resources */,
 				00200B831C067E500094FFBD /* BlockTutorial.atlas in Resources */,
+				008551E91C46C95900545567 /* credits-63.png in Resources */,
 				AFCCF2FD1BFBC93900645850 /* BopperMonsterStand.atlas in Resources */,
 				00648CB01BF27CE900C1F906 /* unselected.png in Resources */,
 				008349BD1BFFAEAD00012C22 /* FrenezyStart.atlas in Resources */,
