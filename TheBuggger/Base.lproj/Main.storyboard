@@ -136,7 +136,7 @@
                                 </constraints>
                                 <state key="normal" image="credits-63.png"/>
                                 <connections>
-                                    <segue destination="DRC-UT-nV4" kind="show" identifier="ToCreditsSegue" id="aIt-jT-jPI"/>
+                                    <segue destination="DRC-UT-nV4" kind="show" identifier="ToCreditsSegue" animates="NO" id="aIt-jT-jPI"/>
                                 </connections>
                             </button>
                         </subviews>
