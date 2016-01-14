@@ -212,20 +212,30 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func configDefence(){
-        self.defenceActionChangeState = (SKAction.group([TBPlayerNode.defenceAction!, SKAction.sequence([SKAction.waitForDuration((TBPlayerNode.defenceAction!.duration)), SKAction.runBlock({
-            self.attackState = AttackState.Idle
-            
-        })])]))
+        self.defenceActionChangeState = SKAction.sequence([TBPlayerNode.defenceAction!, SKAction.runBlock({
+            if(self.attackState == AttackState.Defending)
+            {
+                self.attackState = AttackState.Idle
+            }
+        })])
     }
     
     func configAttack(){
         self.attackActionChangeState1 = SKAction.sequence([TBPlayerNode.attackActionAnimation1!, SKAction.runBlock({
-            self.attackState = AttackState.Idle}
-            )])
+            if(self.attackState == AttackState.Attacking)
+            {
+                self.attackState = AttackState.Idle
+            }
+            
+        })])
         
         self.attackActionChangeState2 = SKAction.sequence([TBPlayerNode.attackActionAnimation2!, SKAction.runBlock({
-            self.attackState = AttackState.Idle}
-            )])
+            if(self.attackState == AttackState.Attacking)
+            {
+                self.attackState = AttackState.Idle
+            }
+            
+        })])
     }
     
     func configDash(){

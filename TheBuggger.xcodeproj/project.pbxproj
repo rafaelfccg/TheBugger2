@@ -238,6 +238,7 @@
 		AFCCF2FA1BFBC8C200645850 /* BopperMonsterAttack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFCCF2F71BFBC8C200645850 /* BopperMonsterAttack.atlas */; };
 		AFCCF2FB1BFBC8C200645850 /* BopperMonsterDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFCCF2F81BFBC8C200645850 /* BopperMonsterDeath.atlas */; };
 		AFCCF2FD1BFBC93900645850 /* BopperMonsterStand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFCCF2FC1BFBC93900645850 /* BopperMonsterStand.atlas */; };
+		AFD062041C482E530097BFA5 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD062031C482E530097BFA5 /* GoogleMobileAds.framework */; };
 		AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF691BF3B0C200C99A94 /* libFlurry_7.3.0.a */; };
 		AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF6C1BF3B65B00C99A94 /* Security.framework */; };
 		AFE7EF6F1BF3B67000C99A94 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE7EF6E1BF3B67000C99A94 /* SystemConfiguration.framework */; };
@@ -510,6 +511,7 @@
 		AFCCF2F71BFBC8C200645850 /* BopperMonsterAttack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BopperMonsterAttack.atlas; sourceTree = "<group>"; };
 		AFCCF2F81BFBC8C200645850 /* BopperMonsterDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BopperMonsterDeath.atlas; sourceTree = "<group>"; };
 		AFCCF2FC1BFBC93900645850 /* BopperMonsterStand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BopperMonsterStand.atlas; sourceTree = "<group>"; };
+		AFD062031C482E530097BFA5 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		AFE7EF691BF3B0C200C99A94 /* libFlurry_7.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.3.0.a; sourceTree = "<group>"; };
 		AFE7EF6A1BF3B0C200C99A94 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		AFE7EF6C1BF3B65B00C99A94 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
