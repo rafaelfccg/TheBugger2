@@ -14,6 +14,8 @@ class TBBitNode: SKSpriteNode {
     static var animation: SKAction?
     static var bitAtlas:SKTextureAtlas = SKTextureAtlas(named: "bits")
     
+    
+    var picker:Bool = false
     var num:Int? //index 0
     
     init() {

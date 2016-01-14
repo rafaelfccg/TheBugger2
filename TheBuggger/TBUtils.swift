@@ -8,8 +8,11 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class TBUtils {
+    
+    static var paralaxAtlas = SKTextureAtlas(named:"Paralax2")
     
     static func getSprites(textureAtlas: SKTextureAtlas, nomeImagens: String) -> Array<SKTexture>
     {
@@ -29,7 +32,7 @@ class TBUtils {
     
     
     static func getNextBackground()->SKTexture?{
-        let textureAtlas = SKTextureAtlas(named:"Paralax2")
+        let textureAtlas = TBUtils.paralaxAtlas
         let numImages = textureAtlas.textureNames.count
         let rand = Int(arc4random_uniform(100)) % (numImages+1)
         if rand == numImages{return nil}
@@ -47,4 +50,27 @@ func preLoadSprites(textureAtlas: [SKTextureAtlas]){
         }
     }
     
+}
+
+func playSound(inout backgroundMusicPlayer:AVAudioPlayer?,backgroundMusicURL:NSURL){
+    
+    if(backgroundMusicPlayer == nil){
+        do {
+            try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL)
+            backgroundMusicPlayer!.numberOfLoops  = -1
+            if(!backgroundMusicPlayer!.playing){
+                backgroundMusicPlayer?.play()
+            }
+        }catch {
+            print("MUSIC NOT FOUND")
+        }
+    }else{
+        
+        if(!backgroundMusicPlayer!.playing){
+            backgroundMusicPlayer?.play()
+        }
+        
+    }
+
+
 }

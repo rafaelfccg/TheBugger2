@@ -212,20 +212,30 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func configDefence(){
-        self.defenceActionChangeState = (SKAction.group([TBPlayerNode.defenceAction!, SKAction.sequence([SKAction.waitForDuration((TBPlayerNode.defenceAction!.duration)), SKAction.runBlock({
-            self.attackState = AttackState.Idle
-            
-        })])]))
+        self.defenceActionChangeState = SKAction.sequence([TBPlayerNode.defenceAction!, SKAction.runBlock({
+            if(self.attackState == AttackState.Defending)
+            {
+                self.attackState = AttackState.Idle
+            }
+        })])
     }
     
     func configAttack(){
         self.attackActionChangeState1 = SKAction.sequence([TBPlayerNode.attackActionAnimation1!, SKAction.runBlock({
-            self.attackState = AttackState.Idle}
-            )])
+            if(self.attackState == AttackState.Attacking)
+            {
+                self.attackState = AttackState.Idle
+            }
+            
+        })])
         
         self.attackActionChangeState2 = SKAction.sequence([TBPlayerNode.attackActionAnimation2!, SKAction.runBlock({
-            self.attackState = AttackState.Idle}
-            )])
+            if(self.attackState == AttackState.Attacking)
+            {
+                self.attackState = AttackState.Idle
+            }
+            
+        })])
     }
     
     func configDash(){
@@ -336,10 +346,6 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func updateVelocity(){
-        if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
-            physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
-        }
-        
         if self.actionForKey("dash") == nil  && actionForKey("defence") == nil && self.actionForKey("attack") == nil && actionForKey("die") == nil{
             //subindo
             if(self.physicsBody?.velocity.dy > 3){
@@ -347,9 +353,15 @@ class TBPlayerNode: SKSpriteNode {
             }else if(self.physicsBody?.velocity.dy < -3){ //caindo
                 self.runFallAction()
             }else{
-                self.runWalkingAction()
+                if self.physicsBody?.velocity.dx > 3 {
+                    self.runWalkingAction()
+                }
             }
         }
+        if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
+            physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
+        }
+        
     }
     func resetHero(){
         self.attackState = AttackState.Idle

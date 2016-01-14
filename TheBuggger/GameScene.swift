@@ -195,7 +195,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func startGame(){
         
-        
         hero.realSpeed = hero.defaultSpeed
         hero.runWalkingAction()
         checkBossVelocity()
@@ -472,7 +471,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bit.name  = self.removable
                 bit.num = i
                 self.addChild(bit)
-            
+                coinsMark[i] = false
                 bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
             }
         }
@@ -481,8 +480,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func backtToMenu(){
         saveAttempts(levelSelected!, tentativas: self.numberOfDeath)
         backgroundMusicPlayer?.stop()
-        delegateChanger?.backToMenu()
-        
+        delegateChanger?.selectLevel("SelectLevelScene")
     }
     
     func setHeroPosition(){
@@ -1143,6 +1141,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
             self.hero.quickFloorCollisionOff(bodyB, sender: self)
         } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE) {
+<<<<<<< HEAD
+=======
+            
+            self.hero.slowFloorCollisionOff(bodyB, sender: self)
+            
+>>>>>>> 8dce4023196ab093ad19e3824f98704a88faa4dd
         }else if bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
         (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
         bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||

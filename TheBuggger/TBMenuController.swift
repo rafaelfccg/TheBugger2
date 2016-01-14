@@ -32,7 +32,10 @@ class TBMenuViewController :UIViewController {
     override func viewDidLoad() {
         self.navigationController?.navigationBarHidden = true
         if(!TBMenuViewController.loadedAtlas){
-             SKTextureAtlas.preloadTextureAtlases([TBEspinhosNode.espinhosAtlas, TBBitNode.bitAtlas, TBGroundBotNode.monsterDeathAtlas, TBMoedasNode.moedaAtlas,TBPlayerNode.playerRunAtlas, TBPlayerNode.playerDashAtlas,TBEspinhoSoltoNode.espinhoAtlas, TBGroundBotNode.groundMonsterAtlas, TBShotBotNode.deathAtlas], withCompletionHandler: {TBMenuViewController.loadedAtlas = true})
+             SKTextureAtlas.preloadTextureAtlases([TBEspinhosNode.espinhosAtlas, TBBitNode.bitAtlas, TBGroundBotNode.monsterDeathAtlas, TBMoedasNode.moedaAtlas,TBPlayerNode.playerRunAtlas, TBPlayerNode.playerDashAtlas,TBEspinhoSoltoNode.espinhoAtlas, TBGroundBotNode.groundMonsterAtlas, TBShotBotNode.deathAtlas,TBUtils.paralaxAtlas],
+                withCompletionHandler: {TBMenuViewController.loadedAtlas = true})
+            
+            
         }
         
         TBEspinhosNode.createSKActionAnimation()
@@ -109,45 +112,9 @@ class TBMenuViewController :UIViewController {
             defaults.setInteger(1, forKey: "level")
         }
         
-//        if(backgroundMusicPlayer == nil){
-//            do {
-//                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-//                backgroundMusicPlayer!.numberOfLoops  = -1
-//                if(!backgroundMusicPlayer!.playing){
-//                    backgroundMusicPlayer?.play()
-//                }
-//            }catch {
-//                print("MUSIC NOT FOUND")
-//            }
-//        }else{
-//            
-//                if(!backgroundMusicPlayer!.playing){
-//                    backgroundMusicPlayer?.play()
-//                }
-//            
-//        }
-        
-        
     }
     override func viewDidAppear(animated: Bool) {
-        if(backgroundMusicPlayer == nil){
-            do {
-                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-                backgroundMusicPlayer!.numberOfLoops  = -1
-                if(!backgroundMusicPlayer!.playing){
-                    backgroundMusicPlayer?.play()
-                }
-            }catch {
-                print("MUSIC NOT FOUND")
-            }
-        }else{
-            
-            if(!backgroundMusicPlayer!.playing){
-                backgroundMusicPlayer?.play()
-            }
-            
-        }
-
+        playSound(&backgroundMusicPlayer,backgroundMusicURL: backgroundMusicURL!)
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {
