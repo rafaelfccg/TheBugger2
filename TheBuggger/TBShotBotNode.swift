@@ -148,7 +148,6 @@ class TBShotBotNode: SKSpriteNode,TBMonsterProtocol {
                 self.removeActionForKey("attack")
                 runAction(TBShotBotNode.animation!)
                 self.shootedStopped = true
-                print("stopped")
             }
     }
     

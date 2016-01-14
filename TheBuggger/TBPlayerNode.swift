@@ -219,15 +219,13 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func configAttack(){
-        self.attackActionChangeState1 = SKAction.group([TBPlayerNode.attackActionAnimation1!,
-            SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
-                self.attackState = AttackState.Idle}
-                )])])
+        self.attackActionChangeState1 = SKAction.sequence([TBPlayerNode.attackActionAnimation1!, SKAction.runBlock({
+            self.attackState = AttackState.Idle}
+            )])
         
-        self.attackActionChangeState2 = SKAction.group([TBPlayerNode.attackActionAnimation2!,
-            SKAction.sequence([SKAction.waitForDuration(0.28), SKAction.runBlock({
-                self.attackState = AttackState.Idle}
-                )])])
+        self.attackActionChangeState2 = SKAction.sequence([TBPlayerNode.attackActionAnimation2!, SKAction.runBlock({
+            self.attackState = AttackState.Idle}
+            )])
     }
     
     func configDash(){
@@ -618,7 +616,7 @@ class TBPlayerNode: SKSpriteNode {
             self.removeStandingNode()
             if jumpState == JumpState.CanJump{
                 let dashGroup = SKAction.group([SKAction.sequence([self.dashActionModifier!,SKAction.runBlock({
-                        self.runWalkingAction()
+                    self.runWalkingAction()
                 })]), SKAction.playSoundFileNamed("dash", waitForCompletion: false)])
                 self.runAction(dashGroup ,withKey: "dash")
             }else {
