@@ -148,8 +148,8 @@ class SelectLevelScene: SKScene {
                     
                         let levelInt = Int(level);
                         preLoadSprites(self.levelsAtlas[levelInt!]!)
-                        self.delegateChanger?.mudaScene("Level4Scene", withMethod: method, andLevel: levelInt!)
-                        //self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
+                        //self.delegateChanger?.mudaScene("BossTestScene", withMethod: method, andLevel: levelInt!)
+                        self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                         
                     })])]))
                 }
