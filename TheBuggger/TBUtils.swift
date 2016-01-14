@@ -12,6 +12,8 @@ import AVFoundation
 
 class TBUtils {
     
+    static var paralaxAtlas = SKTextureAtlas(named:"Paralax2")
+    
     static func getSprites(textureAtlas: SKTextureAtlas, nomeImagens: String) -> Array<SKTexture>
     {
         //let textureAtlas = SKTextureAtlas(named: textureAtlasName)
@@ -30,7 +32,7 @@ class TBUtils {
     
     
     static func getNextBackground()->SKTexture?{
-        let textureAtlas = SKTextureAtlas(named:"Paralax2")
+        let textureAtlas = TBUtils.paralaxAtlas
         let numImages = textureAtlas.textureNames.count
         let rand = Int(arc4random_uniform(100)) % (numImages+1)
         if rand == numImages{return nil}

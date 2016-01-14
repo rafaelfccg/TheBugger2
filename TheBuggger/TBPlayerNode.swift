@@ -336,10 +336,6 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func updateVelocity(){
-        if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
-            physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
-        }
-        
         if self.actionForKey("dash") == nil  && actionForKey("defence") == nil && self.actionForKey("attack") == nil && actionForKey("die") == nil{
             //subindo
             if(self.physicsBody?.velocity.dy > 3){
@@ -347,9 +343,15 @@ class TBPlayerNode: SKSpriteNode {
             }else if(self.physicsBody?.velocity.dy < -3){ //caindo
                 self.runFallAction()
             }else{
-                self.runWalkingAction()
+                if self.physicsBody?.velocity.dx > 3 {
+                    self.runWalkingAction()
+                }
             }
         }
+        if( physicsBody?.velocity.dx != CGFloat(realSpeed)){
+            physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), (physicsBody?.velocity.dy)!)
+        }
+        
     }
     func resetHero(){
         self.attackState = AttackState.Idle

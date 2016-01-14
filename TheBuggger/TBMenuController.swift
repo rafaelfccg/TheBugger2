@@ -32,7 +32,10 @@ class TBMenuViewController :UIViewController {
     override func viewDidLoad() {
         self.navigationController?.navigationBarHidden = true
         if(!TBMenuViewController.loadedAtlas){
-             SKTextureAtlas.preloadTextureAtlases([TBEspinhosNode.espinhosAtlas, TBBitNode.bitAtlas, TBGroundBotNode.monsterDeathAtlas, TBMoedasNode.moedaAtlas,TBPlayerNode.playerRunAtlas, TBPlayerNode.playerDashAtlas,TBEspinhoSoltoNode.espinhoAtlas, TBGroundBotNode.groundMonsterAtlas, TBShotBotNode.deathAtlas], withCompletionHandler: {TBMenuViewController.loadedAtlas = true})
+             SKTextureAtlas.preloadTextureAtlases([TBEspinhosNode.espinhosAtlas, TBBitNode.bitAtlas, TBGroundBotNode.monsterDeathAtlas, TBMoedasNode.moedaAtlas,TBPlayerNode.playerRunAtlas, TBPlayerNode.playerDashAtlas,TBEspinhoSoltoNode.espinhoAtlas, TBGroundBotNode.groundMonsterAtlas, TBShotBotNode.deathAtlas,TBUtils.paralaxAtlas],
+                withCompletionHandler: {TBMenuViewController.loadedAtlas = true})
+            
+            
         }
         
         TBEspinhosNode.createSKActionAnimation()
