@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class TBUtils {
     
@@ -47,4 +48,27 @@ func preLoadSprites(textureAtlas: [SKTextureAtlas]){
         }
     }
     
+}
+
+func playSound(inout backgroundMusicPlayer:AVAudioPlayer?,backgroundMusicURL:NSURL){
+    
+    if(backgroundMusicPlayer == nil){
+        do {
+            try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL)
+            backgroundMusicPlayer!.numberOfLoops  = -1
+            if(!backgroundMusicPlayer!.playing){
+                backgroundMusicPlayer?.play()
+            }
+        }catch {
+            print("MUSIC NOT FOUND")
+        }
+    }else{
+        
+        if(!backgroundMusicPlayer!.playing){
+            backgroundMusicPlayer?.play()
+        }
+        
+    }
+
+
 }

@@ -109,25 +109,9 @@ class TBMenuViewController :UIViewController {
             defaults.setInteger(1, forKey: "level")
         }
         
-        if(backgroundMusicPlayer == nil){
-            do {
-                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-                backgroundMusicPlayer!.numberOfLoops  = -1
-                if(!backgroundMusicPlayer!.playing){
-                    backgroundMusicPlayer?.play()
-                }
-            }catch {
-                print("MUSIC NOT FOUND")
-            }
-        }else{
-            
-                if(!backgroundMusicPlayer!.playing){
-                    backgroundMusicPlayer?.play()
-                }
-            
-        }
-        
-        
+    }
+    override func viewDidAppear(animated: Bool) {
+        playSound(&backgroundMusicPlayer,backgroundMusicURL: backgroundMusicURL!)
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {
@@ -174,8 +158,12 @@ class TBMenuViewController :UIViewController {
         }else if segue.identifier == "ToOptionsSegue"{
             let options = segue.destinationViewController as! TBOptionsViewController
             options.imageBack = screenShotMethod()
-            
+            options.isCredit = false
 
+        }else if segue.identifier == "ToCreditsSegue"{
+            let options = segue.destinationViewController as! TBOptionsViewController
+            options.imageBack = screenShotMethod()
+            options.isCredit = true
         }
     }
 

@@ -55,6 +55,8 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     
     func selectLevel(nomeSKS: String){
         clearScene()
+        let backgroundMusicURL = NSBundle.mainBundle().URLForResource("introMenu", withExtension: ".wav")
+        playSound(&backgroundMusicPlayer,backgroundMusicURL: backgroundMusicURL!)
         if let scene = SelectLevelScene(fileNamed: nomeSKS) {
             // Configure the view.
             //scene.delegateChanger = self
@@ -89,7 +91,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
             let skView = self.view as! SKView
 //            skView.showsFPS = true
             //skView.showsNodeCount = true
-            //skView.showsPhysics = true;
+            skView.showsPhysics = true;
             NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
             skView.ignoresSiblingOrder = true
             
