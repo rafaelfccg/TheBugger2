@@ -484,8 +484,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func backtToMenu(){
         saveAttempts(levelSelected!, tentativas: self.numberOfDeath)
         backgroundMusicPlayer?.stop()
-        delegateChanger?.backToMenu()
-        
+        delegateChanger?.selectLevel("SelectLevelScene")
     }
     
     func setHeroPosition(){

@@ -109,45 +109,9 @@ class TBMenuViewController :UIViewController {
             defaults.setInteger(1, forKey: "level")
         }
         
-//        if(backgroundMusicPlayer == nil){
-//            do {
-//                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-//                backgroundMusicPlayer!.numberOfLoops  = -1
-//                if(!backgroundMusicPlayer!.playing){
-//                    backgroundMusicPlayer?.play()
-//                }
-//            }catch {
-//                print("MUSIC NOT FOUND")
-//            }
-//        }else{
-//            
-//                if(!backgroundMusicPlayer!.playing){
-//                    backgroundMusicPlayer?.play()
-//                }
-//            
-//        }
-        
-        
     }
     override func viewDidAppear(animated: Bool) {
-        if(backgroundMusicPlayer == nil){
-            do {
-                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-                backgroundMusicPlayer!.numberOfLoops  = -1
-                if(!backgroundMusicPlayer!.playing){
-                    backgroundMusicPlayer?.play()
-                }
-            }catch {
-                print("MUSIC NOT FOUND")
-            }
-        }else{
-            
-            if(!backgroundMusicPlayer!.playing){
-                backgroundMusicPlayer?.play()
-            }
-            
-        }
-
+        playSound(&backgroundMusicPlayer,backgroundMusicURL: backgroundMusicURL!)
     }
     
     @IBAction func actionButMet1(sender: AnyObject) {

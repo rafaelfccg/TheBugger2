@@ -55,6 +55,8 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     
     func selectLevel(nomeSKS: String){
         clearScene()
+        let backgroundMusicURL = NSBundle.mainBundle().URLForResource("introMenu", withExtension: ".wav")
+        playSound(&backgroundMusicPlayer,backgroundMusicURL: backgroundMusicURL!)
         if let scene = SelectLevelScene(fileNamed: nomeSKS) {
             // Configure the view.
             //scene.delegateChanger = self
