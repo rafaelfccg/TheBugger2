@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "513"
             endingLineNumber = "513"
-            landmarkName = "slowFloorCollision(_:sender:)"
+            landmarkName = "quickFloorCollision(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "475"
             endingLineNumber = "475"
-            landmarkName = "slowFloorCollisionOff(_:sender:)"
+            landmarkName = "dangerCollision(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,9 +126,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "GameViewController"
-            landmarkType = "3">
+            endingLineNumber = "23">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -303,7 +301,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "482"
             endingLineNumber = "482"
-            landmarkName = "quickFloorCollision(_:sender:)"
+            landmarkName = "quickFloorCollisionOff(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,7 +317,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "479"
             endingLineNumber = "479"
-            landmarkName = "quickFloorCollision(_:sender:)"
+            landmarkName = "dangerCollision(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -366,9 +364,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "createAndLoadInterstitial()"
-            landmarkType = "5">
+            endingLineNumber = "43">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -394,11 +390,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBuggger/TBBitNode.swift"
-            timestampString = "470769227.559738"
+            timestampString = "474494883.442007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -825,38 +821,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheBuggger/GameScene.swift"
-            timestampString = "474491177.358144"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1016"
-            endingLineNumber = "1016"
-            landmarkName = "didBeginContact(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBuggger/GameScene.swift"
-            timestampString = "470766397.240644"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "GameScene"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TheBuggger/SelectLevelScene.swift"
             timestampString = "474230557.881963"
             startingColumnNumber = "9223372036854775807"
@@ -943,8 +907,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "549"
             endingLineNumber = "549"
-            landmarkName = "TBPlayerNode"
-            landmarkType = "3">
+            landmarkName = "attack()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -959,7 +923,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "388"
             endingLineNumber = "388"
-            landmarkName = "enterFrenezy()"
+            landmarkName = "activatePowerUp(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1071,7 +1035,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "577"
             endingLineNumber = "577"
-            landmarkName = "jumpImpulse()"
+            landmarkName = "defence()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1103,7 +1067,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
             endingLineNumber = "260"
-            landmarkName = "removeActionWalk()"
+            landmarkName = "runStandingAction()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1119,39 +1083,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "261"
             endingLineNumber = "261"
-            landmarkName = "removeActionWalk()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBuggger/TBPlayerNode.swift"
-            timestampString = "474491281.25824"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "runWalkingAction()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBuggger/TBPlayerNode.swift"
-            timestampString = "474491284.342249"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
-            landmarkName = "runWalkingAction()"
+            landmarkName = "runStandingAction()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

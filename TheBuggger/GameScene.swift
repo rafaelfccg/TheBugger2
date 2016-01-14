@@ -473,7 +473,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bit.name  = self.removable
                 bit.num = i
                 self.addChild(bit)
-            
+                coinsMark[i] = false
                 bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
             }
         }
