@@ -14,8 +14,10 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
     static let name = "SpawnMonsterType1"
     static var animation: SKAction?
     static var deathAnimation: SKAction?
+    
     static let groundMonsterAtlas = SKTextureAtlas(named: "GroundMonster")
     static let monsterDeathAtlas = SKTextureAtlas(named: "MonsterDeath")
+    
     var jaAtacou = false // Variavel auxiliar para o bot atacar apenas uma vez
     
     init() {

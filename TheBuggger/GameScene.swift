@@ -1143,7 +1143,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
             self.hero.quickFloorCollisionOff(bodyB, sender: self)
         } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE) {
-            
+            self.hero.slowFloorCollisionOff(bodyB, sender: self)
+        }else if bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
+        (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
+        bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
+        bodyB.categoryBitMask ==  GameScene.TOCO_NODE ||
+            bodyB.categoryBitMask == GameScene.CHAO_NODE){
+                if (self.hero.jumpState == JumpState.TryJump){
+                    self.hero.jumpState == JumpState.FirstJump
+                }
         }
     }
 }

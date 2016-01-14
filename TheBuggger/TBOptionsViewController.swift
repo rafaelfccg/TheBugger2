@@ -12,6 +12,13 @@ import AVFoundation
 
 class TBOptionsViewController: UIViewController {
     @IBOutlet weak var SettingsLabel: UILabel!
+    @IBOutlet weak var allyson: UILabel!
+    @IBOutlet weak var vitor: UILabel!
+    @IBOutlet weak var rafael: UILabel!
+    @IBOutlet weak var maysa: UILabel!
+    @IBOutlet weak var Thyago: UILabel!
+    @IBOutlet weak var programmers: UILabel!
+    @IBOutlet weak var designers: UILabel!
     
     @IBOutlet weak var method1Description: UILabel!
     @IBOutlet weak var methodLabel: UILabel!
@@ -28,23 +35,45 @@ class TBOptionsViewController: UIViewController {
     var effectMusicPlayer:AVAudioPlayer?
     let clickedButton = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("NormalButton", ofType: "wav")!)
     var method:Int?
+    var isCredit:Bool = false
     
     override func viewDidLoad() {
-        method1Description.hidden = true
-        method2Description.hidden = true
-        method2Label.hidden = true
-        methodLabel.hidden = true
-        radioButtonMethod1.hidden = true
-        radioButtonMethod2.hidden = true
+        if !self.isCredit {
+            method1Description.hidden = true
+            method2Description.hidden = true
+            method2Label.hidden = true
+            methodLabel.hidden = true
+            radioButtonMethod1.hidden = true
+            radioButtonMethod2.hidden = true
         
-        let tapDesc1 = UITapGestureRecognizer(target: self, action: Selector("selector1"))
-        let tapDesc2 = UITapGestureRecognizer(target: self, action: Selector("selector2"))
-        
-        methodLabel.addGestureRecognizer(tapDesc1)
-        methodLabel.userInteractionEnabled  = true
-        method2Label.addGestureRecognizer(tapDesc2)
-        method2Label.userInteractionEnabled  = true
-        
+            let tapDesc1 = UITapGestureRecognizer(target: self, action: Selector("selector1"))
+            let tapDesc2 = UITapGestureRecognizer(target: self, action: Selector("selector2"))
+            
+            methodLabel.addGestureRecognizer(tapDesc1)
+            methodLabel.userInteractionEnabled  = true
+            method2Label.addGestureRecognizer(tapDesc2)
+            method2Label.userInteractionEnabled  = true
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            method = defaults.integerForKey("method")
+            
+            if method == 1 {
+                radioButtonMethod1.isChecked = true
+                radioButtonMethod2.isChecked = false
+            }else{
+                radioButtonMethod1.isChecked = false
+                radioButtonMethod2.isChecked = true
+            }
+
+        }else{
+            self.allyson.hidden = true
+            self.vitor.hidden = true
+            self.rafael.hidden = true
+            self.Thyago.hidden = true
+            self.maysa.hidden = true
+            self.programmers.hidden = true
+            self.designers.hidden = true
+        }
         animatedBack.animationImages = [UIImage(named: "set-1")!,
             UIImage(named: "set-2")!,
             UIImage(named: "set-3")!,
@@ -57,9 +86,6 @@ class TBOptionsViewController: UIViewController {
         let gestureBack = UITapGestureRecognizer(target: self, action: Selector("back"))
         backgroundImage.addGestureRecognizer(gestureBack)
         backgroundImage.userInteractionEnabled = true
-    
-        let defaults = NSUserDefaults.standardUserDefaults()
-        method = defaults.integerForKey("method")
         
         backButton.animationImages = [UIImage(named: "back-1")!,
             UIImage(named: "back-2")!,
@@ -71,15 +97,6 @@ class TBOptionsViewController: UIViewController {
         backButton.userInteractionEnabled = true
         let gestureBack2 = UITapGestureRecognizer(target: self, action: Selector("back"))
         backButton.addGestureRecognizer(gestureBack2)
-        
-        
-        if method == 1 {
-            radioButtonMethod1.isChecked = true
-            radioButtonMethod2.isChecked = false
-        }else{
-            radioButtonMethod1.isChecked = false
-            radioButtonMethod2.isChecked = true
-        }
         
     }
     func change(){
@@ -141,17 +158,28 @@ class TBOptionsViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         animatedBack.image = UIImage(named: "set-6")
         animatedBack.startAnimating()
+        
         self.performSelector(Selector("showElements"), withObject: nil, afterDelay: 0.35)
-
+        
     }
     
     func showElements(){
-        method1Description.hidden = false
-        method2Description.hidden = false
-        method2Label.hidden = false
-        methodLabel.hidden = false
-        radioButtonMethod1.hidden = false
-        radioButtonMethod2.hidden = false
+        if !self.isCredit {
+            method1Description.hidden = false
+            method2Description.hidden = false
+            method2Label.hidden = false
+            methodLabel.hidden = false
+            radioButtonMethod1.hidden = false
+            radioButtonMethod2.hidden = false
+        }else{
+            self.allyson.hidden = false
+            self.vitor.hidden = false
+            self.rafael.hidden = false
+            self.Thyago.hidden = false
+            self.maysa.hidden = false
+            self.programmers.hidden = false
+            self.designers.hidden = false
+        }
         
     }
 }
