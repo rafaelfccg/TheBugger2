@@ -15,6 +15,7 @@ class TBBallFirstBossNode: SKSpriteNode {
     var specialChance = 15   // Chance da bola ser especial
     var isSpecial = false
     var initialTime: CFTimeInterval = 0
+    var ataqueDuplo = false    // Variavel que sera true apenas quando for do ataque duplo do boss
     
     init(ballPosition: CGPoint) {
         super.init(texture: nil, color: UIColor.whiteColor(), size: CGSizeMake(50, 50))
@@ -27,38 +28,28 @@ class TBBallFirstBossNode: SKSpriteNode {
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
-        self.setModeBall()
+        self.physicsBody?.velocity = CGVectorMake(-200, 0)
         self.setSpecialOrNot()
         self.physicsBody?.categoryBitMask = GameScene.METALBALL_NODE
         self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.BOSSONE_NODE
     }
     
-    func setModeBall() {   // Seta o modo que a bola esta de acordo com o modo do Boss
-        var velocityMode = -200
-        let boss = self.parent as? TBFirstBossNode
-        switch(boss?.bossMode) {
-        case "Normal"?:
-            velocityMode = -200
-            break
-        case "Hard"?:
-            velocityMode = -250
-            break
-        case "Insane"?:
-            velocityMode = -300
-            break
-        default:
-            print("Error setting velocity")
-        }
-        self.physicsBody?.velocity = CGVectorMake(CGFloat(velocityMode), 0)
-    }
-    
-    func defendeAnimation() { //  Quando o heroi defender a bola, ela voltara contra o boss
-        if(self.isSpecial) {
-            self.physicsBody?.velocity = CGVectorMake(1000, 0)
+    func defendeAnimation() { //  Quando o heroi defender a bola, ela voltara contra o boss se for especial
+        if(self.ataqueDuplo) {
+            if(self.isSpecial) {
+                self.physicsBody?.velocity = CGVectorMake(1000, 0)
+            } else {
+                let defendedNoSpecialBall = SKAction.sequence([SKAction.waitForDuration(0), SKAction.runBlock({self.removeFromParent()})])
+                runAction(defendedNoSpecialBall)
+            }
         } else {
-            let defendedNoSpecialBall = SKAction.sequence([SKAction.waitForDuration(0), SKAction.runBlock({self.bossWaitBackToAttack(); self.removeFromParent()})])
-            runAction(defendedNoSpecialBall)
+            if(self.isSpecial) {
+                self.physicsBody?.velocity = CGVectorMake(1000, 0)
+            } else {
+                let defendedNoSpecialBall = SKAction.sequence([SKAction.waitForDuration(0), SKAction.runBlock({self.bossWaitBackToAttack(); self.removeFromParent()})])
+                runAction(defendedNoSpecialBall)
+            }
         }
     }
     
@@ -92,6 +83,10 @@ class TBBallFirstBossNode: SKSpriteNode {
     
     func bossDamaged() {  // Acao que remove o no metalBall quando acertar o boss
         self.bossBackToAttack()
+        self.removeFromParent()
+    }
+    
+    func bossDamagedDontBackAttack() {  // Acao chamada no ataque duplo para o boss nao voltar a atacar 2 vezes
         self.removeFromParent()
     }
     

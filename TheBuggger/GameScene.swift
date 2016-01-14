@@ -99,8 +99,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     static let STOP_CAMERA_NODE:UInt32      = 0b0000001000000000000
     static let END_LEVEL_NODE:UInt32        = 0b0000010000000000000
     static let REFERENCIA_NODE:UInt32       = 0b0000100000000000000
-    static let MEGALASER_NODE:UInt32        = 0b0001000000000000000
-    static let MEGALASERKILLER_NODE:UInt32  = 0b0010000000000000000
     static let BOSSONE_NODE:UInt32          = 0b0100000000000000000
     static let METALBALL_NODE:UInt32        = 0b1000000000000000000
     
@@ -956,7 +954,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
           (bodyB.categoryBitMask == GameScene.MONSTER_NODE ||
           bodyB.categoryBitMask == GameScene.ESPINHOS_NODE ||
-          bodyB.categoryBitMask == GameScene.TIRO_NODE || bodyB.categoryBitMask == GameScene.MEGALASERKILLER_NODE || bodyB.categoryBitMask == GameScene.METALBALL_NODE)){
+          bodyB.categoryBitMask == GameScene.TIRO_NODE || bodyB.categoryBitMask == GameScene.METALBALL_NODE)){
             
             if(bodyA.node?.name == hero.standJoint?.name){
                 bodyA = hero.physicsBody!
@@ -1107,19 +1105,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 else if let flyBot = bodyB.node!.parent as? TBFlyingBotNode {
                     flyBot.stopAttack()
-                }
-            }
-        } else if(bodyB.categoryBitMask == GameScene.MEGALASER_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE) {
-            if let megaLaser = bodyB.node as? TBMegaLaserNode {
-                if(!megaLaser.entrouContato) {
-                    megaLaser.initFire(self)
+                } else if let megaLaser = bodyB.node as? TBMegaLaserNode {
+                    if(!megaLaser.entrouContato) {
+                        megaLaser.initFire(self)
+                    }
                 }
             }
         } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.BOSSONE_NODE) {
             if let boss = bodyA.node as? TBFirstBossNode {
                 if let metalBall = bodyB.node as? TBBallFirstBossNode {
                     boss.decreaseLifeMetalBall()
-                    metalBall.bossDamaged()
+                    if(metalBall.ataqueDuplo) {
+                        metalBall.bossDamagedDontBackAttack()
+                    } else {
+                        metalBall.bossDamaged()
+                    }
                 }
             }
         } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.REFERENCIA_NODE) {
@@ -1143,7 +1143,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
             self.hero.quickFloorCollisionOff(bodyB, sender: self)
         } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE) {
-            self.hero.slowFloorCollisionOff(bodyB, sender: self)
         }else if bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
         (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
         bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
