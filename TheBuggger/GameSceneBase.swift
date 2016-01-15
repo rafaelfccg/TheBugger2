@@ -577,8 +577,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
             }
             self.hero.updateVelocity()
             
-//            self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
-//            updatePercentageLabel()
+            self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
+            updatePercentageLabel()
             
             if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
                 self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)

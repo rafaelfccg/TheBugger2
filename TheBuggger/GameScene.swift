@@ -343,8 +343,8 @@ class GameScene:GameSceneBase {
         /* Called before each frame is rendered */
         
         super.update(currentTime)
-        self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
-        updatePercentageLabel()
+//        self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
+//        updatePercentageLabel()
 
     }
     
