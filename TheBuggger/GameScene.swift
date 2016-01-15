@@ -369,15 +369,16 @@ class GameScene:GameSceneBase {
                     boss.decreaseLife()
                 }
             }
-        } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE) {
-            if let megaLaser = bodyB.node as? TBMegaLaserNode {
-                if(!megaLaser.entrouContato) {
-                    megaLaser.initFire(self)
-                }
-            }
-            bodyB.node?.removeFromParent()
-            
         }
+//       else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE) {
+//            if let megaLaser = bodyB.node as? TBMegaLaserNode {
+//                if(!megaLaser.entrouContato) {
+//                    megaLaser.initFire(self)
+//                }
+//            }
+//            bodyB.node?.removeFromParent()
+//            
+//        }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
             //muda o estado da camera para a função update não alterar a posição dela
                 stateCamera = -1
@@ -443,25 +444,6 @@ class GameScene:GameSceneBase {
                 let groupFinal = SKAction.group([SKAction.playSoundFileNamed("GateClosed", waitForCompletion: true), action])
                     finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
                 
-            }
-        } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE)  {
-
-            if(bodyB.node?.name == "referencia") {
-                if let myBot = bodyB.node!.parent as? TBMonsterProtocol {
-                    myBot.startAttack()
-                }
-            }
-            else {
-                if let myBot = bodyB.node!.parent as? TBShotBotNode {
-                    myBot.stopShotMode()
-                }
-                else if let flyBot = bodyB.node!.parent as? TBFlyingBotNode {
-                    flyBot.stopAttack()
-                } else if let megaLaser = bodyB.node as? TBMegaLaserNode {
-                    if(!megaLaser.entrouContato) {
-                        megaLaser.initFire(self)
-                    }
-                }
             }
         } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.BOSSONE_NODE) {
             if let boss = bodyA.node as? TBFirstBossNode {
