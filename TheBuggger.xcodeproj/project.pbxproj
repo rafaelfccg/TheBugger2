@@ -115,8 +115,6 @@
 		008551E21C441C0100545567 /* Level5Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551DC1C441C0100545567 /* Level5Scene.sks */; };
 		008551E31C441C0100545567 /* Level6Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551DD1C441C0100545567 /* Level6Scene.sks */; };
 		008551E91C46C95900545567 /* credits-63.png in Resources */ = {isa = PBXBuildFile; fileRef = 008551E81C46C95900545567 /* credits-63.png */; };
-		008551EE1C48132C00545567 /* simpleBlock.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551ED1C48132C00545567 /* simpleBlock.sks */; };
-		008551F01C48154E00545567 /* Level7Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551EF1C48154E00545567 /* Level7Scene.sks */; };
 		008551F41C48347E00545567 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008551F31C48347E00545567 /* GoogleMobileAds.framework */; };
 		008698B11BE94DA900EE80F2 /* Alert.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AD1BE94DA900EE80F2 /* Alert.atlas */; };
 		008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AE1BE94DA900EE80F2 /* Machine.atlas */; };
@@ -1161,7 +1159,7 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 46HQV8ZA5C;
+						DevelopmentTeam = N4UKH6NFCZ;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -1307,7 +1305,6 @@
 				52C8E9ED1C07A2A200F84C87 /* jump.wav in Resources */,
 				AF9415071C10DD9F00A81D83 /* mark3.png in Resources */,
 				002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */,
-				008551F01C48154E00545567 /* Level7Scene.sks in Resources */,
 				0002CE871BF50B1A00FDE20A /* back-1.png in Resources */,
 				0092216D1BF138E6007C7DDC /* back-estagio.png in Resources */,
 				52700FFA1C08DD99006DEDB3 /* logo_2.png in Resources */,
@@ -1345,7 +1342,6 @@
 				008551DE1C441C0100545567 /* Level1Scene.sks in Resources */,
 				523C53F41C30832D001E4C4E /* dashTutorialAnimation.atlas in Resources */,
 				AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */,
-				008551EE1C48132C00545567 /* simpleBlock.sks in Resources */,
 				009221631BF12D10007C7DDC /* estagioSelect.atlas in Resources */,
 				AF9415041C10DD9F00A81D83 /* estagiomarks.png in Resources */,
 				001E55C61BD8221600B80833 /* base floor.png in Resources */,

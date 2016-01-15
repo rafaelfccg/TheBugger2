@@ -1113,7 +1113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let boss = bodyA.node as? TBFirstBossNode {
                 if let metalBall = bodyB.node as? TBBallFirstBossNode {
                     boss.decreaseLifeMetalBall()
-                    if(metalBall.ataqueDuplo) {
+                    if(metalBall.ataqueDuploTriplo) {
                         metalBall.bossDamagedDontBackAttack()
                     } else {
                         metalBall.bossDamaged()
@@ -1141,12 +1141,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
             self.hero.quickFloorCollisionOff(bodyB, sender: self)
         } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE) {
-<<<<<<< HEAD
-=======
-            
             self.hero.slowFloorCollisionOff(bodyB, sender: self)
-            
->>>>>>> 8dce4023196ab093ad19e3824f98704a88faa4dd
         }else if bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
         (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
         bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
