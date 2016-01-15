@@ -82,37 +82,85 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             if(self.checkBitTime()) {     // Checa se e hora de atirar um bit
                 self.shotBit()
             } else {
-                let diceRoll = Int(arc4random_uniform(3))
-                switch(diceRoll) {
-                case 0:
-                    if(self.lastAttack != 0) {
-                        self.ballAttackDown()
-                    } else {
-                        self.megaLaserAttackDown()
+                if(self.bossMode == "Insane") {
+                    let diceRoll = Int(arc4random_uniform(4))
+                    switch(diceRoll) {
+                    case 0:
+                        if(self.lastAttack != 0) {
+                            self.ballAttackDown()
+                        } else {
+                            self.megaLaserAttackDown()
+                        }
+                    case 1:
+                        if(self.lastAttack != 1) {
+                            self.megaLaserAttackDown()
+                        } else {
+                            self.megaLaserAttackUp()
+                        }
+                    case 2:
+                        if(self.lastAttack != 2) {
+                            self.megaLaserAttackUp()
+                        } else {
+                            self.ballAttackMegaLaser()
+                        }
+                    case 3:
+                        if(self.lastAttack != 3) {
+                            self.ballAttackMegaLaser()
+                        } else {
+                            self.ballAttackDown()
+                        }
+                    default:
+                        print("Error")
                     }
-                case 1:
-                    if(self.lastAttack != 1) {
-                        self.megaLaserAttackDown()
-                    } else {
-                        self.megaLaserAttackUp()
+                } else {
+                    let diceRoll = Int(arc4random_uniform(3))
+                    switch(diceRoll) {
+                    case 0:
+                        if(self.lastAttack != 0) {
+                            self.ballAttackDown()
+                        } else {
+                            self.megaLaserAttackDown()
+                        }
+                    case 1:
+                        if(self.lastAttack != 1) {
+                            self.megaLaserAttackDown()
+                        } else {
+                            self.megaLaserAttackUp()
+                        }
+                    case 2:
+                        if(self.lastAttack != 2) {
+                            self.megaLaserAttackUp()
+                        } else {
+                            self.ballAttackUp()
+                        }
+                    case 3:
+                        if(self.lastAttack != 3) {
+                            self.ballAttackUp()
+                        } else {
+                            self.ballAttackDown()
+                        }
+                    default:
+                        print("Error")
                     }
-                case 2:
-                    if(self.lastAttack != 2) {
-                        self.megaLaserAttackUp()
-                    } else {
-                        self.ballAttackUp()
-                    }
-                case 3:
-                    if(self.lastAttack != 3) {
-                        self.ballAttackUp()
-                    } else {
-                        self.ballAttackDown()
-                    }
-                default:
-                    print("Error")
                 }
             }
         }
+    }
+    
+    func ballAttackMegaLaser() { // Ataque duplo da metal ball + megaLaser
+        self.attacksHappened++
+        self.totalAttacks++
+        self.lastAttack = 3
+        let doubleAttackAction = SKAction.sequence([SKAction.runBlock({self.createMegaLaserDown()}), SKAction.waitForDuration(0.8), SKAction.runBlock({self.createADoubleAttackBall()})])
+        self.runAction(doubleAttackAction)
+    }
+    
+    func createADoubleAttackBall() {     // Cria a bola do ataque duplo
+        let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-95, 0))
+        ball.name = TBBallFirstBossNode.name
+        ball.physicsBody?.velocity = CGVectorMake(-70, 0)
+        ball.ataqueDuplo = true
+        self.addChild(ball)
     }
     
     func checkEnergy() -> Bool {   // Funcao para checar se a energia do boss está baixa
@@ -135,6 +183,23 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     func createBallDown() { // Cria a bola de metal em baixo
         let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-95, -85))
         ball.name = TBBallFirstBossNode.name
+        // Seta a velocidade da bola de acordo com o modo do Boss
+        var velocityMode = -200
+        switch(self.bossMode) {
+        case "Normal":
+            velocityMode = -200
+            break
+        case "Hard":
+            velocityMode = -250
+            break
+        case "Insane":
+            velocityMode = -300
+            break
+        default:
+            print("Error setting velocity")
+        }
+        ball.physicsBody?.velocity = CGVectorMake(CGFloat(velocityMode), 0)
+        
         self.addChild(ball)
     }
     
@@ -193,22 +258,22 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func checkBossMode() {     // O boss ira aumentar seu poder de ataque de forma progressiva
-        if(self.life >= 30 && self.life <= 45) {
-            self.bossMode = "Hard"
-            print(self.bossMode)
-        } else if(self.life < 30) {
-            self.bossMode = "Insane"
-            print(self.bossMode)
-            
-        }
-//        if(self.life >= 21 && self.life <= 35) {
+//        if(self.life >= 30 && self.life <= 45) {
 //            self.bossMode = "Hard"
 //            print(self.bossMode)
-//        } else if(self.life < 20) {
+//        } else if(self.life < 30) {
 //            self.bossMode = "Insane"
 //            print(self.bossMode)
-//
+//            
 //        }
+        if(self.life >= 21 && self.life <= 35) {
+            self.bossMode = "Hard"
+            print(self.bossMode)
+        } else if(self.life < 20) {
+            self.bossMode = "Insane"
+            print(self.bossMode)
+
+        }
     }
     
     func megaLaserAttackDown() {    // Ataque do megaLaser em baixo

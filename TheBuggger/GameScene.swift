@@ -378,7 +378,11 @@ class GameScene:GameSceneBase {
             if let boss = bodyA.node as? TBFirstBossNode {
                 if let metalBall = bodyB.node as? TBBallFirstBossNode {
                     boss.decreaseLifeMetalBall()
-                    metalBall.bossDamaged()
+                    if(metalBall.ataqueDuplo) {
+                        metalBall.bossDamagedDontBackAttack()
+                    } else {
+                        metalBall.bossDamaged()
+                    }
                 }
             }
         } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.REFERENCIA_NODE) {
