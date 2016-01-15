@@ -99,8 +99,6 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     static let STOP_CAMERA_NODE:UInt32      = 0b0000001000000000000
     static let END_LEVEL_NODE:UInt32        = 0b0000010000000000000
     static let REFERENCIA_NODE:UInt32       = 0b0000100000000000000
-    static let MEGALASER_NODE:UInt32        = 0b0001000000000000000
-    static let MEGALASERKILLER_NODE:UInt32  = 0b0010000000000000000
     static let BOSSONE_NODE:UInt32          = 0b0100000000000000000
     static let METALBALL_NODE:UInt32        = 0b1000000000000000000
     
@@ -672,7 +670,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
             (bodyB.categoryBitMask == GameScene.MONSTER_NODE ||
                 bodyB.categoryBitMask == GameScene.ESPINHOS_NODE ||
-                bodyB.categoryBitMask == GameScene.TIRO_NODE || bodyB.categoryBitMask == GameScene.MEGALASERKILLER_NODE || bodyB.categoryBitMask == GameScene.METALBALL_NODE)){
+                bodyB.categoryBitMask == GameScene.TIRO_NODE
+                || bodyB.categoryBitMask == GameScene.METALBALL_NODE)){
                     
                     if(bodyA.node?.name == hero.standJoint?.name){
                         bodyA = hero.physicsBody!

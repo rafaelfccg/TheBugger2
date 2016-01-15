@@ -13,6 +13,7 @@ import AVFoundation
 class GameScene:GameSceneBase {
     
     
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         setupHUD()
@@ -368,10 +369,98 @@ class GameScene:GameSceneBase {
                     boss.decreaseLife()
                 }
             }
-        } else if(bodyB.categoryBitMask == GameScene.MEGALASER_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE) {
+        } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE) {
             if let megaLaser = bodyB.node as? TBMegaLaserNode {
                 if(!megaLaser.entrouContato) {
                     megaLaser.initFire(self)
+                }
+            }
+            bodyB.node?.removeFromParent()
+            
+        }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
+            //muda o estado da camera para a função update não alterar a posição dela
+                stateCamera = -1
+                stopParalax = true
+        }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.END_LEVEL_NODE )){
+            //terminou
+            if(!finalStage)
+            {
+                finalStage = true
+                
+                //Salvando os dados com persistencia
+                saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
+                
+                hero.realSpeed = 0
+            
+                let action = SKAction.sequence([TBFinalNode.animation!, SKAction.runBlock({
+                    if self.completionNode?.parent == nil {
+                        
+                    }
+                self.childNodeWithName(TBFinalNode.nameBack)!.runAction(
+                        
+                    SKAction.sequence([TBFinalNode.animationBack!, SKAction.waitForDuration(0.1), SKAction.runBlock({
+                            self.scene?.view?.paused = true
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            let max = defaults.integerForKey("level")
+                            if max < self.levelSelected! + 1 {
+                                 defaults.setInteger(self.levelSelected! + 1, forKey: "level")
+                            }
+                        if self.completionNode == nil{
+                            self.completionNode = TBCompletionLevelNode.unarchiveFromFile("TBCompletionLevelNode")
+                        }
+                        self.completionNode!.zPosition = self.HUDz
+                        self.completionNode!.setUP(self.numberOfDeath,bits:self.coinsMark , coins: self.hero.qtdMoedas, monsters: self.hero.monstersKilled, pontos: self.hero.score)
+                            if (self.completionNode?.parent == nil){
+                                self.camera!.addChild(self.completionNode!)
+                            }
+                        
+                    })])
+                )
+                
+                })])
+                
+                self.camera?.enumerateChildNodesWithName("hud", usingBlock: {(node,pointer) in
+                        node.removeFromParent()
+                    })
+                self.camera?.enumerateChildNodesWithName(self.removable, usingBlock: {(node,pointer) in
+                        node.removeFromParent()
+                })
+                
+                let clearedArr = TBUtils.getSprites(SKTextureAtlas(named:"AreaCleared"), nomeImagens: "AC-")
+                let areaCleared = SKSpriteNode( texture: clearedArr[0])
+                let actionClear = SKAction.animateWithTextures(clearedArr, timePerFrame: 0.1)
+                self.camera?.addChild(areaCleared)
+                
+                let groupFinal2 = SKAction.group([SKAction.playSoundFileNamed("Complete.wav", waitForCompletion: false), actionClear])
+                    
+                    areaCleared.runAction(SKAction.sequence([groupFinal2, SKAction.runBlock({
+                        //if areaCleared.parent != nil{
+                         areaCleared.removeFromParent()
+                        //}
+                    })]))
+                let groupFinal = SKAction.group([SKAction.playSoundFileNamed("GateClosed", waitForCompletion: true), action])
+                    finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
+                
+            }
+        } else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE)  {
+
+            if(bodyB.node?.name == "referencia") {
+                if let myBot = bodyB.node!.parent as? TBMonsterProtocol {
+                    myBot.startAttack()
+                }
+            }
+            else {
+                if let myBot = bodyB.node!.parent as? TBShotBotNode {
+                    myBot.stopShotMode()
+                }
+                else if let flyBot = bodyB.node!.parent as? TBFlyingBotNode {
+                    flyBot.stopAttack()
+                } else if let megaLaser = bodyB.node as? TBMegaLaserNode {
+                    if(!megaLaser.entrouContato) {
+                        megaLaser.initFire(self)
+                    }
                 }
             }
         } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.BOSSONE_NODE) {
@@ -389,6 +478,32 @@ class GameScene:GameSceneBase {
             if let metalBall = bodyB.node as? TBBallFirstBossNode {
                 metalBall.ballMissed()
             }
+        }
+    }
+    override func didEndContact(contact: SKPhysicsContact) {
+        var bodyA = contact.bodyA
+        var bodyB = contact.bodyB
+        //var flagTrocou = false
+        
+        //ordena para que bodyA tenha sempre a categoria "menor"
+        if(bodyA.categoryBitMask > bodyB.categoryBitMask){
+            let aux = bodyB
+            bodyB = bodyA
+            bodyA = aux
+            //flagTrocou = true
+        }
+        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
+            self.hero.quickFloorCollisionOff(bodyB, sender: self)
+        } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE) {
+
+        }else if bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
+        (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
+        bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
+        bodyB.categoryBitMask ==  GameScene.TOCO_NODE ||
+            bodyB.categoryBitMask == GameScene.CHAO_NODE){
+                if (self.hero.jumpState == JumpState.TryJump){
+                    self.hero.jumpState == JumpState.FirstJump
+                }
         }
     }
 }
