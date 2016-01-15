@@ -118,6 +118,7 @@
 		008551EE1C48132C00545567 /* simpleBlock.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551ED1C48132C00545567 /* simpleBlock.sks */; };
 		008551F01C48154E00545567 /* Level7Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 008551EF1C48154E00545567 /* Level7Scene.sks */; };
 		008551F41C48347E00545567 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008551F31C48347E00545567 /* GoogleMobileAds.framework */; };
+		008551F61C49647100545567 /* GameSceneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008551F51C49647100545567 /* GameSceneBase.swift */; };
 		008698B11BE94DA900EE80F2 /* Alert.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AD1BE94DA900EE80F2 /* Alert.atlas */; };
 		008698B21BE94DA900EE80F2 /* Machine.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AE1BE94DA900EE80F2 /* Machine.atlas */; };
 		008698B31BE94DA900EE80F2 /* signal.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 008698AF1BE94DA900EE80F2 /* signal.atlas */; };
@@ -383,6 +384,7 @@
 		008551ED1C48132C00545567 /* simpleBlock.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = simpleBlock.sks; sourceTree = "<group>"; };
 		008551EF1C48154E00545567 /* Level7Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level7Scene.sks; sourceTree = "<group>"; };
 		008551F31C48347E00545567 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		008551F51C49647100545567 /* GameSceneBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneBase.swift; sourceTree = "<group>"; };
 		008698AD1BE94DA900EE80F2 /* Alert.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Alert.atlas; sourceTree = "<group>"; };
 		008698AE1BE94DA900EE80F2 /* Machine.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Machine.atlas; sourceTree = "<group>"; };
 		008698AF1BE94DA900EE80F2 /* signal.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = signal.atlas; sourceTree = "<group>"; };
@@ -994,6 +996,7 @@
 				52CE25A31C46D50B00691BDF /* FirstBossGameScene.swift */,
 				009CAFE11BF10C2D003BA434 /* selectLevel */,
 				00CDBECA1BBD9FD100BC0517 /* Levels */,
+				008551F51C49647100545567 /* GameSceneBase.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1441,6 +1444,7 @@
 				AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */,
 				00CDBE921BB9B39000BC0517 /* GameViewController.swift in Sources */,
 				AF9415091C10E4DB00A81D83 /* Statistics.swift in Sources */,
+				008551F61C49647100545567 /* GameSceneBase.swift in Sources */,
 				00CDBE8C1BB9B39000BC0517 /* AppDelegate.swift in Sources */,
 				00BE1EF11BF8C43300F091B9 /* TBPowerUpNode.swift in Sources */,
 				00C0FCE41BE94AEF00F8C730 /* TBMachineFrontNode.swift in Sources */,
