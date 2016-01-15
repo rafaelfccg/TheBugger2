@@ -444,7 +444,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vitor &quot;Monster&quot; Augusto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fQq-KG-Eno">
-                                        <rect key="frame" x="30" y="97" width="338.5" height="23"/>
+                                        <rect key="frame" x="30" y="97" width="339" height="23"/>
                                         <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="20"/>
                                         <color key="textColor" red="0.1647058824" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -462,7 +462,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desginers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="B4w-E8-ENL">
-                                        <rect key="frame" x="30" y="153" width="168.5" height="29"/>
+                                        <rect key="frame" x="30" y="153" width="169" height="29"/>
                                         <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="25"/>
                                         <color key="textColor" red="0.51372549020000002" green="0.96470588239999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
