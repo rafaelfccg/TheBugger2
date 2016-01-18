@@ -12,7 +12,7 @@ import AVFoundation
 
 class SelectLevelScene: SKScene {
     
-    let numberOfLevels:Int = 6
+    let numberOfLevels:Int = 7
     var delegateChanger: SceneChangesDelegate?
     var stageSelect:SKAction?
     var minX:CGFloat?
@@ -25,7 +25,8 @@ class SelectLevelScene: SKScene {
                                              4:[TBShotBotNode.standAtlas,TBShotBotNode.attackAtlas,TBShotBotNode.deathAtlas],
                                             5:[TBBopperBotNode.deathAtlas, TBBopperBotNode.attackAtlas, TBBopperBotNode.standAtlas, TBPlayerNode.frenezyAnimationAtlas,
                                                 TBShotBotNode.attackAtlas],
-                                        6:[TBFlyingBotNode.animationAtlas,TBFlyingBotNode.deathAtlas,TBBopperBotNode.attackAtlas]]
+                                        6:[TBFlyingBotNode.animationAtlas,TBFlyingBotNode.deathAtlas,TBBopperBotNode.attackAtlas],
+        7:[]]
     
     override func didMoveToView(view: SKView) {
         
@@ -150,8 +151,11 @@ class SelectLevelScene: SKScene {
                     
                         let levelInt = Int(level);
                         preLoadSprites(self.levelsAtlas[levelInt!]!)
-//                        self.delegateChanger?.mudaScene("BossTestScene", withMethod: method, andLevel: levelInt!)
-                        self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
+                        if (inLevel == 7 ){
+                            self.delegateChanger?.mudaScene("BossTestScene", withMethod: method, andLevel: levelInt!)
+                        }else {
+                            self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
+                        }
                         
                     })])]))
                 }

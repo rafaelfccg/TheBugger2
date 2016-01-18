@@ -444,7 +444,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Victor &quot;Monster&quot; Augusto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fQq-KG-Eno">
-                                        <rect key="frame" x="30" y="97" width="339" height="23"/>
+                                        <rect key="frame" x="30" y="97" width="338.5" height="23"/>
                                         <fontDescription key="fontDescription" name="SquaresBold" family="Squares Bold" pointSize="20"/>
                                         <color key="textColor" red="0.1647058824" green="0.72156862749999995" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
