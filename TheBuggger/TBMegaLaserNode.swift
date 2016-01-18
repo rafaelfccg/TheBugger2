@@ -35,7 +35,7 @@ class TBMegaLaserNode: SKSpriteNode {
         self.setNormalCategoryBitMask()
     }
     
-    func initFire(sender:GameSceneBase) {    // Comeca a mudanca de estado para o modo que mata
+    func initFire(sender:GameScene) {    // Comeca a mudanca de estado para o modo que mata
         self.entrouContato = true
         let changeToBusy = SKAction.sequence([SKAction.waitForDuration(1), SKAction.runBlock({self.color = UIColor.yellowColor()})])
         let changeToFire = SKAction.sequence([SKAction.waitForDuration(0.4), SKAction.runBlock({self.color = UIColor.redColor(); self.setFireCategoryBitMask(); self.checkPlayerContact(sender);})])
@@ -59,7 +59,7 @@ class TBMegaLaserNode: SKSpriteNode {
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
     }
     
-    func checkPlayerContact(sender:GameSceneBase) {      // Checa se o player esta em contato com o megaLaser no modo que mata
+    func checkPlayerContact(sender:GameScene) {      // Checa se o player esta em contato com o megaLaser no modo que mata
         let bodies = self.physicsBody?.allContactedBodies()
         for body : SKPhysicsBody in bodies! {
             if let player = body.node as? TBPlayerNode {

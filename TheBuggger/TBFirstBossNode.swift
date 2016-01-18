@@ -17,7 +17,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     var lastAttack = -1        // Variavel auxiliar para nao repetir o mesmo attack duas vezes
     var attacksHappened = 0
     var totalAttacks = 0
-    var currentBit = 0
+    var currentBit:Int = 0
     var bossMode = "Normal"     // Variavei auxiliar pra saber qual o modo progressivo em que o boss esta
     
     init() {
@@ -65,10 +65,10 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             time = 1
             break
         case "Hard":
-            time = 0.5
+            time = 0.6
             break
         case "Insane":
-            time = 0
+            time = 0.2
             break
         default:
             print("Error setting time")
@@ -82,18 +82,18 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             if(self.checkBitTime()) {     // Checa se e hora de atirar um bit
                 self.shotBit()
             } else {
-                if(self.bossMode == "Insane") {
+                if(self.bossMode == "Hard") {
                     let diceRoll = Int(arc4random_uniform(4))
                     switch(diceRoll) {
                     case 0:
                         if(self.lastAttack != 0) {
                             self.ballAttackDown()
                         } else {
-                            self.megaLaserAttackDown()
+                            self.doubleAttack()
                         }
                     case 1:
                         if(self.lastAttack != 1) {
-                            self.megaLaserAttackDown()
+                            self.doubleAttack()
                         } else {
                             self.megaLaserAttackUp()
                         }
@@ -101,13 +101,43 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
                         if(self.lastAttack != 2) {
                             self.megaLaserAttackUp()
                         } else {
-                            self.ballAttackMegaLaser()
+                            self.ballAttackUp()
                         }
                     case 3:
                         if(self.lastAttack != 3) {
-                            self.ballAttackMegaLaser()
+                            self.ballAttackUp()
                         } else {
                             self.ballAttackDown()
+                        }
+                    default:
+                        print("Error")
+                    }
+                } else if(self.bossMode == "Insane") {
+                    let diceRoll = Int(arc4random_uniform(4))
+                    switch(diceRoll) {
+                    case 0:
+                        if(self.lastAttack != 0) {
+                            self.ballAttackDown()
+                        } else {
+                            self.tripleAttack()
+                        }
+                    case 1:
+                        if(self.lastAttack != 1) {
+                            self.tripleAttack()
+                        } else {
+                            self.megaLaserAttackUp()
+                        }
+                    case 2:
+                        if(self.lastAttack != 2) {
+                            self.megaLaserAttackUp()
+                        } else {
+                            self.ballAttackUp()
+                        }
+                    case 3:
+                        if(self.lastAttack != 3) {
+                              self.ballAttackUp()
+                          } else {
+                              self.ballAttackDown()
                         }
                     default:
                         print("Error")
@@ -147,19 +177,34 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         }
     }
     
-    func ballAttackMegaLaser() { // Ataque duplo da metal ball + megaLaser
+    func tripleAttack() {        // Ataque duplo da megaLaser + metal ball + metal ball
         self.attacksHappened++
         self.totalAttacks++
-        self.lastAttack = 3
-        let doubleAttackAction = SKAction.sequence([SKAction.runBlock({self.createMegaLaserDown()}), SKAction.waitForDuration(0.8), SKAction.runBlock({self.createADoubleAttackBall()})])
+        self.lastAttack = 1
+        let tripleAttackAction = SKAction.sequence([SKAction.runBlock({self.createMegaLaserDown()}), SKAction.waitForDuration(0.8), SKAction.runBlock({self.createAttackBallNoBack(2)}), SKAction.waitForDuration(0.8), SKAction.runBlock({self.createAttackBallNoBack(3)})])
+        self.runAction(tripleAttackAction)
+    }
+    
+    func doubleAttack() { // Ataque duplo da megaLaser + metal ball
+        self.attacksHappened++
+        self.totalAttacks++
+        self.lastAttack = 1
+        let doubleAttackAction = SKAction.sequence([SKAction.runBlock({self.createMegaLaserDown()}), SKAction.waitForDuration(0.8), SKAction.runBlock({self.createAttackBallNoBack(2)})])
         self.runAction(doubleAttackAction)
     }
     
-    func createADoubleAttackBall() {     // Cria a bola do ataque duplo
+    func createAttackBallNoBack(KindOfAttack: Int) {     // Cria a bola do ataque em precisar voltar a atacar(usado no ataque duplo e triplo)
         let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-95, 0))
         ball.name = TBBallFirstBossNode.name
-        ball.physicsBody?.velocity = CGVectorMake(-70, 0)
-        ball.ataqueDuplo = true
+        ball.ataqueDuploTriplo = true
+        if(KindOfAttack == 2) {
+            ball.position = CGPointMake(-95, 0)
+            ball.physicsBody?.velocity = CGVectorMake(-70, 0)
+        } else if(KindOfAttack == 3) {
+            ball.position = CGPointMake(-95, -65)
+            ball.physicsBody?.velocity = CGVectorMake(-220, 0)
+            ball.turnSpecialOff()   // Sempre que a bola vir no meio ela nao sera especial
+        }
         self.addChild(ball)
     }
     
@@ -333,6 +378,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             self.totalAttacks++
             itsTime = true
         }
+        
         return itsTime
     }
     

@@ -15,7 +15,7 @@ class TBBallFirstBossNode: SKSpriteNode {
     var specialChance = 15   // Chance da bola ser especial
     var isSpecial = false
     var initialTime: CFTimeInterval = 0
-    var ataqueDuplo = false    // Variavel que sera true apenas quando for do ataque duplo do boss
+    var ataqueDuploTriplo = false    // Variavel que sera true apenas quando for do ataque duplo ou triplo do boss
     
     init(ballPosition: CGPoint) {
         super.init(texture: nil, color: UIColor.whiteColor(), size: CGSizeMake(50, 50))
@@ -36,21 +36,26 @@ class TBBallFirstBossNode: SKSpriteNode {
     }
     
     func defendeAnimation() { //  Quando o heroi defender a bola, ela voltara contra o boss se for especial
-        if(self.ataqueDuplo) {
+        if(self.ataqueDuploTriplo) {
             if(self.isSpecial) {
-                self.physicsBody?.velocity = CGVectorMake(1000, 0)
+                self.physicsBody?.velocity = CGVectorMake(1500, 0)
             } else {
                 let defendedNoSpecialBall = SKAction.sequence([SKAction.waitForDuration(0), SKAction.runBlock({self.removeFromParent()})])
                 runAction(defendedNoSpecialBall)
             }
         } else {
             if(self.isSpecial) {
-                self.physicsBody?.velocity = CGVectorMake(1000, 0)
+                self.physicsBody?.velocity = CGVectorMake(1500, 0)
             } else {
                 let defendedNoSpecialBall = SKAction.sequence([SKAction.waitForDuration(0), SKAction.runBlock({self.bossWaitBackToAttack(); self.removeFromParent()})])
                 runAction(defendedNoSpecialBall)
             }
         }
+    }
+    
+    func turnSpecialOff() {      // Deixa a bola nao especial
+        self.isSpecial = false
+        self.color = UIColor.whiteColor()
     }
     
     func setSpecialOrNot() {     // Diferenca nas cores, animacoes e afins entre uma bola especial e nao especial

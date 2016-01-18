@@ -135,8 +135,6 @@ class SelectLevelScene: SKScene {
             print("\(name) + \(level)")
             if (name == "Back"){
                 self.delegateChanger?.backToMenu()
-            }else if name == nil{
-                // confirm that the name it ising nil
             }else if name!.containsString("select") {
                 level = (name?.substringFromIndex((name?.startIndex.advancedBy(11))!))!
             }

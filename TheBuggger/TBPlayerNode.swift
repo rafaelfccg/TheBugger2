@@ -407,7 +407,7 @@ class TBPlayerNode: SKSpriteNode {
         
     }
     
-    func dangerCollision(bodyB:SKPhysicsBody, sender:GameSceneBase){
+    func dangerCollision(bodyB:SKPhysicsBody, sender:GameScene){
         
         if(self.powerUP == TBPowerUpsStates.Frenezy){
             if let gbotmonste = bodyB.node as? TBMonsterProtocol{
@@ -478,13 +478,13 @@ class TBPlayerNode: SKSpriteNode {
         }
     }
     
-    func quickFloorCollisionOff(bodyB: SKPhysicsBody, sender: GameSceneBase) {    // Desliga o speed
+    func quickFloorCollisionOff(bodyB: SKPhysicsBody, sender: GameScene) {    // Desliga o speed
         self.realSpeed = self.defaultSpeed
     }
-    func slowFloorCollisionOff(bodyB: SKPhysicsBody, sender: GameSceneBase) {      // Desliga o slow
+    func slowFloorCollisionOff(bodyB: SKPhysicsBody, sender: GameScene) {      // Desliga o slow
         self.realSpeed = self.defaultSpeed
     }
-    func quickFloorCollision(bodyB:SKPhysicsBody, sender:GameSceneBase){
+    func quickFloorCollision(bodyB:SKPhysicsBody, sender:GameScene){
 //        if let node  = bodyB.node as? TBChangeSpeedGround{
 //            if node.hadEffect! {
 //                return;
@@ -512,7 +512,7 @@ class TBPlayerNode: SKSpriteNode {
 //        })]))
     }
     
-    func slowFloorCollision(bodyB:SKPhysicsBody, sender:GameSceneBase){
+    func slowFloorCollision(bodyB:SKPhysicsBody, sender:GameScene){
         self.realSpeed = min(self.realSpeed, self.defaultSpeed)
         let diff = (self.highSpeed - defaultSpeed)
         let acc = diff/12
