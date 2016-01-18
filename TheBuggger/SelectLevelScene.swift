@@ -99,7 +99,8 @@ class SelectLevelScene: SKScene {
         if let statisticLogs = fetchLogs()
         {
             // adicionando os bit
-            for (var i = 0; i < statisticLogs.count ; i++)
+            // CONCERTAR AQUI
+            for (var i = 0; i < numberOfLevels ; i++)
             {
                 let name = "estagioMark\(statisticLogs[i].level)"
                 let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
@@ -159,8 +160,6 @@ class SelectLevelScene: SKScene {
                 }
             }
         }
-        
-        
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
