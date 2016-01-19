@@ -136,6 +136,8 @@ class SelectLevelScene: SKScene {
             print("\(name) + \(level)")
             if (name == "Back"){
                 self.delegateChanger?.backToMenu()
+            }else if name == nil{
+                // quick fix
             }else if name!.containsString("select") {
                 level = (name?.substringFromIndex((name?.startIndex.advancedBy(11))!))!
             }
@@ -150,8 +152,8 @@ class SelectLevelScene: SKScene {
                     
                         let levelInt = Int(level);
                         preLoadSprites(self.levelsAtlas[levelInt!]!)
-                        if (inLevel == 7 ){
-                            self.delegateChanger?.mudaScene("BossTestScene", withMethod: method, andLevel: levelInt!)
+                        if (levelInt == 7 ){
+                            self.delegateChanger?.mudaSceneBoss("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                         }else {
                             self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                         }

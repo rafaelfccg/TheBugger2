@@ -83,26 +83,37 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     {
         clearScene()
         if let scene = GameScene(fileNamed: nomeSKS) {
-            // Configure the view.
-            self.backgroundMusicPlayer?.stop()
-            scene.delegateChanger = self
-            scene.levelSelected = andLevel
-            
-            let skView = self.view as! SKView
-//            skView.showsFPS = true
-            //skView.showsNodeCount = true
-//            skView.showsPhysics = true
-            NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
-            skView.ignoresSiblingOrder = true
-            
-            scene.scaleMode = .AspectFill
-            
-            scene.isMethodOne = withMethod
-            
-            skView.presentScene(scene)
+           setScene(scene, withMethod: withMethod, andLevel: andLevel)
+        }
+    }
+    
+    func setScene(scene:GameSceneBase, withMethod:Int, andLevel:Int){
+        self.backgroundMusicPlayer?.stop()
+        scene.delegateChanger = self
+        scene.levelSelected = andLevel
+        
+        let skView = self.view as! SKView
+        //            skView.showsFPS = true
+        //skView.showsNodeCount = true
+        //            skView.showsPhysics = true
+        NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
+        skView.ignoresSiblingOrder = true
+        
+        scene.scaleMode = .AspectFill
+        
+        scene.isMethodOne = withMethod
+        
+        skView.presentScene(scene)
+    }
+    func mudaSceneBoss(nomeSKS: String, withMethod:Int, andLevel:Int)
+    {
+        clearScene()
+        if let scene = FirstBossGameScene(fileNamed: nomeSKS) {
+            setScene(scene, withMethod: withMethod, andLevel: andLevel)
         }
         
     }
+
     func backToMenu() {
         var skView = self.view as? SKView
         

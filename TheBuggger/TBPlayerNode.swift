@@ -172,7 +172,7 @@ class TBPlayerNode: SKSpriteNode {
         self.runStandingAction()
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
-        self.physicsBody!.collisionBitMask = GameScene.BOSSONE_NODE | GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.OTHER_NODE | GameScene.TOCO_NODE
+        self.physicsBody!.collisionBitMask = GameScene.BOSSONE_NODE | GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.TOCO_NODE
         
         self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE | GameScene.METALBALL_NODE
         

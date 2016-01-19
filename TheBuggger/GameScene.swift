@@ -12,16 +12,10 @@ import AVFoundation
 
 class GameScene:GameSceneBase {
     
-    
-    
+
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         setupHUD()
-    }
-    
-    override func updatePercentageLabel(){
-        let per = Int(stagePercentage!)
-        percentage?.text = "\(per)%"
     }
     
     override func updateNumberOfTries(){
@@ -31,19 +25,15 @@ class GameScene:GameSceneBase {
     
     override func setupHUD()
     {
-        let backTexture = SKTexture(imageNamed: "back-hud")
-        let back = SKSpriteNode(texture: backTexture, size: CGSizeMake(80, 33))
-        back.name = "restartButton"
-        self.camera!.addChild(back)
+        super.setupHUD()
+        let back = self.camera!.childNodeWithName("restartButton")
         
-        back.position = CGPoint(x: -self.size.width/2 + back.size.width/2 + 5, y: self.size.height/2 - back.size.height/2 - 5)
-        back.zPosition =  1000
         labelScore = SKLabelNode(fontNamed: "Squares Bold")
         labelScore!.text = self.numFormatter.stringFromNumber(0)
         labelScore?.name  = "hud"
         self.camera!.addChild(labelScore!)
         labelScore?.fontSize = 25
-        labelScore?.position = CGPointMake(self.size.width/2 - (labelScore?.frame.size.width)! + 20, back.position.y - 15)
+        labelScore?.position = CGPointMake(self.size.width/2 - (labelScore?.frame.size.width)! + 20, back!.position.y - 15)
         labelScore?.zPosition = self.HUDz
         let backScore = SKSpriteNode(imageNamed: "pt-hud")
         backScore.size = CGSizeMake(280,50)
@@ -52,7 +42,6 @@ class GameScene:GameSceneBase {
         backScore.name = "hud"
         
         labelScore?.addChild(backScore)
-        
         
         percentage = SKLabelNode(text: "0%")
         percentage?.fontName = "Squares Bold"
@@ -339,12 +328,19 @@ class GameScene:GameSceneBase {
         finalBackNode = self.childNodeWithName(TBFinalNode.nameBack)
     }
     
+    func updatePercentageLabel(){
+        let per = Int(stagePercentage!)
+        percentage?.text = "\(per)%"
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
         super.update(currentTime)
-        //        self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
-        //        updatePercentageLabel()
+        if(hasBegan) {
+            self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
+            updatePercentageLabel()
+        }
         
     }
     

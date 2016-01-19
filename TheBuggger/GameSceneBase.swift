@@ -15,6 +15,7 @@ protocol SceneChangesDelegate{
     func backToMenu()
     func selectLevel(nomeSKS: String)
     func gameOver()
+    func mudaSceneBoss(nomeSKS: String, withMethod:Int, andLevel:Int)
 }
 
 class GameSceneBase: SKScene, SKPhysicsContactDelegate {
@@ -99,8 +100,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     static let STOP_CAMERA_NODE:UInt32      = 0b0000001000000000000
     static let END_LEVEL_NODE:UInt32        = 0b0000010000000000000
     static let REFERENCIA_NODE:UInt32       = 0b0000100000000000000
-    static let BOSSONE_NODE:UInt32          = 0b0100000000000000000
-    static let METALBALL_NODE:UInt32        = 0b1000000000000000000
+    static let BOSSONE_NODE:UInt32          = 0b0001000000000000000
+    static let METALBALL_NODE:UInt32        = 0b0010000000000000000
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -263,10 +264,6 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
             
     }
     
-    func updatePercentageLabel(){
-        let per = Int(stagePercentage!)
-        percentage?.text = "\(per)%"
-    }
     
     func updateNumberOfTries(){
         let per = Int(self.numberOfDeath)
@@ -275,6 +272,14 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     
     func setupHUD()
     {
+        let backTexture = SKTexture(imageNamed: "back-hud")
+        let back = SKSpriteNode(texture: backTexture, size: CGSizeMake(80, 33))
+        back.name = "restartButton"
+        self.camera!.addChild(back)
+        
+        back.position = CGPoint(x: -self.size.width/2 + back.size.width/2 + 5, y: self.size.height/2 - back.size.height/2 - 5)
+        back.zPosition =  1000
+
         //implementada pela subclass
     }
     
@@ -576,10 +581,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
                 
             }
             self.hero.updateVelocity()
-            
-            self.stagePercentage = Double(floor(100*(hero.position.x - self.firstHeroPosition.x)/(deathNodeReference!.frame.size.width)))
-            updatePercentageLabel()
-            
+
             if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
                 self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
                 self.hero.actionCall()
