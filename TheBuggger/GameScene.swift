@@ -63,6 +63,9 @@ class GameScene:GameSceneBase {
     override func restartLevel()
     {
         super.restartLevel()
+        let dies = ["Porcentagem": Int(stagePercentage!), "Stage": levelSelected!]
+        Flurry.logEvent("Died", withParameters: dies)
+
         self.enumerateChildNodesWithName("firstBoss", usingBlock: { // adicionei aqui sem o removable, pois preciso alterar a velocidade dele quando o jogo iniciar
             (node, ponter)->Void in
             node.removeFromParent()

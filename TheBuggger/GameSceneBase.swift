@@ -196,17 +196,10 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         
         hero.realSpeed = hero.defaultSpeed
         hero.runWalkingAction()
-        checkBossVelocity()
+        //checkBossVelocity()
         self.scene?.view?.paused = false
         tapToStartLabel?.removeFromParent()
         Flurry.logEvent("User Player \(levelSelected)")
-    }
-    
-    func checkBossVelocity() {      // Checa se existe algum boss, caso exista, aumenta sua velocidade
-        if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
-            firstBoss.updateVelocity()
-            firstBoss.startBoss()
-        }
     }
     
     func moveSprite(sprite : SKSpriteNode,
@@ -333,8 +326,6 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         }
         
         updateNumberOfTries()
-        let dies = ["Porcentagem": Int(stagePercentage!), "Stage": levelSelected!]
-        Flurry.logEvent("Died", withParameters: dies)
     }
     
     func backtToMenu(){
