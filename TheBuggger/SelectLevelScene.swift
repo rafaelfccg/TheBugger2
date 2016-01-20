@@ -100,7 +100,8 @@ class SelectLevelScene: SKScene {
         {
             // adicionando os bit
             // CONCERTAR AQUI
-            for (var i = 0; i < numberOfLevels ; i++)
+            let numLevels = statisticLogs.count
+            for (var i = 0; i < numLevels; i++)
             {
                 let name = "estagioMark\(statisticLogs[i].level)"
                 let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
