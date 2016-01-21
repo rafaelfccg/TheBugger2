@@ -360,7 +360,7 @@ class GameScene:GameSceneBase {
         
         
         if(bodyB.categoryBitMask == GameScene.BOSSONE_NODE && bodyA.categoryBitMask == GameScene.JOINT_ATTACK_NODE) {
-            if(hero.attackState == AttackState.Attacking) {
+            if(hero.actionState == ActionState.Attacking) {
                 if let boss = bodyB.node as? TBFirstBossNode {
                     boss.decreaseLife()
                 }
