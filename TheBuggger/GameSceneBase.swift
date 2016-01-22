@@ -714,7 +714,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
                         }
                     }
         }else if((bodyA.categoryBitMask == GameScene.MONSTER_NODE)  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
-            if(hero.attackState == AttackState.Attacking){
+            if(hero.actionState == ActionState.Attacking){
                 if let gbotmonste = bodyA.node as? TBMonsterProtocol{
                     gbotmonste.dieAnimation(self.hero)
                 }

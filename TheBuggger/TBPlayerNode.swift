@@ -50,7 +50,7 @@ class TBPlayerNode: SKSpriteNode {
     
     var powerUP:TBPowerUpsStates
     var jumpState:JumpState
-    var attackState:AttackState
+    var actionState:ActionState
     
     var method:Int?
     
@@ -125,7 +125,7 @@ class TBPlayerNode: SKSpriteNode {
         self.weponType = false;
         self.realSpeed = defaultSpeed
         jumpState = JumpState.CanJump
-        attackState = AttackState.Idle
+        actionState = ActionState.Idle
         speedBost = false
         super.init(coder: aDecoder)
     }
@@ -136,7 +136,7 @@ class TBPlayerNode: SKSpriteNode {
         self.weponType = false;
         self.realSpeed = defaultSpeed
         powerUP = TBPowerUpsStates.Normal
-        attackState = AttackState.Idle
+        actionState = ActionState.Idle
         speedBost = false
         super.init(texture:SKTexture(), color: UIColor(), size: CGSizeMake(0, 0))
     }
@@ -144,7 +144,7 @@ class TBPlayerNode: SKSpriteNode {
     func setUpPlayer(){
         realSpeed = 0
         jumpState = JumpState.CanJump
-        attackState = AttackState.Idle
+        actionState = ActionState.Idle
         var walkArray = TBUtils.getSprites(TBPlayerNode.playerRunAtlas, nomeImagens: "run-")
         
         self.texture = walkArray[0];
@@ -213,26 +213,26 @@ class TBPlayerNode: SKSpriteNode {
     
     func configDefence(){
         self.defenceActionChangeState = SKAction.sequence([TBPlayerNode.defenceAction!, SKAction.runBlock({
-            if(self.attackState == AttackState.Defending)
+            if(self.actionState == ActionState.Defending)
             {
-                self.attackState = AttackState.Idle
+                self.actionState = ActionState.Idle
             }
         })])
     }
     
     func configAttack(){
         self.attackActionChangeState1 = SKAction.sequence([TBPlayerNode.attackActionAnimation1!, SKAction.runBlock({
-            if(self.attackState == AttackState.Attacking)
+            if(self.actionState == ActionState.Attacking)
             {
-                self.attackState = AttackState.Idle
+                self.actionState = ActionState.Idle
             }
             
         })])
         
         self.attackActionChangeState2 = SKAction.sequence([TBPlayerNode.attackActionAnimation2!, SKAction.runBlock({
-            if(self.attackState == AttackState.Attacking)
+            if(self.actionState == ActionState.Attacking)
             {
-                self.attackState = AttackState.Idle
+                self.actionState = ActionState.Idle
             }
             
         })])
@@ -243,7 +243,11 @@ class TBPlayerNode: SKSpriteNode {
         let action = SKAction.animateWithTextures(dashArray, timePerFrame: 0.09);
         self.dashActionModifier = SKAction.sequence([action, SKAction.runBlock({
             self.addStandingJoint()
-            self.runWalkingAction()
+            if(self.actionState == .Dashing)
+            {
+                self.actionState = .Idle
+                self.runWalkingAction()
+            }
         })])
     }
     
@@ -364,7 +368,7 @@ class TBPlayerNode: SKSpriteNode {
         
     }
     func resetHero(){
-        self.attackState = AttackState.Idle
+        self.actionState = ActionState.Idle
         self.powerUP = TBPowerUpsStates.Normal
         self.physicsBody?.pinned = false
         self.zRotation = 0
@@ -419,14 +423,14 @@ class TBPlayerNode: SKSpriteNode {
                 }
             }
             
-        }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.attackState == AttackState.Defending {
+        }else if bodyB.categoryBitMask == GameScene.MONSTER_NODE && self.actionState == ActionState.Defending {
             if(bodyB.node?.physicsBody?.velocity.dx == 0 && bodyB.node?.physicsBody?.velocity.dy == 0) {
                 bodyB.applyImpulse(CGVectorMake(90, 75))
                 print("IMPULSO")
             }
             self.runAction(SKAction.playSoundFileNamed("defence", waitForCompletion: false))
             
-        }else if (bodyB.categoryBitMask == GameScene.TIRO_NODE && self.attackState == AttackState.Defending) {
+        }else if (bodyB.categoryBitMask == GameScene.TIRO_NODE && self.actionState == ActionState.Defending) {
             
             
             if let gbotmonste = bodyB.node as? TBShotNode{
@@ -435,7 +439,7 @@ class TBPlayerNode: SKSpriteNode {
             }
             
             
-        } else if (bodyB.categoryBitMask == GameScene.METALBALL_NODE && self.attackState == AttackState.Defending){
+        } else if (bodyB.categoryBitMask == GameScene.METALBALL_NODE && self.actionState == ActionState.Defending){
             
             if let gbotmonste2 = bodyB.node as? TBBallFirstBossNode{
                 gbotmonste2.defendeAnimation()
@@ -463,6 +467,7 @@ class TBPlayerNode: SKSpriteNode {
                 self.removeActionForKey("attack")
             }
             if self.actionForKey("die") == nil{
+                self.actionState = .Dying
                 self.runAction(SKAction.group([(SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.removeAttackJoint()
                     self.removePlayerReference()
@@ -485,31 +490,8 @@ class TBPlayerNode: SKSpriteNode {
         self.realSpeed = self.defaultSpeed
     }
     func quickFloorCollision(bodyB:SKPhysicsBody, sender:GameSceneBase){
-        //        if let node  = bodyB.node as? TBChangeSpeedGround{
-        //            if node.hadEffect! {
-        //                return;
-        //            }else{
-        //                node.hadEffect = true
-        //            }
-        //        }
+        
         self.realSpeed = self.highSpeed
-        //        realSpeed = max(realSpeed, defaultSpeed)
-        //        let diff = (self.highSpeed - defaultSpeed)
-        //        let acc = diff/12
-        //        let accSpeed = SKAction.repeatAction( SKAction.sequence(
-        //            [SKAction.waitForDuration(0.02), SKAction.runBlock({
-        //                self.realSpeed = min(self.highSpeed, self.realSpeed + acc)
-        //                }
-        //                )]), count: 12)
-        //
-        //        let deacc = diff/120
-        //        let actSlow = SKAction.repeatAction( SKAction.sequence(
-        //            [SKAction.waitForDuration(0.02), SKAction.runBlock({
-        //                self.realSpeed = max(self.defaultSpeed, self.realSpeed-deacc)}
-        //                )]), count: 120)
-        //        runAction(SKAction.sequence([accSpeed, actSlow, SKAction.runBlock({
-        //            self.realSpeed =  self.defaultSpeed
-        //        })]))
     }
     
     func slowFloorCollision(bodyB:SKPhysicsBody, sender:GameSceneBase){
@@ -536,7 +518,7 @@ class TBPlayerNode: SKSpriteNode {
         if( self.actionForKey("attack") == nil && self.actionForKey("die") == nil){
             let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
             
-            self.attackState = AttackState.Attacking
+            self.actionState = ActionState.Attacking
             if rand() % 2 == 0 {
                 self.runAction(SKAction.sequence([attackActionChangeState1! , SKAction.runBlock({self.checkPlayerTocoContact()})]),withKey: "attack")
             }else {
@@ -574,7 +556,7 @@ class TBPlayerNode: SKSpriteNode {
     
     func defence(){
         if( self.actionForKey("defence") == nil && self.actionForKey("die") == nil){
-            self.attackState = AttackState.Defending
+            self.actionState = ActionState.Defending
             runAction(SKAction.sequence([defenceActionChangeState!, SKAction.runBlock({self.checkPlayerTocoContact()})]), withKey:"defence")
             
         }
@@ -598,7 +580,7 @@ class TBPlayerNode: SKSpriteNode {
         case JumpState.TryJump:
             //                self.physicsBody.al
             //print(self.physicsBody?.velocity.dy)
-            if abs((self.physicsBody?.velocity.dy)!) < 10 {
+            if abs((self.physicsBody?.velocity.dy)!) < 10 && actionForKey("die") == nil {
                 self.jumpImpulse()
                 jumpState = JumpState.TryJump
             }
@@ -625,11 +607,10 @@ class TBPlayerNode: SKSpriteNode {
     
     func dash(){
         if self.actionForKey("defence") == nil && self.actionForKey("attack") == nil && self.actionForKey("dash") == nil  && self.actionForKey("die") == nil{
+            self.actionState = .Dashing
             self.removeStandingNode()
             if jumpState == JumpState.CanJump{
-                let dashGroup = SKAction.group([SKAction.sequence([self.dashActionModifier!,SKAction.runBlock({
-                    self.runWalkingAction()
-                })]), SKAction.playSoundFileNamed("dash", waitForCompletion: false)])
+                let dashGroup = SKAction.group([self.dashActionModifier!, SKAction.playSoundFileNamed("dash", waitForCompletion: false)])
                 self.runAction(dashGroup ,withKey: "dash")
             }else {
                 self.runAction(self.dashActionModifier! ,withKey: "dash")
@@ -679,10 +660,12 @@ class TBPlayerNode: SKSpriteNode {
     
 }
 
-enum AttackState{
+enum ActionState{
     case Idle
     case Attacking
     case Defending
+    case Dashing
+    case Dying
 }
 
 enum JumpState{
