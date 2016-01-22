@@ -24,42 +24,83 @@ class FirstBossGameScene: GameSceneBase {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         setupHUD()
-        let nodeConnection = self.childNodeWithName("connection")
+
         let achor = self.childNodeWithName("achor")
         defaultY = (achor?.position.y)! - (achor?.frame.size.height)!/2
         
         simpleBlock1 = TBSimpleBlockNode.unarchiveFromFile("TBSimpleBlockNode")
         simpleBlock2 = TBSimpleBlockNode.unarchiveFromFile("TBSimpleBlockNode")
         
-        self.addChild(simpleBlock1!)
-        simpleBlock1?.position = CGPointMake((nodeConnection?.position.x)!, defaultY)
+        resetLevel()
+        
         setBlock(simpleBlock1!)
         setBlock(simpleBlock2!)
         simpleBlock1?.id = 0
         simpleBlock2?.id = 1
+        setBoss()
         
     }
+    func resetLevel(){
+        let nodeConnection = self.childNodeWithName("connection")
+        simpleBlock1?.removeParentIfPossible()
+        self.addChild(simpleBlock1!)
+        simpleBlock1?.position = CGPointMake((nodeConnection?.position.x)!, defaultY)
+        simpleBlock2?.removeParentIfPossible()
     
+    }
+    func checkBossVelocity() {      // Checa se existe algum boss, caso exista, aumenta sua velocidade
+        if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
+            firstBoss.updateVelocity()
+            firstBoss.startBoss()
+        }
+    }
+    
+    override func startGame(){
+        super.startGame()
+        checkBossVelocity()
+    }
+
+
     func repositionBlock(inout block:TBSimpleBlockNode, basedOn:TBSimpleBlockNode){
         let nodeConnection = basedOn.childNodeWithName("connection")
         //let achor = basedOn.childNodeWithName("achor")
         
-        if block.parent == nil{
-            self.addChild(block)
-        }else{
-            block.removeFromParent()
-            self.addChild(block)
-        }
+       
         //if block.position.x < basedOn.position.x {
         dispatch_async(dispatch_get_main_queue(), {
+            if block.parent == nil{
+                self.addChild(block)
+            }else{
+                block.removeFromParent()
+                self.addChild(block)
+            }
             block.position = CGPointMake(( basedOn.position.x + (nodeConnection?.position.x)!), self.defaultY)
 
         })
-           // block.position = CGPointMake(( basedOn.position.x + (nodeConnection?.position.x)!), defaultY)
-        //}
-        print(block.position)
-        print(block.id)
-        print(block === simpleBlock1)
+       
+    }
+    
+    func setBoss(){
+        self.enumerateChildNodesWithName(TBFirstBossNode.name , usingBlock: {(node, ponter)->Void in
+            
+            let groundBoti = TBFirstBossNode()
+            groundBoti.name = "firstBoss"
+            groundBoti.position = node.position
+            groundBoti.zPosition = 100
+            self.addChild(groundBoti)
+        })
+        
+
+    }
+    override func restartLevel()
+    {
+        super.restartLevel()
+        self.enumerateChildNodesWithName("firstBoss", usingBlock: { // adicionei aqui sem o removable, pois preciso alterar a velocidade dele quando o jogo iniciar
+            (node, ponter)->Void in
+            node.removeFromParent()
+        })
+        setBoss()
+        resetLevel()
     }
     
     func setBlock(block:TBSimpleBlockNode){
@@ -80,23 +121,8 @@ class FirstBossGameScene: GameSceneBase {
     
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
-        print(simpleBlock1?.position)
-      
-        if self.hero.physicsBody?.velocity.dy < -1{
-            print("deuRuim")
-            print(simpleBlock2?.position)
-            print(simpleBlock1?.position)
-        }
     }
-    override func restartLevel()
-    {
-        super.restartLevel()
-        self.enumerateChildNodesWithName("firstBoss", usingBlock: { // adicionei aqui sem o removable, pois preciso alterar a velocidade dele quando o jogo iniciar
-            (node, ponter)->Void in
-            node.removeFromParent()
-        })
-
-    }
+    
     override func setUpLevel(){
         
         super.setUpLevel()
@@ -156,7 +182,6 @@ class FirstBossGameScene: GameSceneBase {
             }
         }else if (bodyB.categoryBitMask == FirstBossGameScene.REALLOC && bodyA.categoryBitMask == GameSceneBase.PLAYER_NODE ){
             if let block = bodyB.node?.parent as? TBSimpleBlockNode{
-                print("trocar")
                 if block.id == 0{
                     lastID = block.id
                     repositionBlock(&simpleBlock2! , basedOn: block)
@@ -164,7 +189,6 @@ class FirstBossGameScene: GameSceneBase {
                 }else{
                     lastID = block.id
                     repositionBlock(&simpleBlock1! , basedOn: block)
-                    print(simpleBlock1?.position)
                 }
             }else{
                 print("contato mas nao foi")

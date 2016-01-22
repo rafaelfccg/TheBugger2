@@ -61,6 +61,7 @@
 		0022C0301BE2A44300A184D5 /* SlideUpTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0261BE2A44300A184D5 /* SlideUpTutorial.atlas */; };
 		0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0271BE2A44300A184D5 /* TapTutorial.atlas */; };
 		0022C0321BE2A44300A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0281BE2A44300A184D5 /* taptxt.png */; };
+		0024C12E1C5021C100A1B217 /* TBSKNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */; };
 		002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80D1BF6508A003514A4 /* startCount.atlas */; };
 		002FD8101BF650D0003514A4 /* pt-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80F1BF650D0003514A4 /* pt-hud.png */; };
 		002FD8121BF6597D003514A4 /* back-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD8111BF6597D003514A4 /* back-hud.png */; };
@@ -323,6 +324,7 @@
 		0022C0261BE2A44300A184D5 /* SlideUpTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlideUpTutorial.atlas; sourceTree = "<group>"; };
 		0022C0271BE2A44300A184D5 /* TapTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = TapTutorial.atlas; sourceTree = "<group>"; };
 		0022C0281BE2A44300A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
+		0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSKNodeExtension.swift; sourceTree = "<group>"; };
 		002FD80D1BF6508A003514A4 /* startCount.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = startCount.atlas; sourceTree = "<group>"; };
 		002FD80F1BF650D0003514A4 /* pt-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pt-hud.png"; sourceTree = "<group>"; };
 		002FD8111BF6597D003514A4 /* back-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-hud.png"; sourceTree = "<group>"; };
@@ -964,6 +966,8 @@
 				00CDBE981BB9B39000BC0517 /* LaunchScreen.storyboard */,
 				00CDBE931BB9B39000BC0517 /* Main.storyboard */,
 				00CDBE9B1BB9B39000BC0517 /* Info.plist */,
+				0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */,
+				00CDBEC61BBD9EE600BC0517 /* Nodes */,
 				00CDBEC91BBD9F8800BC0517 /* Controllers */,
 				00CDBEC11BB9FE3700BC0517 /* Scenes */,
 				00CDBEC81BBD9F4900BC0517 /* Utils */,
@@ -1084,7 +1088,6 @@
 				008551DD1C441C0100545567 /* Level6Scene.sks */,
 				00FDF6BF1C4D7B2F000DA04B /* Level7Scene.sks */,
 				0050C43C1C40357D006676D0 /* BossTestScene.sks */,
-				00CDBEC61BBD9EE600BC0517 /* Nodes */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1445,6 +1448,7 @@
 				523C53FC1C30BA38001E4C4E /* TBBallFirstBossNode.swift in Sources */,
 				008698B61BE94F7A00EE80F2 /* TBAlertNode.swift in Sources */,
 				AFCCF2F51BFBC28C00645850 /* TBBopperBotNode.swift in Sources */,
+				0024C12E1C5021C100A1B217 /* TBSKNodeExtension.swift in Sources */,
 				AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */,
 				00CDBE921BB9B39000BC0517 /* GameViewController.swift in Sources */,
 				AF9415091C10E4DB00A81D83 /* Statistics.swift in Sources */,

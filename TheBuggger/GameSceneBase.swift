@@ -196,17 +196,10 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         
         hero.realSpeed = hero.defaultSpeed
         hero.runWalkingAction()
-        checkBossVelocity()
+        //checkBossVelocity()
         self.scene?.view?.paused = false
         tapToStartLabel?.removeFromParent()
         Flurry.logEvent("User Player \(levelSelected)")
-    }
-    
-    func checkBossVelocity() {      // Checa se existe algum boss, caso exista, aumenta sua velocidade
-        if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
-            firstBoss.updateVelocity()
-            firstBoss.startBoss()
-        }
     }
     
     func moveSprite(sprite : SKSpriteNode,
@@ -279,6 +272,15 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         
         back.position = CGPoint(x: -self.size.width/2 + back.size.width/2 + 5, y: self.size.height/2 - back.size.height/2 - 5)
         back.zPosition =  1000
+        
+        let centerTopPoint = CGPointMake(0, back.position.y)
+        
+        let contTexture = SKTexture(imageNamed: "contador-0");
+        self.contadorNode = SKSpriteNode(texture:contTexture, size: CGSizeMake(140,70))
+        self.camera!.addChild(contadorNode!);
+        self.contadorNode!.position = CGPointMake(0, centerTopPoint.y - 6);
+        self.contadorNode!.zPosition = self.HUDz - 4;
+        self.contadorNode!.name="hud"
 
         //implementada pela subclass
     }
@@ -333,8 +335,6 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         }
         
         updateNumberOfTries()
-        let dies = ["Porcentagem": Int(stagePercentage!), "Stage": levelSelected!]
-        Flurry.logEvent("Died", withParameters: dies)
     }
     
     func backtToMenu(){

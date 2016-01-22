@@ -1,14 +1,4 @@
-//
-//  TBSimpleBlockNode.swift
-//  TheBuggger
-//
-//  Created by Rafael Gouveia on 1/18/16.
-//  Copyright © 2016 rfccg. All rights reserved.
-//
 
-import Foundation
-
-//
 //  TBCompletionNode.swift
 //  TheBuggger
 //

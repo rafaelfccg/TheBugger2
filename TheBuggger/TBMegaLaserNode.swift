@@ -49,13 +49,13 @@ class TBMegaLaserNode: SKSpriteNode {
     
     func setNormalCategoryBitMask() {     // Categoria do laser que nao mata o player
         self.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
-        self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE & ~GameScene.PLAYER_NODE
+        self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE & ~GameScene.PLAYER_NODE & ~GameScene.OTHER_NODE
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
     }
     
     func setFireCategoryBitMask() {       // Categoria do laser que ira matar o player
         self.physicsBody?.categoryBitMask = GameScene.ESPINHOS_NODE
-        self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE & ~GameScene.PLAYER_NODE
+        self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE & ~GameScene.PLAYER_NODE & ~GameScene.OTHER_NODE 
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
     }
     
