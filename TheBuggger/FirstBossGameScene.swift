@@ -65,14 +65,15 @@ class FirstBossGameScene: GameSceneBase {
         let nodeConnection = basedOn.childNodeWithName("connection")
         //let achor = basedOn.childNodeWithName("achor")
         
-        if block.parent == nil{
-            self.addChild(block)
-        }else{
-            block.removeFromParent()
-            self.addChild(block)
-        }
+       
         //if block.position.x < basedOn.position.x {
         dispatch_async(dispatch_get_main_queue(), {
+            if block.parent == nil{
+                self.addChild(block)
+            }else{
+                block.removeFromParent()
+                self.addChild(block)
+            }
             block.position = CGPointMake(( basedOn.position.x + (nodeConnection?.position.x)!), self.defaultY)
 
         })

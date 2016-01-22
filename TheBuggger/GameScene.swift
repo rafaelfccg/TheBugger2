@@ -50,13 +50,6 @@ class GameScene:GameSceneBase {
         percentage?.position = CGPointMake(0, labelScore!.position.y + 3)
         percentage!.name = "hud"
         
-        let contTexture = SKTexture(imageNamed: "contador-0");
-        self.contadorNode = SKSpriteNode(texture:contTexture, size: CGSizeMake(140,70))
-        self.camera!.addChild(contadorNode!);
-        self.contadorNode!.position = CGPointMake(0, percentage!.position.y + 6);
-        self.contadorNode!.zPosition = self.HUDz - 4;
-        self.contadorNode!.name="hud"
-        
     }
     
     
@@ -155,8 +148,7 @@ class GameScene:GameSceneBase {
             if let node = self.childNodeWithName("bit\(i)") {
                 let bit = TBBitNode()
                 bit.position = (node.position)
-                bit.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
-                bit.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+                
                 bit.name  = self.removable
                 bit.num = i
                 self.addChild(bit)

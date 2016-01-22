@@ -272,6 +272,15 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         
         back.position = CGPoint(x: -self.size.width/2 + back.size.width/2 + 5, y: self.size.height/2 - back.size.height/2 - 5)
         back.zPosition =  1000
+        
+        let centerTopPoint = CGPointMake(0, back.position.y)
+        
+        let contTexture = SKTexture(imageNamed: "contador-0");
+        self.contadorNode = SKSpriteNode(texture:contTexture, size: CGSizeMake(140,70))
+        self.camera!.addChild(contadorNode!);
+        self.contadorNode!.position = CGPointMake(0, centerTopPoint.y - 6);
+        self.contadorNode!.zPosition = self.HUDz - 4;
+        self.contadorNode!.name="hud"
 
         //implementada pela subclass
     }
