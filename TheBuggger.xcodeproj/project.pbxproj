@@ -43,6 +43,7 @@
 		001E55D61BD8221600B80833 /* redlight-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AD1BD8221600B80833 /* redlight-01.png */; };
 		001E55D71BD8221600B80833 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AE1BD8221600B80833 /* texture.png */; };
 		001E55D81BD8221600B80833 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AF1BD8221600B80833 /* sky.png */; };
+		001E61FD1C52A2D2009B72E8 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001E61FC1C52A2D2009B72E8 /* GoogleMobileAds.framework */; };
 		00200B5B1C06343E0094FFBD /* TBGreenLedsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00200B5A1C06343E0094FFBD /* TBGreenLedsNode.swift */; };
 		00200B5D1C0634670094FFBD /* baseInicio.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B5C1C0634670094FFBD /* baseInicio.png */; };
 		00200B601C0634760094FFBD /* fio solto1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B5E1C0634760094FFBD /* fio solto1.png */; };
@@ -195,7 +196,6 @@
 		5279DD301BF3DF5400E61727 /* ShotDefended.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5279DD2F1BF3DF5400E61727 /* ShotDefended.atlas */; };
 		5282629D1C0CD94900F8D122 /* parado.png in Resources */ = {isa = PBXBuildFile; fileRef = 5282629C1C0CD94900F8D122 /* parado.png */; };
 		5289B84E1BE0068600CA6C2D /* darkness.png in Resources */ = {isa = PBXBuildFile; fileRef = 5289B84D1BE0068600CA6C2D /* darkness.png */; };
-		52ABC6BD1C498BAA00E58C99 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52ABC6BC1C498BAA00E58C99 /* GoogleMobileAds.framework */; };
 		52C376F61BC441190012BC96 /* TBShotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F51BC441190012BC96 /* TBShotNode.swift */; };
 		52C376F81BC4482D0012BC96 /* TBFlyingBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */; };
 		52C8E9ED1C07A2A200F84C87 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52C8E9EC1C07A2A200F84C87 /* jump.wav */; };
@@ -306,6 +306,7 @@
 		001E55AD1BD8221600B80833 /* redlight-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redlight-01.png"; sourceTree = "<group>"; };
 		001E55AE1BD8221600B80833 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		001E55AF1BD8221600B80833 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
+		001E61FC1C52A2D2009B72E8 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		00200B5A1C06343E0094FFBD /* TBGreenLedsNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGreenLedsNode.swift; sourceTree = "<group>"; };
 		00200B5C1C0634670094FFBD /* baseInicio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseInicio.png; sourceTree = "<group>"; };
 		00200B5E1C0634760094FFBD /* fio solto1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fio solto1.png"; sourceTree = "<group>"; };
@@ -470,7 +471,6 @@
 		5279DD2F1BF3DF5400E61727 /* ShotDefended.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShotDefended.atlas; sourceTree = "<group>"; };
 		5282629C1C0CD94900F8D122 /* parado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parado.png; sourceTree = "<group>"; };
 		5289B84D1BE0068600CA6C2D /* darkness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = darkness.png; sourceTree = "<group>"; };
-		52ABC6BC1C498BAA00E58C99 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		52C376F51BC441190012BC96 /* TBShotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotNode.swift; sourceTree = "<group>"; };
 		52C376F71BC4482D0012BC96 /* TBFlyingBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFlyingBotNode.swift; sourceTree = "<group>"; };
 		52C8E9EC1C07A2A200F84C87 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
@@ -546,7 +546,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				52ABC6BD1C498BAA00E58C99 /* GoogleMobileAds.framework in Frameworks */,
+				001E61FD1C52A2D2009B72E8 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,7 +729,7 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				52ABC6BC1C498BAA00E58C99 /* GoogleMobileAds.framework */,
+				001E61FC1C52A2D2009B72E8 /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,
