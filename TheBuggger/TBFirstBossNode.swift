@@ -19,12 +19,21 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     var totalAttacks = 0
     var currentBit:Int = 0
     var bossMode = "Normal"     // Variavei auxiliar pra saber qual o modo progressivo em que o boss esta
+    var isDead = false     // Saber se o boss esta morto ou nao, pois pode atacar durante a animacao
+    
+    static var animation: SKAction?
+    static var deathAnimation: SKAction?
+    static var turnOffAnimation: SKAction?
+    
+    static var defaultAtlas = SKTextureAtlas(named: "bossAnimation")
+    static var deathAtlas = SKTextureAtlas(named: "bossDeath")
+    static var turnOffAtlas = SKTextureAtlas(named: "turnOffBoss")
     
     init() {
         
         super.init(texture:SKTexture(), color: UIColor.clearColor(), size: CGSizeMake(0, 0))
         self.color = UIColor.blackColor()
-        self.size = CGSizeMake(150, 270)
+        self.size = CGSizeMake(190, 270)
         self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.size.width, self.size.height))
         self.physicsBody?.friction = 0;
         self.physicsBody?.linearDamping = 0;
@@ -38,11 +47,30 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         self.physicsBody?.collisionBitMask = GameScene.PLAYER_NODE | ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.TIRO_NODE
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE | GameScene.METALBALL_NODE & ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE
         
+        runAction(SKAction.repeatActionForever(TBFirstBossNode.animation!))
+        
     }
     
     func dieAnimation(hero: TBPlayerNode)
     {
 
+    }
+    
+    static func createSKActionAnimation()
+    {
+        let monsterArray = TBUtils.getSprites(TBFirstBossNode.defaultAtlas, nomeImagens: "boss")
+        TBFirstBossNode.animation = SKAction.animateWithTextures(monsterArray, timePerFrame: 0.15);
+        
+        let deathArray = TBUtils.getSprites(TBFirstBossNode.deathAtlas, nomeImagens: "bossimorte")
+        TBFirstBossNode.deathAnimation = SKAction.animateWithTextures(deathArray, timePerFrame: 0.15);
+        
+        let turnOffAtlas = TBUtils.getSprites(TBFirstBossNode.turnOffAtlas, nomeImagens: "bossindoturnof")
+        TBFirstBossNode.turnOffAnimation = SKAction.animateWithTextures(turnOffAtlas, timePerFrame: 0.15);
+//        
+//        let attackArray = TBUtils.getSprites(TBBopperBotNode.attackAtlas, nomeImagens: "enemyatk-")
+//        let attack = SKAction.animateWithTextures(attackArray, timePerFrame: 0.05)
+//        let move = SKAction.moveBy(CGVector(dx: -210, dy: 0), duration: 0.45)
+//        TBBopperBotNode.attackAnimation = SKAction.group([attack, move, SKAction.playSoundFileNamed("pinote.mp3", waitForCompletion: true)]);
     }
     
     func updateVelocity() {
@@ -194,14 +222,14 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func createAttackBallNoBack(KindOfAttack: Int) {     // Cria a bola do ataque em precisar voltar a atacar(usado no ataque duplo e triplo)
-        let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-95, 0))
+        let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-130, 0))
         ball.name = TBBallFirstBossNode.name
         ball.ataqueDuploTriplo = true
         if(KindOfAttack == 2) {
-            ball.position = CGPointMake(-95, 0)
+            ball.position = CGPointMake(-130, 0)
             ball.physicsBody?.velocity = CGVectorMake(-70, 0)
         } else if(KindOfAttack == 3) {
-            ball.position = CGPointMake(-95, -65)
+            ball.position = CGPointMake(-130, -65)
             ball.physicsBody?.velocity = CGVectorMake(-220, 0)
             ball.turnSpecialOff()   // Sempre que a bola vir no meio ela nao sera especial
         }
@@ -215,6 +243,10 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             self.bossLowEnergy()
             energyIsSlow = true
         }
+        if(self.isDead) {
+            runAction(SKAction.runBlock({self.physicsBody?.velocity.dx = 0}))
+            energyIsSlow = true
+        }
         return energyIsSlow
     }
     
@@ -226,7 +258,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func createBallDown() { // Cria a bola de metal em baixo
-        let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-95, -85))
+        let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-130, -85))
         ball.name = TBBallFirstBossNode.name
         // Seta a velocidade da bola de acordo com o modo do Boss
         var velocityMode = -200
@@ -256,7 +288,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func createBallUp() { // Cria a bola de metal em cima
-        let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-95, 0))
+        let ball = TBBallFirstBossNode(ballPosition: CGPointMake(-130, 0))
         ball.name = TBBallFirstBossNode.name
         ball.physicsBody?.velocity = CGVectorMake(-70, 0)
         self.addChild(ball)
@@ -279,7 +311,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func bossDie() {     // Funcao para a morte do boss
-        self.removeFromParent()
+        self.isDead = true
+        runAction(SKAction.sequence([TBFirstBossNode.deathAnimation!, SKAction.runBlock({self.removeFromParent()})]))
     }
     
     func bossLowEnergy() {    // Chamada quando a energia do boss estiver baixa
@@ -291,12 +324,15 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         let down = SKAction.moveBy(CGVectorMake(405, -130), duration: 0.4)
         let jumpAction = SKAction.sequence([up, down, SKAction.waitForDuration(0), SKAction.runBlock({self.physicsBody?.velocity = CGVectorMake(CGFloat(self.defaultSpeed), CGFloat(0))}), SKAction.waitForDuration(2), SKAction.runBlock({self.checkBossMode()}), SKAction.runBlock({self.startAttack()})])
         
+        let standingTexture = SKTexture(imageNamed: "bossindoturnof5")
+        let standingSit = SKAction.animateWithTextures([standingTexture], timePerFrame: 4.25)
+        
         let diceRoll = Int(arc4random_uniform(2))
         switch(diceRoll) {
         case 0:
-            runAction(SKAction.sequence([slowDownAction, accelerateAction]))
+            runAction(SKAction.sequence([SKAction.group([slowDownAction, SKAction.sequence([TBFirstBossNode.turnOffAnimation!, standingSit])]), accelerateAction]))
         case 1:
-            runAction(SKAction.sequence([slowDownAction, jumpAction]))
+            runAction(SKAction.sequence([SKAction.group([slowDownAction, SKAction.sequence([TBFirstBossNode.turnOffAnimation!, standingSit])]), jumpAction]))
         default:
             print("Error")
         }
@@ -351,7 +387,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         let bit = TBBitNode()
         //bit.position = (node.position)
         bit.physicsBody?.pinned = false
-        bit.position = CGPointMake(-95, 0)
+        bit.position = CGPointMake(-130, 0)
         bit.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
         bit.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         bit.physicsBody?.velocity = CGVectorMake(-350, 0)

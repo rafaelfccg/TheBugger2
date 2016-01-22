@@ -69,6 +69,7 @@ class TBMenuViewController :UIViewController {
         TBFlyingBotNode.createSKActionAnimation()
         TBPlayerNode.createFrenezyAnimation()
         TBGreenLedsNode.createGreenLedsAnimation()
+        TBFirstBossNode.createSKActionAnimation()
         
         self.theBuggerBoard.animationImages = [UIImage(named:"logo_1")!,
             UIImage(named: "logo_2")!,
