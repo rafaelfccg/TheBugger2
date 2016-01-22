@@ -31,7 +31,7 @@ class TBBallFirstBossNode: SKSpriteNode {
         self.physicsBody?.velocity = CGVectorMake(-200, 0)
         self.setSpecialOrNot()
         self.physicsBody?.categoryBitMask = GameScene.METALBALL_NODE
-        self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE
+        self.physicsBody?.collisionBitMask = ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.MONSTER_NODE & ~GameScene.OTHER_NODE
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.BOSSONE_NODE
     }
     

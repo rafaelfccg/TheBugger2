@@ -44,7 +44,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         self.physicsBody?.velocity = CGVectorMake(0, 0)
         self.physicsBody?.mass = 100000
         self.physicsBody?.categoryBitMask = GameScene.BOSSONE_NODE
-        self.physicsBody?.collisionBitMask = GameScene.PLAYER_NODE | ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.TIRO_NODE
+        self.physicsBody?.collisionBitMask = GameScene.PLAYER_NODE | ~GameScene.JOINT_ATTACK_NODE & ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE & ~GameScene.TIRO_NODE & ~GameScene.OTHER_NODE
         self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE | GameScene.JOINT_ATTACK_NODE | GameScene.METALBALL_NODE & ~GameScene.MOEDA_NODE & ~GameScene.REFERENCIA_NODE
         
         runAction(SKAction.repeatActionForever(TBFirstBossNode.animation!))

@@ -27,7 +27,9 @@ class TBBitNode: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.pinned = true
-        
+        self.physicsBody?.categoryBitMask = GameScene.MOEDA_NODE
+        self.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
+        self.physicsBody?.collisionBitMask = ~GameScene.OTHER_NODE
     }
     
     required init?(coder aDecoder: NSCoder) {
