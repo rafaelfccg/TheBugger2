@@ -165,8 +165,6 @@ class TBPlayerNode: SKSpriteNode {
         self.physicsBody?.velocity = CGVectorMake(CGFloat(realSpeed), 0);
         self.position = CGPointMake(216, 375)
         self.physicsBody?.mass = 0.069672822603786
-        configDefence()
-        configAttack()
         configDash()
         
         self.runStandingAction()
@@ -211,33 +209,6 @@ class TBPlayerNode: SKSpriteNode {
         self.reference?.removeFromParent()
     }
     
-    func configDefence(){
-        self.defenceActionChangeState = SKAction.sequence([TBPlayerNode.defenceAction!, SKAction.runBlock({
-            if(self.actionState == ActionState.Defending)
-            {
-                self.actionState = ActionState.Idle
-            }
-        })])
-    }
-    
-    func configAttack(){
-        self.attackActionChangeState1 = SKAction.sequence([TBPlayerNode.attackActionAnimation1!, SKAction.runBlock({
-            if(self.actionState == ActionState.Attacking)
-            {
-                self.actionState = ActionState.Idle
-            }
-            
-        })])
-        
-        self.attackActionChangeState2 = SKAction.sequence([TBPlayerNode.attackActionAnimation2!, SKAction.runBlock({
-            if(self.actionState == ActionState.Attacking)
-            {
-                self.actionState = ActionState.Idle
-            }
-            
-        })])
-    }
-    
     func configDash(){
         let dashArray = TBUtils.getSprites(TBPlayerNode.playerDashAtlas, nomeImagens: "dash-")
         let action = SKAction.animateWithTextures(dashArray, timePerFrame: 0.09);
@@ -253,13 +224,13 @@ class TBPlayerNode: SKSpriteNode {
     
     func runWalkingAction(){
         self.removeActionForKey("stand")
-        if actionForKey("walk") == nil {
+        if actionForKey("walk") == nil  && self.actionState != .Dying {
             self.runAction(TBPlayerNode.walkAction!, withKey:"walk")
         }
     }
     func runStandingAction(){
         removeActionWalk()
-        if actionForKey("stand") == nil{
+        if actionForKey("stand") == nil && self.checkVerticalVelocity() == .floor {
             self.runAction(TBPlayerNode.standActionAnimation!, withKey:"stand")
         }
     }
@@ -309,6 +280,7 @@ class TBPlayerNode: SKSpriteNode {
         self.standJoint!.physicsBody?.contactTestBitMask = self.physicsBody!.contactTestBitMask
         self.standJoint?.name = "standNode"
     }
+    
     func addStandingJoint(){
         
         standJoint?.zRotation = 0
@@ -349,15 +321,46 @@ class TBPlayerNode: SKSpriteNode {
         self.attackJoint?.removeFromParent()
     }
     
+    func checkVerticalVelocity() -> AirState
+    {
+        var airState: AirState
+        
+        if(self.physicsBody?.velocity.dy > 3) //subindo
+        {
+            airState = .air
+        }
+        else if(self.physicsBody?.velocity.dy < -3) //caindo
+        {
+            airState = .falling
+        }
+        else //no chão
+        {
+            airState = .floor
+        }
+        
+        return airState
+    }
+    
     func updateVelocity(){
         if self.actionForKey("dash") == nil  && actionForKey("defence") == nil && self.actionForKey("attack") == nil && actionForKey("die") == nil{
             //subindo
-            if(self.physicsBody?.velocity.dy > 3){
+            if(checkVerticalVelocity() == .air)
+            {
+                self.removeActionWalk()
                 self.runAirAction()
-            }else if(self.physicsBody?.velocity.dy < -3){ //caindo
+            }
+            //caindo
+            else if(checkVerticalVelocity() == .falling)
+            {
+                self.removeActionWalk()
                 self.runFallAction()
-            }else{
-                if self.physicsBody?.velocity.dx > 3 {
+            }
+            //no chão
+            else
+            {
+                if (self.physicsBody?.velocity.dx > 3)
+                {
+                    self.removeStandingAction()
                     self.runWalkingAction()
                 }
             }
@@ -468,6 +471,7 @@ class TBPlayerNode: SKSpriteNode {
             }
             if self.actionForKey("die") == nil{
                 self.actionState = .Dying
+                removeActionWalk()
                 self.runAction(SKAction.group([(SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
                     self.removeAttackJoint()
                     self.removePlayerReference()
@@ -519,10 +523,11 @@ class TBPlayerNode: SKSpriteNode {
             let bodies =  self.attackJoint?.physicsBody?.allContactedBodies()
             
             self.actionState = ActionState.Attacking
+            removeActionWalk()
             if rand() % 2 == 0 {
-                self.runAction(SKAction.sequence([attackActionChangeState1! , SKAction.runBlock({self.checkPlayerTocoContact()})]),withKey: "attack")
+                self.runAction(SKAction.sequence([TBPlayerNode.attackActionAnimation1! , SKAction.runBlock({self.checkPlayerTocoContact(ActionState.Attacking)})]),withKey: "attack")
             }else {
-                self.runAction(SKAction.sequence([attackActionChangeState2!, SKAction.runBlock({self.checkPlayerTocoContact()})]),withKey: "attack")
+                self.runAction(SKAction.sequence([TBPlayerNode.attackActionAnimation2!, SKAction.runBlock({self.checkPlayerTocoContact(ActionState.Attacking)})]),withKey: "attack")
             }
             
             for body : SKPhysicsBody in bodies! {
@@ -539,17 +544,20 @@ class TBPlayerNode: SKSpriteNode {
         
     }
     
-    func checkPlayerTocoContact() {    // Checa se o player esta em contato com o toco_node, caso esteja, ele volta a ficar parado
+    func checkPlayerTocoContact(estado: ActionState) {    // Checa se o player esta em contato com o toco_node, caso esteja, ele volta a ficar parado
         var encontrouToco = false
-        let bodies = self.physicsBody?.allContactedBodies()
+        let bodies = self.standJoint?.physicsBody?.allContactedBodies()
+        
         for body: SKPhysicsBody in bodies! {
+            print(body.categoryBitMask)
             if body.categoryBitMask == GameScene.TOCO_NODE {
                 encontrouToco = true
             }
         }
         if(encontrouToco) {
             self.stopWalk()
-        } else {
+        } else if (actionState == estado) {
+            self.actionState = .Idle
             self.runWalkingAction()
         }
     }
@@ -557,7 +565,8 @@ class TBPlayerNode: SKSpriteNode {
     func defence(){
         if( self.actionForKey("defence") == nil && self.actionForKey("die") == nil){
             self.actionState = ActionState.Defending
-            runAction(SKAction.sequence([defenceActionChangeState!, SKAction.runBlock({self.checkPlayerTocoContact()})]), withKey:"defence")
+            removeActionWalk()
+            runAction(SKAction.sequence([TBPlayerNode.defenceAction!, SKAction.runBlock({self.checkPlayerTocoContact(ActionState.Defending)})]), withKey:"defence")
             
         }
         
@@ -578,16 +587,14 @@ class TBPlayerNode: SKSpriteNode {
         }
         switch(jumpState){
         case JumpState.TryJump:
-            //                self.physicsBody.al
-            //print(self.physicsBody?.velocity.dy)
-            if abs((self.physicsBody?.velocity.dy)!) < 10 && actionForKey("die") == nil {
+            if checkVerticalVelocity() == .floor && actionForKey("die") == nil {
                 self.jumpImpulse()
                 jumpState = JumpState.TryJump
             }
             
             break
         case JumpState.CanJump:
-            if (self.physicsBody?.velocity.dy)! > -10 {
+            if checkVerticalVelocity() != .falling{
                 self.jumpImpulse()
                 jumpState = JumpState.TryJump
             }
@@ -609,6 +616,7 @@ class TBPlayerNode: SKSpriteNode {
         if self.actionForKey("defence") == nil && self.actionForKey("attack") == nil && self.actionForKey("dash") == nil  && self.actionForKey("die") == nil{
             self.actionState = .Dashing
             self.removeStandingNode()
+            self.removeActionWalk()
             if jumpState == JumpState.CanJump{
                 let dashGroup = SKAction.group([self.dashActionModifier!, SKAction.playSoundFileNamed("dash", waitForCompletion: false)])
                 self.runAction(dashGroup ,withKey: "dash")
@@ -619,7 +627,6 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func stopWalk() {
-        self.removeActionWalk()
         self.runStandingAction()
         self.heroStopped = true
     }
@@ -674,5 +681,12 @@ enum JumpState{
     case FirstJump
     case SecondJump
     
+}
+
+enum AirState
+{
+    case air
+    case falling
+    case floor
 }
 
