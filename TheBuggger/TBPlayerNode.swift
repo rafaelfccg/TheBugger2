@@ -549,7 +549,6 @@ class TBPlayerNode: SKSpriteNode {
         let bodies = self.standJoint?.physicsBody?.allContactedBodies()
         
         for body: SKPhysicsBody in bodies! {
-            print(body.categoryBitMask)
             if body.categoryBitMask == GameScene.TOCO_NODE {
                 encontrouToco = true
             }
