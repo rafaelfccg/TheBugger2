@@ -25,7 +25,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.hidden = true
-        createAndLoadInterstitial()
+        self.interstitial = createAndLoadInterstitial()
         selectLevel(self.level!)
         
     }
@@ -34,14 +34,20 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         if interstitial!.isReady {
             interstitial!.presentFromRootViewController(self)
         }
-        createAndLoadInterstitial()
+        //createAndLoadInterstitial()
     }
-    func createAndLoadInterstitial() {
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
-        interstitial!.delegate = self
+    func createAndLoadInterstitial() -> GADInterstitial {
+
+        let newInterstitial = GADInterstitial(adUnitID: "ca-app-pub-6041956545350401/7481016976")
+        newInterstitial!.delegate = self
         let request = GADRequest()
         request.testDevices = ["c4336acbf820c8d2c37e54257d6dcffb","efa04c216ac1cdf43763e139720b8045"];
-        interstitial!.loadRequest(request)
+        newInterstitial!.loadRequest(request)
+        return newInterstitial
+    }
+    func interstitialDidDismissScreen(ad: GADInterstitial!) {
+        ad.delegate = nil
+        self.interstitial = createAndLoadInterstitial()
     }
     
     func clearScene(){
@@ -89,7 +95,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         let skView = self.view as! SKView
         //           skView.showsFPS = true
         //skView.showsNodeCount = true
-        //skView.showsPhysics = true
+//        skView.showsPhysics = true
         NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
         skView.ignoresSiblingOrder = true
         

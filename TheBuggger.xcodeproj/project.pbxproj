@@ -62,6 +62,9 @@
 		0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0271BE2A44300A184D5 /* TapTutorial.atlas */; };
 		0022C0321BE2A44300A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0281BE2A44300A184D5 /* taptxt.png */; };
 		0024C12E1C5021C100A1B217 /* TBSKNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */; };
+		0026A9D91C57A89400461C4E /* JumpStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026A9D81C57A89400461C4E /* JumpStates.swift */; };
+		0026A9DB1C57A8B100461C4E /* ActionStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026A9DA1C57A8B100461C4E /* ActionStates.swift */; };
+		0026A9DD1C57A8D500461C4E /* AirStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026A9DC1C57A8D500461C4E /* AirStates.swift */; };
 		002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80D1BF6508A003514A4 /* startCount.atlas */; };
 		002FD8101BF650D0003514A4 /* pt-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80F1BF650D0003514A4 /* pt-hud.png */; };
 		002FD8121BF6597D003514A4 /* back-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD8111BF6597D003514A4 /* back-hud.png */; };
@@ -325,6 +328,9 @@
 		0022C0271BE2A44300A184D5 /* TapTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = TapTutorial.atlas; sourceTree = "<group>"; };
 		0022C0281BE2A44300A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
 		0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSKNodeExtension.swift; sourceTree = "<group>"; };
+		0026A9D81C57A89400461C4E /* JumpStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpStates.swift; sourceTree = "<group>"; };
+		0026A9DA1C57A8B100461C4E /* ActionStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionStates.swift; sourceTree = "<group>"; };
+		0026A9DC1C57A8D500461C4E /* AirStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirStates.swift; sourceTree = "<group>"; };
 		002FD80D1BF6508A003514A4 /* startCount.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = startCount.atlas; sourceTree = "<group>"; };
 		002FD80F1BF650D0003514A4 /* pt-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pt-hud.png"; sourceTree = "<group>"; };
 		002FD8111BF6597D003514A4 /* back-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-hud.png"; sourceTree = "<group>"; };
@@ -717,6 +723,16 @@
 			path = "Tutorial ";
 			sourceTree = "<group>";
 		};
+		0026A9D71C57A88000461C4E /* StateMachines */ = {
+			isa = PBXGroup;
+			children = (
+				0026A9D81C57A89400461C4E /* JumpStates.swift */,
+				0026A9DA1C57A8B100461C4E /* ActionStates.swift */,
+				0026A9DC1C57A8D500461C4E /* AirStates.swift */,
+			);
+			name = StateMachines;
+			sourceTree = "<group>";
+		};
 		007BE1801C04D85A008A2C02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -961,6 +977,7 @@
 		00CDBE8A1BB9B39000BC0517 /* TheBuggger */ = {
 			isa = PBXGroup;
 			children = (
+				0026A9D71C57A88000461C4E /* StateMachines */,
 				007BE1801C04D85A008A2C02 /* Frameworks */,
 				00CDBE8B1BB9B39000BC0517 /* AppDelegate.swift */,
 				00CDBE981BB9B39000BC0517 /* LaunchScreen.storyboard */,
@@ -1423,6 +1440,7 @@
 				52D857501C3218AC00E8D6BD /* TBMegaLaserNode.swift in Sources */,
 				00F6CFDC1BDEAB8C006F0302 /* TBMenuController.swift in Sources */,
 				00200B5B1C06343E0094FFBD /* TBGreenLedsNode.swift in Sources */,
+				0026A9DD1C57A8D500461C4E /* AirStates.swift in Sources */,
 				AF21344D1C0CD66D006BB9D8 /* TBDataController.swift in Sources */,
 				009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */,
 				009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */,
@@ -1440,6 +1458,7 @@
 				00AC3AC11BEA83EA00323B6D /* TBEspinhoSoltoNode.swift in Sources */,
 				009018BA1BC82F63002AABC7 /* TBPowerUpsStates.swift in Sources */,
 				00DCF2D81BE15213006F9F86 /* TBTutorialNodes.swift in Sources */,
+				0026A9DB1C57A8B100461C4E /* ActionStates.swift in Sources */,
 				00CDBEC01BB9CC3100BC0517 /* TBGestureReconizer.swift in Sources */,
 				00CDBE901BB9B39000BC0517 /* GameScene.swift in Sources */,
 				AF2A3E471BD85D47001DA3DB /* TBEspinhosNode.swift in Sources */,
@@ -1452,6 +1471,7 @@
 				AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */,
 				00CDBE921BB9B39000BC0517 /* GameViewController.swift in Sources */,
 				AF9415091C10E4DB00A81D83 /* Statistics.swift in Sources */,
+				0026A9D91C57A89400461C4E /* JumpStates.swift in Sources */,
 				00FDF6BC1C4D5642000DA04B /* GameSceneBase.swift in Sources */,
 				00CDBE8C1BB9B39000BC0517 /* AppDelegate.swift in Sources */,
 				00BE1EF11BF8C43300F091B9 /* TBPowerUpNode.swift in Sources */,

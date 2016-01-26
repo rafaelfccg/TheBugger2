@@ -465,7 +465,7 @@ class GameScene:GameSceneBase {
                 bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
                 bodyB.categoryBitMask ==  GameScene.TOCO_NODE ||
                 bodyB.categoryBitMask == GameScene.CHAO_NODE){
-                    if (self.hero.jumpState == JumpState.TryJump){
+                    if (self.hero.jumpState == JumpState.CanJump){
                         self.hero.jumpState == JumpState.FirstJump
                     }
         }

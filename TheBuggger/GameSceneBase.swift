@@ -580,8 +580,10 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
                 self.moveSprite(background1!, nextSprite: background2!, speed: self.parallaxSpeed,isParalaxSky: false)
                 
             }
+            //hero checkings
             self.hero.updateVelocity()
-
+            self.hero.checkHeroFloorContact()
+            //Action checking
             if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
                 self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
                 self.hero.actionCall()
@@ -595,12 +597,16 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         }
     }
     func checkAd(){
-        self.deathSinceLastAd = deathSinceLastAd! + 1
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        self.deathSinceLastAd = userDefaults.integerForKey("ads") + 1
+
         let a = Int(arc4random_uniform(3) + 6)
         if deathSinceLastAd > a {
             delegateChanger?.gameOver()
             deathSinceLastAd = 0
         }
+        userDefaults.setInteger(self.deathSinceLastAd!, forKey:"ads")
     }
     
     func cameraState() {
@@ -764,7 +770,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
-        }    }
+        }
+    }
     func didEndContact(contact: SKPhysicsContact) {
         var bodyA = contact.bodyA
         var bodyB = contact.bodyB
@@ -782,13 +789,11 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         } else if bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
             (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
                 bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
-                bodyB.categoryBitMask ==  GameScene.TOCO_NODE ||
                 bodyB.categoryBitMask == GameScene.CHAO_NODE){
-                    dispatch_async(dispatch_get_main_queue(), {
-                        if (self.hero.jumpState == JumpState.TryJump || self.hero.jumpState == JumpState.CanJump){
-                            self.hero.jumpState == JumpState.FirstJump
-                        }
-                    })
+                    
+                    if (self.hero.jumpState == JumpState.CanJump){
+                        self.hero.jumpState == JumpState.FirstJump
+                    }
         }
     }
 }

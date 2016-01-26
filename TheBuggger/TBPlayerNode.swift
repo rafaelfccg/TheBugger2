@@ -487,6 +487,24 @@ class TBPlayerNode: SKSpriteNode {
         }
     }
     
+    func checkHeroFloorContact(){
+        let bodies = self.physicsBody?.allContactedBodies()
+        var floorContact:Bool = false
+        
+        for body in bodies! {
+            if (body.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
+                body.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
+                body.categoryBitMask == GameScene.CHAO_NODE){
+                    floorContact = true
+            }
+        }
+        
+        if !floorContact && self.jumpState == .CanJump {
+            self.jumpState = .FirstJump
+        }
+    
+    }
+    
     func quickFloorCollisionOff(bodyB: SKPhysicsBody, sender: GameSceneBase) {    // Desliga o speed
         self.realSpeed = self.defaultSpeed
     }
@@ -566,9 +584,7 @@ class TBPlayerNode: SKSpriteNode {
             self.actionState = ActionState.Defending
             removeActionWalk()
             runAction(SKAction.sequence([TBPlayerNode.defenceAction!, SKAction.runBlock({self.checkPlayerTocoContact(ActionState.Defending)})]), withKey:"defence")
-            
         }
-        
     }
     
     func jumpImpulse(){
@@ -585,19 +601,9 @@ class TBPlayerNode: SKSpriteNode {
             self.addStandingJoint()
         }
         switch(jumpState){
-        case JumpState.TryJump:
-            //                self.physicsBody.al
-            //print(self.physicsBody?.velocity.dy)
-            if abs((self.physicsBody?.velocity.dy)!) < 3 && actionForKey("die") == nil {
-                self.jumpImpulse()
-                jumpState = JumpState.TryJump
-            }
-            
-            break
         case JumpState.CanJump:
-            if checkVerticalVelocity() != .falling{
+            if checkVerticalVelocity() == .floor && actionForKey("die") == nil {
                 self.jumpImpulse()
-                jumpState = JumpState.TryJump
             }
             break
         case JumpState.FirstJump:
@@ -610,7 +616,6 @@ class TBPlayerNode: SKSpriteNode {
             
             break
         }
-        
     }
     
     func dash(){
@@ -668,26 +673,4 @@ class TBPlayerNode: SKSpriteNode {
     
 }
 
-enum ActionState{
-    case Idle
-    case Attacking
-    case Defending
-    case Dashing
-    case Dying
-}
-
-enum JumpState{
-    case TryJump
-    case CanJump
-    case FirstJump
-    case SecondJump
-    
-}
-
-enum AirState
-{
-    case air
-    case falling
-    case floor
-}
 
