@@ -692,9 +692,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
                     if(!flagTrocou) {norm = -norm}
                     
                     if hero.actionForKey("attack") == nil && hero.actionForKey("defence") == nil && hero.actionForKey("dash") == nil && !hero.heroStopped{
-                        
+                        self.hero.removeStandingAction()
                         self.hero.runWalkingAction()
-                        
                     }
                     
                     
@@ -708,10 +707,13 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
                     }else if bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE{
                         
                         hero.slowFloorCollision(bodyB, sender: self)
-                    } else if bodyB.categoryBitMask == GameScene.TOCO_NODE {
+                    }
+                    if bodyB.categoryBitMask == GameScene.TOCO_NODE {
                         if(bodyA.node?.position.x < bodyB.node?.position.x) {
                             hero.stopWalk()
                         }
+                    }else{
+                        hero.checkPlayerTocoContact(ActionState.Idle)
                     }
         }else if((bodyA.categoryBitMask == GameScene.MONSTER_NODE)  && bodyB.categoryBitMask == (GameScene.JOINT_ATTACK_NODE )){
             if(hero.actionState == ActionState.Attacking){
