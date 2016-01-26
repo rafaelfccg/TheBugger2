@@ -156,7 +156,7 @@ class SelectLevelScene: SKScene {
                         if (levelInt == 7 ){
                             self.delegateChanger?.mudaSceneBoss("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                         }else {
-                            self.delegateChanger?.mudaScene("BossTestScene", withMethod: method, andLevel: levelInt!)
+                            self.delegateChanger?.mudaSceneBoss("Level7Scene", withMethod: method, andLevel: levelInt!)
                         }
                         
                     })])]))

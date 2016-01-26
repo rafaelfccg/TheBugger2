@@ -9,14 +9,14 @@
 import SpriteKit
 import AVFoundation
 
-protocol SceneChangesDelegate{
-    
-    func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
-    func backToMenu()
-    func selectLevel(nomeSKS: String)
-    func gameOver()
-    func mudaSceneBoss(nomeSKS: String, withMethod:Int, andLevel:Int)
-}
+//protocol SceneChangesDelegate{
+//    
+//    func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
+//    func backToMenu()
+//    func selectLevel(nomeSKS: String)
+//    func gameOver()
+//    func mudaSceneBoss(nomeSKS: String, withMethod:Int, andLevel:Int)
+//}
 
 class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     
@@ -196,7 +196,6 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         
         hero.realSpeed = hero.defaultSpeed
         hero.runWalkingAction()
-        //checkBossVelocity()
         self.scene?.view?.paused = false
         tapToStartLabel?.removeFromParent()
         Flurry.logEvent("User Player \(levelSelected)")

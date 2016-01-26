@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+protocol SceneChangesDelegate{
+    
+    func mudaScene(nomeSKS: String, withMethod:Int, andLevel:Int)
+    func backToMenu()
+    func selectLevel(nomeSKS: String)
+    func gameOver()
+    func mudaSceneBoss(nomeSKS: String, withMethod:Int, andLevel:Int)
+}

@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+protocol BossProtocol {
+    func setBoss()
+    func checkBossVelocity()
+    func bossDead()
+}

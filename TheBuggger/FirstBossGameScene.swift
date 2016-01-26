@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class FirstBossGameScene: GameSceneBase {
+class FirstBossGameScene: GameSceneBase, BossProtocol {
     
     var simpleBlock1:TBSimpleBlockNode?
     var simpleBlock2:TBSimpleBlockNode?
@@ -57,7 +57,7 @@ class FirstBossGameScene: GameSceneBase {
     
     override func startGame(){
         super.startGame()
-        checkBossVelocity()
+        runAction(SKAction.sequence([SKAction.waitForDuration(1.35), SKAction.runBlock({self.checkBossVelocity()})]))      // O boss so comeca a andar depois de certo tempo
     }
 
 
@@ -92,6 +92,11 @@ class FirstBossGameScene: GameSceneBase {
         
 
     }
+    
+    func bossDead() {
+        
+    }
+    
     override func restartLevel()
     {
         super.restartLevel()
