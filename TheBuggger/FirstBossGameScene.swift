@@ -122,11 +122,30 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     }
     override func setupHUD() {
         super.setupHUD()
+        percentage = SKLabelNode(text: "50")
+        percentage?.fontName = "Squares Bold"
+        self.camera!.addChild(percentage!)
+        percentage?.zPosition = self.HUDz
+        percentage?.fontSize = 40
+        percentage?.position = CGPointMake(0, contadorNode!.position.y - 10)
+        percentage!.name = "hud"
     }
     
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
+        if(hasBegan) {
+            updateHPLabel()
+        }
     }
+    func updateHPLabel(){
+        if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
+            self.stagePercentage = Double(firstBoss.life)
+            
+        }
+        let per = Int(stagePercentage!)
+        percentage?.text = "\(per)"
+    }
+    
     
     override func setUpLevel(){
         

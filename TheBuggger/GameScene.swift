@@ -361,15 +361,6 @@ class GameScene:GameSceneBase {
                 }
             }
         }
-            //       else if(bodyB.categoryBitMask == GameScene.REFERENCIA_NODE && bodyA.categoryBitMask == GameScene.PLAYER_NODE) {
-            //            if let megaLaser = bodyB.node as? TBMegaLaserNode {
-            //                if(!megaLaser.entrouContato) {
-            //                    megaLaser.initFire(self)
-            //                }
-            //            }
-            //            bodyB.node?.removeFromParent()
-            //
-            //        }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
             //muda o estado da camera para a função update não alterar a posição dela
             stateCamera = -1
@@ -474,7 +465,7 @@ class GameScene:GameSceneBase {
                 bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
                 bodyB.categoryBitMask ==  GameScene.TOCO_NODE ||
                 bodyB.categoryBitMask == GameScene.CHAO_NODE){
-                    if (self.hero.jumpState == JumpState.TryJump){
+                    if (self.hero.jumpState == JumpState.CanJump){
                         self.hero.jumpState == JumpState.FirstJump
                     }
         }
