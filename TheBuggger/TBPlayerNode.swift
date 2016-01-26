@@ -488,20 +488,20 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func checkHeroFloorContact(){
-        let bodies = self.physicsBody?.allContactedBodies()
-        var floorContact:Bool = false
-        
-        for body in bodies! {
-            if (body.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
-                body.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
-                body.categoryBitMask == GameScene.CHAO_NODE){
-                    floorContact = true
-            }
-        }
-        
-        if !floorContact && self.jumpState == .CanJump {
-            self.jumpState = .FirstJump
-        }
+//        let bodies = self.physicsBody?.allContactedBodies()
+//        var floorContact:Bool = false
+//        
+//        for body in bodies! {
+//            if (body.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
+//                body.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
+//                body.categoryBitMask == GameScene.CHAO_NODE){
+//                    floorContact = true
+//            }
+//        }
+//        
+//        if !floorContact && self.jumpState == .CanJump {
+//            self.jumpState = .FirstJump
+//        }
     
     }
     
