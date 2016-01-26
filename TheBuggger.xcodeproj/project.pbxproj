@@ -43,7 +43,6 @@
 		001E55D61BD8221600B80833 /* redlight-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AD1BD8221600B80833 /* redlight-01.png */; };
 		001E55D71BD8221600B80833 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AE1BD8221600B80833 /* texture.png */; };
 		001E55D81BD8221600B80833 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AF1BD8221600B80833 /* sky.png */; };
-		001E61FD1C52A2D2009B72E8 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001E61FC1C52A2D2009B72E8 /* GoogleMobileAds.framework */; };
 		00200B5B1C06343E0094FFBD /* TBGreenLedsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00200B5A1C06343E0094FFBD /* TBGreenLedsNode.swift */; };
 		00200B5D1C0634670094FFBD /* baseInicio.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B5C1C0634670094FFBD /* baseInicio.png */; };
 		00200B601C0634760094FFBD /* fio solto1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00200B5E1C0634760094FFBD /* fio solto1.png */; };
@@ -148,6 +147,7 @@
 		00AC3ABF1BEA7EAB00323B6D /* smoke1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ABE1BEA7EAB00323B6D /* smoke1.png */; };
 		00AC3AC11BEA83EA00323B6D /* TBEspinhoSoltoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC3AC01BEA83EA00323B6D /* TBEspinhoSoltoNode.swift */; };
 		00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */; };
+		00B45C141C52AD1D00229778 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B45C131C52AD1D00229778 /* GoogleMobileAds.framework */; };
 		00BE1EF11BF8C43300F091B9 /* TBPowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BE1EF01BF8C43300F091B9 /* TBPowerUpNode.swift */; };
 		00C0FCE21BE9495800F8C730 /* TBBrilhoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C0FCE11BE9495800F8C730 /* TBBrilhoNode.swift */; };
 		00C0FCE41BE94AEF00F8C730 /* TBMachineFrontNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C0FCE31BE94AEF00F8C730 /* TBMachineFrontNode.swift */; };
@@ -306,7 +306,6 @@
 		001E55AD1BD8221600B80833 /* redlight-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redlight-01.png"; sourceTree = "<group>"; };
 		001E55AE1BD8221600B80833 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		001E55AF1BD8221600B80833 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
-		001E61FC1C52A2D2009B72E8 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		00200B5A1C06343E0094FFBD /* TBGreenLedsNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGreenLedsNode.swift; sourceTree = "<group>"; };
 		00200B5C1C0634670094FFBD /* baseInicio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baseInicio.png; sourceTree = "<group>"; };
 		00200B5E1C0634760094FFBD /* fio solto1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fio solto1.png"; sourceTree = "<group>"; };
@@ -417,6 +416,7 @@
 		00AC3ABE1BEA7EAB00323B6D /* smoke1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smoke1.png; path = ../smoke1.png; sourceTree = "<group>"; };
 		00AC3AC01BEA83EA00323B6D /* TBEspinhoSoltoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhoSoltoNode.swift; sourceTree = "<group>"; };
 		00AC3ACC1BEA909F00323B6D /* PlayerStop.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerStop.atlas; sourceTree = "<group>"; };
+		00B45C131C52AD1D00229778 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		00BE1EF01BF8C43300F091B9 /* TBPowerUpNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBPowerUpNode.swift; sourceTree = "<group>"; };
 		00C0FCE11BE9495800F8C730 /* TBBrilhoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBBrilhoNode.swift; sourceTree = "<group>"; };
 		00C0FCE31BE94AEF00F8C730 /* TBMachineFrontNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMachineFrontNode.swift; sourceTree = "<group>"; };
@@ -546,7 +546,7 @@
 				007BE1911C04DF2F008A2C02 /* AudioToolbox.framework in Frameworks */,
 				007BE18F1C04DF26008A2C02 /* AdSupport.framework in Frameworks */,
 				AFE7EF6D1BF3B65B00C99A94 /* Security.framework in Frameworks */,
-				001E61FD1C52A2D2009B72E8 /* GoogleMobileAds.framework in Frameworks */,
+				00B45C141C52AD1D00229778 /* GoogleMobileAds.framework in Frameworks */,
 				AFE7EF6B1BF3B0C200C99A94 /* libFlurry_7.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,7 +729,7 @@
 		007BE1811C04D86D008A2C02 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				001E61FC1C52A2D2009B72E8 /* GoogleMobileAds.framework */,
+				00B45C131C52AD1D00229778 /* GoogleMobileAds.framework */,
 				007BE1A61C04E2FF008A2C02 /* Mediation Adapters */,
 				007BE1A01C04DF6F008A2C02 /* StoreKit.framework */,
 				007BE19E1C04DF67008A2C02 /* MessageUI.framework */,

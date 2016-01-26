@@ -580,7 +580,7 @@ class TBPlayerNode: SKSpriteNode {
         case JumpState.TryJump:
             //                self.physicsBody.al
             //print(self.physicsBody?.velocity.dy)
-            if abs((self.physicsBody?.velocity.dy)!) < 10 && actionForKey("die") == nil {
+            if abs((self.physicsBody?.velocity.dy)!) < 3 && actionForKey("die") == nil {
                 self.jumpImpulse()
                 jumpState = JumpState.TryJump
             }
