@@ -200,14 +200,14 @@
 		5289B84E1BE0068600CA6C2D /* darkness.png in Resources */ = {isa = PBXBuildFile; fileRef = 5289B84D1BE0068600CA6C2D /* darkness.png */; };
 		529D285B1C57B5BC006A4621 /* TBSceneChangesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D285A1C57B5BC006A4621 /* TBSceneChangesProtocol.swift */; };
 		529D28631C57B9EB006A4621 /* TBBossProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D28621C57B9EB006A4621 /* TBBossProtocol.swift */; };
-		52ADD1271C569519007D5262 /* bossMegaLaserDown.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52ADD1261C569519007D5262 /* bossMegaLaserDown.atlas */; };
 		52ADD1291C569C89007D5262 /* bossHittedByBall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52ADD1281C569C89007D5262 /* bossHittedByBall.atlas */; };
-		52ADD12B1C569F18007D5262 /* bossMegaLaserUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52ADD12A1C569F18007D5262 /* bossMegaLaserUp.atlas */; };
 		52ADD12D1C56B729007D5262 /* bossTurnOn.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52ADD12C1C56B729007D5262 /* bossTurnOn.atlas */; };
 		52ADD12F1C56BD02007D5262 /* laserEnd.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52ADD12E1C56BD02007D5262 /* laserEnd.atlas */; };
 		52B0B2B21C5002FA00A9839A /* bossAnimation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52B0B2B11C5002FA00A9839A /* bossAnimation.atlas */; };
 		52B0B2B41C50083F00A9839A /* bossDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52B0B2B31C50083F00A9839A /* bossDeath.atlas */; };
 		52B0B2B61C500D0C00A9839A /* turnOffBoss.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52B0B2B51C500D0C00A9839A /* turnOffBoss.atlas */; };
+		52BA06E91C5A897000B15193 /* bossMegaLaserDown.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52BA06E81C5A897000B15193 /* bossMegaLaserDown.atlas */; };
+		52BA06EB1C5A89BF00B15193 /* bossMegaLaserUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52BA06EA1C5A89BF00B15193 /* bossMegaLaserUp.atlas */; };
 		52BE72CA1C529EAE00431CAF /* TBSimpleBlockNode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52BE72C91C529EAE00431CAF /* TBSimpleBlockNode.sks */; };
 		52BE72CC1C52A41800431CAF /* bossHittedOff.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52BE72CB1C52A41800431CAF /* bossHittedOff.atlas */; };
 		52BE72D01C52B26B00431CAF /* megaLaser1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52BE72CF1C52B26B00431CAF /* megaLaser1.atlas */; };
@@ -495,14 +495,14 @@
 		5289B84D1BE0068600CA6C2D /* darkness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = darkness.png; sourceTree = "<group>"; };
 		529D285A1C57B5BC006A4621 /* TBSceneChangesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSceneChangesProtocol.swift; sourceTree = "<group>"; };
 		529D28621C57B9EB006A4621 /* TBBossProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBBossProtocol.swift; sourceTree = "<group>"; };
-		52ADD1261C569519007D5262 /* bossMegaLaserDown.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossMegaLaserDown.atlas; sourceTree = "<group>"; };
 		52ADD1281C569C89007D5262 /* bossHittedByBall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossHittedByBall.atlas; sourceTree = "<group>"; };
-		52ADD12A1C569F18007D5262 /* bossMegaLaserUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossMegaLaserUp.atlas; sourceTree = "<group>"; };
 		52ADD12C1C56B729007D5262 /* bossTurnOn.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossTurnOn.atlas; sourceTree = "<group>"; };
 		52ADD12E1C56BD02007D5262 /* laserEnd.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = laserEnd.atlas; sourceTree = "<group>"; };
 		52B0B2B11C5002FA00A9839A /* bossAnimation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossAnimation.atlas; sourceTree = "<group>"; };
 		52B0B2B31C50083F00A9839A /* bossDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossDeath.atlas; sourceTree = "<group>"; };
 		52B0B2B51C500D0C00A9839A /* turnOffBoss.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = turnOffBoss.atlas; sourceTree = "<group>"; };
+		52BA06E81C5A897000B15193 /* bossMegaLaserDown.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossMegaLaserDown.atlas; sourceTree = "<group>"; };
+		52BA06EA1C5A89BF00B15193 /* bossMegaLaserUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossMegaLaserUp.atlas; sourceTree = "<group>"; };
 		52BE72C91C529EAE00431CAF /* TBSimpleBlockNode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBSimpleBlockNode.sks; sourceTree = "<group>"; };
 		52BE72CB1C52A41800431CAF /* bossHittedOff.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossHittedOff.atlas; sourceTree = "<group>"; };
 		52BE72CF1C52B26B00431CAF /* megaLaser1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = megaLaser1.atlas; sourceTree = "<group>"; };
@@ -818,8 +818,8 @@
 		008203351BFD0E0600534647 /* Monster */ = {
 			isa = PBXGroup;
 			children = (
+				52BA06E81C5A897000B15193 /* bossMegaLaserDown.atlas */,
 				52ADD1281C569C89007D5262 /* bossHittedByBall.atlas */,
-				52ADD1261C569519007D5262 /* bossMegaLaserDown.atlas */,
 				52BE72D31C52B69100431CAF /* bomb.png */,
 				52BE72D41C52B69100431CAF /* bomboff.png */,
 				52BE72D51C52B69100431CAF /* bombon.png */,
@@ -1080,9 +1080,9 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				52BA06EA1C5A89BF00B15193 /* bossMegaLaserUp.atlas */,
 				52ADD12E1C56BD02007D5262 /* laserEnd.atlas */,
 				52ADD12C1C56B729007D5262 /* bossTurnOn.atlas */,
-				52ADD12A1C569F18007D5262 /* bossMegaLaserUp.atlas */,
 				52BE72D91C52C06E00431CAF /* bombaExplosion.atlas */,
 				523C53F31C30832D001E4C4E /* dashTutorialAnimation.atlas */,
 				523C53F11C308322001E4C4E /* slideDownTutorial.atlas */,
@@ -1238,7 +1238,7 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 46HQV8ZA5C;
+						DevelopmentTeam = N4UKH6NFCZ;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -1346,7 +1346,6 @@
 				AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */,
 				5279DD261BF3C75500E61727 /* Shot.atlas in Resources */,
 				001E55CA1BD8221600B80833 /* BaseD.png in Resources */,
-				52ADD1271C569519007D5262 /* bossMegaLaserDown.atlas in Resources */,
 				0082035F1BFE425A00534647 /* shot.mp3 in Resources */,
 				008349BF1BFFAF4300012C22 /* FrenezyUpItem.atlas in Resources */,
 				000AA8291BFBC20200EC4E20 /* slow.atlas in Resources */,
@@ -1435,7 +1434,7 @@
 				52E75DC41BDEAD0300F91E00 /* Move_Ya.mp3 in Resources */,
 				001E55D41BD8221600B80833 /* estructure2.png in Resources */,
 				523C53F41C30832D001E4C4E /* dashTutorialAnimation.atlas in Resources */,
-				52ADD12B1C569F18007D5262 /* bossMegaLaserUp.atlas in Resources */,
+				52BA06EB1C5A89BF00B15193 /* bossMegaLaserUp.atlas in Resources */,
 				AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */,
 				009221631BF12D10007C7DDC /* estagioSelect.atlas in Resources */,
 				AF9415041C10DD9F00A81D83 /* estagiomarks.png in Resources */,
@@ -1466,6 +1465,7 @@
 				0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 				52443F5D1C063ADC00033633 /* viga.png in Resources */,
+				52BA06E91C5A897000B15193 /* bossMegaLaserDown.atlas in Resources */,
 				52C8E9EF1C07A65400F84C87 /* GateClosed.wav in Resources */,
 				003B72FD1BEA7BEF00CD8F0E /* redlight2.atlas in Resources */,
 				AF069D681BFE450D00AC81EC /* FlyingMonster.atlas in Resources */,

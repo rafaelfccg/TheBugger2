@@ -77,7 +77,7 @@ class SelectLevelScene: SKScene {
                 node?.zPosition = 5
         })
         let defaults = NSUserDefaults.standardUserDefaults()
-        let inLevel =  7//defaults.integerForKey("level")
+        let inLevel = defaults.integerForKey("level")
         let openLevel = SKTexture(imageNamed: "estagio-1")
         let closedLevel = SKTexture(imageNamed: "estagio-5")
         for (var i = 1 ; i <= numberOfLevels ; i++) {
@@ -133,7 +133,7 @@ class SelectLevelScene: SKScene {
             var level = "-1"
             let defaults = NSUserDefaults.standardUserDefaults()
             let method = defaults.integerForKey("method")
-            let inLevel =  7//defaults.integerForKey("level")
+            let inLevel = defaults.integerForKey("level")
             print("\(name) + \(level)")
             if (name == "Back"){
                 self.delegateChanger?.backToMenu()
