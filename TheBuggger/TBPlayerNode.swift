@@ -373,6 +373,7 @@ class TBPlayerNode: SKSpriteNode {
     func resetHero(){
         self.actionState = ActionState.Idle
         self.powerUP = TBPowerUpsStates.Normal
+        self.state = .Initial
         self.physicsBody?.pinned = false
         self.zRotation = 0
         self.score = 0

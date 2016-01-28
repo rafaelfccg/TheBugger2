@@ -554,6 +554,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     func backToForeground(){
         lastFrameTime = CACurrentMediaTime()
         deltaTime = 0
+        self.hero.state = States.Initial
     }
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -581,7 +582,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
             }
             //hero checkings
             self.hero.updateVelocity()
-            self.hero.checkHeroFloorContact()
+//            self.hero.checkHeroFloorContact()
             //Action checking
             if(self.touchStartedAt != nil &&  self.touchStartedAt! + self.limitTimeAction < currentTime ){
                 self.hero.state = nextStatefor(self.hero.state, andInput: Directions.END)
