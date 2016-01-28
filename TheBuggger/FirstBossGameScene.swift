@@ -16,6 +16,7 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     var allocBool:Bool = true
     var deallocBool:Bool = false
     var lastID = 0
+    var bossIsRunnning = false
     
     var defaultY:CGFloat = 0
     
@@ -50,14 +51,17 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     }
     func checkBossVelocity() {      // Checa se existe algum boss, caso exista, aumenta sua velocidade
         if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
-            firstBoss.updateVelocity()
+            firstBoss.updateVelocity(self.hero)
             firstBoss.startBoss()
         }
     }
     
     override func startGame(){
         super.startGame()
-        runAction(SKAction.sequence([SKAction.waitForDuration(1.35), SKAction.runBlock({self.checkBossVelocity()})]))      // O boss so comeca a andar depois de certo tempo
+        runAction(SKAction.sequence([SKAction.waitForDuration(1.35), SKAction.runBlock({
+            self.checkBossVelocity()
+            self.bossIsRunnning = true
+        })]))      // O boss so comeca a andar depois de certo tempo
     }
 
 
@@ -100,6 +104,7 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     override func restartLevel()
     {
         super.restartLevel()
+        self.bossIsRunnning = false
         self.enumerateChildNodesWithName("firstBoss", usingBlock: { // adicionei aqui sem o removable, pois preciso alterar a velocidade dele quando o jogo iniciar
             (node, ponter)->Void in
             node.removeFromParent()
@@ -132,10 +137,19 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        super.update(currentTime)
+        //print("hero \(self.hero.physicsBody!.velocity)")
         if(hasBegan) {
             updateHPLabel()
+            if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
+                //print(" boss \(firstBoss.physicsBody!.velocity)")
+                if self.bossIsRunnning {
+                    firstBoss.updateVelocity(self.hero)
+                }
+            }
         }
+
+        super.update(currentTime)
+        
     }
     func updateHPLabel(){
         if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {

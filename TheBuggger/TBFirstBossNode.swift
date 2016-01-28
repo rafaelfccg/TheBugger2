@@ -23,6 +23,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     var isDead = false     // Saber se o boss esta morto ou nao, pois pode atacar durante a animacao
     var stateHittedOff = false // Saber se o boss esta sendo hittado ou nao, para a animacao nao acontecer se ja estiver acontecendo
     var deathAnimationIsRunning = false     // Saber se a animacao de morte ja esta acontecendo
+    var isLowEnergy = false
     
     static var animation: SKAction?
     static var deathAnimation: SKAction?
@@ -96,8 +97,10 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         TBFirstBossNode.bossTurnOnAnimation = SKAction.animateWithTextures(bossTurnOnArray, timePerFrame: 0.15)
     }
     
-    func updateVelocity() {
-        self.physicsBody?.velocity = CGVectorMake(CGFloat(self.defaultSpeed), 0)
+    func updateVelocity(hero:TBPlayerNode) {
+        if !isLowEnergy {
+            self.physicsBody?.velocity = CGVectorMake((hero.physicsBody?.velocity.dx)!, 0)
+        }
     }
     
     func startBoss() {      // O boss comeca a se movimentar e realizar suas acoes
@@ -358,6 +361,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func bossLowEnergy() {    // Chamada quando a energia do boss estiver baixa
+        self.isLowEnergy = true
         let slowDownAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = 0}), SKAction.waitForDuration(self.rechargingTime)])
         // Pode se reposicionar de duas maneiras, a primeira e apenas acelerando pra frente
         let accelerateAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed+600)}), SKAction.waitForDuration(0.76), SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed)}), SKAction.waitForDuration(2), SKAction.runBlock({self.checkBossMode()}), SKAction.runBlock({self.startAttack()})])
@@ -373,9 +377,9 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         let diceRoll = Int(arc4random_uniform(2))
         switch(diceRoll) {
         case 0:
-            runAction(SKAction.sequence([SKAction.group([slowDownAction, SKAction.sequence([TBFirstBossNode.turnOffAnimation!, standingSit])]), SKAction.group([TBFirstBossNode.bossTurnOnAnimation!, accelerateAction])]))
+            runAction(SKAction.sequence([SKAction.group([slowDownAction, SKAction.sequence([TBFirstBossNode.turnOffAnimation!, standingSit])]), SKAction.group([TBFirstBossNode.bossTurnOnAnimation!, accelerateAction]), SKAction.runBlock({self.isLowEnergy = false})]))
         case 1:
-            runAction(SKAction.sequence([SKAction.group([slowDownAction, SKAction.sequence([TBFirstBossNode.turnOffAnimation!, standingSit])]), SKAction.group([TBFirstBossNode.bossTurnOnAnimation!, jumpAction])]))
+            runAction(SKAction.sequence([SKAction.group([slowDownAction, SKAction.sequence([TBFirstBossNode.turnOffAnimation!, standingSit])]), SKAction.group([TBFirstBossNode.bossTurnOnAnimation!, jumpAction]), SKAction.runBlock({self.isLowEnergy = false})]))
         default:
             print("Error")
         }

@@ -62,6 +62,7 @@
 		0022C0311BE2A44300A184D5 /* TapTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0271BE2A44300A184D5 /* TapTutorial.atlas */; };
 		0022C0321BE2A44300A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0281BE2A44300A184D5 /* taptxt.png */; };
 		0024C12E1C5021C100A1B217 /* TBSKNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */; };
+		0026A9DF1C5A6A5000461C4E /* Level7Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0026A9DE1C5A6A5000461C4E /* Level7Scene.sks */; };
 		002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80D1BF6508A003514A4 /* startCount.atlas */; };
 		002FD8101BF650D0003514A4 /* pt-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80F1BF650D0003514A4 /* pt-hud.png */; };
 		002FD8121BF6597D003514A4 /* back-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD8111BF6597D003514A4 /* back-hud.png */; };
@@ -207,7 +208,6 @@
 		52B0B2B21C5002FA00A9839A /* bossAnimation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52B0B2B11C5002FA00A9839A /* bossAnimation.atlas */; };
 		52B0B2B41C50083F00A9839A /* bossDeath.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52B0B2B31C50083F00A9839A /* bossDeath.atlas */; };
 		52B0B2B61C500D0C00A9839A /* turnOffBoss.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52B0B2B51C500D0C00A9839A /* turnOffBoss.atlas */; };
-		52BE72C81C529EA800431CAF /* Level7Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52BE72C71C529EA700431CAF /* Level7Scene.sks */; };
 		52BE72CA1C529EAE00431CAF /* TBSimpleBlockNode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52BE72C91C529EAE00431CAF /* TBSimpleBlockNode.sks */; };
 		52BE72CC1C52A41800431CAF /* bossHittedOff.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52BE72CB1C52A41800431CAF /* bossHittedOff.atlas */; };
 		52BE72D01C52B26B00431CAF /* megaLaser1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52BE72CF1C52B26B00431CAF /* megaLaser1.atlas */; };
@@ -345,6 +345,7 @@
 		0022C0271BE2A44300A184D5 /* TapTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = TapTutorial.atlas; sourceTree = "<group>"; };
 		0022C0281BE2A44300A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
 		0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSKNodeExtension.swift; sourceTree = "<group>"; };
+		0026A9DE1C5A6A5000461C4E /* Level7Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level7Scene.sks; sourceTree = "<group>"; };
 		002FD80D1BF6508A003514A4 /* startCount.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = startCount.atlas; sourceTree = "<group>"; };
 		002FD80F1BF650D0003514A4 /* pt-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pt-hud.png"; sourceTree = "<group>"; };
 		002FD8111BF6597D003514A4 /* back-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-hud.png"; sourceTree = "<group>"; };
@@ -502,7 +503,6 @@
 		52B0B2B11C5002FA00A9839A /* bossAnimation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossAnimation.atlas; sourceTree = "<group>"; };
 		52B0B2B31C50083F00A9839A /* bossDeath.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossDeath.atlas; sourceTree = "<group>"; };
 		52B0B2B51C500D0C00A9839A /* turnOffBoss.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = turnOffBoss.atlas; sourceTree = "<group>"; };
-		52BE72C71C529EA700431CAF /* Level7Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level7Scene.sks; sourceTree = "<group>"; };
 		52BE72C91C529EAE00431CAF /* TBSimpleBlockNode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBSimpleBlockNode.sks; sourceTree = "<group>"; };
 		52BE72CB1C52A41800431CAF /* bossHittedOff.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bossHittedOff.atlas; sourceTree = "<group>"; };
 		52BE72CF1C52B26B00431CAF /* megaLaser1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = megaLaser1.atlas; sourceTree = "<group>"; };
@@ -1144,8 +1144,8 @@
 				008551DB1C441C0100545567 /* Level4Scene.sks */,
 				008551DC1C441C0100545567 /* Level5Scene.sks */,
 				523C4FFD1C57E3FE00F4581D /* Level6Scene.sks */,
+				0026A9DE1C5A6A5000461C4E /* Level7Scene.sks */,
 				0050C43C1C40357D006676D0 /* BossTestScene.sks */,
-				52BE72C71C529EA700431CAF /* Level7Scene.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1238,7 +1238,7 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = N4UKH6NFCZ;
+						DevelopmentTeam = 46HQV8ZA5C;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -1384,6 +1384,7 @@
 				523C53F21C308322001E4C4E /* slideDownTutorial.atlas in Resources */,
 				0022C02C1BE2A44300A184D5 /* JumpTutorial.atlas in Resources */,
 				0022C02D1BE2A44300A184D5 /* jumptxt.png in Resources */,
+				0026A9DF1C5A6A5000461C4E /* Level7Scene.sks in Resources */,
 				008203461BFD0EF300534647 /* MUSICA_IN_GAME_Never_Sleep_1_30.mp3 in Resources */,
 				001E55D01BD8221600B80833 /* roof.png in Resources */,
 				003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */,
@@ -1471,7 +1472,6 @@
 				AFF489F11BD56D8700463411 /* PlayerAttack.atlas in Resources */,
 				AF9414F71C10B2BF00A81D83 /* TBCompletionLevelNode.sks in Resources */,
 				0002CE711BF3D0CD00FDE20A /* heroDashPhysicsBody.png in Resources */,
-				52BE72C81C529EA800431CAF /* Level7Scene.sks in Resources */,
 				001E55D21BD8221600B80833 /* roofend2.png in Resources */,
 				52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */,
 				0022C02E1BE2A44300A184D5 /* SlideFrontTutorial.atlas in Resources */,
