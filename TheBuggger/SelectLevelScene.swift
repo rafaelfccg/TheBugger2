@@ -25,8 +25,15 @@ class SelectLevelScene: SKScene {
                                              4:[TBShotBotNode.standAtlas,TBShotBotNode.attackAtlas,TBShotBotNode.deathAtlas],
                                             5:[TBBopperBotNode.deathAtlas, TBBopperBotNode.attackAtlas, TBBopperBotNode.standAtlas, TBPlayerNode.frenezyAnimationAtlas,
                                                 TBShotBotNode.attackAtlas],
-                                        6:[TBFlyingBotNode.animationAtlas,TBFlyingBotNode.deathAtlas,TBBopperBotNode.attackAtlas],
-        7:[]]
+                                        6:[TBFlyingBotNode.animationAtlas,TBFlyingBotNode.deathAtlas,
+                                            TBBopperBotNode.attackAtlas],
+                                        7:[TBFirstBossNode.turnOffAtlas,
+                                        TBFirstBossNode.deathAtlas,
+                                        TBFirstBossNode.bossMegaLaserDownAtlas, TBFirstBossNode.bossHittedByBallAtlas,
+                                            TBFirstBossNode.bossMegaLaserUpAtlas,
+                                            TBFirstBossNode.bossTurnOnAtlas,
+                                            TBFirstBossNode.hittedOffAtlas
+                                            ]]
     
     override func didMoveToView(view: SKView) {
         
