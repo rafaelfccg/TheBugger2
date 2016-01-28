@@ -108,6 +108,7 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
         self.bossIsRunnning = false
         self.firstBoss.removeFromParent()
         setBoss()
+        self.updateHPLabel()
         resetLevel()
     }
     
@@ -137,7 +138,7 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     override func update(currentTime: CFTimeInterval) {
         //print("hero \(self.hero.physicsBody!.velocity)")
         if(hasBegan) {
-            updateHPLabel()
+            //updateHPLabel()
             if self.bossIsRunnning {
                 self.firstBoss.updateVelocity(self.hero)
             }

@@ -337,6 +337,13 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             self.isDead = true
             self.bossDie()
         }
+        self.updateSceneHpLabel()
+    }
+    
+    func updateSceneHpLabel() {     // Atualiza o HP do boss na cena
+        if let scene = self.parent as? FirstBossGameScene {
+            scene.updateHPLabel()
+        }
     }
     
     func decreaseLife() {       // Diminui a vida do boss quando receber dano
@@ -351,6 +358,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             self.isDead = true
             self.bossDie()
         }
+        self.updateSceneHpLabel()
     }
     
     func bossDie() {     // Funcao para a morte do boss
@@ -448,13 +456,13 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     
     func checkBitTime() -> Bool {      // Funcao para saber se e o momento de atirar um bit
         var itsTime = false
-        if(self.totalAttacks == 12) {
+        if(self.totalAttacks == 7) {
+            self.totalAttacks++
+            itsTime = true
+        } else if(self.totalAttacks == 13) {
             self.totalAttacks++
             itsTime = true
         } else if(self.totalAttacks == 22) {
-            self.totalAttacks++
-            itsTime = true
-        } else if(self.totalAttacks == 30) {
             self.totalAttacks++
             itsTime = true
         }
