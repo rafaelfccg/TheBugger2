@@ -20,6 +20,8 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     
     var defaultY:CGFloat = 0
     
+    var firstBoss:TBFirstBossNode = TBFirstBossNode()
+    
     static let REALLOC:UInt32            = 0b0000000100000000000
     
     override func didMoveToView(view: SKView) {
@@ -50,10 +52,8 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     
     }
     func checkBossVelocity() {      // Checa se existe algum boss, caso exista, aumenta sua velocidade
-        if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
-            firstBoss.updateVelocity(self.hero)
-            firstBoss.startBoss()
-        }
+            self.firstBoss.updateVelocity(self.hero)
+            self.firstBoss.startBoss()
     }
     
     override func startGame(){
@@ -91,7 +91,8 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
             groundBoti.name = "firstBoss"
             groundBoti.position = node.position
             groundBoti.zPosition = 100
-            self.addChild(groundBoti)
+            self.firstBoss = groundBoti
+            self.addChild(self.firstBoss)
         })
         
 
@@ -105,10 +106,7 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     {
         super.restartLevel()
         self.bossIsRunnning = false
-        self.enumerateChildNodesWithName("firstBoss", usingBlock: { // adicionei aqui sem o removable, pois preciso alterar a velocidade dele quando o jogo iniciar
-            (node, ponter)->Void in
-            node.removeFromParent()
-        })
+        self.firstBoss.removeFromParent()
         setBoss()
         resetLevel()
     }
@@ -140,11 +138,8 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
         //print("hero \(self.hero.physicsBody!.velocity)")
         if(hasBegan) {
             updateHPLabel()
-            if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
-                //print(" boss \(firstBoss.physicsBody!.velocity)")
-                if self.bossIsRunnning {
-                    firstBoss.updateVelocity(self.hero)
-                }
+            if self.bossIsRunnning {
+                self.firstBoss.updateVelocity(self.hero)
             }
         }
 
@@ -152,10 +147,8 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
         
     }
     func updateHPLabel(){
-        if let firstBoss = self.childNodeWithName("firstBoss") as? TBFirstBossNode {
-            self.stagePercentage = Double(firstBoss.life)
-            
-        }
+        self.stagePercentage = Double(self.firstBoss.life)
+        
         let per = Int(stagePercentage!)
         percentage?.text = "\(per)"
     }
