@@ -99,7 +99,9 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     }
     
     func bossDead() {
-        
+        self.hero.realSpeed = 0
+        // Animacao do heroi recebendo o poder do boss
+        // Tela de pontuacao com botao pra mostrar a historia
     }
     
     override func restartLevel()

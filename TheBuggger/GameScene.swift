@@ -58,11 +58,6 @@ class GameScene:GameSceneBase {
         super.restartLevel()
         let dies = ["Porcentagem": Int(stagePercentage!), "Stage": levelSelected!]
         Flurry.logEvent("Died", withParameters: dies)
-
-        self.enumerateChildNodesWithName("firstBoss", usingBlock: { // adicionei aqui sem o removable, pois preciso alterar a velocidade dele quando o jogo iniciar
-            (node, ponter)->Void in
-            node.removeFromParent()
-        })
         
         spawnMoedas()
         spawnMonstros()
@@ -106,15 +101,6 @@ class GameScene:GameSceneBase {
             let groundBoti = TBFlyingBotNode()
             groundBoti.position = node.position
             groundBoti.name = self.removable
-            groundBoti.zPosition = 100
-            self.addChild(groundBoti)
-        })
-        
-        self.enumerateChildNodesWithName(TBFirstBossNode.name , usingBlock: {(node, ponter)->Void in
-            
-            let groundBoti = TBFirstBossNode()
-            groundBoti.name = "firstBoss"
-            groundBoti.position = node.position
             groundBoti.zPosition = 100
             self.addChild(groundBoti)
         })
@@ -353,14 +339,6 @@ class GameScene:GameSceneBase {
             bodyA = aux
         }
         
-        
-        if(bodyB.categoryBitMask == GameScene.BOSSONE_NODE && bodyA.categoryBitMask == GameScene.JOINT_ATTACK_NODE) {
-            if(hero.actionState == ActionState.Attacking) {
-                if let boss = bodyB.node as? TBFirstBossNode {
-                    boss.decreaseLife()
-                }
-            }
-        }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
             //muda o estado da camera para a função update não alterar a posição dela
             stateCamera = -1
@@ -426,21 +404,6 @@ class GameScene:GameSceneBase {
                 let groupFinal = SKAction.group([SKAction.playSoundFileNamed("GateClosed", waitForCompletion: true), action])
                 finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
                 
-            }
-        } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.BOSSONE_NODE) {
-            if let boss = bodyA.node as? TBFirstBossNode {
-                if let metalBall = bodyB.node as? TBBallFirstBossNode {
-                    boss.decreaseLifeMetalBall()
-                    if(metalBall.ataqueDuploTriplo) {
-                        metalBall.bossDamagedDontBackAttack()
-                    } else {
-                        metalBall.bossDamaged()
-                    }
-                }
-            }
-        } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.REFERENCIA_NODE) {
-            if let metalBall = bodyB.node as? TBBallFirstBossNode {
-                metalBall.ballMissed()
             }
         }
     }

@@ -15,6 +15,7 @@ class SelectLevelScene: SKScene {
     let numberOfLevels:Int = 7
     var delegateChanger: SceneChangesDelegate?
     var stageSelect:SKAction?
+    var stageSelectBoss:SKAction?
     var minX:CGFloat?
     var maxX:CGFloat?
     let spaceBot = 0.03645
@@ -48,6 +49,9 @@ class SelectLevelScene: SKScene {
         print(self.view!.frame.size)
         let selectionArray = TBUtils.getSprites(SKTextureAtlas(named: "estagioSelect"), nomeImagens: "estagio-")
         stageSelect = SKAction.animateWithTextures(selectionArray, timePerFrame: 0.1)
+        
+        let selectionBossArray = TBUtils.getSprites(SKTextureAtlas(named: "selectBossStage"), nomeImagens: "boss-")
+        stageSelectBoss = SKAction.animateWithTextures(selectionBossArray, timePerFrame: 0.1)
         
     }
     
@@ -87,13 +91,24 @@ class SelectLevelScene: SKScene {
         let inLevel = defaults.integerForKey("level")
         let openLevel = SKTexture(imageNamed: "estagio-1")
         let closedLevel = SKTexture(imageNamed: "estagio-5")
+        
+        let openLevelBoss = SKTexture(imageNamed: "boss-1")
+        let closedLevelBoss = SKTexture(imageNamed: "boss-5")
         for (var i = 1 ; i <= numberOfLevels ; i++) {
             let name = "//selectStage\(i)"
             let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
             if(i > inLevel){
-                node.texture = closedLevel
+                if(i < 7) {
+                    node.texture = closedLevel
+                } else {
+                    node.texture = closedLevelBoss
+                }
             }else{
-                node.texture = openLevel
+                if(i < 7) {
+                    node.texture = openLevel
+                } else {
+                    node.texture = openLevelBoss
+                }
             }
             let backgroundNode = SKShapeNode(circleOfRadius:(node.frame.size.width)/2 )
             backgroundNode.position = (node.position)
@@ -132,6 +147,14 @@ class SelectLevelScene: SKScene {
         
     }
     
+    func selectStageAction(k: Int)->SKAction {       // Escolhe a animacao certa na hora de selecionar a fase
+        if(k < 7) {
+            return self.stageSelect!
+        } else {
+            return self.stageSelectBoss!
+        }
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             let location = touch.locationInNode(self)
@@ -155,8 +178,9 @@ class SelectLevelScene: SKScene {
             
             if level != "-1"  && !choosed{
                 if inLevel >= Int(level) {
-                    choosed = true
-                    touchedNode.runAction(SKAction.group([stageSelect!,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
+                        choosed = true
+                        let selectStageAnimation = self.selectStageAction(Int(level)!)
+                    touchedNode.runAction(SKAction.group([selectStageAnimation ,SKAction.sequence([SKAction.waitForDuration(0.6),SKAction.runBlock({
                     
                         let levelInt = Int(level);
                         preLoadSprites(self.levelsAtlas[levelInt!]!)

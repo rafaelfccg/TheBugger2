@@ -323,6 +323,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func decreaseLifeMetalBall() { // Diminui a vida do boss quando receber dano da metalBall
+        print("Decrease metal ball")
         if(!self.isDead) {
             runAction(TBFirstBossNode.bossHittedByBallAnimation!)
             if(self.life >= 5) {      // Para nao mostrar a lifebar errada
