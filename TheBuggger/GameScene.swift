@@ -352,7 +352,7 @@ class GameScene:GameSceneBase {
                 
                 //Salvando os dados com persistencia
                 saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
-                
+                Flurry.logEvent("CompletedLevel", withParameters: ["Stage": levelSelected!])
                 hero.realSpeed = 0
                 
                 let action = SKAction.sequence([TBFinalNode.animation!, SKAction.runBlock({
@@ -405,32 +405,6 @@ class GameScene:GameSceneBase {
                 finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
                 
             }
-        }
-    }
-    override func didEndContact(contact: SKPhysicsContact) {
-        var bodyA = contact.bodyA
-        var bodyB = contact.bodyB
-        //var flagTrocou = false
-        
-        //ordena para que bodyA tenha sempre a categoria "menor"
-        if(bodyA.categoryBitMask > bodyB.categoryBitMask){
-            let aux = bodyB
-            bodyB = bodyA
-            bodyA = aux
-            //flagTrocou = true
-        }
-        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
-            self.hero.quickFloorCollisionOff(bodyB, sender: self)
-        } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE) {
-            
-        }else if bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
-            (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
-                bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
-                bodyB.categoryBitMask ==  GameScene.TOCO_NODE ||
-                bodyB.categoryBitMask == GameScene.CHAO_NODE){
-                    if (self.hero.jumpState == JumpState.CanJump){
-                        self.hero.jumpState == JumpState.FirstJump
-                    }
         }
     }
 }
