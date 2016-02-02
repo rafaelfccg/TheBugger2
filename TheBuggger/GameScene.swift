@@ -62,6 +62,7 @@ class GameScene:GameSceneBase {
         spawnMoedas()
         spawnMonstros()
         spawnPowerUp()
+        spawnRevive()
     }
     
     func spawnMonstros(){
@@ -142,6 +143,19 @@ class GameScene:GameSceneBase {
                 bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
             }
         }
+    }
+    
+    func spawnRevive()
+    {
+        self.enumerateChildNodesWithName(TBReviveNode.name , usingBlock: {(node, ponter)->Void in
+            
+            let reviveNode = TBReviveNode(size: node.frame.size)
+            reviveNode.position = node.position
+            reviveNode.name = self.removable
+            reviveNode.zPosition = 100
+            self.addChild(reviveNode)
+        })
+        
     }
     
     override func setUpLevel(){
@@ -304,6 +318,7 @@ class GameScene:GameSceneBase {
         })
         
         spawnPowerUp()
+        spawnRevive()
         
         finalNode = childNodeWithName(TBFinalNode.name)
         finalBackNode = self.childNodeWithName(TBFinalNode.nameBack)
@@ -338,11 +353,20 @@ class GameScene:GameSceneBase {
             bodyB = bodyA
             bodyA = aux
         }
-        
-        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
+        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
             //muda o estado da camera para a função update não alterar a posição dela
             stateCamera = -1
             stopParalax = true
+        }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.REVIVE_NODE)
+        {
+            if let reviveNode = bodyB.node as? TBReviveNode {
+                if(!reviveNode.picked)
+                {
+                    reviveNode.picked = true
+                    reviveNode.runAction(TBReviveNode.animation!)
+                }
+            }
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.END_LEVEL_NODE )){
             //terminou

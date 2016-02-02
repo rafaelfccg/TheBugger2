@@ -239,6 +239,8 @@
 		AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27231BE00EC80027965B /* ENDZONE.atlas */; };
 		AF0A27261BE00EC80027965B /* EndzoneBack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF0A27241BE00EC80027965B /* EndzoneBack.atlas */; };
 		AF0A272A1BE010E20027965B /* TBFinalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A27291BE010E20027965B /* TBFinalNode.swift */; };
+		AF13F6741C6139AF00E2F037 /* postOff.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF13F6731C6139AF00E2F037 /* postOff.atlas */; };
+		AF13F6761C613A9300E2F037 /* TBReviveNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF13F6751C613A9300E2F037 /* TBReviveNode.swift */; };
 		AF2134421C0CD230006BB9D8 /* Moeda.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AF2134411C0CD230006BB9D8 /* Moeda.atlas */; };
 		AF2134471C0CD4A7006BB9D8 /* TBCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF2134451C0CD4A7006BB9D8 /* TBCoreDataModel.xcdatamodeld */; };
 		AF21344D1C0CD66D006BB9D8 /* TBDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21344C1C0CD66D006BB9D8 /* TBDataController.swift */; };
@@ -536,6 +538,8 @@
 		AF0A27231BE00EC80027965B /* ENDZONE.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ENDZONE.atlas; sourceTree = "<group>"; };
 		AF0A27241BE00EC80027965B /* EndzoneBack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EndzoneBack.atlas; sourceTree = "<group>"; };
 		AF0A27291BE010E20027965B /* TBFinalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBFinalNode.swift; sourceTree = "<group>"; };
+		AF13F6731C6139AF00E2F037 /* postOff.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = postOff.atlas; sourceTree = "<group>"; };
+		AF13F6751C613A9300E2F037 /* TBReviveNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBReviveNode.swift; sourceTree = "<group>"; };
 		AF2134411C0CD230006BB9D8 /* Moeda.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Moeda.atlas; sourceTree = "<group>"; };
 		AF2134461C0CD4A7006BB9D8 /* TBCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TBCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		AF21344C1C0CD66D006BB9D8 /* TBDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBDataController.swift; sourceTree = "<group>"; };
@@ -639,6 +643,7 @@
 				009018BF1BCD8897002AABC7 /* TBChangeSpeedGround.swift */,
 				008698B51BE94F7A00EE80F2 /* TBAlertNode.swift */,
 				00C0FCE11BE9495800F8C730 /* TBBrilhoNode.swift */,
+				AF13F6751C613A9300E2F037 /* TBReviveNode.swift */,
 			);
 			name = Scenario;
 			sourceTree = "<group>";
@@ -1085,6 +1090,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				AF13F6731C6139AF00E2F037 /* postOff.atlas */,
 				52E6316E1C5AB07C00779667 /* selectBossStage.atlas */,
 				52BA06EA1C5A89BF00B15193 /* bossMegaLaserUp.atlas */,
 				52ADD12E1C56BD02007D5262 /* laserEnd.atlas */,
@@ -1313,6 +1319,7 @@
 				AF680E0D1C06447C00CC865C /* pinote.mp3 in Resources */,
 				009221681BF12EFE007C7DDC /* cabos-1.png in Resources */,
 				008349B51BFFA1BE00012C22 /* contador-2.png in Resources */,
+				AF13F6741C6139AF00E2F037 /* postOff.atlas in Resources */,
 				009221531BF11863007C7DDC /* enfeiteCima-5.png in Resources */,
 				001E55CB1BD8221600B80833 /* machine-01.png in Resources */,
 				52BE72D01C52B26B00431CAF /* megaLaser1.atlas in Resources */,
@@ -1513,6 +1520,7 @@
 				52D857501C3218AC00E8D6BD /* TBMegaLaserNode.swift in Sources */,
 				00F6CFDC1BDEAB8C006F0302 /* TBMenuController.swift in Sources */,
 				00200B5B1C06343E0094FFBD /* TBGreenLedsNode.swift in Sources */,
+				AF13F6761C613A9300E2F037 /* TBReviveNode.swift in Sources */,
 				AF21344D1C0CD66D006BB9D8 /* TBDataController.swift in Sources */,
 				009CAFE51BF10DD6003BA434 /* SelectLevelScene.swift in Sources */,
 				009018C01BCD8897002AABC7 /* TBChangeSpeedGround.swift in Sources */,
