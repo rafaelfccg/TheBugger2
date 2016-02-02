@@ -42,6 +42,10 @@ class TBBallFirstBossNode: SKSpriteNode {
         self.rotateBall()
     }
     
+    func changeExplosionSize() {   // Altera o tamanho da explosao no impacto contra o escudo ou o boss
+        self.size = CGSizeMake(85, 85)
+    }
+    
     func rotateBall() {     // A bola ira sempre girar
         let rotateBall = SKAction.rotateByAngle(30, duration: 0.1)
         runAction(SKAction.repeatActionForever(rotateBall))
@@ -66,7 +70,7 @@ class TBBallFirstBossNode: SKSpriteNode {
     static func createSKActionAnimation()
     {
         let bombExplosionArray = TBUtils.getSprites(TBBallFirstBossNode.bombExplosionAtlas, nomeImagens: "hit")
-        TBBallFirstBossNode.bombExplosionAnimation = SKAction.animateWithTextures(bombExplosionArray, timePerFrame: 0.02);
+        TBBallFirstBossNode.bombExplosionAnimation = SKAction.animateWithTextures(bombExplosionArray, timePerFrame: 0.02)
     }
     
     func defendeAnimation() { //  Quando o heroi defender a bola, ela voltara contra o boss se for especial
@@ -75,7 +79,7 @@ class TBBallFirstBossNode: SKSpriteNode {
                 runAction(SKAction.repeatActionForever(SKAction.animateWithTextures([bombon], timePerFrame: 10)))
                 self.physicsBody?.velocity = CGVectorMake(1500, 0)
             } else {
-                let defendedNoSpecialBall = SKAction.sequence([TBBallFirstBossNode.bombExplosionAnimation!,SKAction.runBlock({self.removeFromParent()})])
+                let defendedNoSpecialBall = SKAction.sequence([SKAction.runBlock({self.changeExplosionSize()}) ,TBBallFirstBossNode.bombExplosionAnimation!,SKAction.runBlock({self.removeFromParent()})])
                 runAction(defendedNoSpecialBall)
             }
         } else {
@@ -83,7 +87,7 @@ class TBBallFirstBossNode: SKSpriteNode {
                 runAction(SKAction.repeatActionForever(SKAction.animateWithTextures([bombon], timePerFrame: 10)))
                 self.physicsBody?.velocity = CGVectorMake(1500, 0)
             } else {
-                let defendedNoSpecialBall = SKAction.sequence([TBBallFirstBossNode.bombExplosionAnimation!,SKAction.runBlock({self.bossWaitBackToAttack(); self.removeFromParent()})])
+                let defendedNoSpecialBall = SKAction.sequence([SKAction.runBlock({self.changeExplosionSize()}) ,TBBallFirstBossNode.bombExplosionAnimation!,SKAction.runBlock({self.bossWaitBackToAttack(); self.removeFromParent()})])
                 runAction(defendedNoSpecialBall)
             }
         }
@@ -126,7 +130,7 @@ class TBBallFirstBossNode: SKSpriteNode {
     }
     
     func bossDamaged() {  // Acao que remove o no metalBall quando acertar o boss
-        runAction(SKAction.sequence([TBBallFirstBossNode.bombExplosionAnimation!, SKAction.runBlock({self.bossBackToAttack(); self.removeFromParent()})]))
+        runAction(SKAction.sequence([SKAction.runBlock({self.changeExplosionSize()}) ,TBBallFirstBossNode.bombExplosionAnimation!, SKAction.runBlock({self.bossBackToAttack(); self.removeFromParent()})]))
     }
     
     func bossDamagedDontBackAttack() {  // Acao chamada no ataque duplo para o boss nao voltar a atacar 2 vezes
