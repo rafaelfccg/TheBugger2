@@ -224,6 +224,7 @@
 		52CABF6E1BF13171008670B9 /* TBShotBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */; };
 		52CE25A41C46D50B00691BDF /* FirstBossGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE25A31C46D50B00691BDF /* FirstBossGameScene.swift */; };
 		52D857501C3218AC00E8D6BD /* TBMegaLaserNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8574F1C3218AC00E8D6BD /* TBMegaLaserNode.swift */; };
+		52E384561C725A0200C1B399 /* tutoScreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E384551C725A0200C1B399 /* tutoScreen.atlas */; };
 		52E6316F1C5AB07C00779667 /* selectBossStage.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E6316E1C5AB07C00779667 /* selectBossStage.atlas */; };
 		52E75DBC1BDEAC3200F91E00 /* TBMoedasNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */; };
 		52E75DBE1BDEAC5000F91E00 /* PlayerDefence.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */; };
@@ -523,6 +524,7 @@
 		52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotBotNode.swift; sourceTree = "<group>"; };
 		52CE25A31C46D50B00691BDF /* FirstBossGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstBossGameScene.swift; sourceTree = "<group>"; };
 		52D8574F1C3218AC00E8D6BD /* TBMegaLaserNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMegaLaserNode.swift; sourceTree = "<group>"; };
+		52E384551C725A0200C1B399 /* tutoScreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tutoScreen.atlas; sourceTree = "<group>"; };
 		52E6316E1C5AB07C00779667 /* selectBossStage.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = selectBossStage.atlas; sourceTree = "<group>"; };
 		52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMoedasNode.swift; sourceTree = "<group>"; };
 		52E75DBD1BDEAC5000F91E00 /* PlayerDefence.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerDefence.atlas; sourceTree = "<group>"; };
@@ -1090,6 +1092,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				52E384551C725A0200C1B399 /* tutoScreen.atlas */,
 				AF13F6731C6139AF00E2F037 /* postOff.atlas */,
 				52E6316E1C5AB07C00779667 /* selectBossStage.atlas */,
 				52BA06EA1C5A89BF00B15193 /* bossMegaLaserUp.atlas */,
@@ -1320,6 +1323,7 @@
 				009221681BF12EFE007C7DDC /* cabos-1.png in Resources */,
 				008349B51BFFA1BE00012C22 /* contador-2.png in Resources */,
 				AF13F6741C6139AF00E2F037 /* postOff.atlas in Resources */,
+				52E384561C725A0200C1B399 /* tutoScreen.atlas in Resources */,
 				009221531BF11863007C7DDC /* enfeiteCima-5.png in Resources */,
 				001E55CB1BD8221600B80833 /* machine-01.png in Resources */,
 				52BE72D01C52B26B00431CAF /* megaLaser1.atlas in Resources */,

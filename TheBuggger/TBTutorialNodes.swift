@@ -17,6 +17,7 @@ class TBTutorialNodes: NSObject {
     static var slideUpTutorialAction:SKAction?
     static var attackTutorialAction:SKAction?
     static var blockTutorialAction:SKAction?
+    static var backScreenTutorialAction:SKAction?
     
     static func createTapTutorialAction(){
         let coinsArray = TBUtils.getSprites(SKTextureAtlas(named: "TapTutorial"), nomeImagens: "tap")
@@ -50,4 +51,10 @@ class TBTutorialNodes: NSObject {
         let coinsArray = TBUtils.getSprites(SKTextureAtlas(named:"SlideUpTutorial"), nomeImagens: "slideup")
         TBTutorialNodes.slideUpTutorialAction = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.5);
     }
+    
+    static func createBackScreenTutorialAction(){
+        let coinsArray = TBUtils.getSprites(SKTextureAtlas(named:"tutoScreen"), nomeImagens: "tutorialscreen")
+        TBTutorialNodes.backScreenTutorialAction = SKAction.animateWithTextures(coinsArray, timePerFrame: 0.1);
+    }
+    
 }

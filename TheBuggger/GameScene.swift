@@ -244,6 +244,12 @@ class GameScene:GameSceneBase {
             }
         })
         
+        self.enumerateChildNodesWithName("backScreenTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+                node.runAction(SKAction.repeatActionForever(TBTutorialNodes.backScreenTutorialAction!))
+        })
+        
         self.enumerateChildNodesWithName("secondGestureTutorial", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             //            let spriteNode

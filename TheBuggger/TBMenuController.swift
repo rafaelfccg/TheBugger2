@@ -73,6 +73,7 @@ class TBMenuViewController :UIViewController {
         TBMegaLaserNode.createSKActionAnimation()
         TBBallFirstBossNode.createSKActionAnimation()
         TBReviveNode.createSKActionAnimation()
+        TBTutorialNodes.createBackScreenTutorialAction()
         
         self.theBuggerBoard.animationImages = [UIImage(named:"logo_1")!,
             UIImage(named: "logo_2")!,
