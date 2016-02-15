@@ -104,9 +104,9 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
         // Tela de pontuacao com botao pra mostrar a historia
     }
     
-    override func restartLevel()
+    override func restartLevel(reviving: Bool, heroPosition: CGPoint)
     {
-        super.restartLevel()
+        super.restartLevel(reviving, heroPosition: heroPosition)
         self.bossIsRunnning = false
         self.firstBoss.removeFromParent()
         setBoss()
@@ -199,7 +199,18 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
                     boss.decreaseLife()
                 }
             }
-        }else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.BOSSONE_NODE) {
+        } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
+            (bodyB.categoryBitMask == GameScene.MONSTER_NODE ||
+                bodyB.categoryBitMask == GameScene.ESPINHOS_NODE ||
+                bodyB.categoryBitMask == GameScene.TIRO_NODE
+                || bodyB.categoryBitMask == GameScene.METALBALL_NODE)){   // Coloquei as colisoes perigosas aqui para mandar o FirstBossGameScene como sender e nao o GameSceneBase
+                    
+                    if(bodyA.node?.name == hero.standJoint?.name){
+                        bodyA = hero.physicsBody!
+                    }
+                    hero.dangerCollision(bodyB, sender: self)
+                    
+        } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.BOSSONE_NODE) {
             if let boss = bodyA.node as? TBFirstBossNode {
                 if let metalBall = bodyB.node as? TBBallFirstBossNode {
                     boss.decreaseLifeMetalBall()

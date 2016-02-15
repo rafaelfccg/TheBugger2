@@ -370,20 +370,23 @@ class TBPlayerNode: SKSpriteNode {
         }
         
     }
-    func resetHero(){
+    func resetHero(reviving: Bool){
         self.actionState = ActionState.Idle
         self.powerUP = TBPowerUpsStates.Normal
         self.state = .Initial
         self.physicsBody?.pinned = false
-        self.zRotation = 0
-        self.score = 0
-        self.qtdMoedas = 0
-        self.monstersKilled = 0
         self.removeStandingNode()
         self.addStandingJoint()
         self.addAttackJoint()
         self.addPlayerReference()
         self.runStandingAction()
+        self.zRotation = 0
+        
+        if(!reviving) {
+            self.score = 0
+            self.qtdMoedas = 0
+            self.monstersKilled = 0
+        }
     }
     func activatePowerUp(type:TBPowerUpsStates){
         switch type{
@@ -415,7 +418,7 @@ class TBPlayerNode: SKSpriteNode {
         
     }
     
-    func dangerCollision(bodyB:SKPhysicsBody, sender:GameSceneBase){
+    func dangerCollision(bodyB:SKPhysicsBody, sender:SKScene){
         
         if(self.powerUP == TBPowerUpsStates.Frenezy){
             if let gbotmonste = bodyB.node as? TBMonsterProtocol{
@@ -464,7 +467,9 @@ class TBPlayerNode: SKSpriteNode {
             
             bodyB.collisionBitMask = GameScene.CHAO_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_QUICK_NODE
             self.physicsBody?.pinned = true
-            sender.stopParalax = true
+            if let gameSceneBaseSender = sender as? GameSceneBase {
+                gameSceneBaseSender.stopParalax = true
+            }
             // para a animação do ataque caso ele morra
             
             if((self.actionForKey("attack")) != nil) {
@@ -474,12 +479,17 @@ class TBPlayerNode: SKSpriteNode {
                 self.actionState = .Dying
                 removeActionWalk()
                 self.runAction(SKAction.group([(SKAction.sequence([TBPlayerNode.deathAnimation!, SKAction.runBlock({
-                    self.removeAttackJoint()
-                    self.removePlayerReference()
-                    self.removeFromParent()
+                self.removeAttackJoint()
+                self.removePlayerReference()
+                self.removeFromParent()
                     
-                    sender.restartLevel()
-                    sender.checkAd()
+                if let gameSceneSender = sender as? GameScene {
+                    gameSceneSender.restartLevel(true, heroPosition: gameSceneSender.lastRevivePoint!.position)
+                }
+                if let gameSceneBaseSender = sender as? GameSceneBase {
+                    //gameSceneBaseSender.restartLevel(false, heroPosition: CGPointMake(0, 0))
+                    gameSceneBaseSender.checkAd()
+                }
                     
                 })])), SKAction.playSoundFileNamed("EXPLOSION_HERO", waitForCompletion: false)]), withKey: "die")
                 

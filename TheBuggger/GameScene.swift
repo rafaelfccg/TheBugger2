@@ -11,7 +11,7 @@ import AVFoundation
 
 
 class GameScene:GameSceneBase {
-    
+    var lastRevivePoint:SKNode?
 
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -53,16 +53,19 @@ class GameScene:GameSceneBase {
     }
     
     
-    override func restartLevel()
+    override func restartLevel(reviving: Bool, heroPosition: CGPoint)
     {
-        super.restartLevel()
-        let dies = ["Porcentagem": Int(stagePercentage!), "Stage": levelSelected!]
-        Flurry.logEvent("Died", withParameters: dies)
+        super.restartLevel(reviving, heroPosition: heroPosition)
         
-        spawnMoedas()
-        spawnMonstros()
-        spawnPowerUp()
-        spawnRevive()
+        if(!reviving) {
+            let dies = ["Porcentagem": Int(stagePercentage!), "Stage": levelSelected!]
+            Flurry.logEvent("Died", withParameters: dies)
+            
+            spawnMoedas()
+            spawnMonstros()
+            spawnPowerUp()
+            spawnRevive()
+        }
     }
     
     func spawnMonstros(){
@@ -145,6 +148,18 @@ class GameScene:GameSceneBase {
         }
     }
     
+    func reviving() {     // Quando o player escolher por reviver ao morrer
+        print("entrou revive")
+        self.stateCamera = 0
+        self.stopParalax = false
+        self.hero.position = (self.lastRevivePoint?.position)!
+        print(self.hero.position)
+        self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 100)
+        print(self.camera?.position)
+        self.hero.jumpState = JumpState.CanJump
+        self.hero.actionState = ActionState.Idle
+    }
+    
     func spawnRevive()
     {
         self.enumerateChildNodesWithName(TBReviveNode.name , usingBlock: {(node, ponter)->Void in
@@ -152,7 +167,7 @@ class GameScene:GameSceneBase {
             let reviveNode = TBReviveNode(size: node.frame.size)
             reviveNode.position = node.position
             reviveNode.name = self.removable
-            reviveNode.zPosition = 100
+            reviveNode.zPosition = 5
             self.addChild(reviveNode)
         })
         
@@ -358,8 +373,22 @@ class GameScene:GameSceneBase {
             stateCamera = -1
             stopParalax = true
         }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
+            (bodyB.categoryBitMask == GameScene.MONSTER_NODE ||
+                bodyB.categoryBitMask == GameScene.ESPINHOS_NODE ||
+                bodyB.categoryBitMask == GameScene.TIRO_NODE
+                || bodyB.categoryBitMask == GameScene.METALBALL_NODE)){     // Coloquei as colisoes perigosas aqui para mandar o GameScene como sender e nao o GameSceneBase
+                    
+                    if(bodyA.node?.name == hero.standJoint?.name){
+                        bodyA = hero.physicsBody!
+                    }
+                    hero.dangerCollision(bodyB, sender: self)
+                    
+        }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.REVIVE_NODE)
         {
+            print(bodyB.node?.position)
+            self.lastRevivePoint = bodyB.node
             if let reviveNode = bodyB.node as? TBReviveNode {
                 if(!reviveNode.picked)
                 {

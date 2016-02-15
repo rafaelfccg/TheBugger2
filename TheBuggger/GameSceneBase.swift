@@ -285,29 +285,36 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         //implementada pela subclass
     }
     
-    func restartLevel()
+    func restartLevel(reviving: Bool, heroPosition: CGPoint)
     {
+        if(!reviving) {
+            self.enumerateChildNodesWithName(self.removable, usingBlock: {
+                (node, ponter)->Void in
+                node.removeFromParent()
+            })
+            
+            camera?.enumerateChildNodesWithName(self.removable, usingBlock: {
+                (node, ponter)->Void in
+                node.removeFromParent()
+            })
+            
+            // removendo tb o monstro que atira
+            self.enumerateChildNodesWithName("shot", usingBlock: {
+                (node, ponter)->Void in
+                
+                node.removeFromParent()
+                
+            })
+            
+            updateNumberOfTries()
+        }
+        
         self.numberOfDeath++
         self.stopParalax = false
         stateCamera = 0
         background1?.texture = TBUtils.getNextBackground()
         background2?.texture = TBUtils.getNextBackground()
-        self.enumerateChildNodesWithName(self.removable, usingBlock: {
-            (node, ponter)->Void in
-            node.removeFromParent()
-        })
         
-        camera?.enumerateChildNodesWithName(self.removable, usingBlock: {
-            (node, ponter)->Void in
-            node.removeFromParent()
-        })
-        // removendo tb o monstro que atira
-        self.enumerateChildNodesWithName("shot", usingBlock: {
-            (node, ponter)->Void in
-            
-            node.removeFromParent()
-            
-        })
         self.enumerateChildNodesWithName("changeSpeedNode", usingBlock: {
             (node, ponter)->Void in
             if let nodeI = node as? TBChangeSpeedGround{
@@ -318,9 +325,9 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         
         let method = hero.method
         
-        setHeroPosition()
+        setHeroPosition(reviving, heroPosition: heroPosition)
         
-        hero.resetHero()
+        hero.resetHero(reviving)
         lastFrameTime = 0
         
         self.addChild(hero)
@@ -333,8 +340,6 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         if(tapToStartLabel?.parent == nil){
             self.camera!.addChild(tapToStartLabel!)
         }
-        
-        updateNumberOfTries()
     }
     
     func backtToMenu(){
@@ -343,12 +348,16 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
         delegateChanger?.selectLevel("SelectLevelScene")
     }
     
-    func setHeroPosition(){
+    func setHeroPosition(reviving: Bool, heroPosition: CGPoint){
         let spanw = self.childNodeWithName("SpawnHero")
-        
-        self.hero.position = (spanw!.position)
+        if(reviving) {
+            self.hero.position = (heroPosition)
+            firstHeroPosition = spanw!.position
+        } else {
+            self.hero.position = (spanw!.position)
+            firstHeroPosition = hero.position
+        }
         self.hero.realSpeed = 0
-        firstHeroPosition = hero.position
         hero.updateVelocity()
         self.camera?.position = CGPointMake(hero.position.x, (camera?.position.y)! - 100)
         self.hero.zPosition = 100
@@ -367,7 +376,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     
     func setUpLevel(){
         
-        setHeroPosition()
+        setHeroPosition(false, heroPosition: CGPointMake(0,0))
         
         //do something with the each child type
         
@@ -674,17 +683,6 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
                     }
                 }
                 
-        }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
-            (bodyB.categoryBitMask == GameScene.MONSTER_NODE ||
-                bodyB.categoryBitMask == GameScene.ESPINHOS_NODE ||
-                bodyB.categoryBitMask == GameScene.TIRO_NODE
-                || bodyB.categoryBitMask == GameScene.METALBALL_NODE)){
-                    
-                    if(bodyA.node?.name == hero.standJoint?.name){
-                        bodyA = hero.physicsBody!
-                    }
-                    hero.dangerCollision(bodyB, sender: self)
-                    
         }else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
             (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
                 bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
