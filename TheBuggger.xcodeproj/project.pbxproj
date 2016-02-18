@@ -190,6 +190,7 @@
 		00FD2E921C75FC3000F768A8 /* Level6Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00FD2E8B1C75FC3000F768A8 /* Level6Scene.sks */; };
 		00FD2E931C75FC3000F768A8 /* Level7Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00FD2E8C1C75FC3000F768A8 /* Level7Scene.sks */; };
 		00FD2E951C75FC3800F768A8 /* SelectLevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00FD2E941C75FC3800F768A8 /* SelectLevelScene.sks */; };
+		00FD2E971C75FE7300F768A8 /* launchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FD2E961C75FE7300F768A8 /* launchscreen.png */; };
 		00FDF6BC1C4D5642000DA04B /* GameSceneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FDF6BB1C4D5642000DA04B /* GameSceneBase.swift */; };
 		00FDF6BE1C4D6550000DA04B /* TBSimpleBlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FDF6BD1C4D6550000DA04B /* TBSimpleBlockNode.swift */; };
 		521269441BDACCE100B5FB2E /* edge1.png in Resources */ = {isa = PBXBuildFile; fileRef = 521269431BDACCE100B5FB2E /* edge1.png */; };
@@ -513,6 +514,7 @@
 		00FD2E8B1C75FC3000F768A8 /* Level6Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level6Scene.sks; sourceTree = "<group>"; };
 		00FD2E8C1C75FC3000F768A8 /* Level7Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level7Scene.sks; sourceTree = "<group>"; };
 		00FD2E941C75FC3800F768A8 /* SelectLevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectLevelScene.sks; sourceTree = "<group>"; };
+		00FD2E961C75FE7300F768A8 /* launchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen.png; sourceTree = "<group>"; };
 		00FDF6BB1C4D5642000DA04B /* GameSceneBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneBase.swift; sourceTree = "<group>"; };
 		00FDF6BD1C4D6550000DA04B /* TBSimpleBlockNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSimpleBlockNode.swift; sourceTree = "<group>"; };
 		521269431BDACCE100B5FB2E /* edge1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edge1.png; sourceTree = "<group>"; };
@@ -1179,6 +1181,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				00FD2E961C75FE7300F768A8 /* launchscreen.png */,
 				52E384551C725A0200C1B399 /* tutoScreen.atlas */,
 				AF13F6731C6139AF00E2F037 /* postOff.atlas */,
 				52E6316E1C5AB07C00779667 /* selectBossStage.atlas */,
@@ -1540,6 +1543,7 @@
 				0092215B1BF1187E007C7DDC /* enfeiteBaixo-4.png in Resources */,
 				008349A51BFF98EC00012C22 /* SPECIAL_COIN.mp3 in Resources */,
 				0002CE921BF5171000FDE20A /* set-3.png in Resources */,
+				00FD2E971C75FE7300F768A8 /* launchscreen.png in Resources */,
 				52714B731BDE787C006200A1 /* metalblocksm-1.png in Resources */,
 				0092215F1BF11AAE007C7DDC /* efeitoCima.atlas in Resources */,
 				00200B631C0634AB0094FFBD /* GreenLeds.atlas in Resources */,
