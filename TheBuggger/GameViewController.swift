@@ -14,6 +14,8 @@ import AVFoundation
 
 class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitialDelegate{
     
+    @IBOutlet weak var efeitoBaixo: UIImageView!
+    @IBOutlet weak var efeitoCima: UIImageView!
     var gameMethod:Int?
     var level:String?
     var interstitial:GADInterstitial?
@@ -27,7 +29,41 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         self.navigationController?.navigationBar.hidden = true
         self.interstitial = createAndLoadInterstitial()
         selectLevel(self.level!)
+        self.efeitoCima.animationImages = [UIImage(named:"enfeiteCima-1")!,
+            UIImage(named: "enfeiteCima-2")!,
+            UIImage(named: "enfeiteCima-3")!,
+            UIImage(named: "enfeiteCima-4")!,
+            UIImage(named: "enfeiteCima-5")!,
+            UIImage(named: "enfeiteCima-4")!,
+            UIImage(named: "enfeiteCima-3")!,
+            UIImage(named: "enfeiteCima-2")!,]
+        self.efeitoCima.animationRepeatCount = -1
+        self.efeitoCima.animationDuration   = 0.9
+        self.efeitoCima.startAnimating()
         
+        
+        self.efeitoBaixo.animationImages = [UIImage(named:"enfeiteBaixo-1")!,
+            UIImage(named: "enfeiteBaixo-2")!,
+            UIImage(named: "enfeiteBaixo-3")!,
+            UIImage(named: "enfeiteBaixo-4")!,
+            UIImage(named: "enfeiteBaixo-3")!,
+            UIImage(named: "enfeiteBaixo-2")!,]
+        self.efeitoBaixo.animationRepeatCount = -1
+        self.efeitoBaixo.animationDuration   = 0.9
+        self.efeitoBaixo.startAnimating()
+
+    }
+    func startAnimations(){
+        self.efeitoBaixo.hidden = false
+        self.efeitoCima.hidden  = false
+        self.efeitoCima.startAnimating()
+        self.efeitoBaixo.startAnimating()
+    }
+    func stopAnimations(){
+        self.efeitoBaixo.hidden = true
+        self.efeitoCima.hidden  = true
+        self.efeitoCima.stopAnimating()
+        self.efeitoBaixo.stopAnimating()
     }
     
     func gameOver(){
@@ -64,17 +100,11 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         let backgroundMusicURL = NSBundle.mainBundle().URLForResource("introMenu", withExtension: ".wav")
         playSound(&backgroundMusicPlayer,backgroundMusicURL: backgroundMusicURL!)
         if let scene = SelectLevelScene(fileNamed: nomeSKS) {
-            // Configure the view.
-            //scene.delegateChanger = self
             scene.delegateChanger = self
-            
             let skView = self.view as! SKView
-            //skView.showsFPS = true
             skView.ignoresSiblingOrder = true
-            
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .AspectFill
-        
             skView.presentScene(scene)
         }
     }
@@ -83,27 +113,36 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
     {
         clearScene()
         if let scene = GameScene(fileNamed: nomeSKS) {
-           setScene(scene, withMethod: withMethod, andLevel: andLevel)
+            
+            setScene(scene, withMethod: withMethod, andLevel: andLevel)
+
         }
     }
+    func runStory(story:TBStoriesScene, withMethod:Int, andLevel:Int){
+        clearScene()
+        story.prepFirstScene()
+        setScene(story, withMethod: withMethod, andLevel: andLevel)
+    }
     
-    func setScene(scene:GameSceneBase, withMethod:Int, andLevel:Int){
+    func setScene(var scene:TBSceneProtocol, withMethod:Int, andLevel:Int){
         self.backgroundMusicPlayer?.stop()
+        
         scene.delegateChanger = self
         scene.levelSelected = andLevel
+        scene.isMethodOne = withMethod
         
         let skView = self.view as! SKView
         //           skView.showsFPS = true
         //skView.showsNodeCount = true
 //        skView.showsPhysics = true
-        NSNotificationCenter.defaultCenter().addObserver(scene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
-        skView.ignoresSiblingOrder = true
-        
-        scene.scaleMode = .AspectFill
-        
-        scene.isMethodOne = withMethod
-        
-        skView.presentScene(scene)
+        if let skScene = scene as? SKScene {
+            NSNotificationCenter.defaultCenter().addObserver(skScene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
+            skView.ignoresSiblingOrder = true
+            
+            skScene.scaleMode = .AspectFill
+            
+            skView.presentScene(skScene)
+        }
     }
     func mudaSceneBoss(nomeSKS: String, withMethod:Int, andLevel:Int)
     {

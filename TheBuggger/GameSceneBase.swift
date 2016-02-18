@@ -18,7 +18,7 @@ import AVFoundation
 //    func mudaSceneBoss(nomeSKS: String, withMethod:Int, andLevel:Int)
 //}
 
-class GameSceneBase: SKScene, SKPhysicsContactDelegate {
+class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
     
     var levelSelected:Int?
     
@@ -106,6 +106,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.deathSinceLastAd  = 0
+        delegateChanger?.stopAnimations()
         
         if let statisticsLogs = fetchLogsByLevel(levelSelected!)
         {

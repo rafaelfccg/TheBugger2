@@ -13,6 +13,10 @@ import AVFoundation
 class TBUtils {
     
     static var paralaxAtlas = SKTextureAtlas(named:"Paralax2")
+    static let spaceBotTablet = 0.03645
+    static let spaceBotPhone = 0.060
+    static let spaceTopTablet = 0.0375
+    static let spaceTopPhone = 0.05
     
     static func getSprites(textureAtlas: SKTextureAtlas, nomeImagens: String) -> Array<SKTexture>
     {
@@ -69,8 +73,47 @@ func playSound(inout backgroundMusicPlayer:AVAudioPlayer?,backgroundMusicURL:NSU
         if(!backgroundMusicPlayer!.playing){
             backgroundMusicPlayer?.play()
         }
-        
     }
-
-
 }
+
+func addBottonEffects(inout camera:SKCameraNode, inout efeitoBaixo:SKNode, scene:SKScene){
+    efeitoBaixo.removeFromParent();
+    camera.addChild(efeitoBaixo);
+    if max(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height) < 568 {
+        
+        
+        efeitoBaixo.position = CGPointMake(0 , (-scene.size.height/2) + CGFloat(0.145) * scene.size.height )
+    }
+    
+    switch UIDevice.currentDevice().userInterfaceIdiom {
+    case .Phone:
+        efeitoBaixo.position = CGPointMake(0 , (-scene.view!.frame.size.height/2) + CGFloat(TBUtils.spaceBotPhone) * scene.view!.frame.size.height )
+        break
+    default :
+       efeitoBaixo.position = CGPointMake(0 , (-scene.view!.frame.size.height/2) + CGFloat(TBUtils.spaceBotTablet) * scene.view!.frame.size.height )
+        break
+    }
+    
+}
+func addTopEffects(inout camera:SKCameraNode, inout efeitoBaixo:SKNode, scene:SKScene){
+    efeitoBaixo.removeFromParent();
+    camera.addChild(efeitoBaixo);
+    if max(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height) < 568 {
+        
+        
+        efeitoBaixo.position = CGPointMake(0 , (scene.size.height/2) - CGFloat(0.145) * scene.size.height )
+    }
+    
+    switch UIDevice.currentDevice().userInterfaceIdiom {
+    case .Phone:
+        efeitoBaixo.position = CGPointMake(0 , (scene.view!.frame.size.height) - CGFloat(TBUtils.spaceTopPhone) * scene.view!.frame.size.height )
+        break
+    default :
+       
+        efeitoBaixo.position = CGPointMake(0 , (scene.view!.frame.size.height/2) - CGFloat(TBUtils.spaceTopTablet) * scene.view!.frame.size.height )
+        break
+    }
+    
+}
+
+

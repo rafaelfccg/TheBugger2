@@ -15,4 +15,7 @@ protocol SceneChangesDelegate{
     func selectLevel(nomeSKS: String)
     func gameOver()
     func mudaSceneBoss(nomeSKS: String, withMethod:Int, andLevel:Int)
+    func startAnimations()
+    func stopAnimations()
+    func runStory(story:TBStoriesScene, withMethod:Int, andLevel:Int)
 }

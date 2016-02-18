@@ -37,7 +37,7 @@ class SelectLevelScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         
-        //self.size = self.frame.size
+        self.delegateChanger?.startAnimations()
         let camera = SKCameraNode();
         self.addChild(camera)
         
@@ -57,32 +57,11 @@ class SelectLevelScene: SKScene {
         minX = startCameraNode!.position.x
         maxX = startCameraNode!.position.x
         
-        let efeitoBaixo = self.childNodeWithName("efeitoBaixo")
-                //let offset = CGRectGetMinY(self.frame)
-        
-        if max(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height) < 568 {
-            efeitoBaixo?.removeFromParent();
-            camera?.addChild(efeitoBaixo!);
-            
-            efeitoBaixo?.position = CGPointMake(0 , (-self.size.height/2) + CGFloat(0.145) * self.size.height )
-        }
-        
-        switch UIDevice.currentDevice().userInterfaceIdiom {
-        case .Phone:
-            
-            break
-        default :
-            efeitoBaixo?.removeFromParent();
-            camera?.addChild(efeitoBaixo!);
-
-            efeitoBaixo?.position = CGPointMake(0 , (-self.view!.frame.size.height/2) + CGFloat(self.spaceBot) * self.view!.frame.size.height )
-            break
-        }
-        
         self.enumerateChildNodesWithName("levelLabel", usingBlock: {
             (node:SKNode?, stop:UnsafeMutablePointer <ObjCBool>) in
                 node?.zPosition = 5
         })
+
         let defaults = NSUserDefaults.standardUserDefaults()
         let inLevel = defaults.integerForKey("level")
         let openLevel = SKTexture(imageNamed: "estagio-1")
@@ -162,6 +141,8 @@ class SelectLevelScene: SKScene {
                         preLoadSprites(self.levelsAtlas[levelInt!]!)
                         if (levelInt == 7 ){
                             self.delegateChanger?.mudaSceneBoss("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
+                        }else if levelInt == 1 {
+                         self.delegateChanger?.runStory(TBFirstStory(fileNamed: "TBFirstStory")!, withMethod: method, andLevel: levelInt!)
                         }else {
                             self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                         }
