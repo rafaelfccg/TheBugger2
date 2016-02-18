@@ -58,15 +58,11 @@ class GameScene:GameSceneBase {
         super.restartLevel()
         let dies = ["Porcentagem": Int(stagePercentage!), "Stage": levelSelected!]
         Flurry.logEvent("Died", withParameters: dies)
-
-        self.enumerateChildNodesWithName("firstBoss", usingBlock: { // adicionei aqui sem o removable, pois preciso alterar a velocidade dele quando o jogo iniciar
-            (node, ponter)->Void in
-            node.removeFromParent()
-        })
         
         spawnMoedas()
         spawnMonstros()
         spawnPowerUp()
+        spawnRevive()
     }
     
     func spawnMonstros(){
@@ -110,15 +106,6 @@ class GameScene:GameSceneBase {
             self.addChild(groundBoti)
         })
         
-        self.enumerateChildNodesWithName(TBFirstBossNode.name , usingBlock: {(node, ponter)->Void in
-            
-            let groundBoti = TBFirstBossNode()
-            groundBoti.name = "firstBoss"
-            groundBoti.position = node.position
-            groundBoti.zPosition = 100
-            self.addChild(groundBoti)
-        })
-        
     }
     
     func spawnPowerUp(){
@@ -156,6 +143,19 @@ class GameScene:GameSceneBase {
                 bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
             }
         }
+    }
+    
+    func spawnRevive()
+    {
+        self.enumerateChildNodesWithName(TBReviveNode.name , usingBlock: {(node, ponter)->Void in
+            
+            let reviveNode = TBReviveNode(size: node.frame.size)
+            reviveNode.position = node.position
+            reviveNode.name = self.removable
+            reviveNode.zPosition = 100
+            self.addChild(reviveNode)
+        })
+        
     }
     
     override func setUpLevel(){
@@ -244,6 +244,12 @@ class GameScene:GameSceneBase {
             }
         })
         
+        self.enumerateChildNodesWithName("backScreenTutorial", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+                node.runAction(SKAction.repeatActionForever(TBTutorialNodes.backScreenTutorialAction!))
+        })
+        
         self.enumerateChildNodesWithName("secondGestureTutorial", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             //            let spriteNode
@@ -318,6 +324,7 @@ class GameScene:GameSceneBase {
         })
         
         spawnPowerUp()
+        spawnRevive()
         
         finalNode = childNodeWithName(TBFinalNode.name)
         finalBackNode = self.childNodeWithName(TBFinalNode.nameBack)
@@ -352,19 +359,20 @@ class GameScene:GameSceneBase {
             bodyB = bodyA
             bodyA = aux
         }
-        
-        
-        if(bodyB.categoryBitMask == GameScene.BOSSONE_NODE && bodyA.categoryBitMask == GameScene.JOINT_ATTACK_NODE) {
-            if(hero.actionState == ActionState.Attacking) {
-                if let boss = bodyB.node as? TBFirstBossNode {
-                    boss.decreaseLife()
-                }
-            }
-        }
-        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
+        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.STOP_CAMERA_NODE )){
             //muda o estado da camera para a função update não alterar a posição dela
             stateCamera = -1
             stopParalax = true
+        }
+        else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.REVIVE_NODE)
+        {
+            if let reviveNode = bodyB.node as? TBReviveNode {
+                if(!reviveNode.picked)
+                {
+                    reviveNode.picked = true
+                    reviveNode.runAction(TBReviveNode.animation!)
+                }
+            }
         }
         else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE  && bodyB.categoryBitMask == (GameScene.END_LEVEL_NODE )){
             //terminou
@@ -374,7 +382,7 @@ class GameScene:GameSceneBase {
                 
                 //Salvando os dados com persistencia
                 saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
-                
+                Flurry.logEvent("CompletedLevel", withParameters: ["Stage": levelSelected!])
                 hero.realSpeed = 0
                 
                 let action = SKAction.sequence([TBFinalNode.animation!, SKAction.runBlock({
@@ -427,47 +435,6 @@ class GameScene:GameSceneBase {
                 finalNode!.runAction(SKAction.sequence([SKAction.waitForDuration(1.5) ,groupFinal]))
                 
             }
-        } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.BOSSONE_NODE) {
-            if let boss = bodyA.node as? TBFirstBossNode {
-                if let metalBall = bodyB.node as? TBBallFirstBossNode {
-                    boss.decreaseLifeMetalBall()
-                    if(metalBall.ataqueDuploTriplo) {
-                        metalBall.bossDamagedDontBackAttack()
-                    } else {
-                        metalBall.bossDamaged()
-                    }
-                }
-            }
-        } else if(bodyB.categoryBitMask == GameScene.METALBALL_NODE && bodyA.categoryBitMask == GameScene.REFERENCIA_NODE) {
-            if let metalBall = bodyB.node as? TBBallFirstBossNode {
-                metalBall.ballMissed()
-            }
-        }
-    }
-    override func didEndContact(contact: SKPhysicsContact) {
-        var bodyA = contact.bodyA
-        var bodyB = contact.bodyB
-        //var flagTrocou = false
-        
-        //ordena para que bodyA tenha sempre a categoria "menor"
-        if(bodyA.categoryBitMask > bodyB.categoryBitMask){
-            let aux = bodyB
-            bodyB = bodyA
-            bodyA = aux
-            //flagTrocou = true
-        }
-        if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE) {
-            self.hero.quickFloorCollisionOff(bodyB, sender: self)
-        } else if(bodyA.categoryBitMask == GameScene.PLAYER_NODE && bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE) {
-            
-        }else if bodyA.categoryBitMask == GameScene.PLAYER_NODE &&
-            (bodyB.categoryBitMask == GameScene.CHAO_SLOW_NODE ||
-                bodyB.categoryBitMask == GameScene.CHAO_QUICK_NODE ||
-                bodyB.categoryBitMask ==  GameScene.TOCO_NODE ||
-                bodyB.categoryBitMask == GameScene.CHAO_NODE){
-                    if (self.hero.jumpState == JumpState.CanJump){
-                        self.hero.jumpState == JumpState.FirstJump
-                    }
         }
     }
 }

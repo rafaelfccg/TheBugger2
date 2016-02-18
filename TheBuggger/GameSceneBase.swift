@@ -102,6 +102,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
     static let REFERENCIA_NODE:UInt32       = 0b0000100000000000000
     static let BOSSONE_NODE:UInt32          = 0b0001000000000000000
     static let METALBALL_NODE:UInt32        = 0b0010000000000000000
+    static let REVIVE_NODE:UInt32           = 0b0100000000000000000
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -662,8 +663,6 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
             bodyA = aux
             flagTrocou = true
         }
-        
-        
         if bodyA.categoryBitMask == GameScene.PLAYER_NODE  &&
             bodyB.categoryBitMask == GameScene.POWERUP_NODE {
                 

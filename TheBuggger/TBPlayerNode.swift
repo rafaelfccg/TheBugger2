@@ -171,8 +171,8 @@ class TBPlayerNode: SKSpriteNode {
         
         self.physicsBody?.categoryBitMask = GameScene.PLAYER_NODE
         self.physicsBody!.collisionBitMask = GameScene.BOSSONE_NODE | GameScene.CHAO_NODE | GameScene.MONSTER_NODE | GameScene.ESPINHOS_NODE | GameScene.TOCO_NODE
-        
-        self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE | GameScene.METALBALL_NODE
+    
+        self.physicsBody!.contactTestBitMask = GameScene.MONSTER_NODE | GameScene.TIRO_NODE | GameScene.ESPINHOS_NODE | GameScene.POWERUP_NODE | GameScene.CHAO_QUICK_NODE | GameScene.CHAO_SLOW_NODE | GameScene.CHAO_NODE | GameScene.TOCO_NODE | GameScene.METALBALL_NODE | GameScene.REVIVE_NODE
         
         createAttackJoint()
         addAttackJoint()
@@ -200,7 +200,7 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func addPlayerReference() {   // Adicionando a referencia
-        self.reference?.position = CGPointMake(-250 , 0)
+        self.reference?.position = CGPointMake(-750 , 0)
         self.reference?.zRotation = 0
         self.addChild(self.reference!)
     }

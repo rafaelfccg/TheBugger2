@@ -99,7 +99,9 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     }
     
     func bossDead() {
-        
+        self.hero.realSpeed = 0
+        // Animacao do heroi recebendo o poder do boss
+        // Tela de pontuacao com botao pra mostrar a historia
     }
     
     override func restartLevel()
@@ -126,11 +128,11 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     }
     override func setupHUD() {
         super.setupHUD()
-        percentage = SKLabelNode(text: "50")
+        percentage = SKLabelNode(text: "100")
         percentage?.fontName = "Squares Bold"
         self.camera!.addChild(percentage!)
         percentage?.zPosition = self.HUDz
-        percentage?.fontSize = 40
+        percentage?.fontSize = 35
         percentage?.position = CGPointMake(0, contadorNode!.position.y - 10)
         percentage!.name = "hud"
     }

@@ -12,7 +12,7 @@ import SpriteKit
 class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     static let name = "SpawnFirstBoss"
     let defaultSpeed = 430    // Mesma velocidade do heroi
-    var life = 50
+    var life = 100
     let attacksToLowEnergy = 8     // Numero de ataques necessarios pro boss descarregar
     var lastAttack = -1        // Variavel auxiliar para nao repetir o mesmo attack duas vezes
     var attacksHappened = 0
@@ -323,10 +323,11 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func decreaseLifeMetalBall() { // Diminui a vida do boss quando receber dano da metalBall
+        print("Decrease metal ball")
         if(!self.isDead) {
             runAction(TBFirstBossNode.bossHittedByBallAnimation!)
-            if(self.life >= 5) {      // Para nao mostrar a lifebar errada
-                self.life -= 5
+            if(self.life >= 10) {      // Para nao mostrar a lifebar errada
+                self.life -= 10
                 self.checkBossMode()
             } else {
                 self.life = 0
@@ -351,7 +352,7 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             if(!self.stateHittedOff) {
                 runAction(SKAction.sequence([SKAction.runBlock({self.stateHittedOff = true}), TBFirstBossNode.hittedOffAnimation!, SKAction.runBlock({self.stateHittedOff = false})]))
             }
-            self.life--
+            self.life -= 2
             print(self.life)
         }
         if(self.life <= 0) {
@@ -394,10 +395,10 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func checkBossMode() {
-        if(self.life >= 21 && self.life <= 35) {
+        if(self.life >= 42 && self.life <= 70) {
             self.bossMode = "Hard"
             print(self.bossMode)
-        } else if(self.life < 20) {
+        } else if(self.life < 40) {
             self.bossMode = "Insane"
             print(self.bossMode)
 
