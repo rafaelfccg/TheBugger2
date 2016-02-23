@@ -108,6 +108,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
         /* Setup your scene here */
         self.deathSinceLastAd  = 0
         delegateChanger?.stopAnimations()
+
         
         if let statisticsLogs = fetchLogsByLevel(levelSelected!)
         {
@@ -176,7 +177,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
         tapToStartLabel?.zPosition  = self.HUDz
         tapToStartLabel?.fontColor = UIColor(red: 0.16, green: 0.95, blue: 0.835, alpha: 1)
         self.camera!.addChild(tapToStartLabel!)
-        
+        self.listener = self.hero
         if(backgroundMusicPlayer == nil){
             
             let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
