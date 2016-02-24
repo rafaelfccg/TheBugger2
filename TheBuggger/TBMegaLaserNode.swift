@@ -53,7 +53,7 @@ class TBMegaLaserNode: SKSpriteNode {
         let bossChangeAttack = SKAction.runBlock({if let boss = self.parent as? TBFirstBossNode {
             boss.startAttack(); self.removeFromParent()
             }})
-        runAction(SKAction.sequence([changeToBusy, changeToFire, backToBusy, backToNormal, bossChangeAttack]))
+        runAction(SKAction.group([SKAction.sequence([changeToBusy, changeToFire, backToBusy, backToNormal, bossChangeAttack]),SKAction.playSoundFileNamed("megaLaser.mp3", waitForCompletion: true)]))
     }
     
     static func createSKActionAnimation()

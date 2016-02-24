@@ -178,20 +178,21 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
         tapToStartLabel?.fontColor = UIColor(red: 0.16, green: 0.95, blue: 0.835, alpha: 1)
         self.camera!.addChild(tapToStartLabel!)
         self.listener = self.hero
-        if(backgroundMusicPlayer == nil){
-            
-            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
-            
-            do {
-                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-                backgroundMusicPlayer!.numberOfLoops  = -1
-                if(!backgroundMusicPlayer!.playing){
-                    self.backgroundMusicPlayer?.play()
-                }
-            }catch {
-                print("MUSIC NOT FOUND")
-            }
-        }
+        playSound(&backgroundMusicPlayer, backgroundMusicURL: NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")!)
+//        if(backgroundMusicPlayer == nil){
+//            
+//            //let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
+//            
+//            do {
+//                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
+//                backgroundMusicPlayer!.numberOfLoops  = -1
+//                if(!backgroundMusicPlayer!.playing){
+//                    self.backgroundMusicPlayer?.play()
+//                }
+//            }catch {
+//                print("MUSIC NOT FOUND")
+//            }
+//        }
         
     }
     

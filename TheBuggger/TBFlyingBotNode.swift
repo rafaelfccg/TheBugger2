@@ -69,17 +69,6 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
         referencia2.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
         referencia2.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         self.addChild(referencia2!)
-        setAudioNode()
-        
-    }
-    
-    func setAudioNode(){
-        let buzz:SKAudioNode = SKAudioNode(fileNamed: "beeBuzz.mp3")
-        buzz.positional = true
-        buzz.autoplayLooped = true
-        self.addChild(buzz)
-//        buzz.
-        buzz.runAction(SKAction.play())
     }
     
     func runAnimationWithTime() {   // Comeca a animacao depois de um delay aleatorio para os bots ficarem dessincronizados
