@@ -21,12 +21,13 @@ class Statistics: NSManagedObject {
     @NSManaged var monstersTotalKilled: Int32
     @NSManaged var level: Int32
     @NSManaged var tentativas: Int32
+    @NSManaged var won: Bool
 // Insert code here to add functionality to your managed object subclass
 
 }
 
 /* salva os dados do nivel que o usuário jogou criando uma nova entrada na tabela/entidade */
-func createLogData(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentativas: Int)
+func createLogData(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentativas: Int, won: Bool)
 {
     // create an instance of our managedObjectContext
     let moc = TBDataController().managedObjectContext
@@ -44,6 +45,8 @@ func createLogData(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tent
     entity.setValue(hero.score, forKey: "score")
     entity.setValue(tentativas, forKey: "tentativas")
     entity.setValue(levelSelected, forKey: "level")
+    entity.setValue(won, forKey: "won")
+    
     
     // we save our entity
     do {
@@ -151,6 +154,12 @@ func saveLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, te
             //salva só o valor atualizado
             managedObject.setValue(tentativas, forKey: "tentativas")
             
+            //update - só salva de cada usuário uma unica vez, é iniciado como false
+            if(managedObject.won == false)
+            {
+                managedObject.setValue(true, forKey: "won")
+            }
+            
             //salva
             do {
                 try context.save()
@@ -161,7 +170,7 @@ func saveLogsFetched(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, te
         }
         else
         {
-            createLogData(hero, bitMark: bitMark, levelSelected: levelSelected, tentativas: tentativas)
+            createLogData(hero, bitMark: bitMark, levelSelected: levelSelected, tentativas: tentativas, won: false)
         }
     } catch {
         fatalError("Failure to save context: \(error)")
@@ -209,6 +218,7 @@ func saveAttempts(levelSelected: Int, tentativas: Int)
             entity.setValue(0, forKey: "score")
             entity.setValue(tentativas, forKey: "tentativas")
             entity.setValue(levelSelected, forKey: "level")
+            entity.setValue(false, forKey: "won")
             
             do {
                 try context.save()

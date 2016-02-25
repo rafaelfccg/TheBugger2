@@ -379,7 +379,13 @@ class GameScene:GameSceneBase {
             if(!finalStage)
             {
                 finalStage = true
-                
+                if let statisticsLogs = fetchLogsByLevel(levelSelected!)
+                {
+                    if(statisticsLogs.won != false)
+                    {
+                        Flurry.logEvent("UniqueCompletedLevel", withParameters: ["Stage": levelSelected!])
+                    }
+                }
                 //Salvando os dados com persistencia
                 saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
                 Flurry.logEvent("CompletedLevel", withParameters: ["Stage": levelSelected!])
