@@ -175,6 +175,8 @@ class TBFirstStory: TBStoriesScene{
     }
     func endScene(){
         delegateChanger?.mudaScene("Level1Scene", withMethod: self.isMethodOne!, andLevel: self.levelSelected!)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(true, forKey: "story1")
     
     }
     

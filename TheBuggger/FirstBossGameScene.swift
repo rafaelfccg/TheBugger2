@@ -100,6 +100,12 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     
     func bossDead() {
         self.hero.realSpeed = 0
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let max = defaults.integerForKey("level")
+        if max < self.levelSelected! + 1 {
+            defaults.setInteger(self.levelSelected! + 1, forKey: "level")
+        }
+
         // Animacao do heroi recebendo o poder do boss
         // Tela de pontuacao com botao pra mostrar a historia
     }
