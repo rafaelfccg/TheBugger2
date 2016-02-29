@@ -10,7 +10,7 @@ class TBSignalNode:SKSpriteNode {
     static var signalAtlas:SKTextureAtlas = SKTextureAtlas(named: "signal")
     static func createSignalAnimation(){
         let pixelsArray = TBUtils.getSprites(signalAtlas, nomeImagens: "greensignal-")
-        TBSignalNode.signalAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.05));
+        TBSignalNode.signalAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.2));
         
     }
 }

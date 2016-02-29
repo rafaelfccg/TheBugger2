@@ -63,8 +63,7 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
             self.bossIsRunnning = true
         })]))      // O boss so comeca a andar depois de certo tempo
     }
-
-
+    
     func repositionBlock(inout block:TBSimpleBlockNode, basedOn:TBSimpleBlockNode){
         let nodeConnection = basedOn.childNodeWithName("connection")
         //let achor = basedOn.childNodeWithName("achor")
