@@ -17,6 +17,10 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     var deallocBool:Bool = false
     var lastID = 0
     var bossIsRunnning = false
+    var snowRunning = false    // Variavel para a a particula snow ser criada apenas uma vez
+    var snowParticle:SKEmitterNode?
+    var snowParticle2:SKEmitterNode?
+    var snowParticle3:SKEmitterNode?
     
     var defaultY:CGFloat = 0
     
@@ -27,7 +31,7 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         setupHUD()
-
+        
         let achor = self.childNodeWithName("achor")
         defaultY = (achor?.position.y)! - (achor?.frame.size.height)!/2
         
@@ -58,10 +62,45 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     
     override func startGame(){
         super.startGame()
+        self.createSnowParticle()
         runAction(SKAction.sequence([SKAction.waitForDuration(1.35), SKAction.runBlock({
             self.checkBossVelocity()
             self.bossIsRunnning = true
         })]))      // O boss so comeca a andar depois de certo tempo
+    }
+    
+    func createSnowParticle () {  // Cria a particula de neve
+        if(!self.snowRunning) {
+            self.snowRunning = true
+            let snowParticle = SKEmitterNode(fileNamed: "TBBossSnowParticle.sks")
+            snowParticle?.zPosition = 1000
+            snowParticle?.position.y += 260
+            snowParticle?.particleScale = 0.1
+            self.snowParticle = snowParticle
+            
+            let snowParticle2 = SKEmitterNode(fileNamed: "TBBossSnowParticle.sks")
+            snowParticle2?.zPosition = 1000
+            snowParticle2?.position.y += 260
+            snowParticle2?.particleScale = 0.1
+            snowParticle2?.position.x -= 320
+            self.snowParticle2 = snowParticle2
+            
+            let snowParticle3 = SKEmitterNode(fileNamed: "TBBossSnowParticle.sks")
+            snowParticle3?.zPosition = 1000
+            snowParticle3?.position.y += 260
+            snowParticle3?.particleScale = 0.1
+            snowParticle3?.position.x += 320
+            self.snowParticle3 = snowParticle3
+            
+            self.camera?.addChild(self.snowParticle!)
+            self.camera?.addChild(self.snowParticle2!)
+            self.camera?.addChild(self.snowParticle3!)
+        }
+    }
+    
+    func removeSnowParticle() { // Remove a particula de neve
+        self.camera?.removeChildrenInArray([self.snowParticle!, self.snowParticle2!, self.snowParticle3!])
+        self.snowRunning = false
     }
     
     func repositionBlock(inout block:TBSimpleBlockNode, basedOn:TBSimpleBlockNode){
@@ -107,6 +146,8 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
     {
         super.restartLevel()
         self.bossIsRunnning = false
+        self.removeSnowParticle()
+        self.createSnowParticle()
         self.firstBoss.removeFromParent()
         setBoss()
         self.updateHPLabel()
