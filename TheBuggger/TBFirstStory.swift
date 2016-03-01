@@ -46,27 +46,12 @@ class TBFirstStory: TBStoriesScene{
             }
             time +=  0.3
         }
-//        self.runAction(SKAction.sequence([SKAction.waitForDuration(5.3),SKAction.runBlock({
-//            if self.sceneMark <= 1 {
-//                self.runSecondScene()
-//            }
-//        })]))
-    
     }
-    func moveCameraToCenter(center:Int){
-        let center = self.childNodeWithName("center\(center)")
-        self.camera?.position = (center?.position)!
-    }
-
+   
     func runSecondScene(){
         sceneMark = 2
         delegateChanger?.stopAnimations()
         moveCameraToCenter(2)
-//        self.runAction(SKAction.sequence([SKAction.waitForDuration(2),SKAction.runBlock({
-//            if self.sceneMark <= 2 {
-//                self.runThirdScene()
-//            }
-//        })]))
     
     }
     

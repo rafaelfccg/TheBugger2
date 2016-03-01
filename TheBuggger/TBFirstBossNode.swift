@@ -15,6 +15,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     var life = 100
     let attacksToLowEnergy = 8     // Numero de ataques necessarios pro boss descarregar
     var lastAttack = -1        // Variavel auxiliar para nao repetir o mesmo attack duas vezes
+    var bossSceneDelegate:BossProtocol?
+    
     var attacksHappened = 0
     var totalAttacks = 0
     var currentBit:Int = 0
@@ -365,7 +367,12 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     func bossDie() {     // Funcao para a morte do boss
         if(!self.deathAnimationIsRunning) {
             self.deathAnimationIsRunning = true
-            runAction(SKAction.sequence([TBFirstBossNode.deathAnimation!, SKAction.runBlock({self.removeFromParent()})]))
+            runAction(SKAction.sequence([TBFirstBossNode.deathAnimation!, SKAction.runBlock({
+                self.removeFromParent()
+                self.runAction(SKAction.waitForDuration(1.0))
+                self.bossSceneDelegate?.bossDead()
+            })
+            ]))
         }
     }
     

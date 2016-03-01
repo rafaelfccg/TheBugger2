@@ -92,6 +92,7 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
             groundBoti.position = node.position
             groundBoti.zPosition = 100
             self.firstBoss = groundBoti
+            groundBoti.bossSceneDelegate = self
             self.addChild(self.firstBoss)
         })
         
@@ -105,9 +106,16 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
         if max < self.levelSelected! + 1 {
             defaults.setInteger(self.levelSelected! + 1, forKey: "level")
         }
-
-        // Animacao do heroi recebendo o poder do boss
+        
+        saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
+        Flurry.logEvent("CompletedLevel", withParameters: ["Stage": levelSelected!])
         // Tela de pontuacao com botao pra mostrar a historia
+        
+        //Medida Temporaria
+        backgroundMusicPlayer?.pause()
+        delegateChanger?.runStory(TBSecondStory(fileNamed:"TBSecondStory")!, withMethod: 0, andLevel: 8)
+        
+        
     }
     
     override func restartLevel()

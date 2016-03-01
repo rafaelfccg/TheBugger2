@@ -166,8 +166,8 @@ class SelectLevelScene: SKScene {
                 self.delegateChanger?.backToMenu()
             }else if name == "story1" {
                 self.delegateChanger?.runStory(TBFirstStory(fileNamed: "TBFirstStory")!, withMethod: method, andLevel: 1)
-            }else if name == "story2" {
-                
+            }else if name == "story2" && inLevel > 7{
+                self.delegateChanger?.runStory(TBSecondStory(fileNamed: "TBSecondStory")!, withMethod: method, andLevel: 8)
             }else if name == nil{
                 // quick fix
             }else if name!.containsString("select") {

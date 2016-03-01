@@ -46,6 +46,11 @@ class TBStoriesScene: SKScene, TBSceneProtocol {
     func prepFirstScene(){
         //implement on subclasses
     }
+    func moveCameraToCenter(center:Int){
+        let center = self.childNodeWithName("center\(center)")
+        self.camera?.position = (center?.position)!
+    }
+
    
    
 }

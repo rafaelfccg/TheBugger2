@@ -78,6 +78,8 @@
 		00466D841C6D0F1900225029 /* hero2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00466D831C6D0F1900225029 /* hero2.png */; };
 		00466D861C6D0F2200225029 /* luz.png in Resources */ = {isa = PBXBuildFile; fileRef = 00466D851C6D0F2200225029 /* luz.png */; };
 		00466D881C6D1B3900225029 /* heroFight.png in Resources */ = {isa = PBXBuildFile; fileRef = 00466D871C6D1B3900225029 /* heroFight.png */; };
+		004B9FC91C860409005BB361 /* TBSecondStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004B9FC81C860409005BB361 /* TBSecondStory.swift */; };
+		004B9FCB1C8611C8005BB361 /* error 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 004B9FCA1C8611C8005BB361 /* error 2.png */; };
 		00622BD01C03470E00155DB9 /* contador-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00622BCF1C03470E00155DB9 /* contador-1.png */; };
 		00648CAC1BF27BB600C1F906 /* TBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */; };
 		00648CAF1BF27CE900C1F906 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00648CAD1BF27CE900C1F906 /* selected.png */; };
@@ -184,6 +186,7 @@
 		00D901EE1C84B6E300A1629B /* barra completa.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D901EC1C84B6E300A1629B /* barra completa.png */; };
 		00D901EF1C84B6E300A1629B /* danger-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D901ED1C84B6E300A1629B /* danger-22.png */; };
 		00D901F11C84BBF000A1629B /* error final.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D901F01C84BBF000A1629B /* error final.png */; };
+		00D901F31C85FDC100A1629B /* execute-13.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D901F21C85FDC100A1629B /* execute-13.png */; };
 		00DCF2D81BE15213006F9F86 /* TBTutorialNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DCF2D71BE15213006F9F86 /* TBTutorialNodes.swift */; };
 		00F6CFD61BDE9777006F0302 /* blocksmg-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD31BDE9777006F0302 /* blocksmg-01.png */; };
 		00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F6CFD91BDEAAD5006F0302 /* icon app.png */; };
@@ -397,6 +400,8 @@
 		00466D831C6D0F1900225029 /* hero2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hero2.png; sourceTree = "<group>"; };
 		00466D851C6D0F2200225029 /* luz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luz.png; sourceTree = "<group>"; };
 		00466D871C6D1B3900225029 /* heroFight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroFight.png; sourceTree = "<group>"; };
+		004B9FC81C860409005BB361 /* TBSecondStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSecondStory.swift; sourceTree = "<group>"; };
+		004B9FCA1C8611C8005BB361 /* error 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error 2.png"; sourceTree = "<group>"; };
 		00622BCF1C03470E00155DB9 /* contador-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contador-1.png"; sourceTree = "<group>"; };
 		00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRadioButton.swift; sourceTree = "<group>"; };
 		00648CAD1BF27CE900C1F906 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
@@ -516,6 +521,7 @@
 		00D901EC1C84B6E300A1629B /* barra completa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barra completa.png"; sourceTree = "<group>"; };
 		00D901ED1C84B6E300A1629B /* danger-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "danger-22.png"; sourceTree = "<group>"; };
 		00D901F01C84BBF000A1629B /* error final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error final.png"; sourceTree = "<group>"; };
+		00D901F21C85FDC100A1629B /* execute-13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "execute-13.png"; sourceTree = "<group>"; };
 		00DCF2D71BE15213006F9F86 /* TBTutorialNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBTutorialNodes.swift; sourceTree = "<group>"; };
 		00F6CFD31BDE9777006F0302 /* blocksmg-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blocksmg-01.png"; sourceTree = "<group>"; };
 		00F6CFD91BDEAAD5006F0302 /* icon app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon app.png"; sourceTree = "<group>"; };
@@ -1074,6 +1080,7 @@
 			isa = PBXGroup;
 			children = (
 				00D901E91C84B31F00A1629B /* TBSecondStory.sks */,
+				004B9FC81C860409005BB361 /* TBSecondStory.swift */,
 				009275751C5BD5C100292ABE /* TBFirstStory.sks */,
 				009275771C5F93BE00292ABE /* TBFirstStory.swift */,
 				009275791C5F947900292ABE /* TBStoriesScene.swift */,
@@ -1292,7 +1299,9 @@
 		00D901EB1C84B6C600A1629B /* HistoriasParte2 */ = {
 			isa = PBXGroup;
 			children = (
+				004B9FCA1C8611C8005BB361 /* error 2.png */,
 				00D901F01C84BBF000A1629B /* error final.png */,
+				00D901F21C85FDC100A1629B /* execute-13.png */,
 				00D901EC1C84B6E300A1629B /* barra completa.png */,
 				00D901ED1C84B6E300A1629B /* danger-22.png */,
 			);
@@ -1471,6 +1480,7 @@
 				52BE72D01C52B26B00431CAF /* megaLaser1.atlas in Resources */,
 				00FD2E931C75FC3000F768A8 /* Level7Scene.sks in Resources */,
 				AF680E031C0633B500CC865C /* bolha.mp3 in Resources */,
+				004B9FCB1C8611C8005BB361 /* error 2.png in Resources */,
 				0092215D1BF11A88007C7DDC /* efeitoBaixo.atlas in Resources */,
 				00FD2E951C75FC3800F768A8 /* SelectLevelScene.sks in Resources */,
 				0002CE941BF5171000FDE20A /* set-5.png in Resources */,
@@ -1596,6 +1606,7 @@
 				52700FFF1C08E106006DEDB3 /* promoinprogress-final.png in Resources */,
 				001E55C81BD8221600B80833 /* BaseA.png in Resources */,
 				52700FE91C08D81F006DEDB3 /* promoinprogress.png in Resources */,
+				00D901F31C85FDC100A1629B /* execute-13.png in Resources */,
 				AFCCF2FB1BFBC8C200645850 /* BopperMonsterDeath.atlas in Resources */,
 				00648CAF1BF27CE900C1F906 /* selected.png in Resources */,
 				0092216A1BF12EFE007C7DDC /* cabos-3.png in Resources */,
@@ -1718,6 +1729,7 @@
 				00FDF6BE1C4D6550000DA04B /* TBSimpleBlockNode.swift in Sources */,
 				523C53FC1C30BA38001E4C4E /* TBBallFirstBossNode.swift in Sources */,
 				008698B61BE94F7A00EE80F2 /* TBAlertNode.swift in Sources */,
+				004B9FC91C860409005BB361 /* TBSecondStory.swift in Sources */,
 				AFCCF2F51BFBC28C00645850 /* TBBopperBotNode.swift in Sources */,
 				009275781C5F93BE00292ABE /* TBFirstStory.swift in Sources */,
 				0024C12E1C5021C100A1B217 /* TBSKNodeExtension.swift in Sources */,
