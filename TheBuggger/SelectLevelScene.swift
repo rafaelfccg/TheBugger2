@@ -45,13 +45,13 @@ class SelectLevelScene: SKScene {
         self.camera = camera
         
         setUpLevelSelect()
-        print(self.size)
-        print(self.view!.frame.size)
+        
         let selectionArray = TBUtils.getSprites(SKTextureAtlas(named: "estagioSelect"), nomeImagens: "estagio-")
         stageSelect = SKAction.animateWithTextures(selectionArray, timePerFrame: 0.1)
         
         let selectionBossArray = TBUtils.getSprites(SKTextureAtlas(named: "selectBossStage"), nomeImagens: "boss-")
         stageSelectBoss = SKAction.animateWithTextures(selectionBossArray, timePerFrame: 0.1)
+        
         
     }
     
@@ -65,7 +65,28 @@ class SelectLevelScene: SKScene {
             (node:SKNode?, stop:UnsafeMutablePointer <ObjCBool>) in
                 node?.zPosition = 5
         })
+        setLevelCircles()
+        addBits()
+        setStory()
+    }
+    func setStory(){
+        let story1 = self.childNodeWithName("story1") as? SKSpriteNode
+        let story2 = self.childNodeWithName("story2") as? SKSpriteNode
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let inLevel = defaults.integerForKey("level")
+        
+        if defaults.boolForKey("story1") {
+            story1?.texture = SKTexture(imageNamed: "on.png")
+        }
 
+        if inLevel > 7 {
+            story2?.texture = SKTexture(imageNamed: "on.png")
+        }
+        
+    }
+    
+    func setLevelCircles(){
         let defaults = NSUserDefaults.standardUserDefaults()
         let inLevel = defaults.integerForKey("level")
         let openLevel = SKTexture(imageNamed: "estagio-1")
@@ -97,10 +118,12 @@ class SelectLevelScene: SKScene {
             self.addChild(backgroundNode)
             node.zPosition = 10
         }
+
+    }
+    
+    func addBits(){
         if let statisticLogs = fetchLogs()
         {
-            // adicionando os bit
-            // CONCERTAR AQUI
             let numLevels = statisticLogs.count
             for (var i = 0; i < numLevels; i++)
             {
@@ -109,21 +132,16 @@ class SelectLevelScene: SKScene {
                 
                 let numBits = countBits([statisticLogs[i].bit0, statisticLogs[i].bit1, statisticLogs[i].bit2])
                 print("\(numBits), \(statisticLogs[i].level)")
-
+                
                 for(var j = 1; j <= numBits; j++)
                 {
                     let bitNode = SKSpriteNode(imageNamed: "mark\(j)")
                     bitNode.size = node.size
-//                    bitNode.xScale = 0.24
-//                    bitNode.yScale = 0.24
                     bitNode.zPosition = 2
                     node.addChild(bitNode)
                 }
             }
-            
         }
-        
-        
     }
     
     func selectStageAction(k: Int)->SKAction {       // Escolhe a animacao certa na hora de selecionar a fase
@@ -143,9 +161,13 @@ class SelectLevelScene: SKScene {
             let defaults = NSUserDefaults.standardUserDefaults()
             let method = defaults.integerForKey("method")
             let inLevel = defaults.integerForKey("level")
-            print("\(name) + \(level)")
+            //print("\(name) + \(level)")
             if (name == "Back"){
                 self.delegateChanger?.backToMenu()
+            }else if name == "story1" {
+                self.delegateChanger?.runStory(TBFirstStory(fileNamed: "TBFirstStory")!, withMethod: method, andLevel: 1)
+            }else if name == "story2" && inLevel > 7{
+                self.delegateChanger?.runStory(TBSecondStory(fileNamed: "TBSecondStory")!, withMethod: method, andLevel: 8)
             }else if name == nil{
                 // quick fix
             }else if name!.containsString("select") {
@@ -166,7 +188,12 @@ class SelectLevelScene: SKScene {
                         if (levelInt == 7 ){
                             self.delegateChanger?.mudaSceneBoss("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                         }else if levelInt == 1 {
-                         self.delegateChanger?.runStory(TBFirstStory(fileNamed: "TBFirstStory")!, withMethod: method, andLevel: levelInt!)
+                            if !defaults.boolForKey("story1"){
+                                self.delegateChanger?.runStory(TBFirstStory(fileNamed: "TBFirstStory")!, withMethod: method, andLevel: levelInt!)
+                            }else{
+                                self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
+                            }
+                            
                         }else {
                             self.delegateChanger?.mudaScene("Level\(level)Scene", withMethod: method, andLevel: levelInt!)
                         }
