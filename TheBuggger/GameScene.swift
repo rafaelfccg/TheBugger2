@@ -274,6 +274,20 @@ class GameScene:GameSceneBase {
             
         })
         
+        self.enumerateChildNodesWithName("greenSignal", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            node.runAction(SKAction.repeatActionForever(TBSignalNode.signalAnimation!))
+            
+        })
+        
+        self.enumerateChildNodesWithName("slowSignal", usingBlock: {
+            (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
+            //            let spriteNode
+            node.runAction(SKAction.repeatActionForever(TBSlowSignalNode.signalAnimation!))
+            
+        })
+        
         self.enumerateChildNodesWithName("secondActionTutorial", usingBlock: {
             (node:SKNode! , stop:UnsafeMutablePointer <ObjCBool>)-> Void in
             //            let spriteNode
