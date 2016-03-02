@@ -67,7 +67,6 @@
 		0022C0321BE2A44300A184D5 /* taptxt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0022C0281BE2A44300A184D5 /* taptxt.png */; };
 		0024C12E1C5021C100A1B217 /* TBSKNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */; };
 		002F8A071C875BC4009EF4BB /* TBBossSmokeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 002F8A051C875BC4009EF4BB /* TBBossSmokeParticle.sks */; };
-		002F8A081C875BC4009EF4BB /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 002F8A061C875BC4009EF4BB /* spark.png */; };
 		002F8A0A1C875BF2009EF4BB /* TBBossSnowParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 002F8A091C875BF2009EF4BB /* TBBossSnowParticle.sks */; };
 		002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80D1BF6508A003514A4 /* startCount.atlas */; };
 		002FD8101BF650D0003514A4 /* pt-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80F1BF650D0003514A4 /* pt-hud.png */; };
@@ -392,7 +391,6 @@
 		0022C0281BE2A44300A184D5 /* taptxt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptxt.png; sourceTree = "<group>"; };
 		0024C12D1C5021C100A1B217 /* TBSKNodeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSKNodeExtension.swift; sourceTree = "<group>"; };
 		002F8A051C875BC4009EF4BB /* TBBossSmokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBBossSmokeParticle.sks; sourceTree = "<group>"; };
-		002F8A061C875BC4009EF4BB /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		002F8A091C875BF2009EF4BB /* TBBossSnowParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBBossSnowParticle.sks; sourceTree = "<group>"; };
 		002FD80D1BF6508A003514A4 /* startCount.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = startCount.atlas; sourceTree = "<group>"; };
 		002FD80F1BF650D0003514A4 /* pt-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pt-hud.png"; sourceTree = "<group>"; };
@@ -855,7 +853,6 @@
 			isa = PBXGroup;
 			children = (
 				002F8A051C875BC4009EF4BB /* TBBossSmokeParticle.sks */,
-				002F8A061C875BC4009EF4BB /* spark.png */,
 				002F8A091C875BF2009EF4BB /* TBBossSnowParticle.sks */,
 			);
 			name = Particles;
@@ -1512,7 +1509,6 @@
 				00F6CFDA1BDEAAD5006F0302 /* icon app.png in Resources */,
 				AFCCF2FA1BFBC8C200645850 /* BopperMonsterAttack.atlas in Resources */,
 				00BB8F711C5FF137005C7CA3 /* boss2.png in Resources */,
-				002F8A081C875BC4009EF4BB /* spark.png in Resources */,
 				008203591BFE3D0400534647 /* attack_1.mp3 in Resources */,
 				00228E321C80C7F8004A5C82 /* off.png in Resources */,
 				00BB8F701C5FF137005C7CA3 /* boss1.png in Resources */,
