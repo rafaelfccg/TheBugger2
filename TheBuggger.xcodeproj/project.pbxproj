@@ -80,6 +80,7 @@
 		00466D881C6D1B3900225029 /* heroFight.png in Resources */ = {isa = PBXBuildFile; fileRef = 00466D871C6D1B3900225029 /* heroFight.png */; };
 		004B9FC91C860409005BB361 /* TBSecondStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004B9FC81C860409005BB361 /* TBSecondStory.swift */; };
 		004B9FCB1C8611C8005BB361 /* error 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 004B9FCA1C8611C8005BB361 /* error 2.png */; };
+		004B9FCD1C87139C005BB361 /* TBFirstStory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 004B9FCC1C87139C005BB361 /* TBFirstStory.sks */; };
 		00622BD01C03470E00155DB9 /* contador-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00622BCF1C03470E00155DB9 /* contador-1.png */; };
 		00648CAC1BF27BB600C1F906 /* TBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */; };
 		00648CAF1BF27CE900C1F906 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00648CAD1BF27CE900C1F906 /* selected.png */; };
@@ -260,7 +261,6 @@
 		52CABF6E1BF13171008670B9 /* TBShotBotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */; };
 		52CE25A41C46D50B00691BDF /* FirstBossGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE25A31C46D50B00691BDF /* FirstBossGameScene.swift */; };
 		52D857501C3218AC00E8D6BD /* TBMegaLaserNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8574F1C3218AC00E8D6BD /* TBMegaLaserNode.swift */; };
-		52E359151C84E60600884184 /* TBFirstStory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52E359141C84E60600884184 /* TBFirstStory.sks */; };
 		52E384561C725A0200C1B399 /* tutoScreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E384551C725A0200C1B399 /* tutoScreen.atlas */; };
 		52E6316F1C5AB07C00779667 /* selectBossStage.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 52E6316E1C5AB07C00779667 /* selectBossStage.atlas */; };
 		52E75DBC1BDEAC3200F91E00 /* TBMoedasNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */; };
@@ -404,6 +404,7 @@
 		00466D871C6D1B3900225029 /* heroFight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heroFight.png; sourceTree = "<group>"; };
 		004B9FC81C860409005BB361 /* TBSecondStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBSecondStory.swift; sourceTree = "<group>"; };
 		004B9FCA1C8611C8005BB361 /* error 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error 2.png"; sourceTree = "<group>"; };
+		004B9FCC1C87139C005BB361 /* TBFirstStory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBFirstStory.sks; sourceTree = "<group>"; };
 		00622BCF1C03470E00155DB9 /* contador-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contador-1.png"; sourceTree = "<group>"; };
 		00648CAB1BF27BB600C1F906 /* TBRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRadioButton.swift; sourceTree = "<group>"; };
 		00648CAD1BF27CE900C1F906 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
@@ -602,7 +603,6 @@
 		52CABF6D1BF13171008670B9 /* TBShotBotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBShotBotNode.swift; sourceTree = "<group>"; };
 		52CE25A31C46D50B00691BDF /* FirstBossGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstBossGameScene.swift; sourceTree = "<group>"; };
 		52D8574F1C3218AC00E8D6BD /* TBMegaLaserNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMegaLaserNode.swift; sourceTree = "<group>"; };
-		52E359141C84E60600884184 /* TBFirstStory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBFirstStory.sks; sourceTree = "<group>"; };
 		52E384551C725A0200C1B399 /* tutoScreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tutoScreen.atlas; sourceTree = "<group>"; };
 		52E6316E1C5AB07C00779667 /* selectBossStage.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = selectBossStage.atlas; sourceTree = "<group>"; };
 		52E75DBB1BDEAC3200F91E00 /* TBMoedasNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBMoedasNode.swift; sourceTree = "<group>"; };
@@ -1089,7 +1089,9 @@
 		009275741C5BD40E00292ABE /* stories */ = {
 			isa = PBXGroup;
 			children = (
-				52E359141C84E60600884184 /* TBFirstStory.sks */,
+				00D901E91C84B31F00A1629B /* TBSecondStory.sks */,
+				004B9FC81C860409005BB361 /* TBSecondStory.swift */,
+				004B9FCC1C87139C005BB361 /* TBFirstStory.sks */,
 				009275771C5F93BE00292ABE /* TBFirstStory.swift */,
 				009275791C5F947900292ABE /* TBStoriesScene.swift */,
 			);
@@ -1307,6 +1309,18 @@
 			name = Levels;
 			sourceTree = "<group>";
 		};
+		00D901EB1C84B6C600A1629B /* HistoriasParte2 */ = {
+			isa = PBXGroup;
+			children = (
+				004B9FCA1C8611C8005BB361 /* error 2.png */,
+				00D901F01C84BBF000A1629B /* error final.png */,
+				00D901F21C85FDC100A1629B /* execute-13.png */,
+				00D901EC1C84B6E300A1629B /* barra completa.png */,
+				00D901ED1C84B6E300A1629B /* danger-22.png */,
+			);
+			name = HistoriasParte2;
+			sourceTree = "<group>";
+		};
 		5288D4891C84C4C900A6F625 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
@@ -1406,7 +1420,7 @@
 				TargetAttributes = {
 					00CDBE871BB9B39000BC0517 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = N4UKH6NFCZ;
+						DevelopmentTeam = 46HQV8ZA5C;
 					};
 					00CDBE9F1BB9B39100BC0517 = {
 						CreatedOnToolsVersion = 7.0;
@@ -1482,7 +1496,6 @@
 				AF680E0D1C06447C00CC865C /* pinote.mp3 in Resources */,
 				009221681BF12EFE007C7DDC /* cabos-1.png in Resources */,
 				008349B51BFFA1BE00012C22 /* contador-2.png in Resources */,
-				52E359151C84E60600884184 /* TBFirstStory.sks in Resources */,
 				AF13F6741C6139AF00E2F037 /* postOff.atlas in Resources */,
 				52E384561C725A0200C1B399 /* tutoScreen.atlas in Resources */,
 				009221531BF11863007C7DDC /* enfeiteCima-5.png in Resources */,
@@ -1525,6 +1538,7 @@
 				001E55C91BD8221600B80833 /* BaseB.png in Resources */,
 				5288D48D1C84C4ED00A6F625 /* spark.png in Resources */,
 				001E55CD1BD8221600B80833 /* plataformsm.png in Resources */,
+				004B9FCD1C87139C005BB361 /* TBFirstStory.sks in Resources */,
 				52FDE2DE1BF29285003D9A1D /* DieShooterBot.atlas in Resources */,
 				00AC3ACD1BEA909F00323B6D /* PlayerStop.atlas in Resources */,
 				AF0A27251BE00EC80027965B /* ENDZONE.atlas in Resources */,
