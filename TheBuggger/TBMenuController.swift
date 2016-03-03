@@ -119,10 +119,6 @@ class TBMenuViewController :UIViewController, GKGameCenterControllerDelegate {
         }
         
         authenticateLocalPlayerGC()
-        
-        GKAchievement.resetAchievementsWithCompletionHandler { (error) -> Void in
-            
-        }
     }
     
     // autentica player no game center

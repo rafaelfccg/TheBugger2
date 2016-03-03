@@ -388,8 +388,7 @@ class GameScene:GameSceneBase {
                 {
                     if(statisticsLogs.won != true)
                     {
-                        var warning = 0
-                        //Flurry.logEvent("UniqueCompletedLevel", withParameters: ["Stage": levelSelected!])
+                        Flurry.logEvent("UniqueCompletedLevel", withParameters: ["Stage": levelSelected!])
                     }
                 }
             //Salvando os dados com persistencia
