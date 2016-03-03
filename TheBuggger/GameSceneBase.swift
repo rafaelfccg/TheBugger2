@@ -110,6 +110,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
         /* Setup your scene here */
         self.deathSinceLastAd  = 0
         delegateChanger?.stopAnimations()
+
         
         if let statisticsLogs = fetchLogsByLevel(levelSelected!)
         {
@@ -179,21 +180,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
         tapToStartLabel?.zPosition  = self.HUDz
         tapToStartLabel?.fontColor = UIColor(red: 0.16, green: 0.95, blue: 0.835, alpha: 1)
         self.camera!.addChild(tapToStartLabel!)
-        
-        if(backgroundMusicPlayer == nil){
-            
-            let backgroundMusicURL = NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")
-            
-            do {
-                try  backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: backgroundMusicURL!)
-                backgroundMusicPlayer!.numberOfLoops  = -1
-                if(!backgroundMusicPlayer!.playing){
-                    self.backgroundMusicPlayer?.play()
-                }
-            }catch {
-                print("MUSIC NOT FOUND")
-            }
-        }
+        self.listener = self.hero
+        playSound(&backgroundMusicPlayer, backgroundMusicURL: NSBundle.mainBundle().URLForResource("Move_Ya", withExtension: ".mp3")!)
         
     }
     
@@ -608,7 +596,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
         
         self.deathSinceLastAd = userDefaults.integerForKey("ads") + 1
 
-        let a = Int(arc4random_uniform(3) + 6)
+        let a = Int(arc4random_uniform(2) + 3)
         if deathSinceLastAd > a {
             delegateChanger?.gameOver()
             deathSinceLastAd = 0
@@ -707,8 +695,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
                         self.hero.removeStandingAction()
                         self.hero.runWalkingAction()
                     }
-                    
-                    
+           
                     if(contact.contactNormal.dy/norm > 0.5){
                         self.hero.jumpState = JumpState.CanJump
                     }

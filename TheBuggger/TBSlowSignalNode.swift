@@ -1,9 +1,16 @@
-//
-//  TBSlowSignalNode.swift
-//  TheBuggger
-//
-//  Created by Victor Augusto Pereira Porciúncula on 2/16/16.
-//  Copyright © 2016 rfccg. All rights reserved.
+//  Created by Rafael Gouveia on 11/3/15.
+//  Copyright © 2015 rfccg. All rights reserved.
 //
 
 import Foundation
+import SpriteKit
+
+class TBSlowSignalNode:SKSpriteNode {
+    static var signalAnimation:SKAction?
+    static var signalAtlas:SKTextureAtlas = SKTextureAtlas(named: "slowSignal")
+    static func createSignalAnimation(){
+        let pixelsArray = TBUtils.getSprites(signalAtlas, nomeImagens: "slow")
+        TBSlowSignalNode.signalAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(pixelsArray, timePerFrame: 0.2));
+        
+    }
+}

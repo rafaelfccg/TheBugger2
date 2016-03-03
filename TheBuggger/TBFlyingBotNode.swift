@@ -69,7 +69,6 @@ class TBFlyingBotNode: SKSpriteNode,TBMonsterProtocol {
         referencia2.physicsBody?.categoryBitMask = GameScene.REFERENCIA_NODE
         referencia2.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         self.addChild(referencia2!)
-        
     }
     
     func runAnimationWithTime() {   // Comeca a animacao depois de um delay aleatorio para os bots ficarem dessincronizados

@@ -15,15 +15,19 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     var life = 100
     let attacksToLowEnergy = 8     // Numero de ataques necessarios pro boss descarregar
     var lastAttack = -1        // Variavel auxiliar para nao repetir o mesmo attack duas vezes
+    var bossSceneDelegate:BossProtocol?
+    
     var attacksHappened = 0
     var totalAttacks = 0
     var currentBit:Int = 0
-    var rechargingTime:Double = 5      // Tempo em que o Boss
+    var rechargingTime:Double = 5      // Tempo que o Boss ira recarregar
     var bossMode = "Normal"     // Variavei auxiliar pra saber qual o modo progressivo em que o boss esta
     var isDead = false     // Saber se o boss esta morto ou nao, pois pode atacar durante a animacao
     var stateHittedOff = false // Saber se o boss esta sendo hittado ou nao, para a animacao nao acontecer se ja estiver acontecendo
     var deathAnimationIsRunning = false     // Saber se a animacao de morte ja esta acontecendo
     var isLowEnergy = false
+    var smokeIsOn = false       // Variavel que checa se a particula de fumaca ja foi emitida
+    var smokeParticle: SKEmitterNode?
     
     static var animation: SKAction?
     static var deathAnimation: SKAction?
@@ -68,6 +72,20 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     func dieAnimation(hero: TBPlayerNode)
     {
 
+    }
+    
+    func createSmokeParticle() { // Cria a particula de fumaca quando o boss estiver morrendo
+        if(!self.smokeIsOn) {
+            self.smokeIsOn = true
+            let smokeParticle = SKEmitterNode(fileNamed: "TBBossSmokeParticle.sks")
+            smokeParticle?.zPosition = -1
+            smokeParticle?.zRotation = -30
+            smokeParticle?.position.y += 40
+            smokeParticle?.position.x += 5
+            smokeParticle?.particleScale = 0.5
+            self.smokeParticle = smokeParticle
+            self.addChild(self.smokeParticle!)
+        }
     }
     
     static func createSKActionAnimation()
@@ -323,7 +341,6 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func decreaseLifeMetalBall() { // Diminui a vida do boss quando receber dano da metalBall
-        print("Decrease metal ball")
         if(!self.isDead) {
             runAction(TBFirstBossNode.bossHittedByBallAnimation!)
             if(self.life >= 10) {      // Para nao mostrar a lifebar errada
@@ -332,7 +349,6 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
             } else {
                 self.life = 0
             }
-            print(self.life)
         }
         if(self.life <= 0) {
             self.isDead = true
@@ -353,7 +369,6 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
                 runAction(SKAction.sequence([SKAction.runBlock({self.stateHittedOff = true}), TBFirstBossNode.hittedOffAnimation!, SKAction.runBlock({self.stateHittedOff = false})]))
             }
             self.life -= 2
-            print(self.life)
         }
         if(self.life <= 0) {
             self.isDead = true
@@ -365,7 +380,12 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     func bossDie() {     // Funcao para a morte do boss
         if(!self.deathAnimationIsRunning) {
             self.deathAnimationIsRunning = true
-            runAction(SKAction.sequence([TBFirstBossNode.deathAnimation!, SKAction.runBlock({self.removeFromParent()})]))
+            runAction(SKAction.sequence([TBFirstBossNode.deathAnimation!, SKAction.runBlock({
+                self.removeFromParent()
+                self.runAction(SKAction.waitForDuration(1.0))
+                self.bossSceneDelegate?.bossDead()
+            })
+            ]))
         }
     }
     
@@ -377,8 +397,9 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         // A segunda e pulando
         let up = SKAction.moveBy(CGVectorMake(0, 130), duration: 0.38)
         let down = SKAction.moveBy(CGVectorMake(0, -130), duration: 0.38)
-        let jumpAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed+600)}), up, down, SKAction.runBlock({self.physicsBody?.velocity = CGVectorMake(CGFloat(self.defaultSpeed), CGFloat(0))}), SKAction.waitForDuration(2), SKAction.runBlock({self.checkBossMode()}), SKAction.runBlock({self.startAttack()})])
         
+        let jumpAction = SKAction.sequence([SKAction.runBlock({self.physicsBody?.velocity.dx = CGFloat(self.defaultSpeed+600)}), up, down, SKAction.runBlock({self.physicsBody?.velocity = CGVectorMake(CGFloat(self.defaultSpeed), CGFloat(0))}), SKAction.waitForDuration(2), SKAction.runBlock({self.checkBossMode()}), SKAction.runBlock({self.startAttack()})])
+
         
         let standingTexture = SKTexture(imageNamed: "bossindoturnof5")
         let standingSit = SKAction.animateWithTextures([standingTexture], timePerFrame: 4.25)
@@ -397,10 +418,9 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     func checkBossMode() {
         if(self.life >= 42 && self.life <= 70) {
             self.bossMode = "Hard"
-            print(self.bossMode)
         } else if(self.life < 40) {
             self.bossMode = "Insane"
-            print(self.bossMode)
+            self.createSmokeParticle()
 
         }
     }

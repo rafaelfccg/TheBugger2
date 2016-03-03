@@ -70,7 +70,7 @@ class TBBallFirstBossNode: SKSpriteNode {
     static func createSKActionAnimation()
     {
         let bombExplosionArray = TBUtils.getSprites(TBBallFirstBossNode.bombExplosionAtlas, nomeImagens: "hit")
-        TBBallFirstBossNode.bombExplosionAnimation = SKAction.animateWithTextures(bombExplosionArray, timePerFrame: 0.02)
+        TBBallFirstBossNode.bombExplosionAnimation = SKAction.group([SKAction.animateWithTextures(bombExplosionArray, timePerFrame: 0.02), SKAction.playSoundFileNamed("metalBallExplosion.mp3", waitForCompletion: false)])
     }
     
     func defendeAnimation() { //  Quando o heroi defender a bola, ela voltara contra o boss se for especial
