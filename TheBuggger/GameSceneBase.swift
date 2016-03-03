@@ -8,6 +8,7 @@
 
 import SpriteKit
 import AVFoundation
+import GameKit
 
 //protocol SceneChangesDelegate{
 //    
@@ -70,6 +71,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
     var topLimit:CGPoint = CGPointMake(0, 390)
     // count number of deaths
     var numberOfDeath:Int = 1
+    var numTotalDeaths:Int = 0
     // death node
     var deathNodeReference:SKNode?
     var stagePercentage:Double?
@@ -113,6 +115,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
         {
             numberOfDeath = Int(statisticsLogs.tentativas) + 1
         }
+        numTotalDeaths = sumStatistics().tentativas
         
         hero.method = isMethodOne
         self.addChild(hero)
@@ -288,7 +291,9 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
     
     func restartLevel()
     {
+        deathAchievementGC(numTotalDeaths)
         self.numberOfDeath++
+        self.numTotalDeaths++
         self.stopParalax = false
         stateCamera = 0
         background1?.texture = TBUtils.getNextBackground()
@@ -672,6 +677,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
                         node.hadEffect = true
                         node.removeFromParent()
                         hero.activatePowerUp(node.powerUP!)
+                        firstPowerUPAchievementGC()
                     }
                 }
                 

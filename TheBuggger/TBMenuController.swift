@@ -9,9 +9,10 @@
 import AVFoundation
 import UIKit
 import SpriteKit
+import GameKit
 
 
-class TBMenuViewController :UIViewController {
+class TBMenuViewController :UIViewController, GKGameCenterControllerDelegate {
     
     @IBOutlet weak var butMet1: UIButton!
     @IBOutlet weak var butMet2: UIButton!
@@ -117,7 +118,38 @@ class TBMenuViewController :UIViewController {
             defaults.setInteger(1, forKey: "level")
         }
         
+        authenticateLocalPlayerGC()
+        
+        GKAchievement.resetAchievementsWithCompletionHandler { (error) -> Void in
+            
+        }
     }
+    
+    // autentica player no game center
+    func authenticateLocalPlayerGC() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController!, animated: true, completion: nil)
+            }
+            else if (localPlayer.authenticated) {
+                
+                // 2 Player is already euthenticated & logged in, load game center
+                print("Local player is authenticated\n")
+                
+            }
+            else {
+                // 3 Game center is not enabled on the users device
+                print("Local player could not be authenticated, disabling game center\n")
+                print(error)
+            }
+            
+        }
+        
+    }
+    
     override func viewDidAppear(animated: Bool) {
         playSound(&backgroundMusicPlayer,backgroundMusicURL: backgroundMusicURL!)
     }
@@ -137,13 +169,21 @@ class TBMenuViewController :UIViewController {
     }
     
     @IBAction func actionButMet2(sender: AnyObject) {
-        do {
-            try  backgroundMusicPlayer2 = AVAudioPlayer(contentsOfURL: self.clickedButton)
-            backgroundMusicPlayer2!.play()
-        }catch {
-            print("MUSIC NOT FOUND")
-        }
-        self.performSegueWithIdentifier("ToOptionsSegue", sender: self)
+        
+        
+        let gcVC: GKGameCenterViewController = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+        gcVC.leaderboardIdentifier = "TBAto1.Score"
+        self.presentViewController(gcVC, animated: true, completion: nil)
+        
+//        do {
+//            try  backgroundMusicPlayer2 = AVAudioPlayer(contentsOfURL: self.clickedButton)
+//            backgroundMusicPlayer2!.play()
+//        }catch {
+//            print("MUSIC NOT FOUND")
+//        }
+//        self.performSegueWithIdentifier("ToOptionsSegue", sender: self)
         
         
     }
@@ -156,6 +196,9 @@ class TBMenuViewController :UIViewController {
         return image
     }
     
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "ToGameSegue"){

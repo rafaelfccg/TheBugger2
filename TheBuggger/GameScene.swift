@@ -379,15 +379,30 @@ class GameScene:GameSceneBase {
             if(!finalStage)
             {
                 finalStage = true
+                
+                completeLevelAchievementGC(levelSelected!)
+                bitsAchievementGC(coinsMark, levelSelected: levelSelected!)
+                
+                // Salvando o log de quantos usuário únicos já ganharam
                 if let statisticsLogs = fetchLogsByLevel(levelSelected!)
                 {
-                    if(statisticsLogs.won != false)
+                    if(statisticsLogs.won != true)
                     {
-                        Flurry.logEvent("UniqueCompletedLevel", withParameters: ["Stage": levelSelected!])
+                        var warning = 0
+                        //Flurry.logEvent("UniqueCompletedLevel", withParameters: ["Stage": levelSelected!])
                     }
                 }
-                //Salvando os dados com persistencia
+            //Salvando os dados com persistencia
                 saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
+                
+            // somando todos os scores para adicionar ao game center
+                // - função sumStatistics() chama fetchLogs() e deve ser chamada após salvar os logs atuais
+                let totalStatistics = sumStatistics()
+                submitScoreGC(totalStatistics.score)
+                collect21BitsAchievementGC(totalStatistics.numBits)
+                coinsAchievementGC(totalStatistics.moedas)
+                bugsAchievementGC(totalStatistics.monstersTotalKilled)
+                
                 Flurry.logEvent("CompletedLevel", withParameters: ["Stage": levelSelected!])
                 hero.realSpeed = 0
                 

@@ -245,6 +245,33 @@ func countBits(bitMark: [Bool]) -> Int
     return bitCount
 }
 
+func sumStatistics() -> TotalStatistics
+{
+    var sumStatistics = TotalStatistics()
+    
+    if let statisticsLogs = fetchLogs()
+    {
+        for(var i = 0; i < statisticsLogs.count; i++)
+        {
+            //os valores em statisticsLogs são Int32
+            sumStatistics.moedas += Int(statisticsLogs[i].moedas)
+            sumStatistics.monstersTotalKilled += Int(statisticsLogs[i].monstersTotalKilled)
+            sumStatistics.score += Int(statisticsLogs[i].score)
+            sumStatistics.tentativas += Int(statisticsLogs[i].tentativas)
+            sumStatistics.numBits += countBits([statisticsLogs[i].bit0, statisticsLogs[i].bit1, statisticsLogs[i].bit2])
+        }
+    }
+    return sumStatistics
+
+}
+
+struct TotalStatistics{
+    var moedas = 0
+    var monstersTotalKilled = 0
+    var score = 0
+    var tentativas = 0
+    var numBits = 0
+}
 
 /* função que sempre atualiza os dados da tabela com os novos valores se a entrada da tabela/entidade já existir */
 //func updateLogs(hero: TBPlayerNode, bitMark: [Bool], levelSelected: Int, tentativas: Int)
