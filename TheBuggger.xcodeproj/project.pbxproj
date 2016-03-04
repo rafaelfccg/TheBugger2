@@ -69,6 +69,7 @@
 		002F8A071C875BC4009EF4BB /* TBBossSmokeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 002F8A051C875BC4009EF4BB /* TBBossSmokeParticle.sks */; };
 		002F8A0A1C875BF2009EF4BB /* TBBossSnowParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 002F8A091C875BF2009EF4BB /* TBBossSnowParticle.sks */; };
 		002F8A0C1C875F96009EF4BB /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 002F8A0B1C875F96009EF4BB /* spark.png */; };
+		002F8A0E1C8765BA009EF4BB /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 002F8A0D1C8765BA009EF4BB /* alert.png */; };
 		002FD80E1BF6508A003514A4 /* startCount.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80D1BF6508A003514A4 /* startCount.atlas */; };
 		002FD8101BF650D0003514A4 /* pt-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD80F1BF650D0003514A4 /* pt-hud.png */; };
 		002FD8121BF6597D003514A4 /* back-hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 002FD8111BF6597D003514A4 /* back-hud.png */; };
@@ -393,6 +394,7 @@
 		002F8A051C875BC4009EF4BB /* TBBossSmokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBBossSmokeParticle.sks; sourceTree = "<group>"; };
 		002F8A091C875BF2009EF4BB /* TBBossSnowParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBBossSnowParticle.sks; sourceTree = "<group>"; };
 		002F8A0B1C875F96009EF4BB /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		002F8A0D1C8765BA009EF4BB /* alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alert.png; path = "../../../../../Google Drive/JogoJOGO/design/historias/IMG1/alert.png"; sourceTree = "<group>"; };
 		002FD80D1BF6508A003514A4 /* startCount.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = startCount.atlas; sourceTree = "<group>"; };
 		002FD80F1BF650D0003514A4 /* pt-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pt-hud.png"; sourceTree = "<group>"; };
 		002FD8111BF6597D003514A4 /* back-hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-hud.png"; sourceTree = "<group>"; };
@@ -489,10 +491,6 @@
 		0092757E1C5F9A5E00292ABE /* error-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-1.png"; sourceTree = "<group>"; };
 		0092757F1C5F9A5E00292ABE /* error-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-2.png"; sourceTree = "<group>"; };
 		009275801C5F9A5E00292ABE /* error-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-3.png"; sourceTree = "<group>"; };
-		009275811C5F9A5E00292ABE /* Icon
- */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icon
-"; sourceTree = "<group>"; };
-		009275821C5F9A5E00292ABE /* Referência.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Referência.png"; sourceTree = "<group>"; };
 		009CAFE41BF10DD6003BA434 /* SelectLevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLevelScene.swift; sourceTree = "<group>"; };
 		00AC3ABE1BEA7EAB00323B6D /* smoke1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smoke1.png; path = ../smoke1.png; sourceTree = "<group>"; };
 		00AC3AC01BEA83EA00323B6D /* TBEspinhoSoltoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBEspinhoSoltoNode.swift; sourceTree = "<group>"; };
@@ -1123,10 +1121,8 @@
 				0092757D1C5F9A5E00292ABE /* bug-detected.png */,
 				0092757E1C5F9A5E00292ABE /* error-1.png */,
 				0092757F1C5F9A5E00292ABE /* error-2.png */,
+				002F8A0D1C8765BA009EF4BB /* alert.png */,
 				009275801C5F9A5E00292ABE /* error-3.png */,
-				009275811C5F9A5E00292ABE /* Icon
- */,
-				009275821C5F9A5E00292ABE /* Referência.png */,
 			);
 			path = HistoriasParte1;
 			sourceTree = "<group>";
@@ -1489,6 +1485,7 @@
 				52BE72D21C52B3E300431CAF /* megaLaser2.atlas in Resources */,
 				009221501BF11863007C7DDC /* enfeiteCima-2.png in Resources */,
 				009221511BF11863007C7DDC /* enfeiteCima-3.png in Resources */,
+				002F8A0E1C8765BA009EF4BB /* alert.png in Resources */,
 				002FD8141BF661B3003514A4 /* bits.atlas in Resources */,
 				009275861C5F9A5E00292ABE /* error-2.png in Resources */,
 				52B0B2B41C50083F00A9839A /* bossDeath.atlas in Resources */,
