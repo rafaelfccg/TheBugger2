@@ -167,23 +167,24 @@ class TBMenuViewController :UIViewController, GKGameCenterControllerDelegate {
     
     @IBAction func actionButMet2(sender: AnyObject) {
         
-        
+        do {
+            try  backgroundMusicPlayer2 = AVAudioPlayer(contentsOfURL: self.clickedButton)
+            backgroundMusicPlayer2!.play()
+        }catch {
+            print("MUSIC NOT FOUND")
+        }
+        self.performSegueWithIdentifier("ToOptionsSegue", sender: self)
+    }
+    
+    func showLeaderboardsGC()
+    {
         let gcVC: GKGameCenterViewController = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
         gcVC.leaderboardIdentifier = "TBAto1.Score"
         self.presentViewController(gcVC, animated: true, completion: nil)
-        
-//        do {
-//            try  backgroundMusicPlayer2 = AVAudioPlayer(contentsOfURL: self.clickedButton)
-//            backgroundMusicPlayer2!.play()
-//        }catch {
-//            print("MUSIC NOT FOUND")
-//        }
-//        self.performSegueWithIdentifier("ToOptionsSegue", sender: self)
-        
-        
     }
+    
     func screenShotMethod()->UIImage {
         //Create the UIImage
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, UIScreen.mainScreen().scale)
