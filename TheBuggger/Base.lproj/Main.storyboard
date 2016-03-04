@@ -140,6 +140,17 @@
                                     <action selector="actionButMet1:" destination="Tj2-nD-NVA" eventType="touchUpInside" id="YVJ-9Y-4we"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xw-cC-iht">
+                                <rect key="frame" x="484" y="533" width="31" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="31" id="bhp-VX-xLv"/>
+                                    <constraint firstAttribute="width" secondItem="7xw-cC-iht" secondAttribute="height" multiplier="31:26" id="hQx-Tu-bgw"/>
+                                </constraints>
+                                <state key="normal" image="GameCenter.png"/>
+                                <connections>
+                                    <action selector="showLeaderboardsGC" destination="Tj2-nD-NVA" eventType="touchUpInside" id="09m-vY-dJu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -154,6 +165,7 @@
                             <constraint firstItem="aPk-d8-x15" firstAttribute="centerY" secondItem="0bc-Ct-Rhl" secondAttribute="centerY" constant="-42" id="Fnt-60-EJu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="G3k-xd-aA3" secondAttribute="trailing" constant="19" id="HLS-Ue-lR8"/>
                             <constraint firstItem="aPk-d8-x15" firstAttribute="leading" secondItem="0bc-Ct-Rhl" secondAttribute="trailing" constant="25" id="J4k-7i-2GT"/>
+                            <constraint firstItem="7xw-cC-iht" firstAttribute="width" secondItem="7xw-cC-iht" secondAttribute="height" multiplier="31:26" id="KDS-E2-hAJ"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="leading" secondItem="aPk-d8-x15" secondAttribute="leading" id="TPV-fQ-bU6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aPk-d8-x15" secondAttribute="trailing" constant="19" id="Web-on-ckc"/>
                             <constraint firstItem="YgI-mK-HBt" firstAttribute="width" secondItem="0bc-Ct-Rhl" secondAttribute="width" id="YFj-cy-wp1"/>
@@ -161,6 +173,7 @@
                             <constraint firstItem="r8C-Fd-5PR" firstAttribute="top" secondItem="2r9-zy-bB4" secondAttribute="topMargin" id="cmT-jr-xCG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5FJ-Qh-b27" secondAttribute="trailing" constant="-34" id="hbK-V5-Zj7"/>
                             <constraint firstItem="0bc-Ct-Rhl" firstAttribute="centerY" secondItem="2r9-zy-bB4" secondAttribute="centerY" id="hxA-b6-MLl"/>
+                            <constraint firstItem="1bE-aV-HMq" firstAttribute="leading" secondItem="7xw-cC-iht" secondAttribute="trailing" constant="15" id="ies-rY-aEp"/>
                             <constraint firstItem="r8C-Fd-5PR" firstAttribute="leading" secondItem="2r9-zy-bB4" secondAttribute="leadingMargin" constant="-29" id="kRD-Oc-UZy"/>
                             <constraint firstItem="YgI-mK-HBt" firstAttribute="centerX" secondItem="0bc-Ct-Rhl" secondAttribute="centerX" id="kuF-yg-TR0"/>
                             <constraint firstItem="YgI-mK-HBt" firstAttribute="trailing" secondItem="0bc-Ct-Rhl" secondAttribute="trailing" id="l8G-UA-qob"/>
@@ -169,6 +182,7 @@
                             <constraint firstItem="0bc-Ct-Rhl" firstAttribute="top" secondItem="YgI-mK-HBt" secondAttribute="bottom" constant="-116.5" id="oPw-6e-svZ"/>
                             <constraint firstItem="5FJ-Qh-b27" firstAttribute="leading" secondItem="2r9-zy-bB4" secondAttribute="leadingMargin" constant="-25" id="paP-Sx-NzR"/>
                             <constraint firstItem="G3k-xd-aA3" firstAttribute="top" secondItem="aPk-d8-x15" secondAttribute="bottom" constant="20" id="tOn-V5-1YS"/>
+                            <constraint firstItem="5FJ-Qh-b27" firstAttribute="top" secondItem="7xw-cC-iht" secondAttribute="bottom" constant="8" id="wqw-af-MaA"/>
                             <constraint firstItem="79L-3u-emM" firstAttribute="top" secondItem="5FJ-Qh-b27" secondAttribute="bottom" constant="-2" id="yg4-Q0-Vuk"/>
                             <constraint firstItem="r8C-Fd-5PR" firstAttribute="centerX" secondItem="2r9-zy-bB4" secondAttribute="centerX" constant="-4" id="z2S-x1-ZNS"/>
                         </constraints>
@@ -617,6 +631,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GameCenter.png" width="150" height="130"/>
         <image name="back-1.png" width="301" height="228"/>
         <image name="credits-63.png" width="309" height="268"/>
         <image name="enfeiteBaixo-1" width="420" height="22.799999237060547"/>

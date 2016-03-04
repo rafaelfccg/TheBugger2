@@ -35,8 +35,7 @@ class TBMenuViewController :UIViewController, GKGameCenterControllerDelegate {
         if(!TBMenuViewController.loadedAtlas){
              SKTextureAtlas.preloadTextureAtlases([TBEspinhosNode.espinhosAtlas, TBBitNode.bitAtlas, TBGroundBotNode.monsterDeathAtlas, TBMoedasNode.moedaAtlas,TBPlayerNode.playerRunAtlas, TBPlayerNode.playerDashAtlas,TBEspinhoSoltoNode.espinhoAtlas, TBGroundBotNode.groundMonsterAtlas, TBShotBotNode.deathAtlas,TBUtils.paralaxAtlas],
                 withCompletionHandler: {TBMenuViewController.loadedAtlas = true})
-            
-            
+  
         }
         
         TBEspinhosNode.createSKActionAnimation()
@@ -176,7 +175,7 @@ class TBMenuViewController :UIViewController, GKGameCenterControllerDelegate {
         self.performSegueWithIdentifier("ToOptionsSegue", sender: self)
     }
     
-    func showLeaderboardsGC()
+    @IBAction func showLeaderboardsGC()
     {
         let gcVC: GKGameCenterViewController = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self

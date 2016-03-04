@@ -90,6 +90,8 @@
 		0064D69E1C07667B00BC0B2F /* FinalScreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0064D69D1C07667B00BC0B2F /* FinalScreen.atlas */; };
 		0064D6A01C07668900BC0B2F /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064D69F1C07668900BC0B2F /* continue.png */; };
 		0064D6A21C0768BE00BC0B2F /* TBCompletionLevelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0064D6A11C0768BE00BC0B2F /* TBCompletionLevelNode.swift */; };
+		0069892C1C89F99100D62271 /* TBSecondStory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0069892B1C89F99100D62271 /* TBSecondStory.sks */; };
+		0069892E1C8A0EAF00D62271 /* GameCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 0069892D1C8A0EAF00D62271 /* GameCenter.png */; };
 		006C97A01C31A5CD00CEE506 /* dashTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 006C979F1C31A5CD00CEE506 /* dashTutorial.atlas */; };
 		006C97A21C31A72500CEE506 /* slideDownTutorial.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 006C97A11C31A72500CEE506 /* slideDownTutorial.atlas */; };
 		007295821C7213FC006DA08E /* UIDevice+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007295811C7213FC006DA08E /* UIDevice+Model.swift */; };
@@ -287,7 +289,6 @@
 		AF9C91271C86283900B230CB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9C91261C86283800B230CB /* StoreKit.framework */; };
 		AF9C91291C86284500B230CB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9C91281C86284500B230CB /* GameKit.framework */; };
 		AFB85FA01BFF9DF100490AC4 /* EspinhoSolto.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AFB85F9F1BFF9DF100490AC4 /* EspinhoSolto.atlas */; };
-		AFB961EF1C89EB27002620E6 /* TBSecondStory.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFB961EE1C89EB27002620E6 /* TBSecondStory.sks */; };
 		AFBE1C6F1C889F71003EF175 /* TBGameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE1C6E1C889F71003EF175 /* TBGameCenter.swift */; };
 		AFBE1C771C88DFF0003EF175 /* Level1Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFBE1C701C88DFF0003EF175 /* Level1Scene.sks */; };
 		AFBE1C781C88DFF0003EF175 /* Level2Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFBE1C711C88DFF0003EF175 /* Level2Scene.sks */; };
@@ -416,6 +417,8 @@
 		0064D69D1C07667B00BC0B2F /* FinalScreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = FinalScreen.atlas; sourceTree = "<group>"; };
 		0064D69F1C07668900BC0B2F /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = continue.png; sourceTree = "<group>"; };
 		0064D6A11C0768BE00BC0B2F /* TBCompletionLevelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBCompletionLevelNode.swift; sourceTree = "<group>"; };
+		0069892B1C89F99100D62271 /* TBSecondStory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBSecondStory.sks; sourceTree = SOURCE_ROOT; };
+		0069892D1C8A0EAF00D62271 /* GameCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GameCenter.png; path = "../../../../Google Drive/JogoJOGO/GAME CENTER ICONS/GameCenter.png"; sourceTree = "<group>"; };
 		006C979F1C31A5CD00CEE506 /* dashTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = dashTutorial.atlas; sourceTree = "<group>"; };
 		006C97A11C31A72500CEE506 /* slideDownTutorial.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = slideDownTutorial.atlas; sourceTree = "<group>"; };
 		007295811C7213FC006DA08E /* UIDevice+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Model.swift"; sourceTree = "<group>"; };
@@ -629,7 +632,6 @@
 		AF9C91261C86283800B230CB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AF9C91281C86284500B230CB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		AFB85F9F1BFF9DF100490AC4 /* EspinhoSolto.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = EspinhoSolto.atlas; sourceTree = "<group>"; };
-		AFB961EE1C89EB27002620E6 /* TBSecondStory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TBSecondStory.sks; sourceTree = "<group>"; };
 		AFBE1C6E1C889F71003EF175 /* TBGameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBGameCenter.swift; sourceTree = "<group>"; };
 		AFBE1C701C88DFF0003EF175 /* Level1Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1Scene.sks; sourceTree = "<group>"; };
 		AFBE1C711C88DFF0003EF175 /* Level2Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2Scene.sks; sourceTree = "<group>"; };
@@ -1101,7 +1103,7 @@
 		009275741C5BD40E00292ABE /* stories */ = {
 			isa = PBXGroup;
 			children = (
-				AFB961EE1C89EB27002620E6 /* TBSecondStory.sks */,
+				0069892B1C89F99100D62271 /* TBSecondStory.sks */,
 				004B9FC81C860409005BB361 /* TBSecondStory.swift */,
 				004B9FCC1C87139C005BB361 /* TBFirstStory.sks */,
 				009275771C5F93BE00292ABE /* TBFirstStory.swift */,
@@ -1241,6 +1243,7 @@
 		00CDBEC71BBD9EEC00BC0517 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				0069892D1C8A0EAF00D62271 /* GameCenter.png */,
 				00D901EB1C84B6C600A1629B /* HistoriasParte2 */,
 				00228E2F1C80C7E7004A5C82 /* StoryOnOff */,
 				00FD2E961C75FE7300F768A8 /* launchscreen.png */,
@@ -1467,6 +1470,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0069892E1C8A0EAF00D62271 /* GameCenter.png in Resources */,
 				AF9414F51C10B15700A81D83 /* EXPLOSION_HERO.mp3 in Resources */,
 				008203481BFD0EF300534647 /* Run.mp3 in Resources */,
 				009221611BF128CE007C7DDC /* Squares Bold Free.otf in Resources */,
@@ -1598,6 +1602,7 @@
 				001E55D01BD8221600B80833 /* roof.png in Resources */,
 				003B72F31BEA71AA00CD8F0E /* Paralax2.atlas in Resources */,
 				52ADD12F1C56BD02007D5262 /* laserEnd.atlas in Resources */,
+				0069892C1C89F99100D62271 /* TBSecondStory.sks in Resources */,
 				001E55D81BD8221600B80833 /* sky.png in Resources */,
 				52ADD12D1C56B729007D5262 /* bossTurnOn.atlas in Resources */,
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
@@ -1689,7 +1694,6 @@
 				0022C02F1BE2A44300A184D5 /* slidetxt.png in Resources */,
 				AFEF5C461BC44E3B003273FF /* PlayerFall.atlas in Resources */,
 				52443F5D1C063ADC00033633 /* viga.png in Resources */,
-				AFB961EF1C89EB27002620E6 /* TBSecondStory.sks in Resources */,
 				52BA06E91C5A897000B15193 /* bossMegaLaserDown.atlas in Resources */,
 				AF26D2A31C5FE443009731BA /* Bossestagiomark.png in Resources */,
 				52C8E9EF1C07A65400F84C87 /* GateClosed.wav in Resources */,
