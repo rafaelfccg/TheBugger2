@@ -145,7 +145,28 @@ class FirstBossGameScene: GameSceneBase, BossProtocol {
             defaults.setInteger(self.levelSelected! + 1, forKey: "level")
         }
         
+        completeLevelAchievementGC(levelSelected!)
+        bitsAchievementGC(coinsMark, levelSelected: levelSelected!)
+        
+        // Salvando o log de quantos usuário únicos já ganharam
+        if let statisticsLogs = fetchLogsByLevel(levelSelected!)
+        {
+            if(statisticsLogs.won != true)
+            {
+                Flurry.logEvent("UniqueCompletedLevel", withParameters: ["Stage": levelSelected!])
+            }
+        }
+        
         saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
+        
+        // somando todos os dados para adicionar ao game center
+        // - função sumStatistics() chama fetchLogs() e deve ser chamada após salvar os logs atuais
+        let totalStatistics = sumStatistics()
+        submitScoreGC(totalStatistics.score)
+        collect21BitsAchievementGC(totalStatistics.numBits)
+        coinsAchievementGC(totalStatistics.moedas)
+        bugsAchievementGC(totalStatistics.monstersTotalKilled)
+        
         Flurry.logEvent("CompletedLevel", withParameters: ["Stage": levelSelected!])
         // Tela de pontuacao com botao pra mostrar a historia
         
