@@ -408,7 +408,7 @@ class GameScene:GameSceneBase {
             //Salvando os dados com persistencia
                 saveLogsFetched(self.hero, bitMark: self.coinsMark, levelSelected: self.levelSelected!, tentativas: self.numberOfDeath)
                 
-            // somando todos os scores para adicionar ao game center
+            // somando todos os dados para adicionar ao game center
                 // - função sumStatistics() chama fetchLogs() e deve ser chamada após salvar os logs atuais
                 let totalStatistics = sumStatistics()
                 submitScoreGC(totalStatistics.score)

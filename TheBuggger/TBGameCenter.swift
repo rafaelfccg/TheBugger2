@@ -59,7 +59,6 @@ func deathAchievementGC(amount: Int)
 }
 
 // reporta se completar os levels 1 ou 7
-// === falta chamar a função no level 7
 func completeLevelAchievementGC(levelSelected: Int)
 {
     if(levelSelected == 1)
@@ -72,7 +71,6 @@ func completeLevelAchievementGC(levelSelected: Int)
     }
 }
 // reporta todos os achievements de 3 bits dos levels
-// === falta chamar função no level 7
 func bitsAchievementGC(bitsMark: [Bool], levelSelected: Int)
 {
     var numBits: Double
@@ -107,7 +105,6 @@ func collect21BitsAchievementGC(numBits: Int)
     }
 }
 
-// === falta ser chamada
 func firstPowerUPAchievementGC()
 {
     reportAchievementGC("TB.FirstPowerUP", percentComplete: 100.0)
