@@ -89,6 +89,7 @@ class SelectLevelScene: SKScene {
     func setLevelCircles(){
         let defaults = NSUserDefaults.standardUserDefaults()
         let inLevel = defaults.integerForKey("level")
+        print(inLevel)
         let openLevel = SKTexture(imageNamed: "estagio-1")
         let closedLevel = SKTexture(imageNamed: "estagio-5")
         

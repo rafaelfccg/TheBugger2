@@ -14,7 +14,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
-            endingLineNumber = "25">
+            endingLineNumber = "25"
+            landmarkName = "GameViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -124,7 +126,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
-            endingLineNumber = "80">
+            endingLineNumber = "80"
+            landmarkName = "createAndLoadInterstitial()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,7 +350,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
-            endingLineNumber = "150">
+            endingLineNumber = "150"
+            landmarkName = "mudaSceneBoss(_:withMethod:andLevel:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -393,7 +399,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "235"
             endingLineNumber = "235"
-            landmarkName = "didBeginContact(_:)"
+            landmarkName = "setUpLevel()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -409,8 +415,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "233"
             endingLineNumber = "233"
-            landmarkName = "didBeginContact(_:)"
-            landmarkType = "5">
+            landmarkName = "FirstBossGameScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -425,7 +431,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "repositionBlock(_:basedOn:)"
+            landmarkName = "createSnowParticle()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -441,7 +447,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
-            landmarkName = "repositionBlock(_:basedOn:)"
+            landmarkName = "createSnowParticle()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -456,7 +462,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "247"
-            endingLineNumber = "247">
+            endingLineNumber = "247"
+            landmarkName = "setUpLevel()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -503,7 +511,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
-            landmarkName = "update(_:)"
+            landmarkName = "bossDead()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -551,7 +559,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "setBoss()"
+            landmarkName = "createSnowParticle()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -567,7 +575,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "bossDead()"
+            landmarkName = "removeSnowParticle()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -583,7 +591,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
             endingLineNumber = "107"
-            landmarkName = "bossDead()"
+            landmarkName = "repositionBlock(_:basedOn:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
