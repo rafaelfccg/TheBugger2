@@ -135,7 +135,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         //           skView.showsFPS = true
         //skView.showsNodeCount = true
 //        skView.showsPhysics = true
-        if let skScene = scene as? SKScene {
+        if let skScene = scene as? GameSceneBase {
             NSNotificationCenter.defaultCenter().addObserver(skScene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
             skView.ignoresSiblingOrder = true
             

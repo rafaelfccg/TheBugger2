@@ -251,7 +251,7 @@ func sumStatistics() -> TotalStatistics
     
     if let statisticsLogs = fetchLogs()
     {
-        for(var i = 0; i < statisticsLogs.count; i++)
+        for(var i = 0; i < statisticsLogs.count; i+=1)
         {
             //os valores em statisticsLogs são Int32
             sumStatistics.moedas += Int(statisticsLogs[i].moedas)

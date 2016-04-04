@@ -280,8 +280,8 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
     func restartLevel()
     {
         deathAchievementGC(numTotalDeaths)
-        self.numberOfDeath++
-        self.numTotalDeaths++
+        self.numberOfDeath+=1
+        self.numTotalDeaths+=1
         self.stopParalax = false
         stateCamera = 0
         background1?.texture = TBUtils.getNextBackground()
@@ -731,7 +731,7 @@ class GameSceneBase: SKScene, SKPhysicsContactDelegate,TBSceneProtocol{
                 
             }else if let moeda = bodyB.node as? TBMoedasNode {
                 if !moeda.picked {
-                    hero.qtdMoedas++
+                    hero.qtdMoedas+=1
                     moeda.picked = true
                     self.runAction(SKAction.playSoundFileNamed("moeda.mp3", waitForCompletion: true))
                     hero.score += 10

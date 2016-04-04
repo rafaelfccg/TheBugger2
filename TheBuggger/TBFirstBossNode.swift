@@ -250,16 +250,16 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func tripleAttack() {        // Ataque duplo da megaLaser + metal ball + metal ball
-        self.attacksHappened++
-        self.totalAttacks++
+        self.attacksHappened+=1
+        self.totalAttacks+=1
         self.lastAttack = 1
         let tripleAttackAction = SKAction.sequence([SKAction.runBlock({self.animationPlusCreateMLD()}), SKAction.waitForDuration(0.5), SKAction.runBlock({self.createAttackBallNoBack(2)}), SKAction.waitForDuration(1), SKAction.runBlock({self.createAttackBallNoBack(3)})])
         self.runAction(tripleAttackAction)
     }
     
     func doubleAttack() { // Ataque duplo da megaLaser + metal ball
-        self.attacksHappened++
-        self.totalAttacks++
+        self.attacksHappened+=1
+        self.totalAttacks+=1
         self.lastAttack = 1
         let doubleAttackAction = SKAction.sequence([SKAction.runBlock({self.animationPlusCreateMLD()}), SKAction.waitForDuration(0.5), SKAction.runBlock({self.createAttackBallNoBack(2)})])
         self.runAction(doubleAttackAction)
@@ -295,8 +295,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func ballAttackDown() { // Ataque da bola de metal em baixo
-        self.attacksHappened++
-        self.totalAttacks++
+        self.attacksHappened+=1
+        self.totalAttacks+=1
         self.lastAttack = 0
         self.createBallDown()
     }
@@ -326,8 +326,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func ballAttackUp() { // Ataque da bola de metal em cima
-        self.attacksHappened++
-        self.totalAttacks++
+        self.attacksHappened+=1
+        self.totalAttacks+=1
         self.lastAttack = 3
         self.createBallUp()
     }
@@ -426,8 +426,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func megaLaserAttackDown() {    // Ataque do megaLaser em baixo
-        self.attacksHappened++
-        self.totalAttacks++
+        self.attacksHappened+=1
+        self.totalAttacks+=1
         self.lastAttack = 1
         self.animationPlusCreateMLD()
     }
@@ -443,8 +443,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     }
     
     func megaLaserAttackUp() {           // Ataque do megaLaser em cima
-        self.attacksHappened++
-        self.totalAttacks++
+        self.attacksHappened+=1
+        self.totalAttacks+=1
         self.lastAttack = 2
         runAction(SKAction.group([TBFirstBossNode.bossMegaLaserUpAnimation!, SKAction.runBlock({self.createMegaLaserUp()})]))
         //self.createMegaLaserUp()
@@ -465,7 +465,8 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
         bit.physicsBody?.contactTestBitMask = GameScene.PLAYER_NODE
         bit.physicsBody?.velocity = CGVectorMake(-350, 0)
         bit.name  = "removable"
-        bit.num = self.currentBit++
+        self.currentBit+=1
+        bit.num = self.currentBit
         self.addChild(bit)
         bit.runAction(SKAction.repeatActionForever( TBBitNode.animation!), withKey: "moedaBit")
     }
@@ -478,13 +479,13 @@ class TBFirstBossNode: SKSpriteNode,TBMonsterProtocol {
     func checkBitTime() -> Bool {      // Funcao para saber se e o momento de atirar um bit
         var itsTime = false
         if(self.totalAttacks == 7) {
-            self.totalAttacks++
+            self.totalAttacks+=1
             itsTime = true
         } else if(self.totalAttacks == 13) {
-            self.totalAttacks++
+            self.totalAttacks+=1
             itsTime = true
         } else if(self.totalAttacks == 22) {
-            self.totalAttacks++
+            self.totalAttacks+=1
             itsTime = true
         }
         

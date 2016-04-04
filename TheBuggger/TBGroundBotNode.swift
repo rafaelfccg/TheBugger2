@@ -74,7 +74,7 @@ class TBGroundBotNode: SKSpriteNode, TBMonsterProtocol {
     {
         //adicionando score ao heroi
         hero.score += 5
-        hero.monstersKilled++
+        hero.monstersKilled+=1
         //tirando corpo fisico e contato
         self.physicsBody?.categoryBitMask = 0
         self.physicsBody?.collisionBitMask = 0

@@ -26,8 +26,6 @@
 		001E55C31BD8221600B80833 /* estrutura2.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55971BD8221600B80833 /* estrutura2.png */; };
 		001E55C41BD8221600B80833 /* structure1.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55981BD8221600B80833 /* structure1.png */; };
 		001E55C51BD8221600B80833 /* structure2.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55991BD8221600B80833 /* structure2.png */; };
-		001E55C61BD8221600B80833 /* base floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E559B1BD8221600B80833 /* base floor.png */; };
-		001E55C71BD8221600B80833 /* plataforma-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E559C1BD8221600B80833 /* plataforma-01.png */; };
 		001E55C81BD8221600B80833 /* BaseA.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E559F1BD8221600B80833 /* BaseA.png */; };
 		001E55C91BD8221600B80833 /* BaseB.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55A01BD8221600B80833 /* BaseB.png */; };
 		001E55CA1BD8221600B80833 /* BaseD.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55A11BD8221600B80833 /* BaseD.png */; };
@@ -40,7 +38,6 @@
 		001E55D11BD8221600B80833 /* roofend1.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55A81BD8221600B80833 /* roofend1.png */; };
 		001E55D21BD8221600B80833 /* roofend2.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55A91BD8221600B80833 /* roofend2.png */; };
 		001E55D31BD8221600B80833 /* estructure1.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AA1BD8221600B80833 /* estructure1.png */; };
-		001E55D41BD8221600B80833 /* estructure2.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AB1BD8221600B80833 /* estructure2.png */; };
 		001E55D51BD8221600B80833 /* estructure3.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AC1BD8221600B80833 /* estructure3.png */; };
 		001E55D61BD8221600B80833 /* redlight-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AD1BD8221600B80833 /* redlight-01.png */; };
 		001E55D71BD8221600B80833 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 001E55AE1BD8221600B80833 /* texture.png */; };
@@ -1609,7 +1606,6 @@
 				001E55D81BD8221600B80833 /* sky.png in Resources */,
 				52ADD12D1C56B729007D5262 /* bossTurnOn.atlas in Resources */,
 				52E75DC21BDEAC6900F91E00 /* GroundMonster.atlas in Resources */,
-				001E55C71BD8221600B80833 /* plataforma-01.png in Resources */,
 				AF9415061C10DD9F00A81D83 /* mark2.png in Resources */,
 				52C8E9ED1C07A2A200F84C87 /* jump.wav in Resources */,
 				52BE72D61C52B69100431CAF /* bomb.png in Resources */,
@@ -1661,14 +1657,12 @@
 				001C3B831C7DF0FF0087AF12 /* megaLaser.mp3 in Resources */,
 				0092215A1BF1187E007C7DDC /* enfeiteBaixo-3.png in Resources */,
 				52E75DC41BDEAD0300F91E00 /* Move_Ya.mp3 in Resources */,
-				001E55D41BD8221600B80833 /* estructure2.png in Resources */,
 				523C53F41C30832D001E4C4E /* dashTutorialAnimation.atlas in Resources */,
 				52BA06EB1C5A89BF00B15193 /* bossMegaLaserUp.atlas in Resources */,
 				AFF489F21BD56D8700463411 /* PlayerDash.atlas in Resources */,
 				5288D4861C84C31700A6F625 /* slowSignal.atlas in Resources */,
 				009221631BF12D10007C7DDC /* estagioSelect.atlas in Resources */,
 				AF9415041C10DD9F00A81D83 /* estagiomarks.png in Resources */,
-				001E55C61BD8221600B80833 /* base floor.png in Resources */,
 				001E55D71BD8221600B80833 /* texture.png in Resources */,
 				52BE72CC1C52A41800431CAF /* bossHittedOff.atlas in Resources */,
 				00200B611C0634760094FFBD /* fio solto2.png in Resources */,

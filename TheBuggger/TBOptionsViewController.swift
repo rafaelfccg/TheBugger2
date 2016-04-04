@@ -46,8 +46,8 @@ class TBOptionsViewController: UIViewController {
             radioButtonMethod1.hidden = true
             radioButtonMethod2.hidden = true
         
-            let tapDesc1 = UITapGestureRecognizer(target: self, action: Selector("selector1"))
-            let tapDesc2 = UITapGestureRecognizer(target: self, action: Selector("selector2"))
+            let tapDesc1 = UITapGestureRecognizer(target: self, action: #selector(TBOptionsViewController.selector1))
+            let tapDesc2 = UITapGestureRecognizer(target: self, action: #selector(TBOptionsViewController.selector2))
             
             methodLabel.addGestureRecognizer(tapDesc1)
             methodLabel.userInteractionEnabled  = true
@@ -83,7 +83,7 @@ class TBOptionsViewController: UIViewController {
         animatedBack.animationDuration = 0.35
         animatedBack.animationRepeatCount = 1
         backgroundImage.image = imageBack
-        let gestureBack = UITapGestureRecognizer(target: self, action: Selector("back"))
+        let gestureBack = UITapGestureRecognizer(target: self, action: #selector(TBOptionsViewController.back))
         backgroundImage.addGestureRecognizer(gestureBack)
         backgroundImage.userInteractionEnabled = true
         
@@ -95,7 +95,7 @@ class TBOptionsViewController: UIViewController {
         backButton.animationDuration = 1
         backButton.startAnimating()
         backButton.userInteractionEnabled = true
-        let gestureBack2 = UITapGestureRecognizer(target: self, action: Selector("back"))
+        let gestureBack2 = UITapGestureRecognizer(target: self, action: #selector(TBOptionsViewController.back))
         backButton.addGestureRecognizer(gestureBack2)
         
     }
@@ -159,7 +159,7 @@ class TBOptionsViewController: UIViewController {
         animatedBack.image = UIImage(named: "set-6")
         animatedBack.startAnimating()
         
-        self.performSelector(Selector("showElements"), withObject: nil, afterDelay: 0.35)
+        self.performSelector(#selector(TBOptionsViewController.showElements), withObject: nil, afterDelay: 0.35)
         
     }
     

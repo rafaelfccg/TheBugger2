@@ -95,7 +95,7 @@ class SelectLevelScene: SKScene {
         
         let openLevelBoss = SKTexture(imageNamed: "boss-1")
         let closedLevelBoss = SKTexture(imageNamed: "boss-5")
-        for (var i = 1 ; i <= numberOfLevels ; i++) {
+        for (var i = 1 ; i <= numberOfLevels ; i+=1) {
             let name = "//selectStage\(i)"
             let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
             if(i > inLevel){
@@ -126,7 +126,7 @@ class SelectLevelScene: SKScene {
         if let statisticLogs = fetchLogs()
         {
             let numLevels = statisticLogs.count
-            for (var i = 0; i < numLevels; i++)
+            for (var i = 0; i < numLevels; i+=1)
             {
                 let name = "estagioMark\(statisticLogs[i].level)"
                 let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
@@ -134,7 +134,7 @@ class SelectLevelScene: SKScene {
                 let numBits = countBits([statisticLogs[i].bit0, statisticLogs[i].bit1, statisticLogs[i].bit2])
                 print("\(numBits), \(statisticLogs[i].level)")
                 
-                for(var j = 1; j <= numBits; j++)
+                for(var j = 1; j <= numBits; j+=1)
                 {
                     let bitNode = SKSpriteNode(imageNamed: "mark\(j)")
                     bitNode.size = node.size

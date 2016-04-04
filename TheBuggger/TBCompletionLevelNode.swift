@@ -42,9 +42,9 @@ class TBCompletionLevelNode: SKNode {
 //        let animateBack = SKAction.animateWithTextures(arr, timePerFrame: 1)
 //        
         var bitCount = 0
-        if bits[0]{ bitCount++}
-        if bits[1]{ bitCount++}
-        if bits[2]{ bitCount++}
+        if bits[0]{ bitCount+=1}
+        if bits[1]{ bitCount+=1}
+        if bits[2]{ bitCount+=1}
         
         let attempt  = self.childNodeWithName("Attempts") as! SKLabelNode
         attempt.text =  "Attempts: \(attempts)"
