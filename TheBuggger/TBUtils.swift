@@ -25,7 +25,7 @@ class TBUtils {
         
         let numImages = textureAtlas.textureNames.count
         //        print("\(numImages)")
-        for (var i=1; i <= numImages; i+=1)
+        for i in 1...numImages
         {
             let playerTextureName = "\(nomeImagens)\(i)"
             spriteArray.append(textureAtlas.textureNamed(playerTextureName))
@@ -45,7 +45,7 @@ class TBUtils {
 }
 //THIS IS A WORKARROUND FOR A BUG ON PRELOAD ALREADY IMPLEMENTED ON SPRITEKIT
 func preLoadSprites(textureAtlas: [SKTextureAtlas]){
-    for (var i=0; i < textureAtlas.count; i+=1)
+    for i in 0 ..< textureAtlas.count
     {
         
         let textNames = textureAtlas[i].textureNames

@@ -18,7 +18,7 @@ class TBFirstStory: TBStoriesScene{
     
     override func prepFirstScene(){
         let action = SKAction.hide()
-        for(var i = 0; i < 11 ;i+=1){
+        for i in 0...10 {
             let node = self.childNodeWithName("\(i)")
             node?.runAction(action)
         }
@@ -32,7 +32,7 @@ class TBFirstStory: TBStoriesScene{
 
         let action = SKAction.unhide()
         var time = 0.7
-        for(var i = 0; i < 11 ;i+=1){
+        for i in 0 ..< 11 {
             let node = self.childNodeWithName("\(i)")
             let unhide = SKAction.sequence([SKAction.waitForDuration(time),action])
             if i == 10 {

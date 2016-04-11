@@ -266,7 +266,9 @@ class TBPlayerNode: SKSpriteNode {
     }
     
     func createStandingJoint(){
-        self.standJoint = SKSpriteNode(color: SKColor.clearColor(), size: CGSizeMake(130,120))
+    
+        self.standJoint = SKSpriteNode(color: SKColor.clearColor(),
+                                       size: CGSizeMake(30/self.xScale,90))
         self.standJoint?.physicsBody = SKPhysicsBody(rectangleOfSize: (standJoint?.size)!)
         self.standJoint!.physicsBody?.affectedByGravity = false
         self.standJoint!.physicsBody?.linearDamping = 0;
@@ -287,7 +289,7 @@ class TBPlayerNode: SKSpriteNode {
         if standJoint?.parent == nil{
             self.addChild(standJoint!)
         }
-        standJoint?.position = CGPointMake(0, 145)
+        standJoint?.position = CGPointMake(0, 130)
     }
     func removeStandingNode(){
         self.standJoint?.removeFromParent()

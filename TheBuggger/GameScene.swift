@@ -131,7 +131,7 @@ class GameScene:GameSceneBase {
             
         })
         
-        for (var i = 0 ; i < 3 ;i+=1) {
+        for i in 0  ..< 3 {
             if let node = self.childNodeWithName("bit\(i)") {
                 let bit = TBBitNode()
                 bit.position = (node.position)

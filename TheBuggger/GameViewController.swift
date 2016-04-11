@@ -136,7 +136,7 @@ class GameViewController: UIViewController, SceneChangesDelegate, GADInterstitia
         //skView.showsNodeCount = true
 //        skView.showsPhysics = true
         if let skScene = scene as? GameSceneBase {
-            NSNotificationCenter.defaultCenter().addObserver(skScene, selector:Selector("backToForeground"), name: "willEnterForeground", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(skScene, selector:#selector(skScene.backToForeground), name: "willEnterForeground", object: nil)
             skView.ignoresSiblingOrder = true
             
             skScene.scaleMode = .AspectFill

@@ -126,7 +126,7 @@ class SelectLevelScene: SKScene {
         if let statisticLogs = fetchLogs()
         {
             let numLevels = statisticLogs.count
-            for (var i = 0; i < numLevels; i+=1)
+            for i in 0 ..< numLevels
             {
                 let name = "estagioMark\(statisticLogs[i].level)"
                 let node:SKSpriteNode = childNodeWithName(name) as! SKSpriteNode
